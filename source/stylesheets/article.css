@@ -1,0 +1,49 @@
+.rep_msg_box {
+	margin-left: 35px
+}
+
+.reply_msg_item {
+	border-bottom: 1px dashed #cda;
+	padding: 3px 20px 3px 0;
+	overflow: hidden
+}
+
+.reply_user_photo {
+	float: left;
+	width: 45px;
+	height: 45px;
+	overflow: hidden
+}
+
+.reply_user_photo img {
+	width: 45px;
+	height: 45px;
+	border: 2px solid #fff;
+	-webkit-transition: all .35s ease-in-out;
+	-moz-transition: all .35s ease-in-out;
+	transition: all .35s ease-in-out
+}
+
+.reply_user_photo .userlink:hover img {
+	border: 2px solid #D5C8DB
+}
+
+.reply_content_info {
+	margin-left: 55px
+}
+
+.reply_info span {
+	color: #999
+}
+
+.reply_info .opt {
+	float: right
+}
+
+. .opt a {
+	color: #5C5A5A
+}
+
+.reply_info .replyat:hover img {
+	border: 2px solid #D5C8DB
+}

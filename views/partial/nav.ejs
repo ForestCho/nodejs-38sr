@@ -1,0 +1,40 @@
+<div class="appwrap">
+		<div class="navwrap">
+		<div class="logo">
+			<a  href="/"><span class="logo38">38</span><span class="logosr">锶</span></a>
+		</div>
+		<div class="selectwrap">
+			<ul class="navul" role="tablist"> 
+				<li class="<%= (locals.pageflag==1)?'active':'' %>" %><a href="/">主页</a></li>
+				<% if(locals.userinfo){%>
+					<li class="<%= (locals.pageflag==2)?'active':'' %>"><a href="/user/<%=locals.userinfo.name %>">我的主页</a></li>
+				<%}%>
+					<li class="<%= (locals.pageflag==3)?'active':'' %>"><a href="/pubarticle">发表心情</a></li>
+			</ul> 
+		</div> 
+			<% if(locals.userinfo){%>	 
+				<div class="dropdown account_opt"> 
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=locals.userinfo.name %><sup class="badge"><%=(locals.userinfo.msgcount!== 0)?locals.userinfo.msgcount:'' %></sup><span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+					        <li><a href="/user/<%=locals.userinfo.name %>">个人中心</a></li>
+					        <li><a href="/set">个人设置</a></li> 
+					        <li><a href="/message">消息<span class="badge"><%=(locals.userinfo.msgcount!== 0)?locals.userinfo.msgcount:'' %></span></a></li> 
+					        <li class="divider"></li>
+						 	<li><a href="/logout">安全登出</a></li>	
+				        </ul>  
+				</div>
+			<%}else{%> 
+				<ul class="reg_login">
+					<li><a href="/reg">注册</a></li>
+					<li><a href="/login">登录</a></li>
+				</ul> 
+			<%}%>
+			<div class="headsearch">
+			<form class="navbar-form " role="search" action="/search" method="GET">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="search" name="searchstr">
+				</div> 
+			</form>
+			</div>
+		</div>
+</div>

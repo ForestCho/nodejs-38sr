@@ -1,0 +1,65 @@
+.setpanel {
+	width: 80%
+}
+
+.baseinfo input {
+	width: 50%;
+	border-radius: 0
+}
+
+.baseinfo textarea {
+	width: 80%
+}
+
+.accountinfo input {
+	width: 50%;
+	border-radius: 0
+}
+
+.accountinfo textarea {
+	width: 80%
+}
+
+.settab {
+	margin-left: -45px;
+	font-size: 18px
+}
+
+.settab li {
+	display: block;
+	float: left;
+	padding: 3px
+}
+
+.settab a {
+	color: #777
+}
+
+.curset {
+	color: #2a6496!important
+}
+
+.wholeimg {
+	float: left
+}
+
+.previewimg {
+	float: left;
+	margin-left: 30px
+}
+
+.imgwrap {
+	overflow: hidden
+}
+
+.crop_preview {
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	overflow: hidden
+}
+
+.substy {
+	margin-top: 10px;
+	float: left
+}

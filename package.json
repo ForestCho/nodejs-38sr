@@ -1,0 +1,28 @@
+{
+  "name": "38sr",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.10.0"
+  },
+  "dependencies": {
+    "express": "3.5.1",
+    "eventproxy": "0.2.6",
+    "connect-flash": "0.1.1",
+    "nodemailer": "0.7.1",
+    "mongoose": "3.8.8",
+    "validator": "3.16.1",
+    "ejs": "0.8.4",
+    "moment": "2.7.0",
+    "gm": "1.16.0",
+    "xss": "0.1.10"
+  }
+}

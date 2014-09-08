@@ -1,0 +1,168 @@
+.meiriyiju {
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0 20px;
+	color: #FFF;
+	background: rgba(74,122,170,1);
+	height: 160px
+}
+
+.onesentence {
+	margin: 20px 40px 10px
+}
+
+.onesentence p {
+	font-size: 16px
+}
+
+.statistics {
+	text-align: right;
+	margin: 20px 40px 0
+}
+
+.statistics p {
+	font-size: 20px
+}
+
+.writepanel {
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0 20px;
+	border: 1px solid #CACACA
+}
+
+.writebox {
+	width: 605px;
+	height: 64px
+}
+
+.articleitem {
+	border-bottom: 1px dashed #cda;
+	padding: 10px 20px
+}
+
+.photowrap {
+	float: left;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	overflow: hidden
+}
+
+.photowrap img {
+	width: 64px;
+	height: 64px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	-webkit-transition: all .35s ease-in-out;
+	-moz-transition: all .35s ease-in-out;
+	transition: all .35s ease-in-out
+}
+
+.photowrap .userlink:hover img {
+	border: 2px solid #D5C8DB
+}
+
+.msg_content {
+	color: #333;
+	line-height: 1.8em;
+	font:14px/1.5 arial, sans-serif;
+	border: 0 solid #ccc!important;
+	border-radius: 0
+}
+
+.shuo_sty {
+	font-size: 14px;
+	color: #777;
+	margin-top: 10px
+}
+
+.msg_date {
+	font-size: 14px;
+	color: #777
+}
+
+.reply {
+	float: right
+}
+
+.reply a {
+	color: #777
+}
+
+.reply a:hover {
+	cursor: pointer
+}
+
+.loginwrap {
+	width: 180px;
+	margin: 0 auto
+}
+
+.loginwrap input {
+	border-radius: 0;
+	padding-left: 35px
+}
+
+.page_header_info {
+	font-size: 20px;
+	padding: 0 0 7px;
+	margin-bottom: 10px;
+	color: #555;
+	border-bottom: 1px solid #fff
+}
+
+.userfresh {
+	margin-top: 20px
+}
+
+.userfresh img {
+	width: 45px;
+	height: 45px;
+	display: block;
+	margin: 0 auto
+}
+
+.sidetitle {
+	font-size: 18px;
+	border-bottom: 1px solid #DCDDD9
+}
+
+.userlist {
+	margin-top: 15px
+}
+
+.userview {
+	height: 65px;
+	width: 68px;
+	overflow: hidden;
+	line-height: 18px;
+	float: left;
+	font-size: 12px;
+	text-align: center
+}
+
+.userview a:hover {
+	background-color: rgba(74,122,170,1);
+	color: #fff;
+	text-decoration: none
+}
+.site_intro p{
+	line-height: 28px
+}
+.site_link {
+	margin-top: 20px
+}
+
+.site_list {
+	padding-left: 10px;
+	margin-top: 10px
+}
+
+.site_list li {
+	list-style: none
+}
+
+.site_list a {
+	font-size: 16px
+}

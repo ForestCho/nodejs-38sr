@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head> 
+	<title><%= config.site.name + '-' + title %> </title> 
+	<meta name="description" content="<%= title %>">
+	<meta name="keywords" content="<%= config.site.keywords %>">
+	<meta name="author" content="<%= config.site.author %>">
+	<link rel="icon" href="/images/favicon.ico">   
+	<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />   
+	<link rel="stylesheet" href="/stylesheets/base.min.css">  
+	<link rel="stylesheet" href="/stylesheets/jcrop.min.css">   
+	<link rel="stylesheet" href="/stylesheets/jquery.atwho.min.css"> 
+	<link rel="stylesheet" href="/stylesheets/pagesty.min.css"> 
+
+	<script src="/javascripts/jquery-min.js"></script> 
+	<script src="/javascripts/jquery-migrate-1.2.1.js"></script>
+	<script src="/javascripts/underscore.min.js"></script> 
+	<script src="/javascripts/bootstrap.min.js"></script> 
+	<script src="/javascripts/base.min.js"></script>  
+	<script src="/javascripts/jquery.jcrop.min.js"></script>  
+	<script src="/javascripts/jquery.atwho.min.js"></script>
+	<script src="/javascripts/jquery.caret.min.js"></script> 
+	<script src="/javascripts/gotop.min.js"></script> 
+	<script type="text/javascript">
+	$(document).ready(function(){
+		//初始化一个剪裁大小，左上角坐标(100,100)，右下角为(200,200)
+	$("#xuwanting").Jcrop({
+		setSelect: [0,0,64,64], //setSelect是Jcrop插件内部已定义的运动方法		
+		aspectRatio:1,
+		onChange:showPreview, 
+		allowSelect:false
+	});
+	//简单的事件处理程序，响应自onChange,onSelect事件，按照上面的Jcrop调用
+	function showPreview(coords){
+		if(parseInt(coords.w) > 0){
+				//计算预览区域图片缩放的比例，通过计算显示区域的宽度(与高度)与剪裁的宽度(与高度)之比得到
+				var rx = $("#preview_box").width() / coords.w; 
+				var ry = $("#preview_box").height() / coords.h;
+				//通过比例值控制图片的样式与显示
+				$("#crop_preview").css({
+					width:Math.round(rx * $("#xuwanting").width()) + "px",	//预览图片宽度为计算比例值与原图片宽度的乘积
+					height:Math.round(ry * $("#xuwanting").height()) + "px",	//预览图片高度为计算比例值与原图片高度的乘积
+					marginLeft:"-" + Math.round(rx * coords.x) + "px",
+					marginTop:"-" + Math.round(ry * coords.y) + "px"
+				});
+				$("#coords").val(coords.x + '_' + coords.y + '_' + coords.w + '_' + coords.h);
+			}
+		};
+	});
+</script>

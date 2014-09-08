@@ -1,0 +1,53 @@
+<% 
+var userinfo = d.userinfo; 
+%>
+			<div class="userinfo">
+			<div class="baseinfo">
+				<h3><%= userinfo.name %></h3>
+				<img src=<%= userinfo.originphoto %>>
+				<p>第<%= userinfo.uid %>位成员</p>
+				<p><%= userinfo.joinDate %></p>	 
+				<% if(typeof(userinfo.intro) !== 'undefined') {%>
+				<pre class="intropre"><%= userinfo.intro %></pre>
+				<% } %>
+				<% if(typeof(locals.userinfo) !== 'undefined' && locals.userinfo.name === userinfo.name){%>
+					<p><a href="/set">个人设置</a></p>
+				<%}else{%>
+					<p><a id="relatebtn" class=<%= (d.isfollow)?'unfollowfri':'followfri' %> href="#" data_id="<%=userinfo.uid %>"><%= (d.isfollow)?'取消关注-':'关注此人+' %></a></p>
+				<%}%>
+				</div>
+				<div class="follower">
+					<div class="followme">
+						<%
+							var followerlist = d.followerlist; 
+							var length1 = followerlist.length;
+						%>
+						<p>拥趸<span  class="followernum">(<%= length1 %>)</span></p>
+						<% 
+							for(i=0;i<length1;i++){
+								var follower =followerlist[i]._uid_info;
+							%>
+				 				<div class="perfollwer">
+									<a href="/user/<%=follower.name%>" alt="<%=follower.name%>"><img src=<%= follower.photo %>></a>
+									<a href="/user/<%=follower.name%>" alt="<%=follower.name%>"><%=follower.name%></a>
+								</div>
+						<%}%>
+					</div>
+					<div class="hefollow">
+						<%
+							var hefollowlist = d.hefollowlist; 
+							var length2 = hefollowlist.length;
+						%>
+						<p>关注<span class="followernum">(<%= length2 %>)</span></p>
+						<% 
+							for(i=0;i<length2;i++){
+								var hefollow =hefollowlist[i]._fuid_info;
+							%>
+				 				<div class="perfollwer">
+									<a href="/user/<%=hefollow.name%>" alt="<%=hefollow.name%>"><img src=<%= hefollow.photo %>></a>
+									<a href="/user/<%=hefollow.name%>" alt="<%=hefollow.name%>"><%=hefollow.name%></a>
+								</div>
+						<%}%>
+					</div>
+				</div>
+			</div>

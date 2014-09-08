@@ -1,0 +1,66 @@
+<div>
+	<%
+	var displaypage = 7; 
+	var items = d.count; 
+	var pagesize = config.index.list_article_size;
+	var page = Math.ceil(items/pagesize);
+	var curpage = pageid;
+	%>
+	<ul class="pagination"> 
+		<% if(curpage == 1 ){ %>
+		<li class="disabled"><a href="#">&laquo;</a></li>
+		<% }else{ %>
+		<li><a href="//?pageid=<%=1 %>">&laquo;</a></li>
+		<% } %> 
+		<%  if( page < displaypage){
+			for(var j=1;j<=page;j++){
+				if( j == curpage ){%>
+				<li class="active"><a href="#" ><%= j %></a></li>
+				<% }else{ %>	
+				<li><a href="/?pageid=<%= j %>"><%= j %></a></li>
+				<%}
+			}%>
+			<% }else{
+				if( (parseInt(curpage)-1) <= 4){
+					for(var j=1;j<=displaypage;j++){
+						if( j == curpage ){%>
+							<li class="active"><a href="#" ><%= j %></a></li>
+						<% }else{ %>
+							<li><a href="/?pageid=<%= j %>"><%= j %></a></li>
+						<%}%>
+					<%}%>
+							<li class="disabled"><a href="#" >...</a></li>
+				<%}%>
+
+
+					<% if( (page-parseInt(curpage)) <= 4 && (parseInt(curpage)-1) > 4){%>
+					<li class="disabled"><a href="#" >...</a></li>
+					<% for(var j=page-displaypage;j<=page;j++){
+						if( j == curpage ){%>
+						<li class="active"><a href="#" ><%= j %></a></li>
+						<% }else{ %>
+						<li><a href="/?pageid=<%= j %>"><%= j %></a></li>
+						<%}
+					}%>
+
+					<% } %>
+
+					<% if( (page-parseInt(curpage)) > 4 && (parseInt(curpage)-1) > 4){%>
+						<li class="disabled"><a href="#" >...</a></li>
+						<% for(var j=curpage-3;j<=parseInt(curpage)+3;j++){
+							if( j == curpage ){%>
+							<li class="active"><a href="#" ><%= j %></a></li>
+							<% }else{ %>
+							<li><a href="/?pageid=<%= j %>"><%= j %></a></li>
+							<%}
+						}%>
+						<li class="disabled"><a href="#" >...</a></li>
+					<% } %>
+				<% } %>
+					<% if( curpage == page ){%>
+						<li class="disabled"><a href="#">&raquo;</a></li>
+					<% }else{%>
+						<li><a href="/?pageid=<%= parseInt(page) %>">&raquo;</a></li>
+					<% } %> 
+				</ul>
+</div>

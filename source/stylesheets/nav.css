@@ -1,0 +1,147 @@
+.navwrap a {
+	color: #FFF
+}
+
+.appwrap {
+	margin-top: 0;
+	background-color: rgba(74,122,170,1)
+}
+
+.navwrap {
+	width: 900px;
+	height: 60px;
+	margin: 0 auto
+}
+
+.logo {
+	float: left;
+	width: 40px
+}
+
+.logo38,.logosr {
+	color: #fff
+}
+
+.logo a {
+	height: 50px;
+	float: left;
+	font-size: 34px;
+	display: block;
+	margin-top: 5px;
+	text-align: center;
+	text-decoration: none;
+	line-height: 50px
+}
+
+.selectwrap {
+	margin-left: 35px
+}
+
+.navul {
+	margin-top: 0;
+	margin-bottom: 0
+}
+
+.navul li {
+	list-style: none
+}
+
+.navul a {
+	padding: 5px 15px;
+	height: 50px;
+	float: left;
+	line-height: 40px;
+	font-size: 18px;
+	display: block;
+	margin-top: 5px;
+	text-align: center;
+	text-decoration: none;
+	margin-left: 5px
+}
+
+.navul a:hover {
+	background-color: #174F83;
+	color: #fff
+}
+
+.navul .active a {
+	height: 50px;
+	float: left;
+	font-size: 18px;
+	background-color: #174F83;
+	display: block;
+	margin-top: 5px;
+	text-align: center;
+	text-decoration: none
+}
+
+.navul:after,.navul:before {
+	clear: both
+}
+
+.headsearch {
+	width: 70px;
+	float: right;
+	margin-right: 150px;
+	margin-top: 5px
+}
+
+.headsearch input {
+	border-radius: 0
+}
+
+.account_opt {
+	float: right;
+	margin-top: 5px
+}
+
+.account_opt ul {
+	min-width: 50px;
+	left: -15px;
+	border-radius: 0;
+	margin: -1px 0 0;
+	text-align: center
+}
+
+.account_opt a {
+	display: block;
+	color: #fff;
+	width: 100%;
+	line-height: 55px
+}
+
+.account_opt li {
+	list-style: none
+}
+
+.account_opt a:hover {
+	text-decoration: none;
+	color: #D1D1D1
+}
+
+.reg_login {
+	float: right;
+	margin-top: 5px;
+	min-width: 120px
+}
+
+.reg_login ul {
+	min-width: 50px
+}
+
+.reg_login a {
+	display: block;
+	margin-right: 10px;
+	float: right;
+	color: #fff;
+	line-height: 55px
+}
+
+.reg_login li {
+	list-style: none
+}
+
+.reg_login a:hover {
+	text-decoration: none;
+	color: #D1D1D1
+}

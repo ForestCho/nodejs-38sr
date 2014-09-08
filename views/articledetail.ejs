@@ -1,0 +1,76 @@
+<% include partial/header%>
+</head>
+<body>	
+	<%
+	var articlecontent = d.articlecontent;
+	var replies = d.replies;
+	%>
+	<% include partial/nav %>
+	<div class="mainwrap"> 
+		<div class="rightwrap">		
+			<% include partial/sidebar %>
+		</div>
+		<div class="leftwrap">
+			<div class="articleitem">   
+					 <div class="photowrap"><a class="userlink" href="/user/<%= articlecontent._creator.uid %>"><img src=<%= articlecontent._creator.photo %>></a></div>
+						<div style="margin-left:70px;">
+							<div><a class="title username_text" id=<%= articlecontent.tid %> href="/user/<%= articlecontent._creator.name %>"><%= articlecontent._creator.name %></a> </div>
+									 <pre class="msg_content"><%- articlecontent.content %> </pre> 
+									<div class="msg_date"><%= articlecontent.convertdate  %> <div class="reply"></div></div>
+								</div> 
+						<div class="clearfix"></div>
+						<div class="bshare-custom"><a title="分享到" href="http://www.bShare.cn/" id="bshare-shareto" class="bshare-more">分享到</a><a title="分享到QQ空间" class="bshare-qzone">QQ空间</a><a title="分享到新浪微博" class="bshare-sinaminiblog">新浪微博</a><a title="分享到豆瓣" class="bshare-douban">豆瓣</a></div>
+
+						<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=3&amp;lang=zh"></script>
+
+						<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+					</div>
+					<div class="rep_msg_box">
+						<% if(replies){ %>
+							<% for(i=0;i< replies.length;i++){%>
+							<div class="reply_msg_item"> 
+									<div class="reply_user_photo">
+										<a class="userlink" href="/user/<%= replies[i]._creator.name %>"><img src=<%= replies[i]._creator.photo %>></a>	
+									</div>		 
+									<div class="reply_content_info">
+										<div class="reply_info">
+											<span class="reply_user_name">						
+												<a class="userlink username_text" href="/user/<%= replies[i]._creator.name %>"><%=replies[i]._creator.name %></a>
+											</span>
+											<span class="reply_date">						
+												<%=replies[i].convertdate %> 
+											</span>
+											<span class="opt">			
+												<% if(locals.userinfo){ %>			
+													<a class="replyat" href="#"   data-tid="<%= replies[i].tid %>" data-rid="<%= replies[i].rid %>" data-ruid="<%= replies[i]._creator.uid %>" data-runame="<%= replies[i]._creator.name %>">回复</a>
+												<% }else{%>
+													<a class="replylink" href="/login?prelink=/article/<%=articlecontent.tid %>">回复</a>
+												<%}%>
+												 #<%= i %>楼
+											</span>
+										</div>
+										<div class="reply_content">
+											<pre class="msg_content"><%- replies[i].content%></pre>
+										</div>
+									</div>
+							</div>
+						<%}
+						}%>
+					</div>
+					<%if(locals.userinfo){%>
+						<div class="writepanel">
+							<form class="navbar-form navbar-right" id="repstr" name="repstr" method="POST" action="/reply">
+								<input type="hidden" name="tid" id="tid" value="<%=articlecontent.tid %>"/> 
+								<input type="hidden" name="ruid" value="<%=articlecontent._creator.uid %>">
+								<textarea type="text" class="writebox atreply" name="repstr" id="reply_input" placeholder="回复点什么呢?"></textarea>
+								<div class="inputopt"><button type="submit" class="btn btn-default" id="subarticle">回复</button></div>
+							</form>
+						</div>
+					<%}else{%>
+						<div style="text-align:center;margin-top:30px"><a href="/login?prelink=/article/<%=articlecontent.tid %>">登录</a>后才能回复， 没有账号？点击这里<a href="/reg">注册</a>。</div>
+					<%}%>
+			</div>		
+		</div>		
+		<div style="clear:both"></both>
+	</div>			
+			<% include partial/footer %>

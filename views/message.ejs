@@ -1,0 +1,54 @@
+<% include partial/header%>
+</head>
+<body>	 
+	<% include partial/nav %>
+	<div class="mainwrap">  
+		<div class="leftwrap">
+			<div class="msgwrap">
+				<div class="catamsg">
+					<h3 class="head_text">未读消息</h3>
+					<% if(not_read_msg.length === 0){%>
+					<div class="msgitem">没有未读消息</div>
+					<%}%>
+					<% 
+					var message ;
+					for(i=0;i< not_read_msg.length;i++){
+						message = not_read_msg[i];
+					%> 
+						<%if(message.type === "follow"){%>
+							<div class="msgitem"><%=message.createdate %> >> <a href="/user/<%=message.author.uid %>"><%=message.author.name %></a> 关注你了 </div>
+						<%}%>   
+						<%if(message.type === "at"){%>
+							<div class="msgitem"><%=message.createdate %> >> <a href="<%=message.author.uid %>"><%=message.author.name %></a> 在帖子 <a href="/article/<%=message.topic.tid %>"><%=message.topic.title %></a> 中@你了 </div>
+						<%}%>   
+						<%if(message.type === "reply"){%>
+								<div class="msgitem"><%=message.createdate %> >> <a href="/user/<%=message.author.name %>"><%=message.author.name %></a> 回复了你的帖子 <a href="/article/<%=message.tid %>"><%=message.topic.title %></a></div>
+						<%}%>  
+					<%}%>
+				</div>		
+				<div class="catamsg">
+					<h3 class="head_text">历史消息</h3>
+					<% if(have_read_msg.length === 0){%>
+					<div class="msgitem">没有消息</div>
+					<%}%>
+					<% 
+					var message ;
+					for(i=0;i< have_read_msg.length;i++){
+						message = have_read_msg[i];
+					%> 
+						<%if(message.type === "follow"){%>
+							<div class="msgitem"><%=message.createdate %> >> <a href="/user/<%=message.author.uid %>"><%=message.author.name %></a> 关注你了 </div>
+						<%}%>   
+						<%if(message.type === "at"){%>
+							<div class="msgitem"><%=message.createdate %> >> <a href="<%=message.author.uid %>"><%=message.author.name %></a> 在帖子 <a href="/article/<%=message.topic.tid %>"><%=message.topic.title %></a> 中@你了 </div>
+						<%}%>   
+						<%if(message.type === "reply"){%>
+								<div class="msgitem"><%=message.createdate %> >> <a href="/user/<%=message.author.name %>"><%=message.author.name %></a> 回复了你的帖子 <a href="/article/<%=message.tid %>"><%=message.topic.title %></a></div>
+						<%}%>  
+					<%}%>
+				</div>		
+			</div>		
+		</div>	
+		<div style="clear:both"></div>	
+	</div>			
+			<% include partial/footer %>

@@ -1,0 +1,580 @@
+.about_head_info {
+	border-bottom: 1px solid #DAD5D5
+}
+
+.srimgstyle {
+	margin: 0 auto;
+	text-align: center
+}
+.rep_msg_box {
+	margin-left: 35px
+}
+
+.reply_msg_item {
+	border-bottom: 1px dashed #cda;
+	padding: 3px 20px 3px 0;
+	overflow: hidden
+}
+
+.reply_user_photo {
+	float: left;
+	width: 45px;
+	height: 45px;
+	overflow: hidden
+}
+
+.reply_user_photo img {
+	width: 45px;
+	height: 45px;
+	border: 2px solid #fff;
+	-webkit-transition: all .35s ease-in-out;
+	-moz-transition: all .35s ease-in-out;
+	transition: all .35s ease-in-out
+}
+
+.reply_user_photo .userlink:hover img {
+	border: 2px solid #D5C8DB
+}
+
+.reply_content_info {
+	margin-left: 55px
+}
+
+.reply_info span {
+	color: #999
+}
+
+.reply_info .opt {
+	float: right
+}
+
+. .opt a {
+	color: #5C5A5A
+}
+
+.reply_info .replyat:hover img {
+	border: 2px solid #D5C8DB
+}
+.meiriyiju {
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0 20px;
+	color: #FFF;
+	background: rgba(74,122,170,1);
+	height: 160px
+}
+
+.onesentence {
+	margin: 20px 40px 10px
+}
+
+.onesentence p {
+	font-size: 16px
+}
+
+.statistics {
+	text-align: right;
+	margin: 20px 40px 0
+}
+
+.statistics p {
+	font-size: 20px
+}
+
+.writepanel {
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0 20px;
+	border: 1px solid #CACACA
+}
+
+.writebox {
+	width: 605px;
+	height: 64px
+}
+
+.articleitem {
+	border-bottom: 1px dashed #cda;
+	padding: 10px 20px
+}
+
+.photowrap {
+	float: left;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	overflow: hidden
+}
+
+.photowrap img {
+	width: 64px;
+	height: 64px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	-webkit-transition: all .35s ease-in-out;
+	-moz-transition: all .35s ease-in-out;
+	transition: all .35s ease-in-out
+}
+
+.photowrap .userlink:hover img {
+	border: 2px solid #D5C8DB
+}
+
+.msg_content {
+	color: #333;
+	line-height: 1.8em;
+	font:14px/1.5 arial, sans-serif;
+	border: 0 solid #ccc!important;
+	border-radius: 0
+}
+
+.shuo_sty {
+	font-size: 14px;
+	color: #777;
+	margin-top: 10px
+}
+
+.msg_date {
+	font-size: 14px;
+	color: #777
+}
+
+.reply {
+	float: right
+}
+
+.reply a {
+	color: #777
+}
+
+.reply a:hover {
+	cursor: pointer
+}
+
+.loginwrap {
+	width: 180px;
+	margin: 0 auto
+}
+
+.loginwrap input {
+	border-radius: 0;
+	padding-left: 35px
+}
+
+.page_header_info {
+	font-size: 20px;
+	padding: 0 0 7px;
+	margin-bottom: 10px;
+	color: #555;
+	border-bottom: 1px solid #fff
+}
+
+.userfresh {
+	margin-top: 20px
+}
+
+.userfresh img {
+	width: 45px;
+	height: 45px;
+	display: block;
+	margin: 0 auto
+}
+
+.sidetitle {
+	font-size: 18px;
+	border-bottom: 1px solid #DCDDD9
+}
+
+.userlist {
+	margin-top: 15px
+}
+
+.userview {
+	height: 65px;
+	width: 68px;
+	overflow: hidden;
+	line-height: 18px;
+	float: left;
+	font-size: 12px;
+	text-align: center
+}
+
+.userview a:hover {
+	background-color: rgba(74,122,170,1);
+	color: #fff;
+	text-decoration: none
+}
+.site_intro p{
+	line-height: 28px
+}
+.site_link {
+	margin-top: 20px
+}
+
+.site_list {
+	padding-left: 10px;
+	margin-top: 10px
+}
+
+.site_list li {
+	list-style: none
+}
+
+.site_list a {
+	font-size: 16px
+}
+.leftreg {
+	float: left;
+	width: 40%;
+	margin-left: 150px
+}
+
+.rightreg {
+	float: right;
+	width: 35%;
+	border-left: 2px solid #DAD5D5
+}
+
+.regpanel {
+	margin-top: 35px;
+	margin-left: 20px;
+	margin-right: 20px;
+	width: 700px;
+	overflow: hidden
+}
+
+.rightpanelinfo {
+	margin-left: 50px;
+	height: 80px
+}
+
+.regpanel input {
+	border-radius: 0;
+	padding-left: 35px
+}
+
+.regpanel button {
+	border-radius: 0
+}
+
+.accountbg {
+	background: url(../images/y_accountbg.png) 10px 10px no-repeat
+}
+
+.emailbg {
+	background: url(../images/y_emailbg.png) 10px 10px no-repeat
+}
+
+.pwdbg {
+	background: url(../images/y_pwdbg.png) 10px 10px no-repeat
+}
+
+.alertsty {
+	color: #8a6d3b;
+	background-color: #fcf8e3;
+	border-color: #faebcc;
+	padding: 15px;
+	margin-bottom: 20px
+}
+
+.sucesssty {
+	color: #8a6d3b;
+	background-color: #A3D6AD;
+	border-color: #faebcc;
+	padding: 15px;
+	margin-bottom: 20px
+}
+.head_text {
+	font-size: 20px;
+	border-bottom: 2px solid #f3f3f3;
+	padding: 0 0 7px;
+	margin-bottom: 10px;
+	color: #555
+}
+
+.msgitem {
+	padding: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #B9B9B9;
+	margin-left: 30px
+}
+.navwrap a {
+	color: #FFF
+}
+
+.appwrap {
+	margin-top: 0;
+	background-color: rgba(74,122,170,1)
+}
+
+.navwrap {
+	width: 900px;
+	height: 60px;
+	margin: 0 auto
+}
+
+.logo {
+	float: left;
+	width: 40px
+}
+
+.logo38,.logosr {
+	color: #fff
+}
+
+.logo a {
+	height: 50px;
+	float: left;
+	font-size: 34px;
+	display: block;
+	margin-top: 5px;
+	text-align: center;
+	text-decoration: none;
+	line-height: 50px
+}
+
+.selectwrap {
+	margin-left: 35px
+}
+
+.navul {
+	margin-top: 0;
+	margin-bottom: 0
+}
+
+.navul li {
+	list-style: none
+}
+
+.navul a {
+	padding: 5px 15px;
+	height: 50px;
+	float: left;
+	line-height: 40px;
+	font-size: 18px;
+	display: block;
+	margin-top: 5px;
+	text-align: center;
+	text-decoration: none;
+	margin-left: 5px
+}
+
+.navul a:hover {
+	background-color: #174F83;
+	color: #fff
+}
+
+.navul .active a {
+	height: 50px;
+	float: left;
+	font-size: 18px;
+	background-color: #174F83;
+	display: block;
+	margin-top: 5px;
+	text-align: center;
+	text-decoration: none
+}
+
+.navul:after,.navul:before {
+	clear: both
+}
+
+.headsearch {
+	width: 70px;
+	float: right;
+	margin-right: 150px;
+	margin-top: 5px
+}
+
+.headsearch input {
+	border-radius: 0
+}
+
+.account_opt {
+	float: right;
+	margin-top: 5px
+}
+
+.account_opt ul {
+	min-width: 50px;
+	left: -15px;
+	border-radius: 0;
+	margin: -1px 0 0;
+	text-align: center
+}
+
+.account_opt a {
+	display: block;
+	color: #fff;
+	width: 100%;
+	line-height: 55px
+}
+
+.account_opt li {
+	list-style: none
+}
+
+.account_opt a:hover {
+	text-decoration: none;
+	color: #D1D1D1
+}
+
+.reg_login {
+	float: right;
+	margin-top: 5px;
+	min-width: 120px
+}
+
+.reg_login ul {
+	min-width: 50px
+}
+
+.reg_login a {
+	display: block;
+	margin-right: 10px;
+	float: right;
+	color: #fff;
+	line-height: 55px
+}
+
+.reg_login li {
+	list-style: none
+}
+
+.reg_login a:hover {
+	text-decoration: none;
+	color: #D1D1D1
+}
+.setpanel {
+	width: 80%
+}
+
+.baseinfo input {
+	width: 50%;
+	border-radius: 0
+}
+
+.baseinfo textarea {
+	width: 80%
+}
+
+.accountinfo input {
+	width: 50%;
+	border-radius: 0
+}
+
+.accountinfo textarea {
+	width: 80%
+}
+
+.settab {
+	margin-left: -45px;
+	font-size: 18px
+}
+
+.settab li {
+	display: block;
+	float: left;
+	padding: 3px
+}
+
+.settab a {
+	color: #777
+}
+
+.curset {
+	color: #2a6496!important
+}
+
+.wholeimg {
+	float: left
+}
+
+.previewimg {
+	float: left;
+	margin-left: 30px
+}
+
+.imgwrap {
+	overflow: hidden
+}
+
+.crop_preview {
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	overflow: hidden
+}
+
+.substy {
+	margin-top: 10px;
+	float: left
+}
+.intropre {
+	border: 0 solid #ccc!important;
+	border-radius: 0;
+	background-color: #f5f5f5
+}
+
+.followme,.hefollow {
+	overflow: hidden
+}
+
+.follower p {
+	font-size: 20px;
+	line-height: 1em;
+	border-bottom: 1px dashed #ccc
+}
+
+.follower img {
+	width: 45px;
+	height: 45px;
+	display: block;
+	margin: 0 auto
+}
+
+.perfollwer {
+	height: 65px;
+	width: 68px;
+	overflow: hidden;
+	line-height: 18px;
+	float: left;
+	text-align: center;
+	font-size: 12px
+}
+
+.followernum {
+	color: #777
+}
+#goTopBtn {
+	POSITION: fixed;
+	TEXT-ALIGN: center;
+	LINE-HEIGHT: 30px;
+	WIDTH: 30px;
+	BOTTOM: 35px;
+	HEIGHT: 33px;
+	margin-right: 120px;
+	FONT-SIZE: 12px;
+	CURSOR: pointer;
+	RIGHT: 0
+}
+
+.yjfk {
+	position: fixed;
+	top: 150px;
+	right: 0;
+	width: 26px;
+	height: 90px
+}
+
+.yjfk a {
+	display: block;
+	background: url(/images/fk.gif) no-repeat;
+	width: 26px;
+	height: 90px;
+	overflow: hidden
+}
+
+.yjfk a:hover {
+	background-position: 0 -90px
+}

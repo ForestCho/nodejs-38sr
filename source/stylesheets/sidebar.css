@@ -1,0 +1,36 @@
+.intropre {
+	border: 0 solid #ccc!important;
+	border-radius: 0;
+	background-color: #f5f5f5
+}
+
+.followme,.hefollow {
+	overflow: hidden
+}
+
+.follower p {
+	font-size: 20px;
+	line-height: 1em;
+	border-bottom: 1px dashed #ccc
+}
+
+.follower img {
+	width: 45px;
+	height: 45px;
+	display: block;
+	margin: 0 auto
+}
+
+.perfollwer {
+	height: 65px;
+	width: 68px;
+	overflow: hidden;
+	line-height: 18px;
+	float: left;
+	text-align: center;
+	font-size: 12px
+}
+
+.followernum {
+	color: #777
+}

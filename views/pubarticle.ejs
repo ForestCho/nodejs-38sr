@@ -1,0 +1,16 @@
+<% include partial/header%>
+</head>
+<body>	
+	<% include partial/nav %>
+	<div class="mainwrap"> 
+		<div class="leftwrap">
+			<div class="writepanel">
+				<form class="navbar-form navbar-right" id="pubstr" name="pubstr" method="GET" action="/pub">
+					<textarea type="text" class="writebox" name="articlestr" id="articlestr" placeholder="写点什么呢?"></textarea>
+					<div class="inputopt"><button type="submit" class="btn btn-default" id="subarticle">发布</button></div>
+				</form>
+			</div>
+		</div>	
+		<div style="clear:both"></div>	
+	</div>		
+	<% include partial/footer %>

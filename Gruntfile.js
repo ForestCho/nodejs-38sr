@@ -1,0 +1,82 @@
+module.exports = function(grunt){
+    //配置
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        concat: {
+            concatcss: {
+                src: ['source/stylesheets/about.css',
+                     'source/stylesheets/article.css', 
+                     'source/stylesheets/index.css',
+                     'source/stylesheets/loginreg.css',
+                     'source/stylesheets/message.css',
+                     'source/stylesheets/nav.css',  
+                     'source/stylesheets/reply.css',
+                     'source/stylesheets/set.css',
+                     'source/stylesheets/sidebar.css',
+                     'source/stylesheets/topset.css',
+                     ],
+                dest: 'source/stylesheets/pagesty.css'
+            }
+        },
+        uglify: {
+            options: {
+                banner: '\n '
+            },
+            bulid1: {
+                src: 'source/javascripts/base.js',
+                dest: 'public/javascripts/base.min.js'
+            },
+            bulid2: {
+                src: 'source/javascripts/gotop.js',
+                dest: 'public/javascripts/gotop.min.js'
+            },
+            bulid3: {
+                src: 'source/javascripts/underscore.js',
+                dest: 'public/javascripts/underscore.min.js'
+            },
+            bulid4: {
+                src: 'source/javascripts/jquery.jcrop.js',
+                dest: 'public/javascripts/jquery.jcrop.min.js'
+            },
+            bulid5: {
+                src: 'source/javascripts/jquery.atwho.js',
+                dest: 'public/javascripts/jquery.atwho.min.js'
+            }
+        }, 
+        cssmin: { 
+            options: {
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                //美化代码
+                beautify: {
+                    //中文ascii化，非常有用！防止中文乱码的神配置
+                    ascii_only: true
+                }
+            },
+            csscompact1: { 
+                src: 'source/stylesheets/pagesty.css',
+                dest: 'public/stylesheets/pagesty.min.css' 
+            },    
+            csscompact2: { 
+                src: 'source/stylesheets/base.css',
+                dest: 'public/stylesheets/base.min.css' 
+            },    
+            csscompact3: { 
+                src: 'source/stylesheets/bootstrap.css',
+                dest: 'public/stylesheets/bootstrap.min.css' 
+            },    
+            csscompact4: { 
+                src: 'source/stylesheets/jcrop.css',
+                dest: 'public/stylesheets/jcrop.min.css' 
+            }
+        }
+    });
+
+    //载入concat和uglify插件，分别对于合并和压缩
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+
+    //注册任务
+    grunt.registerTask('default', ['concat', 'uglify','cssmin']);
+
+};
