@@ -62,6 +62,7 @@ var run = function(app){
 
 	//心情详细页面路由
 	app.get('/article/:tid', article.detail);
+	app.get('/deletearticle', article.delete);
 
 	//回复心情路由
 	app.post('/reply', reply.index);

@@ -314,8 +314,8 @@
 }
 
 .logo {
-	float: left;
-	width: 40px
+	float: left; 
+	overflow:hidden;
 }
 
 .logo38,.logosr {
@@ -378,7 +378,25 @@
 .navul:after,.navul:before {
 	clear: both
 }
-
+.logobar{
+	border-left: 5px solid #4A7AAA; 
+	width: 1px;
+	margin-left: -2px;
+	height: 60px;
+	display: block;
+	transition:all 1.5s;
+	-ms-transition:all 1.5s;
+	-moz-transition:all 1.5s;
+	-webkit-transition:all 1.5s;
+	-o-transition:all 1.5s;
+}
+.logo:hover .logobar{
+	transform:translate(75px,0px);
+	-ms-transform:translate(75px,0px); /* IE 9 */
+	-moz-transform:translate(75px,0px); /* Firefox */
+	-webkit-transform:translate(75px,0px); /* Safari and Chrome */
+	-o-transform:translate(75px,0px); /* Opera */
+}
 .headsearch {
 	width: 70px;
 	float: right;

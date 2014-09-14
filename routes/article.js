@@ -56,3 +56,18 @@ var EventProxy = require('eventproxy');
  		});
  	});
  };
+
+  exports.delete = function (req, res) {  	
+ 	var tid = req.query.tid; 
+ 	if(tid < 0){
+ 		res.json({status: 3 }); 
+ 		return;
+ 	}
+ 	ArticleDao.deleteArticleByTid(tid,function(err){
+ 		if(err){
+ 			res.json({status: 3 }); 
+			return;
+ 		}
+ 		res.json({status: 0 }); 
+ 	}); 
+  }

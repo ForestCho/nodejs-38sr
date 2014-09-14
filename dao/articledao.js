@@ -49,10 +49,17 @@ var saveNewArticle = function(tid,title,content,uid,_creator,cb){
 	articleItem.save(cb);
 }
 
+//删除
+var deleteArticleByTid = function(tid,cb){
+	var condition = {tid:tid};
+	Article.remove(condition,cb);
+}
+
 exports.getArticleByTid = getArticleByTid;
 exports.getNumberOfArticles = getNumberOfArticles;
 exports.getArticleListLimit = getArticleListLimit;
 exports.updateArticleInfo = updateArticleInfo;
 exports.getMaxTid = getMaxTid;
 exports.saveNewArticle = saveNewArticle;
+exports.deleteArticleByTid = deleteArticleByTid;
 

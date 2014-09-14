@@ -13,12 +13,14 @@
 		   <% } %>
 		   <div class="user_near_article">
 		   		<% 	var nearArticle = d.data;
-		   			for(var i=0;i<nearArticle.length;i++){ %>
-		   				<div class="near_article_item">
-		   					<div class="articleitem">   
-								<div style="">  
-									<div class="msg_date"><%= nearArticle[i].convertdate  %> 说	
+		   			for(var i=0;i<nearArticle.length;i++){ %> 
+		   					<div class="articleitem">    
+									<div class="msg_date"><%= nearArticle[i].convertdate  %> 说	 
 										<div class="reply">
+
+											<% if(typeof(locals.userinfo) !== 'undefined' && locals.userinfo.name === visituser){%>	
+												<a class="deleteitem" data-tid="<%=nearArticle[i].tid %>">删除</a>
+											<% }%>
 											<% if(locals.userinfo){ %>	
 												<a href="/article/<%= nearArticle[i].tid %>">回复</a>
 											<% }else{%>
@@ -26,11 +28,9 @@
 											<%}%>
 										</div>
 									</div>
-									<pre class="msg_content"><%= nearArticle[i].content %> </pre> 
-								</div> 
+									<pre class="msg_content"><%= nearArticle[i].content %> </pre>  
 								<div class="clearfix"></div>
-							</div>
-		   				</div>
+							</div> 
 		  		<% } %>
 		   </div>
 		</div>

@@ -92,6 +92,32 @@ $(".likebtn").click(function(){
 	});
 }); 
 
+$(".deleteitem").click(function(){ 
+	var currObj = $(this);
+	var tid = currObj.attr('data-tid');   
+	var params = {tid:tid};  
+	$.ajax({
+		data: params,
+		url: '/deletearticle',
+		dataType: 'json',
+		cache: false,
+		timeout: 5000,
+		type: 'get',
+		success: function(data){
+			if(data.status === 0 ){
+			 	currObj.parentsUntil('.user_near_article').remove();
+				return ;
+			}  
+			if(data.status === 3){
+				$("#likeerr").remove();
+				currObj.parent().after("<p id='likeerr' style='text-align:center'>发生错误!!</p>"); 
+				$("#likeerr").fadeOut(3000);
+				return ;
+			}
+		}
+	});
+}); 
+
 	/*$(".articleitem").mouseover(function(){ 
 		$(this).find("div.reply").css({"visibility":"visible"});
 	});
