@@ -20,7 +20,7 @@ module.exports = function(grunt){
         },
         uglify: {
             options: {
-                banner: '\n '
+                banner: ''
             },
             bulid1: {
                 src: 'source/javascripts/base.js',
@@ -41,6 +41,10 @@ module.exports = function(grunt){
             bulid5: {
                 src: 'source/javascripts/jquery.atwho.js',
                 dest: 'public/javascripts/jquery.atwho.min.js'
+            },
+            bulid6: {
+                src: 'source/javascripts/jquery.qeditor.js',
+                dest: 'public/javascripts/jquery.qeditor.min.js'
             }
         }, 
         cssmin: { 
@@ -67,6 +71,10 @@ module.exports = function(grunt){
             csscompact4: { 
                 src: 'source/stylesheets/jcrop.css',
                 dest: 'public/stylesheets/jcrop.min.css' 
+            },
+            csscompact5: { 
+                src: 'source/stylesheets/jquery.qeditor.css',
+                dest: 'public/stylesheets/jquery.qeditor.min.css' 
             }
         }
     });

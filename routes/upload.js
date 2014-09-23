@@ -1,5 +1,6 @@
 var path = require('path');
 var config = require('../config').config;
+var UPYun = require('../lib/upyun').UPYun;
 var gm = require('gm')
 ,	fs = require('fs')
 ,	imageMagick = gm.subClass({ imageMagick : true });
@@ -37,6 +38,47 @@ exports.save_avatar = function(req, res) {
 	});  
 };
 
+exports.picupload = function(req, res) { 
+	var temp_path = req.files.picture.path;	//获取用户上传过来的文件的当前路径
+	var filename = req.files.picture.name;
+	var sz = req.files.picture.size;
+	var username = req.session.user.name;
+	if (sz > 2*1024*1024) {
+		fs.unlink(temp_path, function() {	//fs.unlink 删除用户上传的文件 
+			var msg = {};
+				msg.content = "请选择2M以下的图片!!";
+				msg.status = 1;
+			res.json(msg);
+			return ;
+		});
+	}
+	if (req.files.picture.type.split('/')[0] != 'image') {
+		fs.unlink(temp_path, function() {
+			var msg = {};
+				msg.content = "请选择图片格式!!";
+				msg.status = 1;
+			res.json(msg);
+			return ;
+		});
+	} 
+
+ 	var upyun = new UPYun("srpic", "caosl158", "csl123456");
+ 	var fileContent = fs.readFileSync(temp_path); 
+ 	var upBase = 'http://srpic.b0.upaiyun.com/cimg/';
+ 	var curTime = new Date();
+ 	var newFilename = curTime.getTime()+'_'+filename;
+	upyun.writeFile('/cimg/'+newFilename, fileContent, false, function(err, data){
+	    if (!err) {	       
+			var msg = {};
+			console.log(newFilename)
+			msg.content = upBase+newFilename;	
+			msg.status = 0;
+			res.json(msg);
+			console.log(msg);
+			return ; 
+	    }
+	});
+};
 exports.imgupload = function(req, res) { 
 	var temp_path = req.files.img.path;	//获取用户上传过来的文件的当前路径
 	var filename = req.files.img.name;

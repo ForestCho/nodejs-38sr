@@ -60,7 +60,25 @@ var EventProxy = require('eventproxy');
 			if (err){
  				res.redirect('common/404')
  				return ;
- 			}   
+ 			}    
+
+ 			for(var i =0;i<articlelist.length;i++){
+			var b = /<img[^>]+src="[^"]+"[^>]*>/g ;
+			var imglist = articlelist[i].content.match(b)  
+	 		
+	 		articlelist[i].purecontent = util.delHtmlTag(articlelist[i].content);
+			var newcontent = articlelist[i].purecontent; 
+			if(imglist !== null){
+				if(imglist.length>0){
+					var srcReg = /http:\/\/([^"]+)/i; 
+					var srcStr = imglist[0].match(srcReg); 
+					console.log(srcStr)
+					var imgWrap = "<img src='"+srcStr[0]+"!limitmax"+"' class='thumb'>"
+					newcontent= imgWrap+newcontent;
+				}
+			} 
+			articlelist[i].newcontent = newcontent; 
+			}
 			ep.emit("articlelist",articlelist);
 
 		}); 

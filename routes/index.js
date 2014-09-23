@@ -1,5 +1,6 @@
 var	UserDao = require('../dao/userdao'); 
 var	MryjDao = require('../dao/mryjdao');   
+var	util = require('../lib/util');   
 var	ArticleDao = require('../dao/articledao');   
 var	moment = require('moment'); 
 var	config = require('../config').config;
@@ -11,6 +12,7 @@ var	EventProxy = require('eventproxy');
  exports.index = function (req, res) { 
  	var pageid = 1;
  	var pagesize = config.index.list_article_size;
+ 	var puretext = true;
  	var list_hot_user_size = config.index.list_hot_user_size;
  	var count = 0;
  	if(req.query.pageid){
@@ -34,7 +36,22 @@ var	EventProxy = require('eventproxy');
 		ep.emit("count",count);
  	});
  	
- 	ArticleDao.getArticleListLimit(pageid,pagesize,function(err,articlelist){ 
+ 	ArticleDao.getArticleListLimit(puretext,pageid,pagesize,function(err,articlelist){ 
+		for(var i =0;i<articlelist.length;i++){
+			var b = /<img[^>]+src="[^"]+"[^>]*>/g ;
+			var imglist = articlelist[i].content.match(b)  
+			var newcontent = articlelist[i].purecontent; 
+			if(imglist !== null){
+				if(imglist.length>0){
+					var srcReg = /http:\/\/([^"]+)/i; 
+					var srcStr = imglist[0].match(srcReg); 
+					console.log(srcStr[0])
+					var imgWrap = "<img src='"+srcStr[0]+"!limitmax"+"' class='thumb'>"
+					newcontent= imgWrap+newcontent;
+				}
+			} 
+			articlelist[i].newcontent = newcontent; 
+		}
 		ep.emit("articlelist",articlelist);
  	}) 
 	

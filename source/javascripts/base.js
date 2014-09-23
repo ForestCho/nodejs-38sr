@@ -50,7 +50,8 @@ $(document).ready(function(){
 				}
 			}
 		});
-	}); 
+	});  
+
 
 $(".likebtn").click(function(){ 
 	var currObj = $(this);

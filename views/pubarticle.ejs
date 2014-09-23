@@ -6,11 +6,104 @@
 		<div class="leftwrap">
 			<div class="writepanel">
 				<form class="navbar-form navbar-right" id="pubstr" name="pubstr" method="GET" action="/pub">
-					<textarea type="text" class="writebox" name="articlestr" id="articlestr" placeholder="写点什么呢?"></textarea>
+					<textarea type="text" class="writebox textarea" name="articlestr" id="post_body" placeholder="写点什么呢?"></textarea>
 					<div class="inputopt"><button type="submit" class="btn btn-default" id="subarticle">发布</button></div>
 				</form>
 			</div>
 		</div>	
 		<div style="clear:both"></div>	
 	</div>		
+
+   
+<!-- Modal -->
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">图片上传</h4>
+      </div>
+      <div class="modal-body">
+        <input id="choose" name="picture" type="file" class="b-button__input">
+        <h3 class="submitinfo" id="submitinfo"></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> 
+        <button type="button" id="savepic" class="btn btn-primary " style="display:none">插入图片</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="linkmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">插入超链接</h4>
+      </div>
+      <div class="modal-body"> 
+                  <input  class="form-control " id="link" name="link" >  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> 
+        <button type="button" id="insertlinkbtn" class="btn btn-primary " style="display:none">插入链接</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <script type="text/javascript">
+    var editor=$("#post_body").qeditor({}); 
+
+    var submitinfo = $(".submitinfo");
+    var insertbtn = $("#savepic");
+    $("#choose").wrap("<form id='uploadpic' action='/picupload' method='post' enctype='multipart/form-data'></form>");
+      $("#choose").change(function(){  
+      $("#uploadpic").ajaxSubmit({
+        dataType:  'json',
+        beforeSend: function() {
+              submitinfo.text("正在上传...");
+              insertbtn.hide();
+          }, 
+        success: function(msg) {
+          if(msg.type == 0){          
+                submitinfo.text(msg.content);
+          }else{            
+                submitinfo.text(msg.content);       
+            insertbtn.show();
+          }
+        },
+        error:function(){       
+          insertbtn.hide();
+        }
+      });
+    }); 
+
+    $("#savepic").click(function(){   
+      var imagemodal = $("#imagemodal");
+      var submitinfo = $(".submitinfo").text(); 
+      if(submitinfo !== '正在上传...'){  
+        QEditor.action(editor,'InsertImage',submitinfo); 
+        imagemodal.modal('hide');
+      }
+    });
+
+    $("#link").change(function(){ 
+      if($("#link").val().length >0 ){
+        $("#insertlinkbtn").show();
+      }else{        
+        $("#insertlinkbtn").hide();
+      }
+    });
+
+    $("#insertlinkbtn").click(function(){   
+      var linkmodal = $("#linkmodal");
+      var linkinfo = $("#link").val();  
+      QEditor.action(editor,'CreateLink',linkinfo); 
+      linkmodal.modal('hide'); 
+    });
+    </script>
+
 	<% include partial/footer %>

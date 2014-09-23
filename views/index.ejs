@@ -91,7 +91,7 @@
 						 <div class="photowrap"><a class="userlink" href="/user/<%= result[i]._creator.name %>"><img src=<%= result[i]._creator.photo %>></a></div>
 							<div style="margin-left:70px;">
 								<div><a class="title" id=<%= result[i].tid %> href="/user/<%= result[i]._creator.name %>"><%= result[i]._creator.name %></a><span class="shuo_sty">说</span>  </div>
-								 <pre class="msg_content"><%= result[i].content %> </pre> 
+								 <pre class="msg_content"><%- result[i].newcontent %> </pre> 
 								<div class="msg_date"><%= result[i].convertdate  %> 
 									<div class="reply">
 										<a href="/article/<%= result[i].tid %>"><%= (result[i].reply_count>0)?result[i].reply_count:'' %>回复</a>

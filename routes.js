@@ -92,6 +92,7 @@ var run = function(app){
 
  	app.post('/imgupload',upload.imgupload);
  	app.post('/save_avatar',upload.save_avatar);
+ 	app.post('/picupload',upload.picupload);
 
 
  	//关于/404/500页面路由

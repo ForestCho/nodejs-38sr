@@ -15,7 +15,7 @@ mongoose.connect('mongodb://localhost/blogdb');
  	var name = req.session.user.name;
  	var uid = 0;
  	var tid = 0;
-
+ 
  	var ep = new EventProxy(); 
  	ep.assign("userinfo","tid",function (userinfo,tid) {
  		uid=userinfo.uid; 

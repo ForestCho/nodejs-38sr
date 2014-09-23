@@ -11,13 +11,18 @@ var getNumberOfArticles = function(cb){
 }
 
 //文章的数量
-var getArticleListLimit = function(pageid,pagesize,cb){
+var getArticleListLimit = function(puretext,pageid,pagesize,cb){
  	Article.find({}).sort({'post_date':-1}).skip((pageid-1)*pagesize).limit(pagesize).populate('_creator').exec(function(err,articlelist){
 		var temp ="";
 		var temp1 ="";
 	 	for(i = 0 ; i < articlelist.length ; i++ ){ 
 	 		articlelist[i].convertdate = util.date_format(articlelist[i].post_date,true,true);  
 	 	} 
+	 	if(puretext){
+	 		for(i = 0 ; i < articlelist.length ; i++ ){ 
+	 			articlelist[i].purecontent = util.delHtmlTag(articlelist[i].content);  
+	 		} 
+	 	}
 	 	cb(err,articlelist); 
  	}) 
 }
