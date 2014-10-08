@@ -1,0 +1,51 @@
+<% include partial/header%>
+</head>
+<body>
+	<% include partial/nav %>
+	<div class="mainwrap">
+		<div class="rightwrap">
+			<% include partial/sidebar %>
+		</div>
+		<div class="leftwrap">
+		   <% if(visituser){ %>
+		   		<h3><%=visituser %><small>(<%=typeof(d.userinfo.signature) !== 'undefined'?d.userinfo.signature:'这家伙很懒，什么都没留下~~' %>)</small></h3>
+		   		<h4>Ta的最近心情</h4>
+		   <% } %>
+		   <div class="user_near_article">
+		   		<% 	var nearArticle = d.data;
+		   			for(var i=0;i<nearArticle.length;i++){ %> 
+		   					<div class="articleitem">    
+									<div class="msg_date"><%= nearArticle[i].convertdate  %> 说	 
+										<div class="reply">
+
+											<% if(typeof(locals.userinfo) !== 'undefined' && locals.userinfo.name === visituser){%>	
+												<a class="deleteitem" data-tid="<%=nearArticle[i].tid %>">删除</a>
+											<% }%>
+											<% if(locals.userinfo){ %>	
+												<a href="/article/<%= nearArticle[i].tid %>">回复</a>
+											<% }else{%>
+												<a href="/login?prelink=/article/<%= nearArticle[i].tid %>">回复</a>
+											<%}%>
+										</div>
+									</div>
+									<pre class="msg_content"><%- nearArticle[i].newcontent %> </pre>  
+								<div class="clearfix"></div>
+							</div> 
+		  		<% } %>
+		  		<div class="navigator">
+			  		 <% if(d.currentpage > 1 ){%>
+			  			<a href="/user/<%= visituser %>/article/?pageid=<%= d.currentpage - 1  %>">
+			  				<div class="last_page">&larr;上一页</div>
+			  			</a>
+			  		<%}%>
+			  		<% if(nearArticle.length > 8 ){%>
+			  			<a href="/user/<%= visituser %>/article/?pageid=<%= d.currentpage - (-1)  %>">
+			  				<div class="next_page">下一页&rarr;</div>
+			  			</a>
+			  		<%}%>
+		  		</div>
+		   </div>
+		</div>
+		<div style="clear:both"></div>
+	</div>				
+<% include partial/footer %>

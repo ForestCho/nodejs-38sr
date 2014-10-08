@@ -1,5 +1,6 @@
 var	UserDao = require('../dao/userdao');  
 var fs = require('fs');
+var UPYun = require('../lib/upyun').UPYun;
 var path = require('path');
 var config = require('../config').config;
 var sanitize = require('validator');
@@ -58,32 +59,19 @@ var sanitize = require('validator');
  				if (err){
 		 			res.redirect('common/500')
 		 			return ;
-		 		};   
- 				var imgpath = path.join(config.upload_img_dir,name);
- 				var savepath = path.resolve(path.join(imgpath,'default.jpg' ));
- 				var defaultpath = path.resolve(path.join(config.upload_img_dir,'default.jpg' ));
- 				var relapath = path.join(config.rela_upload_img_dir,name,'default.jpg');
- 				if(!fs.existsSync(imgpath)){
- 					fs.mkdirSync(imgpath);
- 				} 
- 				fs.readFile(defaultpath, function (err, data) {
- 					if (err) {
- 						res.redirect('500');
- 					}
- 					fs.writeFile(savepath, data, function (err) { 
- 						if (err) {
- 							res.redirect('500');
- 						}			
- 						UserDao.saveNewUser(uid,name,email,pwd,relapath,relapath,function(err){
-							if (err) {
- 								res.redirect('500');
- 							}
-							msg.content = "注册成功<a href='/login'>马上登录</a>";
- 							msg.status = 1;
- 							res.render('register', { title: '注册',msg:msg });
- 						}); 
- 					});
- 				}); 
+		 		};    
+				var upyun = new UPYun(config.upyun.bat, config.upyun.opname, config.upyun.oppwd);
+ 				upyun.mkDir('/photo/'+name+'/', true, function(err, data){
+ 					var defaultImagePath = config.upyun.photourl+'default.jpg'; 
+					UserDao.saveNewUser(uid,name,email,pwd,defaultImagePath,defaultImagePath,function(err){
+						if (err) {
+							res.redirect('500');
+						}
+						msg.content = "注册成功<a href='/login'>马上登录</a>";
+						msg.status = 1;
+						res.render('register', { title: '注册',msg:msg });
+					});   
+ 				});
  			})  
 		});
 	});

@@ -4,20 +4,23 @@
 	var items = d.count; 
 	var pagesize = config.index.list_article_size;
 	var page = Math.ceil(items/pagesize);
-	var curpage = pageid;
+	var curpage = pageid; 
+	if(typeof(catastr) === 'undefined'){
+		catastr = '';
+	}
 	%>
 	<ul class="pagination"> 
 		<% if(curpage == 1 ){ %>
 		<li class="disabled"><a href="#">&laquo;</a></li>
 		<% }else{ %>
-		<li><a href="//?pageid=<%=1 %>">&laquo;</a></li>
+		<li><a href="//<%= catastr %>?pageid=<%=1 %>">&laquo;</a></li>
 		<% } %> 
 		<%  if( page < displaypage){
 			for(var j=1;j<=page;j++){
 				if( j == curpage ){%>
 				<li class="active"><a href="#" ><%= j %></a></li>
 				<% }else{ %>	
-				<li><a href="/?pageid=<%= j %>"><%= j %></a></li>
+				<li><a href="/<%= catastr %>?pageid=<%= j %>"><%= j %></a></li>
 				<%}
 			}%>
 			<% }else{
@@ -26,7 +29,7 @@
 						if( j == curpage ){%>
 							<li class="active"><a href="#" ><%= j %></a></li>
 						<% }else{ %>
-							<li><a href="/?pageid=<%= j %>"><%= j %></a></li>
+							<li><a href="/<%= catastr %>?pageid=<%= j %>"><%= j %></a></li>
 						<%}%>
 					<%}%>
 							<li class="disabled"><a href="#" >...</a></li>
@@ -39,7 +42,7 @@
 						if( j == curpage ){%>
 						<li class="active"><a href="#" ><%= j %></a></li>
 						<% }else{ %>
-						<li><a href="/?pageid=<%= j %>"><%= j %></a></li>
+						<li><a href="/<%= catastr %>?pageid=<%= j %>"><%= j %></a></li>
 						<%}
 					}%>
 
@@ -51,7 +54,7 @@
 							if( j == curpage ){%>
 							<li class="active"><a href="#" ><%= j %></a></li>
 							<% }else{ %>
-							<li><a href="/?pageid=<%= j %>"><%= j %></a></li>
+							<li><a href="/<%= catastr %>?pageid=<%= j %>"><%= j %></a></li>
 							<%}
 						}%>
 						<li class="disabled"><a href="#" >...</a></li>
@@ -60,7 +63,7 @@
 					<% if( curpage == page ){%>
 						<li class="disabled"><a href="#">&raquo;</a></li>
 					<% }else{%>
-						<li><a href="/?pageid=<%= parseInt(page) %>">&raquo;</a></li>
+						<li><a href="/<%= catastr %>?pageid=<%= parseInt(page) %>">&raquo;</a></li>
 					<% } %> 
 				</ul>
 </div>

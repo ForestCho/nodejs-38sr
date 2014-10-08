@@ -24,33 +24,35 @@ var EventProxy = require('eventproxy');
  		return;
  	}
 
- 	if(islike ==  "true"){
- 		LikeDao.getLikeNumByUidAndTid(uid,tid,function(err,count){
- 			if(err){ 
- 				res.json({status: 3 }); 
- 				return;
- 			}
- 			if(count > 1 || count === 1){
- 				res.json({status: 2 }); 
- 				return;
- 			}
- 			LikeDao.saveNewLike(uid,tid,function(err,like){
- 				if (err){
- 					res.json({status: 3 }); 
- 					return;
- 				}	
- 				var condition = {tid: tid};
-				var update = {$inc: {like_count:1}};
-				var options = { multi: false }; 
- 				ArticleDao.updateArticleInfo(condition,update,options,function(err,numberAffected, raw){
- 					if (err){
- 						res.json({status: 3 }); 
- 						return;
- 					}
- 					res.json({status: 0 }); 
- 				});
- 			});
- 		}); 
-
- 	} 
+	LikeDao.getLikeNumByUidAndTid(uid,tid,function(err,count){
+		if(err){ 
+			res.json({status: 3 }); 
+			return;
+		}
+		if(count > 1 || count === 1){
+			res.json({status: 2 }); 
+			return;
+		}
+		LikeDao.saveNewLike(uid,tid,islike,function(err,like){
+			if (err){
+				res.json({status: 3 }); 
+				return;
+			}	
+			var condition = {tid: tid};
+			var update;
+ 			if(islike === 'true'){
+				update = {$inc: {like_count:1}};
+			}else{
+				update = {$inc: {unlike_count:1}};
+			}
+			var options = { multi: false }; 
+			ArticleDao.updateArticleInfo(condition,update,options,function(err,numberAffected, raw){
+				if (err){
+					res.json({status: 3 }); 
+					return;
+				}
+				res.json({status: 0 }); 
+			});
+		});
+	});  
  } 

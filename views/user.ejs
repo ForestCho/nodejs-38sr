@@ -32,6 +32,11 @@
 								<div class="clearfix"></div>
 							</div> 
 		  		<% } %>
+		  		<% if(nearArticle.length > 12 ){%>
+		  			<a href="/user/<%= visituser %>/article">
+		  				<div class="more_article">查看<%= visituser%>更多心情</div>
+		  			</a>
+		  		<%}%>
 		   </div>
 		</div>
 		<div style="clear:both"></div>

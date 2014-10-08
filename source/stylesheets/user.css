@@ -1,0 +1,34 @@
+.more_article{
+	float: right;
+	width: 650px;
+	height: 32px;
+	line-height: 32px; 
+	background-color: #E2E2E2;
+	text-align: center;
+	cursor: pointer;
+	border-bottom: #eee 1px solid;
+}
+.navigator{	
+	width: 650px;
+	height: 32px;
+}
+.next_page{
+	float: right;
+	width: 50%;
+	height: 32px;
+	line-height: 32px; 
+	background-color: #E2E2E2;
+	text-align: right;
+	cursor: pointer;
+	border-bottom: #eee 1px solid;
+}
+.last_page{
+	float: left;
+	width: 50%;
+	height: 32px;
+	line-height: 32px; 
+	background-color: #E2E2E2;
+	text-align: left;
+	cursor: pointer;
+	border-bottom: #eee 1px solid;
+}

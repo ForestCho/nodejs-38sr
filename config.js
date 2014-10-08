@@ -27,18 +27,26 @@ var config = {
 			user:"forest@38sr.com",
 			pass: "caosl910417"
 		}
+	}, 
+	upyun:{
+		bat:  "srpic",
+		opname:  "caosl158",
+		oppwd:  "csl123456", 
+		photourl:  "http://srpic.b0.upaiyun.com/photo/",
+		cimgurl:  "http://srpic.b0.upaiyun.com/cimg/",
+		mryjurl:  "http://srpic.b0.upaiyun.com/mryj/"
+			
 	},
-	
  	upload_img_dir: path.join(__dirname, 'public','userimg'),
  	rela_upload_img_dir: path.join('/userimg'),
 
 	site_link:[
 		{
-			text:"forest blog",
+			text:"Forest Blog",
 			link:"http://blog.yidongzhifu.net"
 		},
 		{
-			text:"cwift社区",
+			text:"雨燕社区",
 			link:"http://www.cswift.cn"
 		},	
 		{

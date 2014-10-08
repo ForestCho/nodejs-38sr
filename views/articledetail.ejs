@@ -15,6 +15,9 @@
 					 <div class="photowrap"><a class="userlink" href="/user/<%= articlecontent._creator.uid %>"><img src=<%= articlecontent._creator.photo %>></a></div>
 						<div style="margin-left:70px;">
 							<div><a class="title username_text" id=<%= articlecontent.tid %> href="/user/<%= articlecontent._creator.name %>"><%= articlecontent._creator.name %></a> </div>
+									<% if(articlecontent.title &&articlecontent.title.length > 0 ){%>
+										<p class="item_title"><%= articlecontent.title %></p>
+									 <%}%>
 									 <pre class="msg_content"><%- articlecontent.content %> </pre> 
 									<div class="msg_date"><%= articlecontent.convertdate  %> <div class="reply"></div></div>
 								</div> 

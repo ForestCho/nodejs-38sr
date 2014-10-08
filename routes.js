@@ -1,6 +1,8 @@
 
 var index = require('./routes/index');
+var cata = require('./routes/cata');
 var user = require('./routes/user');
+var userarticle = require('./routes/userarticle');
 var reg = require('./routes/register'); 
 var login = require('./routes/login');
 var logout = require('./routes/logout');
@@ -19,6 +21,7 @@ var lost = require('./routes/common/404');
 var error = require('./routes/common/500');
 var search = require('./routes/search');
 
+var crawer = require('./routes/crawer');
 var run = function(app){
  
 	app.get('*',function (req,res,next) {
@@ -39,6 +42,13 @@ var run = function(app){
 
 
 	app.get('/', index.index); 
+
+ 	//fenlei
+	app.get('/joke', cata.joke);
+	app.get('/yule', cata.yule);
+	app.get('/baoliao', cata.baoliao);
+	app.get('/qinggan', cata.qinggan);
+	app.get('/qiongshi', cata.qiongshi); 
 
 	//发表心情路由
 	app.get('/pub', pub.save);
@@ -69,6 +79,7 @@ var run = function(app){
 
 	//个人中心
 	app.get('/user/:username', user.index);
+	app.get('/user/:username/article', userarticle.index);
 
 	//个人设置路由
 	app.get('/set', set.baseDisplay);
@@ -94,12 +105,12 @@ var run = function(app){
  	app.post('/save_avatar',upload.save_avatar);
  	app.post('/picupload',upload.picupload);
 
-
  	//关于/404/500页面路由
 	app.get('/about', about.about);
  	app.get('/404', lost.index);
  	app.get('/500', error.index);
 
+ 	app.get('/crawer', crawer.index);
 
  	app.get('*', lost.index);
 }

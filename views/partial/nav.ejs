@@ -5,12 +5,13 @@
 			<span class="logobar"></span>
 		</div>
 		<div class="selectwrap">
-			<ul class="navul" role="tablist"> 
-				<li class="<%= (locals.pageflag==1)?'active':'' %>" %><a href="/">主页</a></li>
-				<% if(locals.userinfo){%>
-					<li class="<%= (locals.pageflag==2)?'active':'' %>"><a href="/user/<%=locals.userinfo.name %>">我的主页</a></li>
-				<%}%>
-					<li class="<%= (locals.pageflag==3)?'active':'' %>"><a href="/pubarticle">发表心情</a></li>
+			<ul class="navul" role="tablist">  
+				<li class="<%= (locals.pageflag==1)?'active':'' %>" %><a href="/">心情</a></li>
+				<li class="<%= (locals.catastr=='joke')?'active':'' %>" %><a href="/joke">笑话</a></li>
+				<li class="<%= (locals.catastr=='yule')?'active':'' %>" %><a href="/yule">娱乐</a></li>
+				<li class="<%= (locals.catastr=='baoliao')?'active':'' %>" %><a href="/baoliao">爆料</a></li>
+				<li class="<%= (locals.catastr=='qinggan')?'active':'' %>" %><a href="/qinggan">情感</a></li>
+				<li class="<%= (locals.catastr=='qiongshi')?'active':'' %>" %><a href="/qiongshi">囧事</a></li> 
 			</ul> 
 		</div> 
 			<% if(locals.userinfo){%>	 

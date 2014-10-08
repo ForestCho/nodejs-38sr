@@ -12,7 +12,8 @@
 }
 
 .onesentence p {
-	font-size: 16px
+	font-size: 18px;
+	text-indent: 2em;
 }
 
 .statistics {
@@ -66,16 +67,14 @@
 .photowrap {
 	float: left;
 	width: 64px;
-	height: 64px;
-	border-radius: 50%;
+	height: 64px; 
 	overflow: hidden
 }
 
 .photowrap img {
 	width: 64px;
 	height: 64px;
-	border: 2px solid #fff;
-	border-radius: 50%;
+	border: 2px solid #fff; 
 	-webkit-transition: all .35s ease-in-out;
 	-moz-transition: all .35s ease-in-out;
 	transition: all .35s ease-in-out
@@ -119,6 +118,7 @@
 
 .loginwrap {
 	width: 180px;
+	height: 160px;
 	margin: 0 auto
 }
 
@@ -165,8 +165,15 @@
 	text-align: center
 }
 .thumb{
-	padding-right: 5px;
+	margin-right: 5px;
 	float: left;
+	border:2px solid #fff;
+	-webkit-transition: all .35s ease-in-out;
+	-moz-transition: all .35s ease-in-out;
+	transition: all .35s ease-in-out;
+}
+.thumb:hover{
+	border:2px solid #BCB5E2;	
 }
 .userview a:hover {
 	background-color: rgba(74,122,170,1);
@@ -191,4 +198,15 @@
 
 .site_list a {
 	font-size: 16px
+}
+.item_title{
+	margin: 5px 0 5px;
+	font-size: 20px;
+}
+.item_title a{
+	color: #333;
+}
+.item_title a:hover{ 
+	background-color: #fff;
+	color: #2a6496; 
 }

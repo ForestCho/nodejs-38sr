@@ -6,7 +6,31 @@
 		<div class="leftwrap">
 			<div class="writepanel">
 				<form class="navbar-form navbar-right" id="pubstr" name="pubstr" method="GET" action="/pub">
+          <div class="category">
+             <select class="form-control" name="cateid">
+                  <option value='0'>默认</option>
+                  <option value='1'>笑话</option>
+                  <option value='2'>娱乐</option>
+                  <option value='3'>爆料</option>
+                  <option value='4'>情感</option>
+                  <option value='5'>囧人糗事</option> 
+              </select>
+          </div>
+          <div class="titlewrap">
+            <a href="#" id="add_title">添加一个标题</a>
+            <div id="title_input" style="display:none;">
+              <input  class="form-control " id="title" name="title" placeholder="">
+              <span>标题不少与5个字</span>
+            </div>
+          </div>
 					<textarea type="text" class="writebox textarea" name="articlestr" id="post_body" placeholder="写点什么呢?"></textarea>
+          <div class="labelwrap">
+            <a href="#" id="add_label">添加标签</a>
+            <div id="label_input" style="display:none;">
+              <input  class="form-control " id="label" name="label" placeholder="">
+              <span>标签为2~4个字，多标签请用空格隔开</span>
+            </div>
+          </div>
 					<div class="inputopt"><button type="submit" class="btn btn-default" id="subarticle">发布</button></div>
 				</form>
 			</div>

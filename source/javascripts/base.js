@@ -53,10 +53,16 @@ $(document).ready(function(){
 	});  
 
 
-$(".likebtn").click(function(){ 
+$(".likebtn,.unlikebtn").click(function(){ 
 	var currObj = $(this);
 	var tid = currObj.attr('data-tid');  
-	var islike = true;  
+	var islike = true;   
+	var text = '表过态';
+	if(currObj.attr('class') === 'likebtn'){
+		islike = true; 
+	}else{
+		islike = false; 
+	}
 	var params = {tid:tid,islike:islike}; 
 	$.ajax({
 		data: params,
@@ -79,7 +85,7 @@ $(".likebtn").click(function(){
 			}
 			if(data.status === 2){  
 				$("#likeerr").remove();
-				currObj.parent().after("<p id='likeerr' style='text-align:center'>已经加过油了!!</p>"); 
+				currObj.parent().after("<p id='likeerr' style='text-align:center'>已经"+text+"了!!</p>"); 
 				$("#likeerr").fadeOut(3000);
 				return ;
 			}
@@ -92,7 +98,7 @@ $(".likebtn").click(function(){
 		}
 	});
 }); 
-
+ 
 $(".deleteitem").click(function(){ 
 	var currObj = $(this);
 	var tid = currObj.attr('data-tid');   
@@ -218,6 +224,16 @@ $(".replyat").click(function(){
 	$('#replytoreply').val('@'+runame+' ');
 	return false;
 });
+
+$("#add_label").click(function(){
+	$("#add_label").css("display","none")
+	$("#label_input").css("display","block")
+});
+$("#add_title").click(function(){
+	$("#add_title").css("display","none")
+	$("#title_input").css("display","block")
+});
+
 
 $(".leftwrap").delegate(".replyclose","click",function(){
 	$("#replywrap").remove(); 	

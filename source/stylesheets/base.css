@@ -1,5 +1,6 @@
 body {
 	padding: 0;
+	margin: 0;
 	color: #504C4C;
 	font: 14px "Lucida Grande",Helvetica,Arial,sans-serif
 }
@@ -41,7 +42,8 @@ textarea {
 .rightwrap {
 	float: right;
 	width: 235px;
-	padding: 10px 15px
+	padding: 10px 15px;
+	padding-top: 0px;
 }
 
 .leftwrap {

@@ -14,6 +14,8 @@ module.exports = function(grunt){
                      'source/stylesheets/set.css',
                      'source/stylesheets/sidebar.css',
                      'source/stylesheets/topset.css',
+                     'source/stylesheets/pubarticle.css',
+                     'source/stylesheets/user.css',
                      ],
                 dest: 'source/stylesheets/pagesty.css'
             }
@@ -75,7 +77,11 @@ module.exports = function(grunt){
             csscompact5: { 
                 src: 'source/stylesheets/jquery.qeditor.css',
                 dest: 'public/stylesheets/jquery.qeditor.min.css' 
-            }
+            },
+            csscompact6: { 
+                src: 'source/stylesheets/fancybox.css',
+                dest: 'public/stylesheets/fancybox.min.css' 
+            },
         }
     });
 

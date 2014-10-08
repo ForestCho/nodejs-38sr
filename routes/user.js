@@ -9,6 +9,7 @@ var EventProxy = require('eventproxy');
  */
  exports.index = function (req, res) {  
  	var username  = req.params.username;
+ 	var pagesize = 12 ;
  	var currusername = '';
  	if(typeof(req.session.user) !== 'undefined' ){
  		currusername = req.session.user.name;
@@ -56,7 +57,7 @@ var EventProxy = require('eventproxy');
 
 	UserDao.getUserInfoByName(username,function(err,tempuser) { 
 		ep.emit("tempuser",tempuser);
-		Article.find({uid:tempuser.uid}).sort({'post_date':-1}).populate('_creator').exec(function(err,articlelist){
+		Article.find({uid:tempuser.uid}).sort({'post_date':-1}).limit(pagesize+1).populate('_creator').exec(function(err,articlelist){
 			if (err){
  				res.redirect('common/404')
  				return ;
@@ -73,7 +74,7 @@ var EventProxy = require('eventproxy');
 					var srcReg = /http:\/\/([^"]+)/i; 
 					var srcStr = imglist[0].match(srcReg); 
 					console.log(srcStr)
-					var imgWrap = "<img src='"+srcStr[0]+"!limitmax"+"' class='thumb'>"
+					var imgWrap = "<a rel='fancypic' href='"+srcStr[0]+"'><img src='"+srcStr[0]+"!limitmax"+"' class='thumb'></a>"
 					newcontent= imgWrap+newcontent;
 				}
 			} 

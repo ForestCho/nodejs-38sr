@@ -105,7 +105,8 @@
 }
 
 .headsearch input {
-	border-radius: 0
+	border-radius: 19px;
+	border: 0px solid;
 }
 
 .account_opt {
