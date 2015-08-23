@@ -6,6 +6,7 @@
 ##使用方法
 * 将项目clone到本地，`git@github.com:ForestCho/38sr.git`
 * 安装模块依赖项 `npm install`
+* 将`temp_config.js`更名为`config.js`
 * 启动项目`node app.js`，在服务器上为了防止非正常关闭，可以用`forever start app.js`
 * 通过`http://localhost:3000/`访问
 
@@ -26,4 +27,4 @@
 * connect-redis
 * ioredis
 * lodash
-* request":"2.58.0"
+* request
