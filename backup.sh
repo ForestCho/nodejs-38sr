@@ -20,7 +20,7 @@ tar zcvf /home/backupdata/$rarDbName /home/backupdata/mongodb/
 
 #ftp back
 /usr/bin/ftp -v -n v0.ftp.upyun.com << END
-user caosl158/srbackup caosl910417
+user test/srbackup test
 type binary
 put $rarWebName
 put $rarDbName
