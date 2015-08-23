@@ -1,42 +1,66 @@
-<div class="appwrap">
-		<div class="navwrap">
-		<div class="logo">
-			<a  href="/"><span class="logo38">38</span><span class="logosr">锶</span></a>
-			<span class="logobar"></span>
-		</div>
-		<div class="selectwrap">
-			<ul class="navul" role="tablist">  
-				<li class="<%= (locals.pageflag==1)?'active':'' %>" %><a href="/">心情</a></li>
-				<li class="<%= (locals.catastr=='joke')?'active':'' %>" %><a href="/joke">笑话</a></li>
-				<li class="<%= (locals.catastr=='yule')?'active':'' %>" %><a href="/yule">娱乐</a></li>
-				<li class="<%= (locals.catastr=='baoliao')?'active':'' %>" %><a href="/baoliao">爆料</a></li>
-				<li class="<%= (locals.catastr=='qinggan')?'active':'' %>" %><a href="/qinggan">情感</a></li>
-				<li class="<%= (locals.catastr=='qiongshi')?'active':'' %>" %><a href="/qiongshi">囧事</a></li> 
-			</ul> 
-		</div> 
-			<% if(locals.userinfo){%>	 
-				<div class="dropdown account_opt"> 
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=locals.userinfo.name %><sup class="badge"><%=(locals.userinfo.msgcount!== 0)?locals.userinfo.msgcount:'' %></sup><span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-					        <li><a href="/user/<%=locals.userinfo.name %>">个人中心</a></li>
-					        <li><a href="/set">个人设置</a></li> 
-					        <li><a href="/message">消息<span class="badge"><%=(locals.userinfo.msgcount!== 0)?locals.userinfo.msgcount:'' %></span></a></li> 
-					        <li class="divider"></li>
-						 	<li><a href="/logout">安全登出</a></li>	
-				        </ul>  
-				</div>
+<nav class="navbar navbar-default navbar-fixed-top appwrap">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button> 
+ 		<a class="logo navbar-brand" href="/">
+ 			<img src="/images/38sr.png" border="0" align="default" alt="V2EX" width="94" height="30">
+ 		</a> 
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class=" collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="catawrap nav navbar-nav" role="tablist">  
+			<li class="<%= (locals.pageflag==1)?'active':'' %>" %><a href="/">广场</a></li>
+			<li class="<%= (locals.pageflag==2)?'active':'' %>" %><a href="/xinqing">心情</a></li>
+			<li class="<%= (locals.pageflag==3)?'active':'' %>" %><a href="/fastlink">快链</a></li>
+			<li class="<%= (locals.pageflag==4)?'active':'' %>" %><a href="/xiaohua">笑话</a></li>
+		</ul> 
+
+		<% if(locals.userinfo){%>	
+				<ul class="reg_login navbar-nav navbar-right">  
+					<li class="dropdown">
+       			    	<a class="dropdown-toggle optionaccess" data-toggle="dropdown" href="#"><%=locals.userinfo.name %><sup class="badge"><%=(locals.userinfo.msgcount!== 0)?locals.userinfo.msgcount:'' %></sup><span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+						        <li><a href="/pub"> 发布一个</a></li> 
+						        <li class="divider"></li>
+						        <li><a href="/user/<%=locals.userinfo.name %>">个人中心</a></li>
+						        <li><a href="/set">个人设置</a></li> 
+								<% if(locals.userinfo.admin == 1){%>	
+						       		 <li><a href="/admin">管理</a></li> 
+								<% }%>	
+						        <li><a href="/message">消息<span class="badge"><%=(locals.userinfo.msgcount!== 0)?locals.userinfo.msgcount:'' %></span></a></li> 
+						        <li class="divider"></li>
+							 	<li><a href="/logout">安全登出</a></li>	
+					        </ul>  
+					    </a> 
+					</li> 
+				</ul>  
 			<%}else{%> 
-				<ul class="reg_login">
-					<li><a href="/reg">注册</a></li>
-					<li><a href="/login">登录</a></li>
+				<ul class="reg_login navbar-nav navbar-right">
+					<li><a class="optionaccess" href="/reg">注册</a></li>
+					<li><a class="optionaccess" href="/login?prelink=<%= typeof(curpath) == 'undefined'?"":curpath %>">登录</a></li>
 				</ul> 
-			<%}%>
-			<div class="headsearch">
-			<form class="navbar-form " role="search" action="/search" method="GET">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="search" name="searchstr">
-				</div> 
-			</form>
-			</div>
+			<%}%> 
+ 		<div class="headsearch"> 
+				<form class="navbar-form form-search" action="/search" method="GET">
+	              <div class="form-group">
+	                <input class="form-control" name="searchstr" type="text" value="" placeholder="search">
+	              </div>
+	              <i class="fa btn-search fa-search"></i>
+	              <i class="fa btn-close fa-times-circle"></i>
+	            </form>
 		</div>
-</div>
+			<div style="fix:clear;"></div>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+

@@ -1,7 +1,76 @@
-<% include ../partial/header%>
+<!DOCTYPE html>
+<html>
+<head> 
+	<title><%= config.site.name + '-' + title %> </title> 
+	<meta name="ujianVerification" content="ee8a13aa7bd02c94ede87ac5faba8147" />
+	<meta name="description" content="<%= title %>">
+	<meta name="keywords" content="<%= config.site.keywords %>">
+	<meta name="author" content="<%= config.site.author %>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/images/favicon.ico">   
+	<style>
+		body{
+			background:#fff;
+		}
+		.am-text-center {
+			text-align: center!important;
+		} 
+		.am-text-center {
+			text-align: center!important;
+		}
+		.am-text-xxxl {
+			font-size: 30px;
+		}
+		.am-margin-top-lg {
+			margin-top: 150px;
+		}
+		.page-404{
+			background: #fff;
+			border: none;
+			width: 170px;
+			margin: 0 auto;
+		}
+		.returnlabel{
+
+		}
+		.returnlabel a{
+			display: block;
+			text-decoration: none;
+			color: #333;
+			width: 140px;
+			margin: 0 auto;
+			text-align: center;
+			font-size: 13px;
+		}		
+		.returnlabel a:hover{
+			color: #07695E;
+			text-decoration: underline;
+		}
+	</style>
 </head>
 <body> 
 	<div class="mainwrap">
-	<h1 style="text-align:center">404- Not Found</h1>
+		<div class="am-u-sm-12">
+        <h2 class="am-text-center am-text-xxxl am-margin-top-lg">404. Not Found</h2>
+        <p class="am-text-center">没有找到你要的页面</p>
+        <pre class="page-404">          .----.
+       _.'__    `.
+   .--($)($$)---/#\
+ .' @          /###\
+ :         ,   #####
+  `-..__.-' _.-\###/
+        `;_:    `"'
+      .'"""""`.
+     /,  ya ,\\
+    //  404!  \\
+    `-._______.-'
+    ___`. | .'___
+   (______|______)
+        </pre>
+        <div class="returnlabel">
+      	  <a href="/">点击查看其它精彩</a>
+      	</div>
+      </div>
 	</div>				
-	<% include ../partial/footer %>
+</body>
+</html>

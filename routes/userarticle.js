@@ -2,7 +2,8 @@ var Article = require('../models/article');
 var	UserDao = require('../dao/userdao'); 
 var util = require('../lib/util');
 var Relation = require('../models/relation');
-var relationdao = require('../dao/relationdao');
+var RelationDao = require('../dao/relationdao');
+var ArticleDao = require('../dao/articledao');
 var EventProxy = require('eventproxy'); 
 /*
  * GET user page.
@@ -10,8 +11,9 @@ var EventProxy = require('eventproxy');
  exports.index = function (req, res) {  
  	var username  = req.params.username;
  	var currusername = '';
+ 	var curpath = '/';
  	var pageid = 1 ;
- 	var pagesize = 8;
+ 	var pagesize = config.index.list_article_size;
  	if(req.query.pageid){
  		pageid=req.query.pageid;
  	} 
@@ -24,7 +26,7 @@ var EventProxy = require('eventproxy');
  	} 
  	var ep = new EventProxy();
  	
- 	ep.assign("tempuser","articlelist","followerlist","hefollowlist",function(tempuser,articlelist,followerlist,hefollowlist){
+ 	ep.assign("tempuser","articlelist","followerlist","hefollowlist","followernum","hefollowernum","articlenum",function(tempuser,articlelist,followerlist,hefollowlist,followernum,hefollowernum,articlenum){
  		var d= [];  
  		for(i=0 ; i< articlelist.length ; i++){ 
  			articlelist[i].convertdate = util.date_format(articlelist[i].post_date,true);  
@@ -35,35 +37,40 @@ var EventProxy = require('eventproxy');
  		d.isfollow = false; 
  		d.followerlist = followerlist; 
  		d.hefollowlist = hefollowlist; 
+ 		d.followernum = followernum;
+ 		d.hefollowernum = hefollowernum;
+ 		d.articlenum = articlenum;
  		d.currentpage = pageid;
- 		if(currusername && username !== currusername){
- 			var curuid = 0;  
- 			UserDao.getUserInfoByName(currusername,function(err,curuser){ 
- 				if (err){
- 					res.redirect('common/404')
- 					return ;
- 				}   
- 				curuid = curuser.uid;  
- 				Relation.count({uid:curuid,fuid:tempuser.uid},function(err,nums){ 
- 					if(nums > 0){ 
- 						d.isfollow = true ; 
- 					} 						
- 					console.log(res.locals.userinfo)
- 					res.locals.userinfo = req.session.user; 
- 					return	res.render('user', { title:'我的主页',visituser:username,d:d}); 
+ 		curpath = "/user/"+tempuser.name+"/article/";
+ 		if(currusername){
+			var curuid = 0;  
+			UserDao.getUserInfoByName(currusername,function(err,curuser){ 
+				if (err){
+					res.redirect('common/404')
+					return ;
+				}   
+				curuid = curuser.uid;  
+				Relation.count({uid:curuid,fuid:tempuser.uid},function(err,nums){ 
+					if(nums > 0){ 
+						d.isfollow = true ; 
+					} 						
+					console.log(res.locals.userinfo)
+					res.locals.userinfo = req.session.user; 
+					return	res.render('userarticle', { title:username+'的心情',visituser:username,d:d,curpath:curpath}); 
 
- 				});
- 			});
- 		}else{  
+				});
+			}); 
+		}else{  
  			res.locals.userinfo = req.session.user; 
- 			return res.render('userarticle', { title:'我的主页',visituser:username,d:d}); 
+ 			return res.render('userarticle', { title:username+'的心情',visituser:username,d:d,curpath:curpath}); 
  		}
  	});
 
 
 	UserDao.getUserInfoByName(username,function(err,tempuser) { 
-		ep.emit("tempuser",tempuser);
-		Article.find({uid:tempuser.uid}).sort({'post_date':-1}).skip((pageid-1)*pagesize).limit(pagesize+1).populate('_creator').exec(function(err,articlelist){
+		ep.emit("tempuser",tempuser);		
+		console.log(tempuser.uid);
+		Article.find({uid:tempuser.uid,isdelete:false}).sort({'post_date':-1}).skip((pageid-1)*pagesize).limit(pagesize+1).populate('_creator').populate('_sid').exec(function(err,articlelist){
 			if (err){
  				res.redirect('common/404')
  				return ;
@@ -78,12 +85,18 @@ var EventProxy = require('eventproxy');
 			if(imglist !== null){
 				if(imglist.length>0){
 					var srcReg = /http:\/\/([^"]+)/i; 
-					var srcStr = imglist[0].match(srcReg); 
-					console.log(srcStr)
-					var imgWrap = "<a rel='fancypic' href='"+srcStr[0]+"'><img src='"+srcStr[0]+"!limitmax"+"' class='thumb'></a>"
-					newcontent= imgWrap+newcontent;
+					var srcStr = imglist[0].match(srcReg);  
+					if(articlelist[i].type == 1){	
+						var imgWrap = "<a rel='fancypic' href='"+srcStr[0]+"'><img src='"+srcStr[0].replace('large','wap180')+"' class='thumb'></a>"
+					}else{
+						var imgWrap = "<a rel='fancypic' href='"+srcStr[0]+"'><img src='"+srcStr[0]+"!limitmax"+"' class='thumb'></a>"
+					}
+
+					newcontent= imgWrap+newcontent.substring(0,(newcontent.length > 150)?150:newcontent.length).trim(); 
 				}
-			} 
+			}else{
+				newcontent= newcontent.substring(0,(newcontent.length > 180)?180:newcontent.length).trim();
+			}
 			articlelist[i].newcontent = newcontent; 
 			}
 			ep.emit("articlelist",articlelist);
@@ -91,11 +104,22 @@ var EventProxy = require('eventproxy');
 		}); 
 	});
 
-	relationdao.getListOfFollowersByName(username,function(err,followerlist){
+	ArticleDao.getNumberOfArticlesByUsername(username,function(err,doc){
+				ep.emit("articlenum",doc);
+	});
+
+	RelationDao.getNumberOfFollowersByName(username,function(err,followernum){
+		ep.emit("followernum",followernum);
+	}); 
+	RelationDao.getNumberOfHeFollowersByName(username,function(err,hefollowernum){
+		ep.emit("hefollowernum",hefollowernum);
+	}); 
+
+	RelationDao.getListOfFollowersByName(username,function(err,followerlist){
 		ep.emit("followerlist",followerlist);
 	}); 
 	
-	relationdao.getListOfHeFollowsByName(username,function(err,hefollowlist){
+	RelationDao.getListOfHeFollowsByName(username,function(err,hefollowlist){
 		ep.emit("hefollowlist",hefollowlist);
 	}); 
 } 

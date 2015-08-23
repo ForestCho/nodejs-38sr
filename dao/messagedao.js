@@ -13,7 +13,14 @@ exports.getDetailMessageById = function(id,callback){
 			proxy.assign('author_found', 'topic_found', 'reply_found', function (author, topic, reply) {
 				message.author = author; 
 				message.topic = topic;
-				message.reply = reply;
+				message.reply = reply;   
+				if(topic !==null){
+					if(topic.title!= null && typeof(topic.title) !== 'undefined' && topic.title.length > 0){
+						message.displayinforeply = topic.title;
+					}else{
+						message.displayinforeply = topic.content.substr(0,15)+'...';					
+					}
+				}
 				if (!author || !topic) {
 					message.is_invalid = true;
 				}    
@@ -28,7 +35,7 @@ exports.getDetailMessageById = function(id,callback){
 			User.findOne({uid:message.uid}, function (err, author) {
 				if (err) {
 					return callback(err);
-				}
+				} 
 				message.author = author;
 				if (!author) {
 					message.is_invalid = true;

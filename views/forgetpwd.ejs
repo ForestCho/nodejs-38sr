@@ -1,27 +1,23 @@
 <% include partial/header%>
 </head>
 <body>	
-	<% include partial/nav %>
-	<div class="mainwrap">
-		<h3>找回密码</h3>
+	<% include partial/nav %> 
+	<div class="mainwrap reglogin_mainwrap"> 
+		<div class="reglogin_head_info panel-heading">
+			找回密码
+		</div> 
 		<div class="regpanel">
-			<div class="msgbox">
-				<% if(typeof(msg) !== 'undefined' && msg.status !== -1){ %>
-					<div class="<%=(msg.status === 1)?"sucesssty":"alertsty" %>" role='alert'>
-						<%-msg.content %>
-						</div> 
-				<% } %>
-			</div>
+		
 			<div class="leftreg">
-				<form class="form-horizontal" role="form" action="/forgetpwd" method="POST">
+				<form class="form-horizontal reglogin_formwrap" role="form" action="/forgetpwd" method="POST">
 					<div class="form-group"> 
 						<div class="col-sm-10">
-						<input  class="form-control pwdbg" id="email" name="email" placeholder="email">
+						<input  class="form-control emailbg" id="email" name="email" placeholder="email">
 						</div>
 					</div> 
 					<div class="form-group">
 						<div class=" col-sm-10">
-							<button type="submit" class="btn btn-default">立即重置密码</button>
+							<button type="submit">立即重置密码</button>
 						</div>
 					</div>
 				</form>
@@ -29,10 +25,23 @@
 
 					<div class="rightreg">
 						<div class="rightpanelinfo">
-							>> 还没注册，马上<a href="/reg">注册</a><br>
-							>> 已经注册过，马上<a href="/login">登录</a>
+							<ul class="nav_reg_login">
+								<li>
+									>> 还没注册，<a href="/reg">马上注册</a>
+								</li>
+								<li>
+									>> 已经注册过，<a href="/login">马上登录</a>
+								</li>
+							</ul> 
 						</div>
 					</div>
+				<div class="msgbox">
+					<% if(typeof(msg) !== 'undefined' && msg.status !== -1){ %>
+						<div class="<%=(msg.status === 1)?"sucesssty":"alertsty" %>" role='alert'>
+							<%-msg.content %>
+							</div> 
+					<% } %>
+				</div>
 			<div style="clear:both"></div>
 			</div>			
 				</div>		

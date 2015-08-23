@@ -1,0 +1,28 @@
+<% include partial/header%>
+</head>
+<body class="body_index">
+	<% include partial/nav %>
+	<div class="mainwrap"> 
+		<div class="about_head_info">
+			   	<h3>Ta的粉丝<small>(<%=d.followernum %>)</small></h3>
+		</div>
+		<div class="followlist_wrap">		    
+			<div class="hefollow">			
+				<%
+					var followerlist = d.followerlist;  
+					var length1 = followerlist.length;
+				%>
+				<% 
+						for(i=0;i<length1;i++){
+						var follower =followerlist[i]._uid_info;
+				%>
+		 				<div class="perfollower">
+							<a href="/user/<%=follower.name%>" alt="<%=follower.name%>"><img src=<%= follower.photo %>></a>
+							<a href="/user/<%=follower.name%>" alt="<%=follower.name%>"><%=follower.name%></a>
+						</div>
+				<%}%>
+			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>				
+<% include partial/footer %>

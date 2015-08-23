@@ -16,6 +16,8 @@ module.exports = function(grunt){
                      'source/stylesheets/topset.css',
                      'source/stylesheets/pubarticle.css',
                      'source/stylesheets/user.css',
+                     'source/stylesheets/shijian.css',
+                     'source/stylesheets/followlist.css',
                      ],
                 dest: 'source/stylesheets/pagesty.css'
             }
@@ -47,6 +49,14 @@ module.exports = function(grunt){
             bulid6: {
                 src: 'source/javascripts/jquery.qeditor.js',
                 dest: 'public/javascripts/jquery.qeditor.min.js'
+            },        
+            bulid7: {
+                src: 'source/javascripts/admin.js',
+                dest: 'public/javascripts/admin.min.js'
+            },
+            bulid8: {
+                src: 'source/javascripts/texiao.js',
+                dest: 'public/javascripts/texiao.min.js'
             }
         }, 
         cssmin: { 
@@ -81,6 +91,10 @@ module.exports = function(grunt){
             csscompact6: { 
                 src: 'source/stylesheets/fancybox.css',
                 dest: 'public/stylesheets/fancybox.min.css' 
+            },
+            csscompact7: { 
+                src: 'source/stylesheets/admin.css',
+                dest: 'public/stylesheets/admin.min.css' 
             },
         }
     });

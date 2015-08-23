@@ -14,7 +14,7 @@ var async1 = require('async');
 //mongoose.connect('mongodb://107.170.206.235:27017/blogdb');
 
  //mongoose.connect('mongodb://localhost/blogdb'); 
-mongoose.connect('mongodb://localhost/blogdb');
+//mongoose.connect('mongodb://localhost/blogdb');
 
 
 var baseUrl1 = "http://weibo.cn/pub/category?cat=1899&page=";//xiaohua

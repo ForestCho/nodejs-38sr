@@ -4,7 +4,10 @@ var	util = require('../lib/util');
 var getZymryjOfCurrday = function(cb){	
  	var now = new Date();
 	Zymryj.findOne({create_at:{$gt: util.getStartOfCurrDay(now),$lt: util.getEndOfCurrDay(now)}},null,{sort:{'create_at':-1},limit:1},function(err,tempzymryj){ 
- 	 	var zymryj;
+ 	 	var zymryj={};
+ 		zymryj.cncontent = "不敢犯错，可能把一切都错过。";
+ 		zymryj.encontent = "You may miss everything if you dare not make mistakes.";
+ 		zymryj.img = "http://srpic.b0.upaiyun.com/mryj/1412436134767_RBSw2AowR5TDInst.jpg";
  	 	if(tempzymryj){ 
  			zymryj = tempzymryj;
  		}

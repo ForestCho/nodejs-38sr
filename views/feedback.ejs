@@ -1,0 +1,91 @@
+<% include partial/header%>
+</head>
+<body>	
+	<%
+	var articlecontent = d.articlecontent;
+	var replies = d.replies;
+	%>
+	<% include partial/nav %>
+	<div class="mainwrap">  
+		<div class="leftwrap">
+			<div class="articleitem_detail detailinfo">   
+					<div class="detail_msg_head add_bottom_dashed"> 
+								<%= title %>
+						 
+					</div> 
+					<div class="detail_content"> 
+							<div class="article_head_info">  
+							</div> 									
+							<pre class="msg_content_detail"><%- articlecontent.content %> </pre>  
+					</div>  
+					<% 
+						var s_title = "";
+						var s_url = "";
+						if(articlecontent.title &&articlecontent.title.length > 0 ){
+							s_title = articlecontent.title					
+						}else{
+							s_title = articlecontent.purecontent  
+						}
+						s_url = "http://38sr.com/article/" + articlecontent.tid;
+					%> 
+				</div>
+
+ 
+
+					<div class="rep_msg_box">						
+						<% if(replies.length > 0){%>
+							<div class="detail_msg_head">回复</div>
+							<% if(replies){ %>
+								<% for(i=0;i< replies.length;i++){%>
+									<div class="reply_msg_item"> 
+											<div class="reply_user_photo">
+												<a class="userlink" href="/user/<%= replies[i]._creator.name %>"><img src=<%= replies[i]._creator.photo %>></a>	
+											</div>		 
+											<div class="reply_content_info">
+												<div class="reply_info">
+													<span class="reply_user_name">						
+														<a class="userlink username_text" href="/user/<%= replies[i]._creator.name %>"><%=replies[i]._creator.name %></a>
+													</span>
+													<span class="reply_date">						
+														<%=replies[i].convertdate %> 
+													</span>
+													<span class="opt">	 				 
+														<% if(i==0){%>
+															•<%= "沙发"%>
+														<%}else if(i==1){%>
+															•<%= "板凳" %>
+														<%}else{%>
+															•#<%= i %>											
+														<%}%>
+													</span>
+												</div>
+												<div class="reply_content">
+													<div class="msg_content"><%- replies[i].content%></div>
+												</div>
+											</div>
+									</div>
+								<%}
+							}%>
+						<%}else{%>
+							<div class="no_reply_notice">暂时还没有评论，快来抢沙发呀！</div>
+						<%}%>
+					</div>
+					<%if(locals.userinfo){%>
+						<div class="replywritepanel">
+							<form class="navbar-form navbar-right" id="repstr" name="repstr" method="POST" action="/fb">
+								<input type="hidden" name="tid" id="tid" value="<%=articlecontent.tid %>"/>  
+								<textarea type="text" class="writebox atreply" name="repstr" id="reply_input" placeholder="回复点什么呢?"></textarea>
+								<div class="inputopt"><button type="submit" class="btn btn-default" id="subarticle">回复</button></div>
+							</form>
+						</div>
+					<%}else{%>
+						<div class="nosignin"><a href="/login?prelink=/article/<%=articlecontent.tid %>">登录</a>后才能回复， 没有账号？点击这里<a href="/reg">注册</a></div>
+					<%}%>
+				</div>		
+
+
+
+		</div>		
+		<div style="clear:both"></both>
+	</div>			 
+			<% include partial/footer %>

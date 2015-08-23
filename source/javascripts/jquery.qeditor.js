@@ -47,13 +47,13 @@ window.QEditor = {
       a = "formatBlock";
     }
     if (a === "createLink") {
-      p = prompt("Type URL:");
-      if (p.trim().length === 0) {
+   //  p = prompt("Type URL:");
+      if (p &&  p.trim().length === 0) {
         return false;
       }
     } else if (a === "insertimage") { 
-      p = prompt("Image URL:");
-      if (p.trim().length === 0) {
+   //   p = prompt("Image URL:");
+      if (p && p.trim().length === 0) {
         return false;
       }
     }

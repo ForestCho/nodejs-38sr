@@ -1,34 +1,117 @@
+a.followfri:hover{
+	color: #fff;
+} 
+a.unfollowfri:hover{
+	color: #fff;
+} 
+
+.articleitem .reply{
+	display: inline-block;
+	float: right;
+}
+.fade_trans{
+     -webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	transition: all .3s ease-out;
+	-webkit-transition-property: all;
+	-moz-transition-property: all;
+	-o-transition-property: all;
+	transition-property: all;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+	-o-animation-fill-mode: both;
+	animation-fill-mode: both
+}
 .more_article{
 	float: right;
-	width: 650px;
-	height: 32px;
-	line-height: 32px; 
-	background-color: #E2E2E2;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background-color: #fff;
 	text-align: center;
 	cursor: pointer;
 	border-bottom: #eee 1px solid;
 }
+.more_article:hover{
+	color:#07695E;
+	background-color: #F8F8F8;
+}
+.get_more{
+	margin-top: 10px;
+	display: block;
+}
+.get_more{
+	color: #808080;
+}
+.get_more:hover{
+	color: #808080 !important;	
+}
 .navigator{	
-	width: 650px;
+	width: 100%;
 	height: 32px;
+	margin-top: 10px;
+	display: block;
 }
 .next_page{
 	float: right;
-	width: 50%;
+	width: 120px;
 	height: 32px;
 	line-height: 32px; 
-	background-color: #E2E2E2;
-	text-align: right;
+	color: #868686; 
+	background-color: #fff;
+	text-align: center;
+	border-radius: 16px;
+	border: 2px solid #868686;
 	cursor: pointer;
-	border-bottom: #eee 1px solid;
+} 
+.next_page:hover{
+	color: #07695E;
+	border: 2px solid #07695E;
 }
 .last_page{
 	float: left;
-	width: 50%;
+	width: 120px;
 	height: 32px;
 	line-height: 32px; 
-	background-color: #E2E2E2;
-	text-align: left;
-	cursor: pointer;
-	border-bottom: #eee 1px solid;
+	color: #868686; 
+	background-color: #fff;
+	text-align: center;
+	border-radius: 16px;
+	border: 2px solid #868686;
+}
+.last_page:hover{
+	color: #07695E; 
+	border: 2px solid #07695E;
+}
+.page_numwrap{
+	height: 32px; 
+	margin: 0 160px;
+}
+.page_num{
+	border-radius: 16px;
+	line-height: 30px;
+	font-size: 18px;
+	height: 32px;
+	display: block;
+	color: #A09999;
+	width: 50px;
+	margin: 0 auto;
+	text-align: center;
+	border: 2px solid #A09999;
+}
+.user_near_article{
+	overflow: hidden;
+}
+.user_near_article .articleitem{p
+	margin-top: 1px;
+	border-radius: 5px;
+}
+
+.perfollower img {
+	vertical-align: middle;
+	height: 45px;
+	display: block;
+	width: 45px;
+	margin: 0 auto; 
 }

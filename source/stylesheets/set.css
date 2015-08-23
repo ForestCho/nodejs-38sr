@@ -1,10 +1,27 @@
+.account_panel{
+	width: 100%;
+	height: 100%;
+	background-color:#f5f5f5;
+	margin: 0px auto;  
+	overflow: hidden;
+}
+.set-header{
+	background-color: #E9E7E7;
+	padding: 25px 10px 0px 10px;
+}
+.set-header .curset:hover{
+	background-color: #f5f5f5;	
+}
+.set-header a:hover {
+	background-color: #E9E7E7;
+}
 .setpanel {
+	margin-top: 20px;
 	width: 80%
 }
 
 .baseinfo input {
-	width: 50%;
-	border-radius: 0
+	width: 50%; 
 }
 
 .baseinfo textarea {
@@ -20,23 +37,40 @@
 	width: 80%
 }
 
-.settab {
-	margin-left: -45px;
-	font-size: 18px
+.settab { 
+	font-size: 16px;
+	line-height: 16px;
+	height: 30px;
 }
 
 .settab li {
 	display: block;
 	float: left;
-	padding: 3px
+	height: 30px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
 }
 
 .settab a {
-	color: #777
+	color: #00a090;
+	font-size: 16px;
+	height: 30px; 
+	float:left;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 0px;
+	padding-top: 7px;
 }
 
 .curset {
-	color: #2a6496!important
+	color: #00a090!important;
+	background-color: #f5f5f5;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 0px;
+	padding-top: 7px;
+	border-radius: 2px 2px 0px 0px; 
 }
 
 .wholeimg {

@@ -1,42 +1,37 @@
 <% include partial/header%>
 </head>
-<body> 
+<body>	
 	<% include partial/nav %>
-	<div class="mainwrap">
-		<h3>注册界面</h3>
+	<div class="mainwrap reglogin_mainwrap"> 
+			<div class="reglogin_head_info panel-heading">
+				注册
+			</div>  
 		<div class="regpanel">		
-		<div class="msgbox"> 
-			<% if(typeof(msg) !== 'undefined' && msg.status !== -1){ %>
-				<div class="<%=(msg.status === 1)?"sucesssty":"alertsty" %>" role='alert'>
-					<%-msg.content %>
-					</div> 
-			<% } %>
-		</div>	
 			<div class="leftreg">
-				<form class="form-horizontal" method="POST" action="/reg" role="form" >
+				<form class="form-horizontal reglogin_formwrap" method="POST" action="/reg" role="form" >
 					<div class="form-group"> 
 						<div class="col-sm-10">
-							<input  class="form-control accountbg" id="uname" name="uname" placeholder="name">
+							<input  class="form-control accountbg" id="uname" name="uname" placeholder="帐号">
 						</div>
 					</div>
 					<div class="form-group"> 
 						<div class="col-sm-10">
-							<input type="email" class="form-control emailbg" id="email" name="email" placeholder="Email">
+							<input type="email" class="form-control emailbg" id="email" name="email" placeholder="邮箱">
 						</div>
 					</div>
 					<div class="form-group"> 
 						<div class="col-sm-10">
-							<input type="password" class="form-control pwdbg" id="pwd" name="pwd" placeholder="Password">
+							<input type="password" class="form-control pwdbg" id="pwd" name="pwd" placeholder="密码">
 						</div>
 					</div>
 					<div class="form-group"> 
 						<div class="col-sm-10">
-							<input type="password" class="form-control pwdbg" id="pwdagain" name="pwdagain" placeholder="Password Again">
+							<input type="password" class="form-control pwdbg" id="pwdagain" name="pwdagain" placeholder="再次密码 ">
 						</div>
 					</div> 
 					<div class="form-group">
 						<div class="col-sm-10">
-							<button type="submit" class="btn btn-default" id="regBtnSub">注册</button>
+							<button type="submit"  id="regBtnSub">注册</button>
 						</div>
 					</div>
 				</form>
@@ -44,11 +39,21 @@
 
 			<div class="rightreg">
 				<div class="rightpanelinfo">
-					>> 已经注册过，<a href="/login">马上登录</a>
+					<ul class="nav_reg_login">
+						<li>
+							>> 已经注册过，<a href="/login">马上登录</a>
+						</li>
+					</ul>
 				</div>
 			</div>
-			<div style="clear:both"></div>
-
+			<div style="clear:both"></div>			
 		</div>
+		<div class="msgbox"> 
+				<% if(typeof(msg) !== 'undefined' && msg.status !== -1){ %>
+					<div class="<%=(msg.status === 1)?"sucesssty":"alertsty" %>" role='alert'>
+						<%-msg.content %>
+						</div> 
+				<% } %>
+		</div>	
 	</div>			
 	<% include partial/footer %>

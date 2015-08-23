@@ -1,14 +1,3 @@
-
-
-var UPYun = require('./lib/upyun').UPYun;
-
-var config = require('./config').config;
-var upyun = new UPYun(config.upyun.bat, config.upyun.opname, config.upyun.oppwd); 
-var upBase = config.upyun.photourl+'userName'+'/';  
-var upAbsolute = '/photo/'+'userName'+'/';
-upyun.mkDir(upAbsolute, true, function(err, data){
-if (!err) {  
-	console.log("suicccess")
-}
-console.log(err)
-});		
+var urlReg = /[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?/;  
+var url=urlReg.exec("https://cnodejs.org/topic/545aee5a3e1f39344c5b3b3e");  
+console.log(url[0]);

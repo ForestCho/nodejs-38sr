@@ -5,34 +5,52 @@
 	<div class="mainwrap"> 
 		<div class="leftwrap">
 			<div class="writepanel">
-				<form class="navbar-form navbar-right" id="pubstr" name="pubstr" method="GET" action="/pub">
-          <div class="category">
-             <select class="form-control" name="cateid">
-                  <option value='0'>默认</option>
-                  <option value='1'>笑话</option>
-                  <option value='2'>娱乐</option>
-                  <option value='3'>爆料</option>
-                  <option value='4'>情感</option>
-                  <option value='5'>囧人糗事</option> 
-              </select>
-          </div>
-          <div class="titlewrap">
-            <a href="#" id="add_title">添加一个标题</a>
-            <div id="title_input" style="display:none;">
-              <input  class="form-control " id="title" name="title" placeholder="">
-              <span>标题不少与5个字</span>
+        <ul class="share_model">
+          <li><a id="tab_share_on" class="share_tab_active">心情</a></li>
+          <li><a id="tab_link_on" class="">快链</a></li>
+        </ul>
+        <div class="tab_on" id="tab_share">
+  				<form class="navbar-form navbar-right" id="pubstr" name="pubstr" method="POST" action="/puba">
+            <div class="category">
+               <select class="form-control" name="cateid">
+                    <option value='0'>默认</option>
+                    <option value='1'>笑话</option>
+                    <option value='2'>娱乐</option>
+                    <option value='3'>爆料</option>
+                    <option value='4'>情感</option>
+                    <option value='5'>囧人糗事</option> 
+                </select>
             </div>
-          </div>
-					<textarea type="text" class="writebox textarea" name="articlestr" id="post_body" placeholder="写点什么呢?"></textarea>
-          <div class="labelwrap">
-            <a href="#" id="add_label">添加标签</a>
-            <div id="label_input" style="display:none;">
-              <input  class="form-control " id="label" name="label" placeholder="">
-              <span>标签为2~4个字，多标签请用空格隔开</span>
+            <div class="titlewrap">
+              <a href="#" id="add_title">添加一个标题</a>
+              <div id="title_input" style="display:none;">
+                <input  class="form-control " id="title" name="title" placeholder="">
+                <span>标题不少于5个字</span>
+              </div>
             </div>
-          </div>
-					<div class="inputopt"><button type="submit" class="btn btn-default" id="subarticle">发布</button></div>
-				</form>
+  					<textarea type="text" class="writebox textarea" name="articlestr" id="post_body" placeholder="写点什么呢?"></textarea>
+           <!-- <div class="labelwrap">
+              <a href="#" id="add_label">添加标签</a>
+              <div id="label_input" style="display:none;">
+                <input  class="form-control " id="label" name="label" placeholder="">
+                <span>标签为2~4个字，多标签请用空格隔开</span>
+              </div>
+            </div> -->
+  					<div class="subarticle_wrap"><button type="submit" class="btn btn-success" id="subarticle">发布</button></div>
+  				</form>
+        </div>
+        <div class="tab_off" id="tab_link">  
+          <form class="navbar-form navbar-right" id="pubstr" name="pubstr" method="GET" action="/publ">
+            <div id="link_input" >
+              <input  class="form-control " id="url" name="url" placeholder="请输入分享的链接"> 
+              <button type="submit" class="btn btn-success" id="searchtitle"><i class="loading fa fa-circle-o-notch fa-spin"></i>查询</button>
+            </div> 
+            <textarea type="text" class="writebox textarea" id="pub_link_brief" name="publinkbrief" placeholder="点击查询可自动生成网页title"></textarea> 
+            <div class="sublink_wrap">
+              <button type="submit" class="btn btn-success" id="sublink">发布</button>
+            </div>
+          </form> 
+        </div>
 			</div>
 		</div>	
 		<div style="clear:both"></div>	
@@ -49,7 +67,10 @@
         <h4 class="modal-title" id="myModalLabel">图片上传</h4>
       </div>
       <div class="modal-body">
-        <input id="choose" name="picture" type="file" class="b-button__input">
+        <div class="btninner">
+          <a id="choose-btn-id" class="choose-btn">选择文件</a>
+          <input id="choose" name="picture" type="file" class="b-button__input">
+        </div>
         <h3 class="submitinfo" id="submitinfo"></h3>
       </div>
       <div class="modal-footer">
@@ -96,7 +117,7 @@
                 submitinfo.text(msg.content);
           }else{            
                 submitinfo.text(msg.content);       
-            insertbtn.show();
+               insertbtn.show();
           }
         },
         error:function(){       

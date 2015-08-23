@@ -2,26 +2,21 @@
 </head>
 <body>
 	<% include partial/nav %>
-	<div class="mainwrap">
-		<div class="rightwrap">
+	<div class="mainwrap"> 
+		<% if(!locals.userinfo){%>
+			<div class="rightwrap">		
+		<%}else{%>
+			<div class="rightwrap index_rightwrap">		
+		<%}%>
 			<% include partial/indexsidebar %>
 		</div>
 		<div class="leftwrap">
-		<% if(locals.userinfo){%>
-			<div class="writepanel">
-				<form class="navbar-form navbar-right" id="pubstr" name="pubstr" method="GET" action="/pub">
-					<textarea type="text" class="writebox" name="articlestr" id="articlestr" placeholder="写点什么呢?"></textarea>
-					<input type="hidden" name="cateid" value='0'/>
-					<div class="inputopt"><button type="submit" class="btn btn-default" id="subarticle">发布</button></div>
-				</form>
-			</div>
-			<% }else{%>
+		<% if(!locals.userinfo){%>			
 			<div class="meiriyiju">
 				<div class="onesentence"><p><%=mryj %></p></div>
-				<div class="statistics"><p>共有<%=d.usercount %>位小伙伴,写下<%=d.count %>条<%= catezh %>贴<p></div>
+				<div class="statistics"><p>共有<%=d.usercount %>位小伙伴,写下<%=d.count %><%= cataZh %><p></div>
 			</div>
-			<%}%>
-			<h3 class="page_header_info">最新</h3>
+			<% } %>
 			<div class="allmsg">
 				<% 
 				var result = d.data;  
@@ -30,23 +25,43 @@
 					if(result[i]){
 						%>
 						<div class="articleitem">  
-						 <div class="photowrap"><a class="userlink" href="/user/<%= result[i]._creator.name %>"><img src=<%= result[i]._creator.photo %>></a></div>
-							<div style="margin-left:70px;">
+						 <div class="photowrap"><a class="userlink show-pop-async" data-uid=<%= result[i]._creator.uid %> href="/user/<%= result[i]._creator.name %>"><img src=<%= result[i]._creator.photo %>></a></div>
+							<div style="margin-left:55px;">
 								<div>
 									<a class="title" id=<%= result[i].tid %> href="/user/<%= result[i]._creator.name %>"><%= result[i]._creator.name %></a>
-									<span class="shuo_sty">说</span> 
-								 </div>
-								 <% if(result[i].title &&result[i].title.length > 0 ){%>
-									<p class="item_title"><a href="/article/<%= result[i].tid %>"><%= result[i].title %></a></p>
-								 <%}%>
-								<pre class="msg_content"><%- result[i].newcontent %> </pre> 
-								<div class="msg_date"><%= result[i].convertdate  %> 
-									<div class="reply">
-										<a href="/article/<%= result[i].tid %>"><%= (result[i].reply_count>0)?result[i].reply_count:'' %>吐糟</a>
-									</div>
-									<div class="reply">
-										<a class="likebtn" data-tid="<%= result[i].tid %>"><span><%= (result[i].like_count>0)?result[i].like_count:'' %></span>赞↑↑↑</a>-
-										<a class="unlikebtn" data-tid="<%= result[i].tid %>">↓↓↓踩<span><%= (result[i].unlike_count>0)?result[i].unlike_count:'' %></span></a>-   
+									<%
+									if(result[i].location){
+									%>
+									在
+									<span class="sitetext"><%- result[i].location %></span> 
+									<%}%>
+									<% if(result[i].classify === 0){%>
+										<span>说</span> 
+										 <% if(result[i].title &&result[i].title.length > 0 ){%>
+											<p class="item_title"><a href="/article/<%= result[i].tid %>"><%= result[i].title %></a></p>
+										 <%}%>
+										<div class="msg_content"><%- result[i].newcontent %> </div> 
+									<%}else{%>
+										<span>分享来自
+											<%if(result[i]._sid){%>
+												<a href="#" class="sitetext" data-toggle="tooltip" data-placement="right" title="<%=result[i]._sid.sbrief %>"><%=result[i]._sid.sname %></a>
+											<%}else{%>
+												net
+											<%}%>
+										
+										的快链</span>
+											<%if(result[i]._sid){%>	 
+												<img class="sitepic" src="<%=result[i]._sid.spic %>">
+											<%}%>
+										<p class="item_title"><a href="/redirect?url=<%= result[i].title %>" target="_blank"><%= result[i].content %><i class="fa fa-external-link"></i></a></p>
+									<%}%>
+								 </div> 
+								<div class="msg_date"><i class="fa fa-clock-o"></i><%= result[i].convertdate  %>  
+									<div class="operwrap btn-group">
+										<a class="viewbtn btn" data-tid="<%= result[i].tid %>" title="查看"><span><%= (result[i].view_count>0)?result[i].view_count:'' %></span><i class="fa fa-eye"></i></a>
+										<a class="likebtn  btn" data-tid="<%= result[i].tid %>" title="赞"><span><%= (result[i].like_count>0)?result[i].like_count:'' %></span><i class="fa fa-chevron-up"></i></a>	
+										<a class="unlikebtn btn" data-tid="<%= result[i].tid %>" title="踩"><span><%= (result[i].unlike_count>0)?result[i].unlike_count:'' %></span><i class="fa fa-chevron-down"></i></a>
+										<a class="replybtn btn" href="/article/<%= result[i].tid %>" title="吐糟"><%= (result[i].reply_count>0)?result[i].reply_count:'' %><i class="fa fa-comments"></i></a>
 									</div>
 								</div>
 							</div> 

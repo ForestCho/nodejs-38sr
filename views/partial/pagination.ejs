@@ -5,65 +5,65 @@
 	var pagesize = config.index.list_article_size;
 	var page = Math.ceil(items/pagesize);
 	var curpage = pageid; 
-	if(typeof(catastr) === 'undefined'){
-		catastr = '';
+	if(typeof(curpath) === 'undefined'){
+		curpath = '';
 	}
 	%>
 	<ul class="pagination"> 
 		<% if(curpage == 1 ){ %>
-		<li class="disabled"><a href="#">&laquo;</a></li>
+			<li class="disabled"><a>上一页</a></li>
 		<% }else{ %>
-		<li><a href="//<%= catastr %>?pageid=<%=1 %>">&laquo;</a></li>
+			<li><a href="<%= curpath %>?pageid=<%=curpage-1 %>">上一页</a></li>
 		<% } %> 
 		<%  if( page < displaypage){
 			for(var j=1;j<=page;j++){
 				if( j == curpage ){%>
-				<li class="active"><a href="#" ><%= j %></a></li>
+				<li class="active"><a><%= j %></a></li>
 				<% }else{ %>	
-				<li><a href="/<%= catastr %>?pageid=<%= j %>"><%= j %></a></li>
+				<li><a href="<%= curpath %>?pageid=<%= j %>"><%= j %></a></li>
 				<%}
 			}%>
 			<% }else{
 				if( (parseInt(curpage)-1) <= 4){
 					for(var j=1;j<=displaypage;j++){
 						if( j == curpage ){%>
-							<li class="active"><a href="#" ><%= j %></a></li>
+							<li class="active"><a><%= j %></a></li>
 						<% }else{ %>
-							<li><a href="/<%= catastr %>?pageid=<%= j %>"><%= j %></a></li>
+							<li><a href="<%= curpath %>?pageid=<%= j %>"><%= j %></a></li>
 						<%}%>
 					<%}%>
-							<li class="disabled"><a href="#" >...</a></li>
+							<li class="disabled"><a>...</a></li>
 				<%}%>
 
 
 					<% if( (page-parseInt(curpage)) <= 4 && (parseInt(curpage)-1) > 4){%>
-					<li class="disabled"><a href="#" >...</a></li>
+					<li class="disabled"><a>...</a></li>
 					<% for(var j=page-displaypage;j<=page;j++){
 						if( j == curpage ){%>
-						<li class="active"><a href="#" ><%= j %></a></li>
+						<li class="active"><a><%= j %></a></li>
 						<% }else{ %>
-						<li><a href="/<%= catastr %>?pageid=<%= j %>"><%= j %></a></li>
+						<li><a href="<%= curpath %>?pageid=<%= j %>"><%= j %></a></li>
 						<%}
 					}%>
 
 					<% } %>
 
 					<% if( (page-parseInt(curpage)) > 4 && (parseInt(curpage)-1) > 4){%>
-						<li class="disabled"><a href="#" >...</a></li>
+						<li class="disabled"><a>...</a></li>
 						<% for(var j=curpage-3;j<=parseInt(curpage)+3;j++){
 							if( j == curpage ){%>
-							<li class="active"><a href="#" ><%= j %></a></li>
+							<li class="active"><a><%= j %></a></li>
 							<% }else{ %>
-							<li><a href="/<%= catastr %>?pageid=<%= j %>"><%= j %></a></li>
+							<li><a href="<%= curpath %>?pageid=<%= j %>"><%= j %></a></li>
 							<%}
 						}%>
-						<li class="disabled"><a href="#" >...</a></li>
+						<li class="disabled"><a>...</a></li>
 					<% } %>
 				<% } %>
-					<% if( curpage == page ){%>
-						<li class="disabled"><a href="#">&raquo;</a></li>
+					<% if( curpage < page ){%>
+						<li><a href="<%= curpath %>?pageid=<%= (parseInt(curpage)+1) %>">下一页</a></li>
 					<% }else{%>
-						<li><a href="/<%= catastr %>?pageid=<%= parseInt(page) %>">&raquo;</a></li>
+						<li class="disabled"><a>&raquo;</a></li>
 					<% } %> 
 				</ul>
 </div>

@@ -5127,7 +5127,7 @@ a.thumbnail.active,a.thumbnail:focus,a.thumbnail:hover {
 
 .list-group {
 	padding-left: 0;
-	margin-bottom: 20px
+	margin-bottom: 0px
 }
 
 .list-group-item {
@@ -5866,8 +5866,9 @@ button.close {
 	color: #fff;
 	text-align: center;
 	text-decoration: none;
-	background-color: #000;
-	border-radius: 4px
+	background-color: #07695F;
+	/*background-color: #000;
+	border-radius: 4px*/
 }
 
 .tooltip-arrow {
@@ -5905,7 +5906,8 @@ button.close {
 	left: 0;
 	margin-top: -5px;
 	border-width: 5px 5px 5px 0;
-	border-right-color: #000
+	border-right-color: #07695F;
+	/*border-top-color: #000*/
 }
 
 .tooltip.left .tooltip-arrow {

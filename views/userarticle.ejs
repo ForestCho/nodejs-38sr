@@ -2,47 +2,83 @@
 </head>
 <body>
 	<% include partial/nav %>
-	<div class="mainwrap">
-		<div class="rightwrap">
+	<div class="mainwrap">	
+		<div class="page_header_info">
+	  			<% if(visituser){ %>
+			   		<h3><%=visituser %><small>(<%=typeof(d.userinfo.signature) !== 'undefined'?d.userinfo.signature:'这家伙很懒，什么都没留下~~' %>)</small></h3>
+			   		<h4>Ta的最近心情</h4>
+			   <% } %>
+		</div>
+		<div class="rightwrap user_rightwrap">
 			<% include partial/sidebar %>
 		</div>
-		<div class="leftwrap">
-		   <% if(visituser){ %>
-		   		<h3><%=visituser %><small>(<%=typeof(d.userinfo.signature) !== 'undefined'?d.userinfo.signature:'这家伙很懒，什么都没留下~~' %>)</small></h3>
-		   		<h4>Ta的最近心情</h4>
-		   <% } %>
+		<div class="leftwrap ">		
 		   <div class="user_near_article">
 		   		<% 	var nearArticle = d.data;
 		   			for(var i=0;i<nearArticle.length;i++){ %> 
 		   					<div class="articleitem">    
-									<div class="msg_date"><%= nearArticle[i].convertdate  %> 说	 
-										<div class="reply">
-
-											<% if(typeof(locals.userinfo) !== 'undefined' && locals.userinfo.name === visituser){%>	
-												<a class="deleteitem" data-tid="<%=nearArticle[i].tid %>">删除</a>
-											<% }%>
-											<% if(locals.userinfo){ %>	
-												<a href="/article/<%= nearArticle[i].tid %>">回复</a>
-											<% }else{%>
-												<a href="/login?prelink=/article/<%= nearArticle[i].tid %>">回复</a>
+									<% if(nearArticle[i].classify === 0){%>
+										<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 说	 
+									<%}else{%>
+										<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 分享来自
+											<%if(nearArticle[i]._sid){%>
+												<a href="#" class="sitetext" data-toggle="tooltip" data-placement="right" title="<%=nearArticle[i]._sid.sbrief %>"><%=nearArticle[i]._sid.sname %></a>
+											<%}else{%>
+												net
+											<%}%>										
+										的快链</span>
+											<%if(nearArticle[i]._sid){%>	 
+												<img class="sitepic" src="<%=nearArticle[i]._sid.spic %>">
 											<%}%>
+									<%}%>
+											<div class="reply">
+												<% if(typeof(locals.userinfo) !== 'undefined' && locals.userinfo.name === visituser){%>	 
+													<a class="deleteitem" data-tid="<%=nearArticle[i].tid %>">
+														<i class="fa fa-trash"></i>
+													</a>
+												<% }%>
+												<% if(locals.userinfo){ %>	
+													<a href="/article/<%= nearArticle[i].tid %>">
+														<i class="fa fa-comment"></i>
+													</a>
+												<% }else{%>
+													<a href="/login?prelink=/article/<%= nearArticle[i].tid %>">
+														<i class="fa fa-comment"></i>
+													</a>
+												<%}%>  
 										</div>
 									</div>
-									<pre class="msg_content"><%- nearArticle[i].newcontent %> </pre>  
-								<div class="clearfix"></div>
+									<% if(nearArticle[i].classify === 0){%> 
+										 <% if(nearArticle[i].title &&nearArticle[i].title.length > 0 ){%>
+											<p class="item_title"><a href="/article/<%= nearArticle[i].tid %>"><%= nearArticle[i].title %></a></p>
+										 <%}%>
+										<div class="msg_content"><%- nearArticle[i].newcontent %> </div> 
+									<%}else{%>										
+										<p class="item_title"><a href="/redirect?url=<%= nearArticle[i].title %>" target="_blank"><%= nearArticle[i].content %><i class="fa fa-external-link"></i></a></p>	
+									<%}%> 
+								<div class="clearfix"></div> 
 							</div> 
 		  		<% } %>
-		  		<div class="navigator">
+		  		<div class="navigator"> 
 			  		 <% if(d.currentpage > 1 ){%>
-			  			<a href="/user/<%= visituser %>/article/?pageid=<%= d.currentpage - 1  %>">
-			  				<div class="last_page">&larr;上一页</div>
+			  			<a href="/user/<%= visituser %>/article/?pageid=<%= d.currentpage - 1  %>" class="last_page fade_trans">
+			  				&larr;上一页
 			  			</a>
 			  		<%}%>
-			  		<% if(nearArticle.length > 8 ){%>
-			  			<a href="/user/<%= visituser %>/article/?pageid=<%= d.currentpage - (-1)  %>">
-			  				<div class="next_page">下一页&rarr;</div>
+			  		<% if(nearArticle.length > config.index.list_article_size ){%>
+			  			<a href="/user/<%= visituser %>/article/?pageid=<%= d.currentpage - (-1)  %>" class="next_page fade_trans">
+			  				下一页&rarr;
 			  			</a>
 			  		<%}%>
+			  		<div class="page_numwrap">
+			  			<div class="page_num">
+				  			<%
+								var pagesize = config.index.list_article_size;
+								var pagenum = Math.ceil(d.articlenum/pagesize);
+				  			%>
+			  				<%= d.currentpage %>/<%= pagenum %>
+			  			</div>
+			  		</div>
 		  		</div>
 		   </div>
 		</div>

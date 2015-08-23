@@ -54,8 +54,8 @@ exports.picupload = function(req, res) {
 	var filename = req.files.picture.name;
 	var sz = req.files.picture.size;
 	var username = req.session.user.name;
-	var maxWidth = 480;
-	var maxHigh = 700;
+	var maxWidth = 500;
+	var maxHigh = 500;
 	if (sz > 2*1024*1024) {
 		fs.unlink(temp_path, function() {	//fs.unlink 删除用户上传的文件 
 			var msg = {};
@@ -123,41 +123,40 @@ exports.imgupload = function(req, res) {
 			res.redirect('/set/avatar'); 
 			return ;
 		});
-	} 
-
+	}   
 	var w_h = 160/160;
 	var new_filename = Date.now() + '_' + filename; 
 	imageMagick(temp_path).size(function(err,size){ 
 		var x_w_h = size.width/size.height; 
 		var new_width = 160;
 		var new_high  = 160;
+		console.log(size);
 
+		var upBase = config.upyun.photourl+username+'/';
+	 	var curTime = new Date();
+	 	var newFilename = curTime.getTime()+'_'+username+'_'+filename; 
+	 	var bigphotopath = upBase+newFilename;
+		var upAbsolute = '/photo/'+username+'/'+newFilename;
+		var upyun = new UPYun(config.upyun.bat, config.upyun.opname, config.upyun.oppwd);
 		if(size.width > 160 | size.height > 160){
 			if(x_w_h > w_h || x_w_h === w_h){
 				new_high = 1/x_w_h*160;
 			}else{
 				new_width = x_w_h*160;
-			}
+			} 
 			imageMagick(temp_path).resize(new_width, new_high, '!').autoOrient().write(temp_path, function(err){
 				if (err) {
 					console.log(err);
 					res.end();
-				}
-		
-				var upyun = new UPYun(config.upyun.bat, config.upyun.opname, config.upyun.oppwd);
-			 	var fileContent = fs.readFileSync(temp_path);  
-			 	var upBase = config.upyun.photourl+username+'/';
-			 	var curTime = new Date();
-			 	var newFilename = curTime.getTime()+'_'+username+'_'+filename; 
-			 	var bigphotopath = upBase+newFilename;
-	 			var upAbsolute = '/photo/'+username+'/'+newFilename;
-				upyun.writeFile(upAbsolute, fileContent, false, function(err, data){
+				} 
+			 	var fileContent = fs.readFileSync(temp_path);   
+				upyun.writeFile(upAbsolute, fileContent, false, function(err, data){ 
 				    if (!err) {	      
 						fs.unlink(temp_path, function() {
 							update_originphoto(bigphotopath,username,function(err){
 								if(!err){
 									var msg = {};
-										msg.content = "图片上传成功!!";
+										msg.content = "图片上传成功!!请刷新页面";
 										msg.status = 1;
 									req.flash('msg',msg); 
 									res.redirect('/set/avatar');
@@ -168,6 +167,24 @@ exports.imgupload = function(req, res) {
 				    }
 				});		
 			}); 
+		}else{
+		 	var fileContent = fs.readFileSync(temp_path);   
+			upyun.writeFile(upAbsolute, fileContent, false, function(err, data){ 
+			    if (!err) {	      
+					fs.unlink(temp_path, function() {
+						update_originphoto(bigphotopath,username,function(err){
+							if(!err){
+								var msg = {};
+									msg.content = "图片上传成功!!";
+									msg.status = 1;
+								req.flash('msg',msg); 
+								res.redirect('/set/avatar');
+								return ;
+							}
+						})
+					});
+			    }
+			});	
 		}
 	}) 
 };
@@ -226,4 +243,5 @@ function resizeImageByMax(temp_path,newpath,new_width,new_high,callback){
 		} 
 	}) 
 }
+exports.resizeImageByMax = resizeImageByMax;
 //resizeImageByMax("/home/caosl/web/mongoblog/routes/nnweqb1.jpg",500,400);

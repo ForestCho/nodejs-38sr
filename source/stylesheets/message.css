@@ -1,14 +1,17 @@
-.head_text {
+/*.head_text {
 	font-size: 20px;
 	border-bottom: 2px solid #f3f3f3;
 	padding: 0 0 7px;
 	margin-bottom: 10px;
 	color: #555
-}
+}*/
 
 .msgitem {
 	padding: 10px;
-	margin-bottom: 10px;
-	border-bottom: 1px solid #B9B9B9;
+	padding-top: 10px;
+	border-bottom: 1px solid #F1F1F1;
 	margin-left: 30px
+}
+.msgitem:hover{
+	background-color: #F8F8F8;
 }

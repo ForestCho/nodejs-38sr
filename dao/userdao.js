@@ -16,17 +16,26 @@ var getUserInfoByEmail = function(email,cb){
 	User.findOne({email:email},cb);
 }
 
+var getUserInfoByLoginTypeAndAccessToken = function(logintype,access_token,cb){
+	User.findOne({logintype:logintype,access_token:access_token},cb);
+}
+var getUserInfoByLoginTypeAndName = function(logintype,name,cb){
+	User.findOne({logintype:logintype,name:name},cb);
+}
+
 //得到新增用户的uid
 var getNextUidOfUser = function(cb){
 	var uid = 1;
 	User.findOne().sort({'uid':-1}).exec(function(err,doc){  
-		if(doc){
-			if(doc.uid > 0){
-				uid = doc.uid + 1; 
-			}
+		if(!err){
+			if(doc){
+				if(doc.uid > 0){
+					uid = doc.uid + 1; 
+				}
+			} 
 			return cb(null,uid)
-		} 
-		return cb(err)
+		}
+		return cb(err); 
 	});
 }
 
@@ -50,6 +59,31 @@ var saveNewUser = function(uid,name,email,pwd,relapath,relapath,cb){
 	}); 
 	user.save(cb);  
 }
+var saveNewSinaUser = function(uid,name,locate,photo,access_token,logintype,gender,signature,oid,cb){
+	var user = new User({   
+		uid:uid,
+		name:name, 
+		locate:locate,
+		photo:photo,
+		access_token:access_token,
+		logintype:logintype,
+		gender:gender,
+		signature:signature,
+		oid:oid
+	}); 
+	user.save(cb);  
+}
+var saveNewQQUser = function(uid,name,locate,photo,logintype,gender,cb){
+	var user = new User({   
+		uid:uid,
+		name:name, 
+		locate:locate,
+		photo:photo, 
+		logintype:logintype,
+		gender:gender
+	}); 
+	user.save(cb);  
+}
 
 //更新用户信息By User
 var updateUserInfoFree = function(condition,update,options,cb){ 
@@ -64,8 +98,15 @@ var updateUserInfo = function(user,cb){
 exports.getUserInfoByName = getUserInfoByName;
 exports.getUserInfoByUid = getUserInfoByUid;
 exports.getUserInfoByEmail = getUserInfoByEmail;
+
+exports.getUserInfoByLoginTypeAndAccessToken = getUserInfoByLoginTypeAndAccessToken;
+exports.getUserInfoByLoginTypeAndName = getUserInfoByLoginTypeAndName;
+
+
 exports.getNextUidOfUser = getNextUidOfUser;
 exports.saveNewUser = saveNewUser;
+exports.saveNewSinaUser = saveNewSinaUser;
+exports.saveNewQQUser = saveNewQQUser;
 exports.updateUserInfo = updateUserInfo;
 exports.updateUserInfoFree = updateUserInfoFree;
 exports.getNumberOfAllUser = getNumberOfAllUser;

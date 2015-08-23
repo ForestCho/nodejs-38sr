@@ -3,12 +3,15 @@
 <body>	
 	<% include partial/nav %>
 	<div class="mainwrap">
-		<ul class="settab">
-			<li><a href="/set">基本信息</a></li>
-			<li><a href="/set/account" class="curset">账号设置</a></li>	
-			<li><a href="/set/avatar">头像设置</a></li>
-			<div style="clear:both"></div>
-		</ul>
+		<div class="account_panel">
+			<div class="set-header">
+				<ul class="settab">
+					<li><a href="/set">基本信息</a></li>
+					<li><a href="/set/account" class="curset">账号设置</a></li>	
+					<li><a href="/set/avatar">头像设置</a></li>
+					<div style="clear:both"></div>
+				</ul>
+			</div>
 		<div class="setpanel"> 
 			<div class="msgbox">
 				<% if(typeof(msg) !== 'undefined' && msg.status !== -1){ %>
@@ -47,6 +50,7 @@
 
 	 		</div>
 			<div style="clear:both"></div>
+			</div>
 		</div>		
-	</div>			
+	</div>				
 			<% include partial/footer %>

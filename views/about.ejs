@@ -1,30 +1,44 @@
 <% include partial/header%>
 </head>
-<body>	
+<body class="body_index">	
 	<% include partial/nav %>
 	<div class="mainwrap">
-		<h3 class="about_head_info">关于38Sr</h3>
+		<div class="about_head_info">
+			<h3 >关于38SR</h3>
+		</div>
+			<!--		
+			<ol class="breadcrumb">
+			  <li><a href="/">Home</a></li> 
+			  <li class="active">关于38SR</li>
+			</ol>
+			-->
 		<div class="aboutpanel"> 
 			<div class="leftinfo"> 
 				<h4>为什么叫38Sr</h4>
-				<p>38Sr中Sr是化学元素中锶元素的简写，是一种金属元素，而38代表锶元素的原子序号，非常好记</p>
+				<p>38Sr中Sr是化学元素中锶元素的简写，是一种金属元素，而38代表锶元素的原子序号，非常好记。</p>
 				<div class="srimgstyle"><img src="/images/sr.jpg" /></div>
 				<br>
 				<h4>本站是怎么开发的呢</h4>
-				<p>本站目前功能相当简单，目前只具有图片的发表和查看心情的功能，其他功能正在开发中</p> 
+				<p>站点基于nodejs的开发，前端采用bootstrap开发框架，后端用expressjs这个Web应用框架。服务器用的是<a href="https://www.digitalocean.com/?refcode=0f682e48abe3">DigitalOcean</a>。</p> 
 				<br>	
 				<h4>我可以用本站做什么?</h4>
-				<p>由于技术含量不高，其功能微博等牛逼的网上都有，只想有个简单的，安静的小窝</p> 
+				<p>您可以在这上面发表文章，心情，已经发表一个你喜欢的链接，站点会自动通过链接获取文章信息。</p> 
 				<br>
 				<h4>联系我</h4>
-				<p>有任何问题，请不吝email:forest@38sr.com，我将尽力解决</p> 
+				<p>有任何问题，请不吝email:caosl_158#sina.com[#换成@]，或者在<a href="http://www.38sr.com/feedback">feedback</a>反馈，我将尽力解决。</p> 
 				<br>
 				</div> 
 
 					<div class="rightreg">
 						<div class="rightpanelinfo">
-							>> 还没注册，<a href="/reg">马上注册</a><br>
-							>> 已经注册过，<a href="/login">马上登录</a>
+							<ul class="nav_reg_login">
+								<li>
+									>> 还没注册，<a href="/reg">马上注册</a>
+								</li>
+								<li>
+									>> 已经注册过，<a href="/login">马上登录</a>
+								</li>
+							</ul>
 						</div>
 					</div>
 			<div style="clear:both"></div>

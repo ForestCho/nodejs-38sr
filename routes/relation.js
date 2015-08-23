@@ -9,6 +9,7 @@ var EventProxy = require('eventproxy');
  */
  exports.follow = function (req, res) {  	
  	if(!req.session.user){     
+ 		console.log("cccc");
  		res.json({status:'failed'}); 
  	}else{ 
  		var followUid = req.query.followuid;
@@ -29,21 +30,29 @@ var EventProxy = require('eventproxy');
  				_uid_info:userinfo._id,
  				_fuid_info: userinfoby._id
  			}); 
- 			if(follow ==  "true"){
- 				Relation.remove({uid:relation.uid,fuid:relation.fuid},function(err,doc){
+ 			if(follow ==  "true"){ 
+ 				Relation.findOne({uid:relation.uid,fuid:relation.fuid},function(err,doc){
+ 					if (err) return handleError(err); 	
+ 					if(doc){ 
+	 					res.json({status:'failed'}); 
+	 					return ;
+ 					}else{ 
+ 						relation.save(function(err,relate){
+	 					if (err) return handleError(err); 	
+	 					MessageDao.saveFollowMsg(myUid,followUid,function(err){
+	 						if (err) return handleError(err); 	
+	 						res.json({status:'success'}); 
+	 						return ;
+	 					});
+	 				});
+ 					}
+ 				}); 				
+ 			}else{ 
+				Relation.remove({uid:relation.uid,fuid:relation.fuid},function(err,doc){
  					if (err) return handleError(err); 	
  					res.json({status:'success'}); 
  					return ;
- 				});
- 			}else{ 
- 				relation.save(function(err,relate){
- 					if (err) return handleError(err); 	
- 					MessageDao.saveFollowMsg(myUid,followUid,function(err){
- 						if (err) return handleError(err); 	
- 						res.json({status:'success'}); 
- 						return ;
- 					});
- 				});
+ 				}); 				
  			}
  		});
 

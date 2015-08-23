@@ -1,0 +1,12 @@
+.followlist_wrap img{
+	
+}
+.followlist_wrap .perfollower {
+	height: 85px;
+	width: 88px;
+	overflow: hidden;
+	line-height: 18px;
+	float: left;
+	text-align: center;
+	font-size: 12px;
+}

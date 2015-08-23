@@ -7,7 +7,7 @@ var config = {
 	session_secret: '38srweb',
 	
 	index: {
-		list_article_size : 8,
+		list_article_size : 14,
 		list_new_user_size :9,
 		list_hot_user_size :9
 	},
@@ -15,7 +15,7 @@ var config = {
 	site:{
  		name: '38锶',
   		description: '38锶',
-		keywords: '心情,小清新,有点意思,朋友',
+		keywords: '心情,小清新,有点意思,囧事,爆料',
   		author: 'caosl158'
 	},
 
@@ -25,15 +25,16 @@ var config = {
 		port:465,
 		auth: {
 			user:"forest@38sr.com",
-			pass: "caosl910417"
+			pass: "CAOsl910417"
 		}
 	}, 
 	upyun:{
 		bat:  "srpic",
 		opname:  "caosl158",
-		oppwd:  "csl123456", 
+		oppwd:  "caosl910417", 
 		photourl:  "http://srpic.b0.upaiyun.com/photo/",
 		cimgurl:  "http://srpic.b0.upaiyun.com/cimg/",
+		siteurl:  "http://srpic.b0.upaiyun.com/site/",
 		mryjurl:  "http://srpic.b0.upaiyun.com/mryj/"
 			
 	},
@@ -42,16 +43,16 @@ var config = {
 
 	site_link:[
 		{
-			text:"Forest Blog",
-			link:"http://blog.yidongzhifu.net"
+			text:"Shulen`s Blog",
+			link:"http://forestcho.github.io"
 		},
 		{
-			text:"雨燕社区",
-			link:"http://www.cswift.cn"
+			text:"DigitalOcean",
+			link:"https://www.digitalocean.com/?refcode=0f682e48abe3"
 		},	
 		{
-			text:"38锶",
-			link:"http://www.38sr.com"
+			text:"羊城通余额查询",
+			link:"http://www.38sr.com/yangchengtongv"
 		}
 
 	]

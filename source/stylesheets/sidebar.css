@@ -1,13 +1,23 @@
+
 .intropre {
-	border: 0 solid #ccc!important;
+	padding: 12px; 
+	border: 1px dashed #AABBDD;
 	border-radius: 0;
-	background-color: #f5f5f5
+	background-color: #f5f5f5;
+	padding:10px;
 }
-
+.baseinfo p{
+	margin: 5px 0 10px;
+}
 .followme,.hefollow {
-	overflow: hidden
+	overflow: hidden;
+	margin-top: 10px;
 }
-
+.follower a:hover{ 
+	color: #07695E;
+	text-decoration: underline;
+}
+}
 .follower p {
 	font-size: 20px;
 	line-height: 1em;
@@ -21,7 +31,7 @@
 	margin: 0 auto
 }
 
-.perfollwer {
+.perfollower {
 	height: 65px;
 	width: 68px;
 	overflow: hidden;
@@ -30,17 +40,39 @@
 	text-align: center;
 	font-size: 12px
 }
+.follower_title{
+	 font-size: 18px; 
+	 margin-top: 15px; 
+	 border-bottom: 2px solid #DCDDD9; 
+} 
 
-.followernum {
-	color: #777
+.follower_title .followernum{
+	border-bottom: 2px solid #00a090;
+	padding: 5px 3px;
+	position: relative;
+	margin-bottom: -2px;
+	display: inline-block;
+	color: #555;
+} 
+.more_follower{
+	color:#747C81;
+	float: right;
+	font-size: 16px;
+	height: 25px;
+	line-height: 25px;
 }
 
+.site_intro{
+	margin-top: 20px;
+}
 .site_list a{	
+	transition:all 0.5s;
 	line-height: 25px; 
 } 
 .site_list a:hover{
 	background: #fff;
-	color: #0E385C; 
+	color: #07695E; 
+	margin-left: 20px;
 } 
 .pubone{
 	padding-bottom: 30px;
@@ -49,7 +81,22 @@
 	position: relative;
 	display: block;
 	margin: 0 auto;
-	width: 200px;
+	width: 100%;
+	height: 60px;
+	background-color: #00a090;
+	font-size: 31px;
+	line-height: 60px;
+	color: #FFF;
+	text-align: center; 
+	-webkit-transition: color .3s;
+	-moz-transition: color .3s;
+	transition: color .3s;
+}
+.downloadapp a{
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 100%;
 	height: 60px;
 	background-color: #4a7aaa;
 	font-size: 31px;
@@ -59,6 +106,11 @@
 	-webkit-transition: color .3s;
 	-moz-transition: color .3s;
 	transition: color .3s;
+}
+.downloadapp a:hover{
+	background-color: rgba(128, 144, 160, 1);
+	color: #fff;
+	text-decoration: none;
 }
 .pubone a::before {
 	position: absolute;
@@ -85,14 +137,16 @@
 
 .pubone a:hover,
 .pubone a:focus {
-	color: #C0BCB4;
+	color: #FFF;
 }
 .everyday{
 	position: relative;
 	overflow: hidden;
-	width: 205px;
+	width: 100%;
 	height: 133px;
-}
+	border-radius: 5px;
+	-webkit-user-select: none;
+} 
 .everyday:hover .everyday_img{
 	-webkit-transition: all .8s;
 	-moz-transition: all .8s;
@@ -128,7 +182,7 @@
 .everyday_text_cn, .everyday_text_en{
 	position: absolute;
 	top: 0px;
-	color: #E4ECFA;
+	color: #637EAD;
 	font-size: 15px;
 	line-height: 27px;
 	margin: 10px
