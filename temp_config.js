@@ -24,14 +24,14 @@ var config = {
 		secureConnection:true,
 		port:465,
 		auth: {
-			user:"forest@38sr.com",
-			pass: "CAOsl910417"
+			user:"test@38sr.com",
+			pass: "test"
 		}
 	}, 
 	upyun:{
 		bat:  "srpic",
-		opname:  "caosl158",
-		oppwd:  "caosl910417", 
+		opname:  "test_name",
+		oppwd:  "test_pwd", 
 		photourl:  "http://srpic.b0.upaiyun.com/photo/",
 		cimgurl:  "http://srpic.b0.upaiyun.com/cimg/",
 		siteurl:  "http://srpic.b0.upaiyun.com/site/",
