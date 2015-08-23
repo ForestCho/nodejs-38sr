@@ -4,8 +4,7 @@
 	<% include partial/nav %>
 	<div class="mainwrap">	
 		<div class="page_header_info">
-	  			<% if(visituser){ %>
-			   		<h3><%=visituser %><small>(<%=typeof(d.userinfo.signature) !== 'undefined'?d.userinfo.signature:'这家伙很懒，什么都没留下~~' %>)</small></h3>
+	  			<% if(visituser){ %> 
 			   		<h4>Ta的最近心情</h4>
 			   <% } %>
 		</div>
