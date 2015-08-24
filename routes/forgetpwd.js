@@ -18,7 +18,7 @@ var	EventProxy = require('eventproxy');
 
  	ep.assign("tempuser","raw",function(tempuser,raw){
  		var emailTitle = "38锶找回密码";
- 		var htmlContent ="您的帐号"+uname+"在38锶的密码为"+randomPwd+",热泪欢迎你啊…";
+ 		var htmlContent ="您的帐号"+ tempuser.name +"在38锶的密码为"+randomPwd+",热泪欢迎你啊…";
  		util.send_mail(usermail,emailTitle,htmlContent,function(error,response){ 		 
 	 		msg.content = "密码已经发送到您的邮箱!!" ;
 	 		msg.status = 1 ;
