@@ -35,14 +35,14 @@
 							</ul> 
 						</div>
 					</div>
-				<div class="msgbox">
-					<% if(typeof(msg) !== 'undefined' && msg.status !== -1){ %>
-						<div class="<%=(msg.status === 1)?"sucesssty":"alertsty" %>" role='alert'>
-							<%-msg.content %>
-							</div> 
-					<% } %>
-				</div>
 			<div style="clear:both"></div>
-			</div>			
-				</div>		
+			</div>		
+			<div class="msgbox">
+				<% if(typeof(msg) !== 'undefined' && msg.status !== -1){ %>
+					<div class="<%=(msg.status === 1)?"sucesssty":"alertsty" %>" role='alert'>
+						<%-msg.content %>
+						</div> 
+				<% } %>
+			</div>
+		</div>		
 			<% include partial/footer %>
