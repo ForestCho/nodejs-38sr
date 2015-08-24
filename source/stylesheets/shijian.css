@@ -1,9 +1,8 @@
 .shijianpanel{
-	margin-top: 20px;
-	margin-left: 20px;
-	margin-right: 20px;
-	width: 100%;;
-	overflow: hidden;
+	padding-top: 20px; 
+	padding-bottom: 20px;
+	padding-left: 50px;
+	width: 100%; 
 }
 .point{
 	width: 55px;
@@ -32,8 +31,7 @@
 	overflow: hidden;
 	position: relative;
 }
-#timewrap{ 
-	width: 1180px;
+#timewrap{  
 	overflow: hidden;
 	margin: 0 auto;
 	background: url(../images/linebg.gif)  repeat-y 187px 0; 

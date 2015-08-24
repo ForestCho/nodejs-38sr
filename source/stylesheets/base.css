@@ -29,11 +29,7 @@ textarea ,input{
 ul{
 	padding: 0px;
 	margin: 0px;
-}
-
-.body_index{
-	background: #fff;
-}
+} 
 .mainwrap { 
 	width: 70%;
 	min-height: 400px;
@@ -73,18 +69,18 @@ ul{
 	padding-top: 10px;
 	margin-top: 60px;
 	border-top: 1px solid #eee;
-	color: #FFFFFF;
+	color: #424242;
 	width: 100%;
 }
 
 .copyright a {
-	color: #fff;
+	color: #424242;
 }
 .otherlink:after {
 	content: " • ";
 }
 .otherlink:hover{
-	color: #fff;
+	color: #424242;
 }
 .aboutpanel {
 	margin-top: 20px;

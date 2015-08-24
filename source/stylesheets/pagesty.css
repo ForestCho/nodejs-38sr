@@ -1,7 +1,3 @@
-.about_head_info {
-	border-bottom: 1px solid #DAD5D5
-}
-
 .srimgstyle {
 	margin: 0 auto;
 	text-align: center
@@ -1440,11 +1436,10 @@ a.unfollowfri:hover{
 	margin: 0 auto; 
 }
 .shijianpanel{
-	margin-top: 20px;
-	margin-left: 20px;
-	margin-right: 20px;
-	width: 100%;;
-	overflow: hidden;
+	padding-top: 20px; 
+	padding-bottom: 20px;
+	padding-left: 50px;
+	width: 100%; 
 }
 .point{
 	width: 55px;
@@ -1473,8 +1468,7 @@ a.unfollowfri:hover{
 	overflow: hidden;
 	position: relative;
 }
-#timewrap{ 
-	width: 1180px;
+#timewrap{  
 	overflow: hidden;
 	margin: 0 auto;
 	background: url(../images/linebg.gif)  repeat-y 187px 0; 
