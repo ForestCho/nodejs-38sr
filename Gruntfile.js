@@ -29,11 +29,7 @@ module.exports = function(grunt){
             bulid1: {
                 src: 'source/javascripts/base.js',
                 dest: 'public/javascripts/base.min.js'
-            },
-            bulid2: {
-                src: 'source/javascripts/gotop.js',
-                dest: 'public/javascripts/gotop.min.js'
-            },
+            }, 
             bulid3: {
                 src: 'source/javascripts/underscore.js',
                 dest: 'public/javascripts/underscore.min.js'
