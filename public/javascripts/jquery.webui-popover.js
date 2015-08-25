@@ -5,7 +5,7 @@
 		var pluginClass = 'webui-popover';
 		var pluginType = 'webui.popover';
 		var	defaults = {
-					placement:'left',
+					placement:'auto',
 					width:'auto',
 					height:'auto',
 					trigger:'click',
