@@ -28,12 +28,13 @@ var commonQuery = function (req, res,curpath,articleLimit,cataZh) {
  		res.locals.userinfo = req.session.user;
  	} 
  	var ep = new EventProxy();  
- 	ep.assign("count","usercount","articlelist","hotuser","mryj",'zymryj',function (count,usercount,articlelist,hotuser,mryj,zymryj) {
+ 	ep.assign("count","usercount","articlelist","hotuser",'zymryj',function (count,usercount,articlelist,hotuser,zymryj) {
  		var d= []; 
 	 		d.count = count;
 	 		d.data = articlelist;
 	 		d.hotuser = hotuser;
 	 		d.usercount = usercount;  
+	 	var mryj = ' 在人生的漫漫旅途中，有时热烈，有时寂寞，有时高兴，有时忧伤...这里可以记录这一切';
  		res.render('index', { title:'做一名简单的锶者!',curpath:curpath,d:d,pageid:pageid,mryj:mryj,zymryj:zymryj,cataZh:cataZh});
  	});
  
@@ -94,10 +95,7 @@ var commonQuery = function (req, res,curpath,articleLimit,cataZh) {
 	        })
 	      );
 	    }
-	  }));  
-	MryjDao.getMryjOfCurrday(function(err,mryj){
- 		ep.emit("mryj",mryj);
-	});  
+	  }));   
  	UserDao.getNumberOfAllUser(function (err,usercount) {
  		ep.emit("usercount",usercount);
  	}); 
