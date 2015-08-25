@@ -1,6 +1,5 @@
 .rep_msg_box {
-	background-color: #fff;
-	margin-top: 20px;
+	background-color: #fff; 
 	border-bottom: 1px dashed #eee;
 }
 .nosignin{
@@ -88,7 +87,8 @@
 .articleitem_detail{
 	background-color: #FFF;
 	margin-top: 51px;
-	padding-bottom: 15px;
+	padding-bottom: 30px;
+	border-bottom: 1px solid #eee;
 }
 .msg_content_detail {
 	color: #333;

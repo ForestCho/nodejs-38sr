@@ -1,13 +1,12 @@
 <% include partial/header%>
 </head>
-<body class="body_index">
-	<% include partial/nav %>
-	<div class="mainwrap"> 		
-		<div class="about_head_info">
-			   	<h3>Ta的拥趸<small>(<%=d.hefollowernum %>)</small></h3>
+<body>	
+	<% include partial/nav %> 
+	<div class="mainwrap reglogin_mainwrap"> 
+		<div class="reglogin_head_info panel-heading">
+			   	Ta的拥趸<small>(<%=d.hefollowernum %>)</small>
 		</div>
-		<div class="followlist_wrap">		    
-			<div class="hefollow">			
+		<div class="followlist_wrap">		    		
 				<%
 					var hefollowerlist = d.hefollowerlist;  
 					var length1 = hefollowerlist.length;
@@ -20,8 +19,7 @@
 							<a href="/user/<%=hefollower.name%>" alt="<%=hefollower.name%>"><img src=<%= hefollower.photo %>></a>
 							<a href="/user/<%=hefollower.name%>" alt="<%=hefollower.name%>"><%=hefollower.name%></a>
 						</div>
-				<%}%>
-			</div>
+				<%}%> 
 		</div>
 		<div style="clear:both"></div>
 	</div>				

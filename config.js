@@ -24,7 +24,7 @@ var config = {
 		secureConnection:true,
 		port:465,
 		auth: {
-			user:"forest@38sr.com",
+			user:"service@38sr.com",
 			pass: "CAOsl910417"
 		}
 	}, 
@@ -44,7 +44,7 @@ var config = {
 	site_link:[
 		{
 			text:"Shulen`s Blog",
-			link:"http://forestcho.github.io"
+			link:"http://blog.38sr.com"
 		},
 		{
 			text:"DigitalOcean",
