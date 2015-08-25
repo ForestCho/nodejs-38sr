@@ -6,7 +6,7 @@
 	background: #fff;
 	height: 100px;
 	padding: 5px;
-	border-radius: 5px;
+	border-radius: 0px 0px 5px 5px;
 }
 
 .onesentence {
@@ -14,7 +14,7 @@
 }
 
 .onesentence p {
-	font-size: 15px;
+	font-size: 16px;
 	text-indent: 2em;
 	line-height: 26px;
 }
@@ -294,4 +294,24 @@
 .item_title a:hover{  
 	color: #07695E;
 	text-decoration: underline;
+}
+
+.pagination_container{
+	width: 100%;
+	background-color: #fff;
+	margin-top: 1px;
+	border-radius: 5px 5px 0px 0px;
+}
+.pagination li a, .pagination li span {
+	background-color: #fafafa;
+	color: #999;
+	border-color: #e6e6e6;
+}
+.pagination li a:hover, 
+.pagination li span:hover, 
+.pagination li a:focus, 
+.pagination li span:focus {
+	color: #232F38;
+	background-color: #eee;
+	border-color: #ddd;
 }

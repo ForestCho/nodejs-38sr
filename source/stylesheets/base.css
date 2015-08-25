@@ -57,7 +57,7 @@ ul{
 	background-color: #fff;
 } 
 .leftwrap {
-	  margin-right: 250px;
+	  margin-right: 245px;
 }
  
 .nav_reg_login li{
@@ -67,20 +67,22 @@ ul{
 .copyright {
 	text-align: center;
 	padding-top: 10px;
+	padding-bottom: 10px;
 	margin-top: 60px;
-	border-top: 1px solid #eee;
-	color: #424242;
+	border-top: 1px solid #C2C2C2;
+	color: #707b91;
+	background-color: #fff;
 	width: 100%;
 }
 
 .copyright a {
-	color: #424242;
+	color: #707b91;
 }
 .otherlink:after {
 	content: " • ";
 }
 .otherlink:hover{
-	color: #424242;
+	color: #707b91;
 }
 .aboutpanel {
 	margin-top: 20px;
@@ -221,8 +223,7 @@ ul{
 	.meiriyiju{
 		display: none;
 	}
-	.mainwrap{
-/* 	 	overflow: hidden; */
+	.mainwrap{ 
 	 	width:100% !important;
 	 	min-width: 0px;  
 	 	position: relative;

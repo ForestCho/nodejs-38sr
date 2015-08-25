@@ -144,11 +144,12 @@
 	white-space: nowrap;
 }
 .detail_msg_head{
-	font-size: 17px;
+	font-size: 19px;
 	color: #383838;
-	border-left: 4px solid #00a090; 
+	border-left: 4px solid #00a090;
 	padding: 8px 10px;
-	line-height: 17px; 
+	line-height: 19px;
+	height: 38px;
 }
 .no_reply_notice{
 	padding: 20px 0px;
