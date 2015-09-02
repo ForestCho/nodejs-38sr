@@ -9,6 +9,9 @@ body {
 a {
 	color: #303e48;
 }  
+a:hover{
+	cursor:pointer;
+}
 input:focus,textarea:focus{
 	outline:0;
 	border-color:rgba(82,168,236,0.8); 
@@ -114,6 +117,7 @@ ul{
 .link_btn:hover {
 	background: -moz-linear-gradient(#28d,#1278cd);
 	background: -webkit-linear-gradient(#28d,#1278cd);
+	filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#1471da, endColorstr=#1C85FB)";/*IE<9>*/
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2288dd',endColorstr='#ff1278cd')";
 	border: 1px solid #28d;
 	color: #fff;

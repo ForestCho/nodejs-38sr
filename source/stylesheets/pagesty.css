@@ -4,7 +4,7 @@
 }
 .rep_msg_box {
 	background-color: #fff; 
-	border-bottom: 1px dashed #eee;
+	border-bottom: 1px solid #eee;
 }
 .nosignin{
 	text-align: center; 
@@ -20,21 +20,22 @@
 	background-color: #fff;
 }
 .reply_msg_item {
-	border-top: 1px dashed #E0E0E0;
-	padding: 5px 20px 10px 10px;
-	overflow: hidden
+	border-top: 1px solid #E0E0E0;
+	padding: 15px 20px 15px 20px;
+	overflow: hidden;
 }
 
 .reply_user_photo {
 	float: left;
-	width: 45px;
-	height: 45px;
+	width: 48px;
+	height: 48px;
 	overflow: hidden
 }
 
 .reply_user_photo img {
-	width: 45px;
-	height: 45px;
+	width: 48px;
+	height: 48px;
+	border-radius: 25px;
 	border: 2px solid #fff;
 	-webkit-transition: all .35s ease-in-out;
 	-moz-transition: all .35s ease-in-out;
@@ -52,6 +53,9 @@
 .reply_info span {
 	color: #999
 } 
+.article_head_info{
+	padding:5px 0px;
+}
 .article_head_info a{	
 	font-size: 16px;
 	color: #838383;
@@ -181,7 +185,9 @@
 	border: 2px solid #D5C8DB
 }
 .detailinfo img{
-	width: 60%;
+	width: 100%;
+	display: block;
+	margin: 0 auto;
 }
 
 #replywrap{
@@ -436,12 +442,14 @@
 
 .sidetitle {
 	font-size: 18px; 
+	height: 33px;
 	border-bottom: 2px solid #DCDDD9;
 }
 .sidetitle .titletext{
 	border-bottom: 2px solid #00a090;
 	padding: 5px 3px;
 	position: relative;
+	height: 33px;
 	margin-bottom: -2px;
 	display: inline-block;
 }
@@ -528,6 +536,10 @@
 	color: #232F38;
 	background-color: #eee;
 	border-color: #ddd;
+}
+.a_loading{
+	background: #fff;
+	color: #C5C5C5;
 }
 .leftreg {
 	float: left;
@@ -644,7 +656,11 @@
 	margin-bottom: 10px;
 	color: #555
 }*/
-
+.msgwrap{
+	background-color: #fff;
+	padding: 10px 20px 40px 20px;
+	min-height: 600px;
+}
 .msgitem {
 	padding: 10px;
 	padding-top: 10px;
@@ -954,7 +970,7 @@
 }
 .followme,.hefollow {
 	overflow: hidden;
-	margin-top: 10px; 
+	margin-top: 5px; 
 }
 .followlist_wrap{
 	overflow: hidden;
@@ -991,6 +1007,7 @@
 .follower_title{
 	 font-size: 18px; 
 	 margin-top: 15px; 
+	 height: 33px;
 	 border-bottom: 2px solid #DCDDD9; 
 } 
 
@@ -998,10 +1015,52 @@
 	border-bottom: 2px solid #00a090;
 	padding: 5px 3px;
 	position: relative;
+	height: 33px;
 	margin-bottom: -2px;
 	display: inline-block;
 	color: #555;
 } 
+.fansuserlink{
+	width: 100%;
+	height: 40px;
+	display: block;
+}
+.fansuserlink:hover{
+	background-color: #F0F0F0;
+}
+.followerwrap{
+	height: 40px;
+	width: 100%;
+	padding: 5px 5px; 
+	line-height: 18px;
+	float: left;
+	text-align: center;
+	font-size: 12px;
+	border-bottom: 1px solid #eee;
+}
+.followerwrap .imagewrap{
+	width: 30px;
+	height: 30px;
+	display: block;
+	margin: 0 auto;
+	border-radius: 30px;
+	display: inline-block;
+	float: left;
+}
+.followerwrap .namewrap{
+	display: inline-block;
+	float: left;
+	height: 30px;
+	margin-left: 20px;
+	line-height: 30px;
+}
+.followerwrap img{
+	width: 30px;
+	height: 30px;
+	display: block;
+	margin: 0 auto;
+	border-radius: 30px;
+}
 .more_follower{
 	color:#747C81;
 	float: right;

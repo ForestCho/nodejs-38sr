@@ -5,7 +5,11 @@
 	margin-bottom: 10px;
 	color: #555
 }*/
-
+.msgwrap{
+	background-color: #fff;
+	padding: 10px 20px 40px 20px;
+	min-height: 600px;
+}
 .msgitem {
 	padding: 10px;
 	padding-top: 10px;

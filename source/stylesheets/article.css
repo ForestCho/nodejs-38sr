@@ -1,6 +1,6 @@
 .rep_msg_box {
 	background-color: #fff; 
-	border-bottom: 1px dashed #eee;
+	border-bottom: 1px solid #eee;
 }
 .nosignin{
 	text-align: center; 
@@ -16,21 +16,22 @@
 	background-color: #fff;
 }
 .reply_msg_item {
-	border-top: 1px dashed #E0E0E0;
-	padding: 5px 20px 10px 10px;
-	overflow: hidden
+	border-top: 1px solid #E0E0E0;
+	padding: 15px 20px 15px 20px;
+	overflow: hidden;
 }
 
 .reply_user_photo {
 	float: left;
-	width: 45px;
-	height: 45px;
+	width: 48px;
+	height: 48px;
 	overflow: hidden
 }
 
 .reply_user_photo img {
-	width: 45px;
-	height: 45px;
+	width: 48px;
+	height: 48px;
+	border-radius: 25px;
 	border: 2px solid #fff;
 	-webkit-transition: all .35s ease-in-out;
 	-moz-transition: all .35s ease-in-out;
@@ -48,6 +49,9 @@
 .reply_info span {
 	color: #999
 } 
+.article_head_info{
+	padding:5px 0px;
+}
 .article_head_info a{	
 	font-size: 16px;
 	color: #838383;
@@ -177,7 +181,9 @@
 	border: 2px solid #D5C8DB
 }
 .detailinfo img{
-	width: 60%;
+	width: 100%;
+	display: block;
+	margin: 0 auto;
 }
 
 #replywrap{

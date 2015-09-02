@@ -222,12 +222,14 @@
 
 .sidetitle {
 	font-size: 18px; 
+	height: 33px;
 	border-bottom: 2px solid #DCDDD9;
 }
 .sidetitle .titletext{
 	border-bottom: 2px solid #00a090;
 	padding: 5px 3px;
 	position: relative;
+	height: 33px;
 	margin-bottom: -2px;
 	display: inline-block;
 }
@@ -314,4 +316,8 @@
 	color: #232F38;
 	background-color: #eee;
 	border-color: #ddd;
+}
+.a_loading{
+	background: #fff;
+	color: #C5C5C5;
 }
