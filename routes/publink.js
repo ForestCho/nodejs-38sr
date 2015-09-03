@@ -102,9 +102,12 @@ var	EventProxy = require('eventproxy');
 		    msg.title = "我无法获取链接的标题呢，动动手吧";
 	    }else{
 	    	if(html.length > 0){
-			    var b = /<title>[\s\S]*?<\/title>/i  ;
-			    var cc = html.match(b);
-			    var title = cc[0];
+			    var reg = /<title.*?>([\s\S]*?)<\/title>/i  ;
+			    var resultArr = reg.exec(html);
+			    var title = "需要手工获取噢";
+			    if(resultArr.length == 2){
+			   		 title = resultArr[1]; 
+			    }
 			    title = title.replace("<title>","");
 			    title = title.replace("</title>","");  
 			    msg.status  = 0;
