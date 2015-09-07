@@ -15,6 +15,7 @@ var articleSchema = new Schema(
       like_count:{ type: Number, default: 0 },
       reply_count: { type: Number, default: 0 },
       view_count: { type: Number, default: 0 },
+      label:String,
       post_date:{ type:Date,default:Date.now},
       isdelete: { type:Boolean,default:false},
       location:String,
@@ -24,11 +25,12 @@ var articleSchema = new Schema(
 ); 
  
 //classify 0 心情　
+//classify 1 快链 title is url ＆　content is brief & has a _sid
+//classify 2 wenzhang
 //flag 1 笑话 
 //flag 2 娱乐 
 //flag 3 爆料
 //flag 4 情感
 //flag 5 囧人糗事
 
-//classify 1 快链 title is url ＆　content is brief & has a _sid
 module.exports = mongoose.model('Article',articleSchema);
