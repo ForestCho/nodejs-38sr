@@ -7,7 +7,7 @@ var config = {
 	session_secret: '38srweb',
 	
 	index: {
-		list_article_size : 14,
+		list_article_size : 5,
 		list_new_user_size :9,
 		list_hot_user_size :9
 	},
