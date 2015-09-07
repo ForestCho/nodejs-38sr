@@ -24,6 +24,7 @@ var feedback = require('./routes/feedback');
 
 //test function
 
+//var  api = require('./routes/api');
 
 var publink = require('./routes/publink');
 
@@ -100,7 +101,8 @@ var run = function(app){
 　//********************************************************************// 
 	//网站路由
 	app.get('/', index.index); 
-	app.get('/xinqing', index.xinqing); 
+	app.get('/mood', index.mood); 
+	app.get('/article', index.article); 
 	app.get('/fastlink', index.fastlink); 
 	app.get('/xiaohua', index.xiaohua); 
 
@@ -123,6 +125,7 @@ var run = function(app){
 
 	//心情详细页面路由
 	app.get('/article/:tid', article.detail);
+	app.get('/t/:tid', article.detail); //new version
 	app.get('/deletearticle', article.delete);
 
 	//回复心情路由
@@ -233,7 +236,10 @@ var run = function(app){
 	app.get('/likejson', likejson.like); 
 	app.get('/userjson', userjson.index); 
 	app.get('/userarticlejson', userjson.articlelist); 
+	
 
+/*app.get('/api/posts/', api.posts);
+app.get('/partials/:name', api.partials); */
 
 　//********************************************************************//
 　//**********************＊***以功能路由********************************//
