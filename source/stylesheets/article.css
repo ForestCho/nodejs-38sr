@@ -53,7 +53,7 @@
 	padding:5px 0px;
 }
 .article_head_info a{	
-	font-size: 16px;
+	font:15px/1.5 "微软雅黑",Verdana,Geneva,sans-serif;
 	color: #838383;
 }
 
@@ -69,7 +69,7 @@
 	content: "•";
 }
 .article_head_info span{ 
-	font-size: 16px;
+	font:15px/1.5 "微软雅黑",Verdana,Geneva,sans-serif;
 	color: #838383;
 }
 .reply_date:before {
@@ -109,13 +109,20 @@
 	position: relative;
 	overflow: visible;
 }
+.other-article-info{
+	padding:0px 20px;
+}
+.other-article-info .articlelabel{
+	float:left;
+}
 .operator{
-	padding-left: 20px;
+	float:right;
 }
 .operator a {
 	color:#999999;
 	cursor: pointer;
-} 
+	margin-left: 10px;
+}  
 .arrow-top::before, .arrow-top::after {
 	position: absolute;
 	top: -10px;
@@ -180,8 +187,8 @@
 .reply_info .replyat:hover img {
 	border: 2px solid #D5C8DB
 }
-.detailinfo img{
-	width: 100%;
+.detail_content img{
+	width: 80%;
 	display: block;
 	margin: 0 auto;
 }

@@ -1,4 +1,15 @@
-
+.tagswrap{
+	margin-top: 20px;
+}
+.tagname{
+	padding: 5px 0px;
+	font-size: 18px;
+}
+.tagcount{
+	font-size: 15px;
+	padding: 5px 0px;
+	color: #707070;
+}
 .intropre {
 	padding: 12px; 
 	border: 1px dashed #AABBDD;

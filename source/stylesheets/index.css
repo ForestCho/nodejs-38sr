@@ -69,6 +69,12 @@
 	margin-top: 1px;
 	border-radius: 5px;
 }
+.articleitem-first {
+	padding: 10px 20px;
+	background-color: #FFF;
+	margin-top: 1px;
+	border-radius: 0px 0px 5px 5px;
+}
 /*
 	box-shadow: 2px 0 5px rgba(214, 214, 215, 0.9), -2px 0 5px rgba(214, 214, 215, 0.9);*/
 .photowrap {
@@ -137,10 +143,95 @@
 	width:20px;
 	height: 20px;
 }
-.msg_date {
+.otherinfowrap {
 	font-size: 14px;
 	color: #777;
 	margin-top: 12px;
+}
+.articledate{
+	display: inline-block;
+	float: left;
+}
+.articlelabel{
+	display: inline-block;
+	float: left;
+	margin-left: 15px;
+}
+
+.label-item a {
+	display: inline-block;
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 10px;
+	color: #fff;
+	height: 18px;
+	line-height: 18px;
+	float: left;
+	padding: 0 5px 0px 10px;
+	position: relative;
+	-webkit-border-radius: 0 5px 5px 0;
+	border-radius: 0 5px 5px 0;
+	margin: 0px 7px 0px 8px
+	font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
+}
+.label-item a:before {
+	content: " ";
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	top: 0;
+	left: -18px;
+	border: 9px solid transparent;
+}
+.label-item a:after {
+	content: " ";
+	width: 4px;
+	height: 4px;
+	background-color: #fff;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
+	position: absolute;
+	top: 7px;
+	left: 2px;
+}
+.label-item{
+	list-style: none;
+	float:left;
+}
+.label-item a.color1 {
+  background: #ff945c;
+}
+.label-item a.color1:before {
+  border-right-color: #ff945c;
+}
+.label-item a.color2 {
+  background: #f5c7b7;
+}
+.label-item a.color2:before {
+  border-right-color: #f5c7b7;
+}
+.label-item a.color3 {
+  background: #ba8f6c;
+}
+.label-item a.color3:before {
+  border-right-color: #ba8f6c;
+}
+.label-item a.color4 {
+  background: #cfb7c4;
+}
+.label-item a.color4:before {
+  border-right-color: #cfb7c4;
+}
+.label-item a.color5 {
+  background: #7b5d5f;
+}
+.label-item a.color5:before {
+  border-right-color: #7b5d5f;
+}
+.label-item a:hover {
+	opacity: 0.8;
 }
 .leftwrap i{
 	margin-right: 5px;
@@ -234,19 +325,75 @@
 	display: inline-block;
 }
 .userlist {
-	margin-top: 15px
+	margin-top: 5px
 }
 .downloadapp{
 	margin-top: 20px;
 }
+.fansuserlink{
+	width: 100%;
+	height: 40px;
+	display: block;
+}
+.fansuserlink:hover{
+	background-color: #F0F0F0;
+}
 .userview {
-	height: 65px;
-	width: 68px;
-	overflow: hidden;
+	height: 40px;
+	width: 100%;
+	padding: 5px;
 	line-height: 18px;
 	float: left;
+	text-align: center;
 	font-size: 12px;
-	text-align: center
+	border-bottom: 1px solid #eee;
+} 
+.userview .imagewrap{
+	width: 30px;
+	height: 30px;
+	display: block;
+	margin: 0 auto;
+	border-radius: 30px;
+	display: inline-block;
+	float: left;
+}
+.userview .namewrap{
+	display: inline-block;
+	float: left;
+	height: 30px;
+	margin-left: 20px;
+	line-height: 30px;
+}
+.userview img{
+	width: 30px;
+	height: 30px;
+	display: block;
+	margin: 0 auto;
+	border-radius: 30px;
+}
+.userview .ordernum{
+	display: inline-block;
+	padding: 0 3px;
+	height: 20px;
+	float: right;
+	width: 20px;
+	margin-top: 5px;
+	color: #FFF;
+	line-height: 20px;
+	font-size: 15px;
+	border-radius: 15px;
+}
+.firstorder{
+	background-color: #F39360;
+}
+.secondorder{
+	background-color: #6277B6;
+}
+.thirdorder{
+	background-color: #45D0CD;
+}
+.otherorder{
+	background-color: #eee;	
 }
 .thumb{
 	margin-right: 5px;
