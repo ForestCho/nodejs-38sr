@@ -1,6 +1,7 @@
 ## 关于38sr
 * 一个使用`nodejs`开发和`expressjs`框架的网站,数据库用的mongodb,用户可以通过网站发表心情，发表文章，以及喜欢的网址，网站支持评论以及消息系统，效果查看[38sr](http://38sr.com)
-* 用它你可以建一个新闻站点，个人博客，内容管理系统 
+* 用它你可以建一个新闻站点，个人博客，内容管理系统
+
 ##使用方法
 * 将项目clone到本地，`git@github.com:ForestCho/nodejs-38sr.git`
 * 安装模块依赖项 `npm install`
