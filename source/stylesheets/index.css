@@ -68,6 +68,7 @@
 	background-color: #FFF;
 	margin-top: 1px;
 	border-radius: 5px;
+	border-bottom: 1px solid #f0f0f0
 }
 .articleitem-first {
 	padding: 10px 20px;
@@ -108,12 +109,25 @@
 	color: #333;
 	line-height: 1.8em;
 	overflow: hidden;
-	font:14px/1.5 "微软雅黑", Verdana, Geneva, sans-serif;
+	font:14px/1.7 "微软雅黑", Verdana, Geneva, sans-serif;
 	border: 0 solid #ccc!important;
 	margin: 6px 0px 6px 0px;
 	border-radius: 0;
 }
-
+.article_title{	
+	color: #07695F;
+	font-size: 18px;
+	text-decoration: none;
+}
+.article_msg_content{	
+	color: rgba(0,0,0,0.5);
+	line-height: 1.8em;
+	overflow: hidden;
+	font:16px/1.5 "微软雅黑", Verdana, Geneva, sans-serif;
+	border: 0 solid #ccc!important;
+	margin: 6px 0px 6px 0px;
+	border-radius: 0;
+}
 .shuo_sty {
 	font-size: 14px;
 	color: #777;
@@ -144,20 +158,59 @@
 	height: 20px;
 }
 .otherinfowrap {
+	position: relative;
 	font-size: 14px;
 	color: #777;
 	margin-top: 12px;
+	height: 35px;
+	padding: 8px 0px;
+	opacity: 0.8;
 }
-.articledate{
-	display: inline-block;
+.articledate{ 
 	float: left;
+	color: #565656;
 }
+
+.articletag{	 
+	float: left;
+	margin-left: 15px;
+	color: #565656;
+}  
+.articletag a{	 
+	font-size: 14px;
+	color: #565656;
+} 
+.articletag a:hover{	 
+	color: #07695E;
+} 
+.author-wrap{
+	display: inline-block;
+	position: absolute;
+	color: #565656;
+	left: 50%;
+}
+.author-wrap a{	
+	color: #565656;
+}
+.author-wrap a:hover{	 
+	color: #07695E;
+} 
 .articlelabel{
 	display: inline-block;
 	float: left;
 	margin-left: 15px;
 }
+.taglist{
+	display:inline-block;
+}
+.tag-item{
+	list-style: none;
+	float:left;
+}
 
+.tag-item a:hover{
+	opacity: 0.8;
+}
 .label-item a {
 	display: inline-block;
 	text-decoration: none;
@@ -237,25 +290,22 @@
 	margin-right: 5px;
 }
 .operwrap{
-	float: right;
-	opacity: 0.5;
-	border-bottom: 1px dashed #878787;
+	float: right; 
 }
 .biaotai {
 	float: right;
-	opacity: 0.5;
 }
 
 .operwrap a {
-	color: #777;
+	color: #565656;
 	display: inline-block; 
-	padding: 2px 5px 2px 5px; 
+	padding: 0px 5px; 
 }
 .operwrap i{
 	margin-left: 5px;
 }
 .biaotai .likebtn{
-	color: #FFF;
+	color: #565656;
 	display: inline-block;
 	background-color: #6AE1A9;
 	padding: 2px 5px 2px 5px;
@@ -264,7 +314,7 @@
 }
 
 .biaotai .unlikebtn{
-	color: #FFF;
+	color: #565656;
 	display: inline-block;
 	background-color: #444;
 	padding: 2px 5px 2px 5px;
@@ -396,7 +446,7 @@
 	background-color: #eee;	
 }
 .thumb{
-	margin-right: 5px;
+	margin-right: 15px;
 	float: left;
 	border:2px solid #fff;
 	-webkit-transition: all .35s ease-in-out;
@@ -437,10 +487,14 @@
 	margin-left: 10px;
 	font-size: 13px;
 }
-.item_title a{
+.articletype{
 	color: #333;
 }
-.item_title a:hover{  
+.urltype{
+	color:rgba(0,0,0,.5);
+	font:16px/1.5 "微软雅黑",Verdana,Geneva,sans-serif;
+}
+.articletype:hover,.urltype:hover{  
 	color: #07695E;
 	text-decoration: underline;
 }
