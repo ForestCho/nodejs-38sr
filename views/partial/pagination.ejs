@@ -4,7 +4,7 @@
 	var items = d.count; 
 	var pagesize = config.index.list_article_size;
 	var page = Math.ceil(items/pagesize);
-	var curpage = pageid; 
+	var curpage = p; 
 	if(typeof(curpath) === 'undefined'){
 		curpath = '';
 	}
@@ -13,14 +13,14 @@
 		<% if(curpage == 1 ){ %>
 			<li class="disabled"><a>上一页</a></li>
 		<% }else{ %>
-			<li><a href="<%= curpath %>?pageid=<%=curpage-1 %>">上一页</a></li>
+			<li><a href="<%= curpath %>?p=<%=curpage-1 %>">上一页</a></li>
 		<% } %> 
 		<%  if( page < displaypage){
 			for(var j=1;j<=page;j++){
 				if( j == curpage ){%>
 				<li class="active"><a><%= j %></a></li>
 				<% }else{ %>	
-				<li><a href="<%= curpath %>?pageid=<%= j %>"><%= j %></a></li>
+				<li><a href="<%= curpath %>?p=<%= j %>"><%= j %></a></li>
 				<%}
 			}%>
 			<% }else{
@@ -29,7 +29,7 @@
 						if( j == curpage ){%>
 							<li class="active"><a><%= j %></a></li>
 						<% }else{ %>
-							<li><a href="<%= curpath %>?pageid=<%= j %>"><%= j %></a></li>
+							<li><a href="<%= curpath %>?p=<%= j %>"><%= j %></a></li>
 						<%}%>
 					<%}%>
 							<li class="disabled"><a>...</a></li>
@@ -42,7 +42,7 @@
 						if( j == curpage ){%>
 						<li class="active"><a><%= j %></a></li>
 						<% }else{ %>
-						<li><a href="<%= curpath %>?pageid=<%= j %>"><%= j %></a></li>
+						<li><a href="<%= curpath %>?p=<%= j %>"><%= j %></a></li>
 						<%}
 					}%>
 
@@ -54,14 +54,14 @@
 							if( j == curpage ){%>
 							<li class="active"><a><%= j %></a></li>
 							<% }else{ %>
-							<li><a href="<%= curpath %>?pageid=<%= j %>"><%= j %></a></li>
+							<li><a href="<%= curpath %>?p=<%= j %>"><%= j %></a></li>
 							<%}
 						}%>
 						<li class="disabled"><a>...</a></li>
 					<% } %>
 				<% } %>
 					<% if( curpage < page ){%>
-						<li><a href="<%= curpath %>?pageid=<%= (parseInt(curpage)+1) %>">下一页</a></li>
+						<li><a href="<%= curpath %>?p=<%= (parseInt(curpage)+1) %>">下一页</a></li>
 					<% }else{%>
 						<li class="disabled"><a>&raquo;</a></li>
 					<% } %> 

@@ -1,137 +1,150 @@
 <% include partial/header%>
 </head>
-<body>	
-	<%
-	var articlecontent = d.articlecontent;
-	var replies = d.replies;
-	%>
-	<% include partial/nav %>
-	<div class="mainwrap"> 
-		<div class="rightwrap">		
-			<% include partial/sidebar %>
+<body>
+<%
+var articlecontent = d.articlecontent;
+var replies = d.replies;
+%>
+<% include partial/nav %>
+<div class="mainwrap">
+	<div class="rightwrap">
+		<% include partial/sidebar %>
+	</div>
+	<div class="leftwrap">
+		<div class="articleitem_detail detailinfo">
+			<div class="detail_msg_head add_bottom_dashed">
+				<% if(articlecontent.title &&articlecontent.title.length > 0 ){%>
+				<%= articlecontent.title %>
+				<%}else{%>
+				<%= articlecontent.purecontent %>
+				<%}%>
+			</div>
+			<div class="detail_content">
+				<div class="article_head_info">
+					<span> 来自
+						<a class="title username_text" id=<%= articlecontent.tid %> href="/user/<%= articlecontent._creator.name %>"><%= articlecontent._creator.name %>
+						</a>
+					</span>
+					<span>
+						发布于 <%= articlecontent.convertdate  %>
+					</span>
+					<span>
+						<%= articlecontent.view_count  %> 次阅读
+					</span>
+				</div>
+			<pre class="msg_content_detail"><%- articlecontent.content %> </pre>
 		</div>
-		<div class="leftwrap">
-			<div class="articleitem_detail detailinfo">   
-					<div class="detail_msg_head add_bottom_dashed">
-						<% if(articlecontent.title &&articlecontent.title.length > 0 ){%>
-								<%= articlecontent.title %>
-						<%}else{%>
-								<%= articlecontent.purecontent %>
+		<%
+		var s_title = "";
+		var s_url = "";
+		if(articlecontent.title &&articlecontent.title.length > 0 ){
+		s_title = articlecontent.title
+		}else{
+		s_title = articlecontent.purecontent
+		}
+		s_url = "http://38sr.com/article/" + articlecontent.tid;
+		%>
+		<div class="other-article-info">
+			<div class="articlelabel">
+				<% if(typeof(articlecontent.label) !== "undefined"){
+				if(articlecontent.label.length>0){%>
+				<ul class="labellist">
+					<%
+					var labelarr = articlecontent.label.split(",");
+					for(var j=0 ;j<labelarr.length-1;j++){
+						%>
+						<li class="label-item">
+							<a class="color<%=Math.floor(Math.random() * 5 + 1)%>" href="/tags/<%- labelarr[j]%>/" target="_blank" style="font-size: 12px;"><%- labelarr[j]%></a>
+						</li>
 						<%}%>
-					</div> 
-					<div class="detail_content"> 
-							<div class="article_head_info"> 									
-									<span> 来自
-										<a class="title username_text" id=<%= articlecontent.tid %> href="/user/<%= articlecontent._creator.name %>"><%= articlecontent._creator.name %>
-									</a> 
-									</span>
-									<span>
-										发布于 <%= articlecontent.convertdate  %> 
-									</span>
-									<span> 
-										<%= articlecontent.view_count  %> 次阅读 
-									</span> 
-							</div> 									
-							<pre class="msg_content_detail"><%- articlecontent.content %> </pre>  
-					</div>  
-					<% 
-						var s_title = "";
-						var s_url = "";
-						if(articlecontent.title &&articlecontent.title.length > 0 ){
-							s_title = articlecontent.title					
-						}else{
-							s_title = articlecontent.purecontent  
-						}
-						s_url = "http://38sr.com/article/" + articlecontent.tid;
-					%>
-					<div class="operator">
-						<span class="share">
-					      <a data-toggle="dropdown" href="javascript:void(null);"><i class="fa fa-share-square-o"></i> 分享</a>
-					      <ul class="dropdown-menu arrow-top">
-					          <li><a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=1881139527',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','http://upload.jianshu.io/collections/images/47/rdn_4ddb18fddd2e9_%281%29.jpg', '<%= s_title %>','<%= s_url %>','页面编码gb2312|utf-8默认gb2312'));"><img src="http://srpic.b0.upaiyun.com/resource/weibo.png" alt="Weibo"> 微博</a></li>
-					          <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://share.v.t.qq.com/index.php?c=share&a=index&url='+e('<%= s_url %>')+'&title='+e('<%= s_title %>'),x=function(){if(!window.open(r,'tweibo','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="http://srpic.b0.upaiyun.com/resource/tweibo.png" alt="Tweibo"> 腾讯微博</a></li>
-					          <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+e('<%= s_url %>')+'&title='+e('<%= s_title %>'),x=function(){if(!window.open(r,'qzone','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="http://srpic.b0.upaiyun.com/resource/qzone.png" alt="Qzone">  QQ空间</a></li>
-					          <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:'',r='http://www.douban.com/recommend/?url='+e('<%= s_url %>')+'&title='+e('<%= s_title %>')+'&sel='+e(s)+'&v=1',x=function(){if(!window.open(r,'douban','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r+'&r=1'};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()"><img src="http://srpic.b0.upaiyun.com/resource/douban.png" alt="Douban"> 豆瓣</a></li>
-					          <li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://twitter.com/share?url='+e('<%= s_url %>')+'&text='+e('<%= s_title %>')+'&related='+e('jianshucom'),x=function(){if(!window.open(r,'twitter','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="http://srpic.b0.upaiyun.com/resource/twitter.png" alt="Twitter"> Twitter</a></li>				       
-					      </ul>
-					    </span>
-				   		 <a class="like likebtn" data-tid="<%=articlecontent.tid %>" title="赞">
-				   		 	<i class="fa fa-thumbs-o-up"></i>
-				   		 	<span><%= (articlecontent.like_count>0)?articlecontent.like_count:'0' %></span></a>
+					</ul>
+					<%}
+					}%>
+				</div>
+				<div class="operator">
+					<span class="share">
+						<a data-toggle="dropdown" href="javascript:void(null);"><i class="fa fa-share-square-o"></i> 分享</a>
+						<ul class="dropdown-menu arrow-top">
+							<li><a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=1881139527',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'','','http://upload.jianshu.io/collections/images/47/rdn_4ddb18fddd2e9_%281%29.jpg', '<%= s_title %>','<%= s_url %>','页面编码gb2312|utf-8默认gb2312'));"><img src="http://srpic.b0.upaiyun.com/resource/weibo.png" alt="Weibo"> 微博</a></li>
+							<li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://share.v.t.qq.com/index.php?c=share&a=index&url='+e('<%= s_url %>')+'&title='+e('<%= s_title %>'),x=function(){if(!window.open(r,'tweibo','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="http://srpic.b0.upaiyun.com/resource/tweibo.png" alt="Tweibo"> 腾讯微博</a></li>
+							<li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+e('<%= s_url %>')+'&title='+e('<%= s_title %>'),x=function(){if(!window.open(r,'qzone','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="http://srpic.b0.upaiyun.com/resource/qzone.png" alt="Qzone">  QQ空间</a></li>
+							<li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:'',r='http://www.douban.com/recommend/?url='+e('<%= s_url %>')+'&title='+e('<%= s_title %>')+'&sel='+e(s)+'&v=1',x=function(){if(!window.open(r,'douban','toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330'))location.href=r+'&r=1'};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()"><img src="http://srpic.b0.upaiyun.com/resource/douban.png" alt="Douban"> 豆瓣</a></li>
+							<li><a href="javascript:void(function(){var d=document,e=encodeURIComponent,r='https://twitter.com/share?url='+e('<%= s_url %>')+'&text='+e('<%= s_title %>')+'&related='+e('jianshucom'),x=function(){if(!window.open(r,'twitter','toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600'))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();"><img src="http://srpic.b0.upaiyun.com/resource/twitter.png" alt="Twitter"> Twitter</a></li>
+						</ul>
+					</span>
+					<a class="like likebtn" data-tid="<%=articlecontent.tid %>" title="赞">
+						<i class="fa fa-thumbs-o-up"></i>
+						<span><%= (articlecontent.like_count>0)?articlecontent.like_count:'0' %></span></a>
 						<a class="unlike unlikebtn" data-tid="<%=articlecontent.tid %>" title="踩">
 							<i class="fa fa-thumbs-o-down"></i>
 							<span><%= (articlecontent.unlike_count>0)?articlecontent.unlike_count:'0' %></span></a>
-					</div> 
-				</div>
-
-
-		<!-- UJian Button BEGIN -->
-<div class="ujian-hook" style="display:inline-block"></div>
-<script type="text/javascript">var ujian_config = {num:8,showType:3};</script>
-<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=2045105"></script>
-<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
-<!-- UJian Button END -->
-
-					<div class="rep_msg_box">						
+						</div></div>
+					</div>
+					<div style="padding: 10px 20px 15px;background-color:#fff">
+						<!-- UJian Button BEGIN -->
+						<div class="ujian-hook" style="display:inline-block"></div>
+						<script type="text/javascript">var ujian_config = {num:8,showType:3};</script>
+						<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?uid=2045105"></script>
+						<a href="http://www.ujian.cc" style="border:0;"><img src="http://img.ujian.cc/pixel.png" alt="友荐云推荐" style="border:0;padding:0;margin:0;" /></a>
+					</div>
+					<!-- UJian Button END -->
+					<div class="rep_msg_box">
 						<% if(replies.length > 0){%>
-							<div class="detail_msg_head">回复</div>
-							<% if(replies){ %>
-								<% for(i=0;i< replies.length;i++){%>
-									<div class="reply_msg_item"> 
-											<div class="reply_user_photo">
-												<a class="userlink" href="/user/<%= replies[i]._creator.name %>"><img src=<%= replies[i]._creator.photo %>></a>	
-											</div>		 
-											<div class="reply_content_info">
-												<div class="reply_info">
-													<span class="reply_user_name">						
-														<a class="userlink username_text" href="/user/<%= replies[i]._creator.name %>"><%=replies[i]._creator.name %></a>
-													</span>
-													<span class="reply_date">						
-														<%=replies[i].convertdate %> 
-													</span>
-													<span class="opt">			
-														<% if(locals.userinfo){ %>			
-															<a class="replyat" href="#"   data-tid="<%= replies[i].tid %>" data-rid="<%= replies[i].rid %>" data-ruid="<%= replies[i]._creator.uid %>" data-runame="<%= replies[i]._creator.name %>">回复</a>
-														<% }else{%>
-															<a class="replylink" href="/login?prelink=/article/<%=articlecontent.tid %>">回复</a>
-														<%}%>
-														<% if(i==0){%>
-															•<%= "沙发"%>
-														<%}else if(i==1){%>
-															•<%= "板凳" %>
-														<%}else{%>
-															•#<%= i %>											
-														<%}%>
-													</span>
-												</div>
-												<div class="reply_content">
-													<div class="msg_content"><%- replies[i].content%></div>
-												</div>
-											</div>
-									</div>
-								<%}
-							}%>
+						<div class="detail_msg_head">回复</div>
+						<% if(replies){ %>
+						<% for(i=0;i< replies.length;i++){%>
+						<div class="reply_msg_item">
+							<div class="reply_user_photo">
+								<a class="userlink" href="/user/<%= replies[i]._creator.name %>"><img src=<%= replies[i]._creator.photo %>></a>
+							</div>
+							<div class="reply_content_info">
+								<div class="reply_info">
+									<span class="reply_user_name">
+										<a class="userlink username_text" href="/user/<%= replies[i]._creator.name %>"><%=replies[i]._creator.name %></a>
+									</span>
+									<span class="reply_date">
+										<%=replies[i].convertdate %>
+									</span>
+									<span class="opt">
+										<% if(locals.userinfo){ %>
+										<a class="replyat" href="#"   data-tid="<%= replies[i].tid %>" data-rid="<%= replies[i].rid %>" data-ruid="<%= replies[i]._creator.uid %>" data-runame="<%= replies[i]._creator.name %>"><i class="fa fa-reply"></i>回复</a>
+										<% }else{%>
+										<a class="replylink" href="/login?prelink=/article/<%=articlecontent.tid %>"><i class="fa fa-reply"></i>回复</a>
+										<%}%>
+										<% if(i==0){%>
+										•<%= "沙发"%>
+										<%}else if(i==1){%>
+										•<%= "板凳" %>
+										<%}else{%>
+										•#<%= i %>
+										<%}%>
+									</span>
+								</div>
+								<div class="reply_content">
+									<div class="msg_content"><%- replies[i].content%></div>
+								</div>
+							</div>
+						</div>
+						<%}
+						}%>
 						<%}else{%>
-							<div class="no_reply_notice">暂时还没有评论，快来抢沙发呀！</div>
+						<div class="no_reply_notice">暂时还没有评论，快来抢沙发呀！</div>
 						<%}%>
 					</div>
 					<%if(locals.userinfo){%>
-						<div class="replywritepanel">
-							<form class="navbar-form navbar-right" id="repstr" name="repstr" method="POST" action="/reply">
-								<input type="hidden" name="tid" id="tid" value="<%=articlecontent.tid %>"/> 
-								<input type="hidden" name="ruid" value="<%=articlecontent._creator.uid %>">
-								<textarea type="text" class="writebox atreply" name="repstr" id="reply_input" placeholder="回复点什么呢?"></textarea>
-								<div class="inputopt"><button type="submit"   id="subarticle">回复</button></div>
-							</form>
-						</div>
+					<div class="replywritepanel">
+						<form class="navbar-form navbar-right" id="repstr" name="repstr" method="POST" action="/reply">
+							<input type="hidden" name="tid" id="tid" value="<%=articlecontent.tid %>"/>
+							<input type="hidden" name="ruid" value="<%=articlecontent._creator.uid %>">
+							<textarea type="text" class="writebox atreply" name="repstr" id="reply_input" placeholder="回复点什么呢?"></textarea>
+							<div class="inputopt"><button type="submit"   id="subarticle">回复</button></div>
+						</form>
+					</div>
 					<%}else{%>
-						<div class="nosignin"><a href="/login?prelink=/article/<%=articlecontent.tid %>">登录</a>后才能回复， 没有账号？点击这里<a href="/reg">注册</a></div>
+					<div class="nosignin"><a href="/login?prelink=/article/<%=articlecontent.tid %>">登录</a>后才能回复， 没有账号？点击这里<a href="/reg">注册</a></div>
 					<%}%>
-				</div>		
-
-
-
-		</div>		
-		<div style="clear:both"></both>
-	</div>			 
+				</div>
+			</div>
+			<div style="clear:both"></both>
+			</div>
 			<% include partial/footer %>

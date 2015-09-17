@@ -1,78 +1,88 @@
-
-			<% if(!locals.userinfo){%>
-				<div class="loginwrap">
-					<form class="form-horizontal" role="form" action="/login" method="POST">
-						<div class="form-group">  
-							<input  class="form-control accountbg" id="uname" name="uname" placeholder="用户名"> 
-						</div>
-						<div class="form-group">  
-								<input type="password" class="form-control pwdbg" id="pwd" name="pwd" placeholder="密码"> 
-						</div> 
-						<div>
-							<div class="form-group" style="float:left">  
-								<div class="checkbox">  
-										<label>
-											<input type="checkbox" name="remember">记住登录  
-										</label>  
-								</div>
-							</div>
-							<div class="form-group" style="float:right">  
-									<input type="hidden" id="prelink" name="prelink" value="<%=curpath %>">
-									<button type="submit" class="btn btn-default" style="padding: 6px 36px;">登录</button>
-							</div> 
-						</div> 
-					</form>
-					<div style="clear:both"></div>
+<% if(!locals.userinfo){%>
+<div class="loginwrap">
+	<form class="form-horizontal" role="form" action="/login" method="POST">
+		<div class="form-group">
+			<input  class="form-control accountbg" id="uname" name="uname" placeholder="用户名">
+		</div>
+		<div class="form-group">
+			<input type="password" class="form-control pwdbg" id="pwd" name="pwd" placeholder="密码">
+		</div>
+		<div>
+			<div class="form-group" style="float:left">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="remember">记住登录
+					</label>
 				</div>
-			<% }else{%>
-				<div class="site_intro">
-					<div class="sidetitle"><span class="titletext">38锶</span></div> 
-					<p>做一名简单的锶者</p>
-				</div>
-				<div class="pubone">
-					<a href="/pub" class>发布一个</a>
-				</div>
-			<%}%>
-			<div class="everyday">
-				<div class="everyday_text">
-					<%if(typeof(zymryj.cncontent)!== 'undefined'){%>
-						<p class="everyday_text_cn"><%= zymryj.cncontent %></p>
+			</div>
+			<div class="form-group" style="float:right">
+				<input type="hidden" id="prelink" name="prelink" value="<%=curpath %>">
+				<button type="submit" class="btn btn-default" style="padding: 6px 36px;">登录</button>
+			</div>
+		</div>
+	</form>
+	<div style="clear:both"></div>
+</div>
+<% }else{%>
+<div class="site_intro">
+	<div class="sidetitle"><span class="titletext">38锶</span></div>
+	<p>做一名简单的锶者</p>
+</div>
+<div class="pubone">
+	<a href="/pub" class>发布一个</a>
+</div>
+<%}%>
+<div class="everyday">
+	<div class="everyday_text">
+		<%if(typeof(zymryj.cncontent)!== 'undefined'){%>
+		<p class="everyday_text_cn"><%= zymryj.cncontent %></p>
+		<%}%>
+		<%if(typeof(zymryj.encontent)!== 'undefined'){%>
+		<p class="everyday_text_en"><%= zymryj.encontent %></p>
+		<%}%>
+	</div>
+	<img src='<%= zymryj.img %>' width=100% height=133 class="everyday_img"/>
+	<div style="clear:both"></div>
+</div>
+<div class="userfresh">
+	<div class="sidetitle"><span class="titletext">锶者榜</span></div>
+	<div class="userlist">
+		<%
+		var hotuser = d.hotuser;
+		for(i=0;i<hotuser.length;i++){%>
+		<a href="/user/<%=hotuser[i].name%>" alt="<%=hotuser[i].name%>" class="userview fansuserlink"> 
+				<div href="/user/<%=hotuser[i].name%>" alt="<%=hotuser[i].name%>" class="imagewrap"><img src=<%= hotuser[i].photo %>></div>
+				<div class="namewrap"><%=hotuser[i].name%></div> 
+				<div 
+					<% if(i==0){%>
+						class="ordernum firstorder"
+					<% }else if(i==1){%>
+						class="ordernum secondorder"	
+					<%}else if(i==2){%>
+						class="ordernum thirdorder"				
+					<%}else{%>
+						class="ordernum otherorder" 
 					<%}%>
-					<%if(typeof(zymryj.encontent)!== 'undefined'){%>
-						<p class="everyday_text_en"><%= zymryj.encontent %></p>
-					<%}%>
-				</div>
-				<img src='<%= zymryj.img %>' width=100% height=133 class="everyday_img"/> 
-				<div style="clear:both"></div>
-			</div>
-			<div class="userfresh">
-				<div class="sidetitle"><span class="titletext">锶者榜</span></div>
-				<div class="userlist">
-				<%
-				var hotuser = d.hotuser; 
-				 for(i=0;i<hotuser.length;i++){%>
-				 	<div class="userview">
-						<a href="/user/<%=hotuser[i].name%>" alt="<%=hotuser[i].name%>"><img src=<%= hotuser[i].photo %>></a>
-						<a href="/user/<%=hotuser[i].name%>" alt="<%=hotuser[i].name%>"><%=hotuser[i].name%></a>
-					</div>
-				<%}%>
-				<div style="clear:both"></div>
-				</div>
-			</div>
-			<div class="downloadapp">
-				<div class="sidetitle"><span class="titletext">APP下载</span></div>
-				<img style="width:200px;height:200px;margin-top: 15px;" src="/images/androidld.png">
-			</div>
-			<% 
-			var siteList = config.site_link;
-			if(siteList.length > 0){
-			%>
-			<div class="site_link">
-				<div class="sidetitle"><span class="titletext">链接</span></div>
-				<ul class="site_list">
-				<%for(i=0;i<siteList.length;i++){%>
-					<li><a href="<%= siteList[i].link %>" target="_blank" class="frilink"><%= siteList[i].text %></a></li>
-				<%}%>
-				</ul>
-			</div>
-			<%}%>		
+				><%= i+1 %></div> 
+		</a>
+		<%}%>
+		<div style="clear:both"></div>
+	</div>
+</div>
+<div class="downloadapp">
+	<div class="sidetitle"><span class="titletext">APP下载</span></div>
+	<img style="width:200px;height:200px;margin-top: 15px;" src="/images/androidld.png">
+</div>
+<%
+var siteList = config.site_link;
+if(siteList.length > 0){
+%>
+<div class="site_link">
+	<div class="sidetitle"><span class="titletext">链接</span></div>
+	<ul class="site_list">
+		<%for(i=0;i<siteList.length;i++){%>
+		<li><a href="<%= siteList[i].link %>" target="_blank" class="frilink"><%= siteList[i].text %></a></li>
+		<%}%>
+	</ul>
+</div>
+<%}%>

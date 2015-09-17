@@ -35,10 +35,10 @@ var userinfo = d.userinfo;
 							for(i=0;i<length1;i++){
 								var follower =followerlist[i]._uid_info;
 							%>
-				 				<div class="perfollower">
-									<a href="/user/<%=follower.name%>" alt="<%=follower.name%>"><img src=<%= follower.photo %>></a>
-									<a href="/user/<%=follower.name%>" alt="<%=follower.name%>"><%=follower.name%></a>
-								</div>
+								<a href="/user/<%=follower.name%>" alt="<%=follower.name%>" class="followerwrap fansuserlink"> 
+										<div href="/user/<%=follower.name%>" alt="<%=follower.name%>" class="imagewrap"><img src=<%= follower.photo %>></div>
+										<div class="namewrap"><%=follower.name%></div> 
+								</a>
 						<%}%>
 					</div>					
 					<%
@@ -59,10 +59,12 @@ var userinfo = d.userinfo;
 							for(i=0;i<length2;i++){
 								var hefollow =hefollowlist[i]._fuid_info;
 							%>
-				 				<div class="perfollower">
-									<a href="/user/<%=hefollow.name%>" alt="<%=hefollow.name%>"><img src=<%= hefollow.photo %>></a>
-									<a href="/user/<%=hefollow.name%>" alt="<%=hefollow.name%>"><%=hefollow.name%></a>
-								</div>
+				 			<a href="/user/<%=hefollow.name%>" alt="<%=hefollow.name%>" class="fansuserlink">
+					 				<div class="followerwrap">
+										<div href="/user/<%=hefollow.name%>" alt="<%=hefollow.name%>" class="imagewrap"><img src=<%= hefollow.photo %>></div>
+										<span class="namewrap"><%=hefollow.name%></span>
+									</div>
+								</a>
 						<%}%>
 					</div>
 				</div>

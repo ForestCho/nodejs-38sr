@@ -1,4 +1,3 @@
-
 <% include partial/header%>
 </head>
 <body>
@@ -11,7 +10,7 @@
 			<%}%>
 			<% include partial/indexsidebar %>
 		</div>
-		<div class="leftwrap">
+		<div class="leftwrap"> 
 			<div class="allmsg">
 				<%
 				var result = d.data;
@@ -20,42 +19,12 @@
 				if(result[i]){
 				%> 
 					<div class="articleitem"> 
-					<div class="photowrap"><a class="userlink show-pop-async" data-uid=<%= result[i]._creator.uid %> href="/user/<%= result[i]._creator.name %>"><img src=<%= result[i]._creator.photo %>></a></div>
-					<div style="margin-left:55px;">
-						<div>
-							<a class="title" id=<%= result[i].tid %> href="/user/<%= result[i]._creator.name %>"><%= result[i]._creator.name %></a>
-							<%
-							if(result[i].location){
-							%>
-							在
-							<span class="sitetext"><%- result[i].location %></span>
-							<%}%>
-							<% if(result[i].classify === 0){%>
-							<span>说</span>
+					<div>
+						<div> 
 							<% if(result[i].title &&result[i].title.length > 0 ){%>
-							<p class="item_title"><a href="/t/<%= result[i].tid %>"><%= result[i].title %></a></p>
-							<%}%>
-							<div class="msg_content"><%- result[i].newcontent %> </div>
-							<%}else if(result[i].classify === 2){%>
-							<span>发布一篇</span>
-							<% if(result[i].title &&result[i].title.length > 0 ){%>
-							<p class="item_title"><a href="/t/<%= result[i].tid %>" class="articletype"><%= result[i].title %></a></p>
-							<%}%>
-							<div class="msg_content"><%- result[i].newcontent %> </div>
-							<%}else{%>
-							<span>分享来自
-								<%if(result[i]._sid){%>
-								<a  class="sitetext" data-toggle="tooltip" data-placement="right" title="<%=result[i]._sid.sbrief %>"><%=result[i]._sid.sname %></a>
-								<%}else{%>
-								net
-								<%}%>
-								
-							的快链</span>
-							<%if(result[i]._sid){%>
-							<img class="sitepic" src="<%=result[i]._sid.spic %>">
-							<%}%>
-							<p class="item_title"><a href="/redirect?url=<%= result[i].title %>" target="_blank" class="urltype"><%= result[i].content %><i class="fa fa-external-link"></i></a></p>
-							<%}%>
+							<p class="article_title"><a href="/t/<%= result[i].tid %>"><%= result[i].title %></a></p>
+							<%}%>							
+							<div class="article_msg_content"><%- result[i].newcontent %> </div>
 						</div>
 						<div class="otherinfowrap">
 							<div class="articledate">
@@ -69,10 +38,14 @@
 									var labelarr = result[i].label.split(",");
 									for(var j=0 ;j<((labelarr.length-1)>4?4:(labelarr.length-1));j++){
 										%> 
-											<a  href="/tags/<%- labelarr[j]%>/" ><%- labelarr[j]%></a> 
+											<a  href="/tags/<%- labelarr[j]%>/"><%- labelarr[j]%></a> 
 										<%}%> 
 									<%}
 								}%>
+								</div>
+								<div class="author-wrap">
+									<i class="fa fa-user"></i>
+									<a class="userlink" id=<%= result[i].tid %> href="/user/<%= result[i]._creator.name %>"><%= result[i]._creator.name %></a>
 								</div>
 								<div class="operwrap btn-group">
 									<a class="viewbtn btn" data-tid="<%= result[i].tid %>" title="查看"><span><%= (result[i].view_count>0)?result[i].view_count:'' %></span><i class="fa fa-eye"></i></a>

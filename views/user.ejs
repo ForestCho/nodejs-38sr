@@ -1,72 +1,79 @@
 <% include partial/header%>
 </head>
 <body>
-	<% include partial/nav %>	
-	<div class="mainwrap"> 
-		<div class="page_header_info">
-			<% if(visituser){ %> 
-			   		<h4>Ta的最近心情<small>(<%=d.articlenum %>)</small></h4>
-			   <% } %>
-		</div>
-		<div class="margin-top:10px;">
-			<div class="rightwrap user_rightwrap">
-				<% include partial/sidebar %>
-			</div>
-			<div class="leftwrap">		   
-			   <div class="user_near_article">
-			   		<% 	var nearArticle = d.data;
-			   			for(var i=0;i<nearArticle.length;i++){ %> 
-			   					<div class="articleitem">    		   						
-									<% if(nearArticle[i].classify === 0){%>
-										<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 说	 
-									<%}else{%>
-										<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 分享来自
-											<%if(nearArticle[i]._sid){%>
-												<a href="#" class="sitetext" data-toggle="tooltip" data-placement="right" title="<%=nearArticle[i]._sid.sbrief %>"><%=nearArticle[i]._sid.sname %></a>
-											<%}else{%>
-												net
-											<%}%>										
-										的快链</span>
-											<%if(nearArticle[i]._sid){%>	 
-												<img class="sitepic" src="<%=nearArticle[i]._sid.spic %>">
-											<%}%>
-									<%}%>
-											<div class="reply">
-												<% if(typeof(locals.userinfo) !== 'undefined' && locals.userinfo.name === visituser){%>	 
-													<a class="deleteitem" data-tid="<%=nearArticle[i].tid %>">
-														<i class="fa fa-trash"></i>
-													</a>
-												<% }%>
-												<% if(locals.userinfo){ %>	
-													<a href="/article/<%= nearArticle[i].tid %>">
-														<i class="fa fa-comment"></i>
-													</a>
-												<% }else{%>
-													<a href="/login?prelink=/article/<%= nearArticle[i].tid %>">
-														<i class="fa fa-comment"></i>
-													</a>
-												<%}%>  
-										</div>
-									</div>
-									<% if(nearArticle[i].classify === 0){%> 
-										 <% if(nearArticle[i].title &&nearArticle[i].title.length > 0 ){%>
-											<p class="item_title"><a href="/article/<%= nearArticle[i].tid %>"><%= nearArticle[i].title %></a></p>
-										 <%}%>
-										<div class="msg_content"><%- nearArticle[i].newcontent %> </div> 
-									<%}else{%>										
-										<p class="item_title"><a href="/redirect?url=<%= nearArticle[i].title %>" target="_blank"><%= nearArticle[i].content %><i class="fa fa-external-link"></i></a></p>	
-									<%}%> 
-									<div class="clearfix"></div>
-								</div> 
-			  		<% } %>
-			  		<% if(nearArticle.length > 12 ){%>
-			  			<a href="/user/<%= visituser %>/article" class="get_more">  
-			  				<div class="more_article fade_trans">查看<%= visituser%>更多心情</div>
-			  			</a>
-			  		<%}%>
-			   </div>
-			</div>
-		<div style="clear:both"></div>
+<% include partial/nav %>
+<div class="mainwrap">
+	<div class="page_header_info">
+		<% if(visituser){ %>
+		<h4>Ta的最近动态<small>(<%=d.articlenum %>)</small></h4>
+		<% } %>
 	</div>
-	</div>				
-<% include partial/footer %>
+	<div class="margin-top:10px;">
+		<div class="rightwrap user_rightwrap">
+			<% include partial/sidebar %>
+		</div>
+		<div class="leftwrap">
+			<div class="user_near_article">
+				<% 	var nearArticle = d.data;
+				for(var i=0;i<nearArticle.length;i++){ %>
+				<div class="articleitem">
+						<% if(nearArticle[i].classify === 0){%>
+								<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 说
+						<%}else if(nearArticle[i].classify === 2){%>
+								<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 发布一篇
+						<%}else{%>
+								<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 分享来自
+								<%if(nearArticle[i]._sid){%>
+								<a href="#" class="sitetext" data-toggle="tooltip" data-placement="right" title="<%=nearArticle[i]._sid.sbrief %>"><%=nearArticle[i]._sid.sname %></a>
+								<%}else{%>
+								net
+								<%}%>
+							的快链</span>
+							<%if(nearArticle[i]._sid){%>
+								<img class="sitepic" src="<%=nearArticle[i]._sid.spic %>">
+							<%}%>
+						<%}%>
+							<div class="reply">
+								<% if(typeof(locals.userinfo) !== 'undefined' && locals.userinfo.name === visituser){%>
+								<a class="deleteitem" data-tid="<%=nearArticle[i].tid %>">
+									<i class="fa fa-trash"></i>
+								</a>
+								<% }%>
+								<% if(locals.userinfo){ %>
+								<a href="/article/<%= nearArticle[i].tid %>">
+									<i class="fa fa-comment"></i>
+								</a>
+								<% }else{%>
+								<a href="/login?prelink=/article/<%= nearArticle[i].tid %>">
+									<i class="fa fa-comment"></i>
+								</a>
+								<%}%>
+							</div>
+						</div>
+						<% if(nearArticle[i].classify === 0){%>
+							<% if(nearArticle[i].title &&nearArticle[i].title.length > 0 ){%>
+								<p class="item_title"><a href="/article/<%= nearArticle[i].tid %>"><%= nearArticle[i].title %></a></p>
+							<%}%>
+							<div class="msg_content"><%- nearArticle[i].newcontent %> </div>
+						<%}else if(nearArticle[i].classify === 2){%>
+								<% if(nearArticle[i].title &&nearArticle[i].title.length > 0 ){%>
+							<p class="item_title"><a href="/t/<%= nearArticle[i].tid %>"><%= nearArticle[i].title %></a></p>
+							<%}%>
+							<div class="msg_content"><%- nearArticle[i].newcontent %> </div>
+						<%}else{%>
+						<p class="item_title"><a href="/redirect?url=<%= nearArticle[i].title %>" target="_blank"><%= nearArticle[i].content %><i class="fa fa-external-link"></i></a></p>
+						<%}%>
+						<div class="clearfix"></div>
+					</div>
+					<% } %>
+					<% if(nearArticle.length > 12 ){%>
+					<a href="/user/<%= visituser %>/article" class="get_more">
+						<div class="more_article fade_trans">查看<%= visituser%>更多心情</div>
+					</a>
+					<%}%>
+				</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+	<% include partial/footer %>

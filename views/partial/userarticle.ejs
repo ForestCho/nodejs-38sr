@@ -16,7 +16,6 @@
 		   			for(var i=0;i<nearArticle.length;i++){ %> 
 		   					<div class="articleitem">    
 									<div class="msg_date"><%= nearArticle[i].convertdate  %> 说	 
-										<div class="reply">
 
 											<% if(typeof(locals.userinfo) !== 'undefined' && locals.userinfo.name === visituser){%>	
 												<a class="deleteitem" data-tid="<%=nearArticle[i].tid %>">删除</a>
