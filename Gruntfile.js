@@ -1,61 +1,77 @@
-module.exports = function(grunt){
+module.exports = function(grunt) {
     //配置
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         concat: {
             concatcss: {
-                src: ['source/stylesheets/about.css',
-                     'source/stylesheets/article.css', 
-                     'source/stylesheets/index.css',
-                     'source/stylesheets/loginreg.css',
-                     'source/stylesheets/message.css',
-                     'source/stylesheets/nav.css',  
-                     'source/stylesheets/reply.css',
-                     'source/stylesheets/set.css',
-                     'source/stylesheets/sidebar.css',
-                     'source/stylesheets/topset.css',
-                     'source/stylesheets/pubarticle.css',
-                     'source/stylesheets/user.css',
-                     'source/stylesheets/shijian.css',
-                     'source/stylesheets/followlist.css',
-                     ],
-                dest: 'source/stylesheets/pagesty.css'
+                src: [
+                    'source/stylesheets/bootstrap.css',
+                    'source/stylesheets/about.css',
+                    'source/stylesheets/article.css',
+                    'source/stylesheets/index.css',
+                    'source/stylesheets/loginreg.css',
+                    'source/stylesheets/message.css',
+                    'source/stylesheets/nav.css',
+                    'source/stylesheets/reply.css',
+                    'source/stylesheets/set.css',
+                    'source/stylesheets/sidebar.css',
+                    'source/stylesheets/topset.css',
+                    'source/stylesheets/pubarticle.css',
+                    'source/stylesheets/user.css',
+                    'source/stylesheets/shijian.css',
+                    'source/stylesheets/followlist.css',
+                    'source/stylesheets/base.css',
+                    'source/stylesheets/admin.css',
+                    'source/stylesheets/jcrop.css',
+                    'source/stylesheets/jquery.atwho.css',
+                    'source/stylesheets/jquery.qeditor.css',
+                    'source/stylesheets/fancybox.css',
+                    'source/stylesheets/jquery.webui.popover.css'
+                ],
+                dest: 'source/stylesheets/build.css'
+            },     
+            concatjs: {
+                src: [ 
+                    'source/javascripts/underscore.js',
+                    'source/javascripts/bootstrap.js',
+                    'source/javascripts/base.js', 
+                    'source/javascripts/fancybox.js', 
+                    'source/javascripts/admin.js',
+                    'source/javascripts/texiao.js' 
+                ],
+                dest: 'source/javascripts/build.js'
+            },     
+            concatjs1: {
+                src: [ 
+                    'source/javascripts/jquery.js',
+                    'source/javascripts/jquery.migrate.js',
+                    'source/javascripts/jquery.caret.js',
+                    'source/javascripts/jquery.atwho.js',
+                    'source/javascripts/jquery.migrate.js',
+                    'source/javascripts/jquery.jcrop.js',
+                    'source/javascripts/jquery.qeditor.js',
+                    'source/javascripts/jquery.webui.popover.js',
+                    'source/javascripts/jquery.form.js'
+                ],
+                dest: 'source/javascripts/lib.js'
             }
         },
         uglify: {
             options: {
                 banner: ''
             },
+            bulid0: {
+                src: 'source/javascripts/build.js',
+                dest: 'public/javascripts/build.min.js'
+            },
             bulid1: {
-                src: 'source/javascripts/base.js',
-                dest: 'public/javascripts/base.min.js'
-            }, 
-            bulid3: {
-                src: 'source/javascripts/underscore.js',
-                dest: 'public/javascripts/underscore.min.js'
-            },
-            bulid4: {
-                src: 'source/javascripts/jquery.jcrop.js',
-                dest: 'public/javascripts/jquery.jcrop.min.js'
-            },
-            bulid5: {
-                src: 'source/javascripts/jquery.atwho.js',
-                dest: 'public/javascripts/jquery.atwho.min.js'
-            },
-            bulid6: {
-                src: 'source/javascripts/jquery.qeditor.js',
-                dest: 'public/javascripts/jquery.qeditor.min.js'
-            },        
-            bulid7: {
-                src: 'source/javascripts/admin.js',
-                dest: 'public/javascripts/admin.min.js'
-            },
-            bulid8: {
-                src: 'source/javascripts/texiao.js',
-                dest: 'public/javascripts/texiao.min.js'
-            }
-        }, 
-        cssmin: { 
+                src: 'source/javascripts/lib.js',
+                dest: 'public/javascripts/lib.min.js'
+            } 
+
+            
+        },
+        cssmin: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
                 //美化代码
@@ -64,33 +80,9 @@ module.exports = function(grunt){
                     ascii_only: true
                 }
             },
-            csscompact1: { 
-                src: 'source/stylesheets/pagesty.css',
-                dest: 'public/stylesheets/pagesty.min.css' 
-            },    
-            csscompact2: { 
-                src: 'source/stylesheets/base.css',
-                dest: 'public/stylesheets/base.min.css' 
-            },    
-            csscompact3: { 
-                src: 'source/stylesheets/bootstrap.css',
-                dest: 'public/stylesheets/bootstrap.min.css' 
-            },    
-            csscompact4: { 
-                src: 'source/stylesheets/jcrop.css',
-                dest: 'public/stylesheets/jcrop.min.css' 
-            },
-            csscompact5: { 
-                src: 'source/stylesheets/jquery.qeditor.css',
-                dest: 'public/stylesheets/jquery.qeditor.min.css' 
-            },
-            csscompact6: { 
-                src: 'source/stylesheets/fancybox.css',
-                dest: 'public/stylesheets/fancybox.min.css' 
-            },
-            csscompact7: { 
-                src: 'source/stylesheets/admin.css',
-                dest: 'public/stylesheets/admin.min.css' 
+            csscompact1: {
+                src: 'source/stylesheets/build.css',
+                dest: 'public/stylesheets/build.min.css'
             },
         }
     });
@@ -101,6 +93,6 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     //注册任务
-    grunt.registerTask('default', ['concat', 'uglify','cssmin']);
+    grunt.registerTask('default', ['concat', 'uglify', 'cssmin']);
 
 };
