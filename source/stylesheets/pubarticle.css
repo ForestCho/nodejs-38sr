@@ -2,14 +2,7 @@
 	margin-top: 15px;
 	margin-bottom: 20px;
 }
-}
-#add_label, #add_title{
-	color: #808080;
-}
-#add_label:hover,#add_title:hover{
-	color: #808080;
-	background-color: #fff;
-}
+} 
 .webuploader-element-invisible {
 	position: absolute!important;
 	clip: rect(1px 1px 1px 1px);

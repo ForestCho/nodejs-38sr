@@ -256,3 +256,23 @@
   margin-top: 25px;
   visibility: visible;
 } 
+.pubnotice{	
+	margin-top: 20px;
+}
+.pubnotice li{
+	font-size: 16px;
+	line-height: 2em;
+	list-style: square;
+}
+.pubnotice li div{
+	font-size: 15px;
+	line-height: 1.8em;
+}
+.editnotice{
+	margin-top: 20px;
+}
+.markdown-notice li{  
+	font-size: 15px;
+	line-height: 1.8em;
+	list-style: none;
+} 
