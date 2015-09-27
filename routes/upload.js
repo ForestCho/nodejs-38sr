@@ -15,10 +15,11 @@ exports.save_avatar = function(req, res) {
 	var uid = req.session.user.uid;  
 	var iconName = uid + '_' + '64'+'_'+'64'+ path.extname(originPhoto);
 	var tempPath = path.resolve(path.join(config.upload_img_dir,iconName)); 
-	imageMagick(originPhoto).crop(coords[2],coords[3],coords[0],coords[1]).scale(img_size,img_size).write(tempPath, function(err){
+	imageMagick(encodeURI(originPhoto)).crop(coords[2],coords[3],coords[0],coords[1]).scale(img_size,img_size).write(tempPath, function(err){
 		if (err){
 			console.log(err)
-			res.redirect('common/500')
+			console.log(err);
+			res.redirect('/500')
 			return ;
 		}; 
 		var upyun = new UPYun(config.upyun.bat, config.upyun.opname, config.upyun.oppwd);
@@ -32,7 +33,7 @@ exports.save_avatar = function(req, res) {
 				fs.unlink(tempPath, function() {
 					update_avatar(userIconoPath,userName,function(err){
 						if (err){
-							res.redirect('common/500')
+							res.redirect('/500')
 							return ;
 						};    
 						var msg = {};
@@ -198,7 +199,7 @@ var update_originphoto = function(ourl,username,callback){
 	var options = { multi: false };
 	User.update(condition,update,options,function(err,num){
 		if (err){
-			res.redirect('common/500')
+			res.redirect('/500')
 			return ;
 		};    
 		callback(null)
@@ -213,7 +214,7 @@ var update_avatar = function(url,username,callback){
 	var options = { multi: false };
 	User.update(condition,update,options,function(err,num){
 		if (err){
-			res.redirect('common/500')
+			res.redirect('/500')
 			return ;
 		};    
 		callback(null)

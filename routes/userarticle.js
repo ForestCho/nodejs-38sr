@@ -82,6 +82,9 @@ var EventProxy = require('eventproxy');
 	 		
 	 		articlelist[i].purecontent = util.delHtmlTag(articlelist[i].content);
 			var newcontent = articlelist[i].purecontent; 
+			if(articlelist[i].classify == 1){
+				articlelist[i].title = encodeURIComponent(articlelist[i].title);
+			}  
 			if(imglist !== null){
 				if(imglist.length>0){
 					var srcReg = /http:\/\/([^"]+)/i; 

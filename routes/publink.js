@@ -44,7 +44,7 @@ var	EventProxy = require('eventproxy');
  			var options = false; 
  			UserDao.updateUserInfoFree(condition,update,options,function(err,num){ 
 				if (err){
-		 			res.redirect('common/500')
+		 			res.redirect('/500')
 		 			return ;
 		 		};   
  				res.redirect('/');

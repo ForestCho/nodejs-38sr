@@ -11,11 +11,11 @@ var EventProxy = require('eventproxy');
 
  	UserDao.getUserInfoByName(username,function(err,user){
  		if (err){
- 			res.redirect('common/500')
+ 			res.redirect('/500')
  			return ;
  		};
  		if(!user){ 
- 			res.redirect('common/404')
+ 			res.redirect('/404')
  			return ;
  		} 
  		if(user){
@@ -47,11 +47,11 @@ var EventProxy = require('eventproxy');
 	var msg = {};
  	UserDao.getUserInfoByName(username,function(err,userinfo){ 
  		if (err){
- 			res.redirect('common/500')
+ 			res.redirect('/500')
  			return ;
  		};
  		if(!userinfo){ 
- 			res.redirect('common/404')
+ 			res.redirect('/404')
  			return ;
  		}
  		req.session.user = userinfo; 
@@ -99,7 +99,7 @@ var EventProxy = require('eventproxy');
 
  	UserDao.updateUserInfoFree(condition,update,options,function(err,num){
  		if (err){
- 			res.redirect('common/500')
+ 			res.redirect('/500')
  			return ;
  		};   
  		if(num ==1 ){	
@@ -136,7 +136,7 @@ var EventProxy = require('eventproxy');
  	}
  	UserDao.getUserInfoByName(name,function(err,tempuser){ 
  		if (err){
- 			res.redirect('common/500')
+ 			res.redirect('/500')
  			return ;
  		}  
  		if(md5pwd !== tempuser.pwd){ 
@@ -150,7 +150,7 @@ var EventProxy = require('eventproxy');
  		var	options = {multi: false};
  		UserDao.updateUserInfoFree(condition,update,options,function(err,num){ 
  			if (err){
- 				res.redirect('common/404')
+ 				res.redirect('/404')
  				return ;
  			}   
  			if(num === 1 ){ 

@@ -1,5 +1,4 @@
-var	UserDao = require('../dao/userdao'); 
-var	MryjDao = require('../dao/mryjdao');   
+var	UserDao = require('../dao/userdao');  
 var	ZymryjDao = require('../dao/zymryjdao');   
 var	util = require('../lib/util');   
 var	ArticleDao = require('../dao/articledao');   
@@ -47,11 +46,12 @@ var category = function (req, res,flag) {
  		page=req.query.page;
  	}  
  	var ep = new EventProxy(); 
- 	ep.assign("count","articlelist","mryj","zymryj",function (count,articlelist,mryj,zymryj) {
+ 	ep.assign("count","articlelist","zymryj",function (count,articlelist,zymryj) {
  		var d= {}; 
 	 		d.count = count;
-	 		d.data = articlelist;   
- 			res.json(d);  
+	 		d.data = articlelist; 
+	 	var mryj = ' 在人生的漫漫旅途中，有时热烈，有时寂寞，有时高兴，有时忧伤...这里可以记录这一切';
+ 		 	res.json(d);  
  	});
 
 	var articleLimit = {flag:flag,isdelete:false}; 
@@ -84,11 +84,7 @@ var category = function (req, res,flag) {
 			articlelist[i].text = newcontent; 
 		}
 		ep.emit("articlelist",articlelist);
- 	}) 
-	 
-	MryjDao.getMryjOfCurrday(function(err,mryj){
- 		ep.emit("mryj",mryj);
-	}); 	
+ 	})  
 
 	ZymryjDao.getZymryjOfCurrday(function(err,zymryj){
  		ep.emit("zymryj",zymryj);

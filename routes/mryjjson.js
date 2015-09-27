@@ -1,5 +1,4 @@
-var	UserDao = require('../dao/userdao'); 
-var	MryjDao = require('../dao/mryjdao');   
+var	UserDao = require('../dao/userdao');  
 var	ZymryjDao = require('../dao/zymryjdao');   
 var	util = require('../lib/util');   
 var	ArticleDao = require('../dao/articledao');   

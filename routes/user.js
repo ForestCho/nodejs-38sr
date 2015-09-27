@@ -88,7 +88,7 @@ exports.getuserinfo = function(req,res){
 		ep.emit("tempuser",tempuser);
 		Article.find({uid:tempuser.uid,isdelete:false}).sort({'post_date':-1}).limit(pagesize+1).populate('_creator').populate('_sid').lean(true).exec(function(err,articlelist){
 			if (err){
- 				res.redirect('common/404')
+ 				res.redirect('/404')
  				return ;
  			}    
 
@@ -98,7 +98,7 @@ exports.getuserinfo = function(req,res){
 	 		
 	 		articlelist[i].purecontent = util.delHtmlTag(articlelist[i].content);
 			var newcontent = articlelist[i].purecontent; 
-			if(articlelist[i].classify != 0){
+			if(articlelist[i].classify == 1){
 				articlelist[i].title = encodeURIComponent(articlelist[i].title);
 			}  
 			if(imglist !== null){

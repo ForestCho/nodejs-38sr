@@ -39,6 +39,20 @@ var xssFilters = require('xss-filters');
 						title =  util.xss(d.articlecontent.purecontent);
 				}
 
+				if(d.articlecontent.flag > 1){
+					res.locals.pageflag = 4;
+				}else if(d.articlecontent.classify == 1){
+					res.locals.pageflag = 1;
+
+				}else if(d.articlecontent.classify == 2){
+					res.locals.pageflag = 2;
+
+				}else if(d.articlecontent.classify == 0){
+					res.locals.pageflag = 0;
+
+				}else{					
+					res.locals.pageflag = -1;
+				}
  				if(currusername){
  					RelationDao.countByName(currusername,d.userinfo.name,function(err,nums){
  						if(nums > 0){ 
@@ -103,7 +117,7 @@ var xssFilters = require('xss-filters');
 	});
  };
 
-  exports.delete = function (req, res) {  	
+ exports.delete = function (req, res) {  	
  	var tid = req.query.tid; 
  	if(tid < 0){
  		res.json({status: 3 }); 

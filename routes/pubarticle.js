@@ -6,6 +6,7 @@ var util = require('../lib/util');
 var mongoose = require('mongoose');
 var EventProxy = require('eventproxy');
 var bosonnlp = require('bosonnlp');
+var marked = require('marked');
 var boson = new bosonnlp.BosonNLP("yoUTK8dE.3486.jTfMGWlrfZxc");
 //mongoose.connect('mongodb://localhost/blogdb');
 
@@ -15,7 +16,7 @@ var boson = new bosonnlp.BosonNLP("yoUTK8dE.3486.jTfMGWlrfZxc");
 
 exports.save = function(req, res) {
     var title = req.body.title;
-    var str = req.body.articlestr;
+    var mcontent = req.body.mcontent;
     var label = req.body.label;
     var cateid = req.body.cateid;
     var classify = 0;
@@ -24,13 +25,15 @@ exports.save = function(req, res) {
     var tid = 0;
     var label = '';
     var ep = new EventProxy();
+    var content = marked(mcontent);
     ep.assign("userinfo", "tid","label", function(userinfo, tid,label) {
         uid = userinfo.uid;
 
         var articleItem = new Article({
             tid: tid,
             title: title,
-            content: str,
+            content: content,
+            mcontent:mcontent,
             uid: uid,
             _creator: userinfo._id,
             flag: cateid,
@@ -50,7 +53,7 @@ exports.save = function(req, res) {
             var options = false;
             UserDao.updateUserInfoFree(condition, update, options, function(err, num) {
                 if (err) {
-                    res.redirect('common/500')
+                    res.redirect('/500')
                     return;
                 };
                 res.redirect('/');
@@ -60,7 +63,7 @@ exports.save = function(req, res) {
 
     if (title.length > 0) {
     	classify = 2;
-        boson.extractKeywords(util.delHtmlTag(str), function(data) {
+        boson.extractKeywords(util.delHtmlTag(content), function(data) {
             data = JSON.parse(data);
                 console.log(data);
             var labeljson = data[0];
