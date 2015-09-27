@@ -32,7 +32,7 @@ var replies = d.replies;
 						<%= articlecontent.view_count  %> 次阅读
 					</span>
 				</div>
-			<pre class="msg_content_detail"><%- articlecontent.content %> </pre>
+			<div class="msg_content_detail"><%- articlecontent.content %> </div>
 		</div>
 		<%
 		var s_title = "";
@@ -54,7 +54,7 @@ var replies = d.replies;
 					for(var j=0 ;j<labelarr.length-1;j++){
 						%>
 						<li class="label-item">
-							<a class="color<%=Math.floor(Math.random() * 5 + 1)%>" href="/tags/<%- labelarr[j]%>/" target="_blank" style="font-size: 12px;"><%- labelarr[j]%></a>
+							<a class="color<%=Math.floor(Math.random() * 5 + 1)%>" href="/tags/<%- labelarr[j]%>/"  style="font-size: 12px;"><%- labelarr[j]%></a>
 						</li>
 						<%}%>
 					</ul>
@@ -109,7 +109,7 @@ var replies = d.replies;
 										<% if(locals.userinfo){ %>
 										<a class="replyat" href="#"   data-tid="<%= replies[i].tid %>" data-rid="<%= replies[i].rid %>" data-ruid="<%= replies[i]._creator.uid %>" data-runame="<%= replies[i]._creator.name %>"><i class="fa fa-reply"></i>回复</a>
 										<% }else{%>
-										<a class="replylink" href="/login?prelink=/article/<%=articlecontent.tid %>"><i class="fa fa-reply"></i>回复</a>
+										<a class="replylink" data-toggle="modal" data-target="#loginmodal" ><i class="fa fa-reply"></i>回复</a>
 										<%}%>
 										<% if(i==0){%>
 										•<%= "沙发"%>
@@ -141,7 +141,7 @@ var replies = d.replies;
 						</form>
 					</div>
 					<%}else{%>
-					<div class="nosignin"><a href="/login?prelink=/article/<%=articlecontent.tid %>">登录</a>后才能回复， 没有账号？点击这里<a href="/reg">注册</a></div>
+					<div class="nosignin"><a  data-toggle="modal" data-target="#loginmodal">登录</a>后才能回复， 没有账号？点击这里<a  data-toggle="modal" data-target="#regmodal">注册</a></div>
 					<%}%>
 				</div>
 			</div>

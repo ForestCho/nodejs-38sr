@@ -11,11 +11,15 @@
 	<link rel="icon" href="/images/favicon.ico">   
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel='stylesheet' href='/stylesheets/build.min.css' /> 
-	<link rel="stylesheet" href="//cdn.jsdelivr.net/editor/0.1.0/editor.css">
- 
-	<script src="/javascripts/marked.js"></script> 
-	<script src="/javascripts/editor.js"></script>  
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/editor/0.1.0/editor.css"> 
+	<script src="/javascripts/marked.js"></script>  	
+<script type="text/javascript">
+	<% if(locals.pageflag == 3){%>
+	  var route = "pub";
+	<%}else{%>
+	  var route = "_pub";
+		<%}%>
+</script>
 
-
-    <script  data-main="/javascripts/main.js" src="/javascripts/require.js"></script> 
+<script  data-main="/javascripts/main.min.js" src="/javascripts/require.js"></script> 
  

@@ -1,24 +1,19 @@
 <% include partial/header%>
 </head>
 <body>	
-	<% include partial/nav %>
+	<% include partial/nav %> 
 	<div class="mainwrap reglogin_mainwrap"> 
-			<div class="reglogin_head_info panel-heading">
-				注册
-			</div>  
+		<div class="reglogin_head_info panel-heading">
+			重置密码
+		</div> 
 		<div class="regpanel">		
 			<div class="leftreg">
-				<form class="form-horizontal reglogin_formwrap" method="POST" action="/reg" role="form" >
+				<form class="form-horizontal reglogin_formwrap" role="form" action="/resetpwd" method="POST">
 					<div class="form-group"> 
 						<div class="col-sm-10">
 							<input type="email" class="form-control emailbg" id="email" value='<%= typeof(email)== 'undefined'?'':email %>' name="email" readonly placeholder="邮箱"> 
 						</div>
-					</div>
-					<div class="form-group"> 
-						<div class="col-sm-10">
-							<input  class="form-control accountbg" id="uname" name="uname" value='<%= typeof(name)== 'undefined'?'':name %>' placeholder="帐号">
-						</div>
-					</div>
+					</div> 
 					<div class="form-group"> 
 						<div class="col-sm-10">
 							<input type="password" class="form-control pwdbg" id="pwd" name="pwd" placeholder="密码">
@@ -30,30 +25,34 @@
 						</div>
 					</div> 
 					<div class="form-group">
-						<div class="col-sm-10">
-							<button type="submit"  id="regBtnSub">注册</button>
+							<input type="hidden" class="form-control emailbg" id="token" value='<%= typeof(token)== 'undefined'?'':token %>' name="token"> 
+						<div class=" col-sm-10">
+							<button type="submit">立即重置密码</button>
 						</div>
 					</div>
 				</form>
-			</div>
+				</div> 
 
-			<div class="rightreg">
-				<div class="rightpanelinfo">
-					<ul class="nav_reg_login">
-						<li>
-							>> 已经注册过，<a href="/login">马上登录</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div style="clear:both"></div>			
-		</div>
-		<div class="msgbox"> 
+					<div class="rightreg">
+						<div class="rightpanelinfo">
+							<ul class="nav_reg_login">
+								<li>
+									>> 还没注册，<a href="/reg">马上注册</a>
+								</li>
+								<li>
+									>> 已经注册过，<a href="/login">马上登录</a>
+								</li>
+							</ul> 
+						</div>
+					</div>
+			<div style="clear:both"></div>
+			</div>		
+			<div class="msgbox">
 				<% if(typeof(msg) !== 'undefined' && msg.status !== -1){ %>
 					<div class="<%=(msg.status === 1)?"sucesssty":"alertsty" %>" role='alert'>
 						<%-msg.content %>
 						</div> 
 				<% } %>
-		</div>	
-	</div>			
-	<% include partial/footer %>
+			</div>
+		</div>		
+			<% include partial/footer %>

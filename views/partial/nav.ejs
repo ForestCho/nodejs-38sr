@@ -16,11 +16,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class=" collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="catawrap nav navbar-nav" role="tablist">  
-			<li class="<%= (locals.pageflag==1)?'active':'' %>" %><a href="/">广场</a></li>
-			<li class="<%= (locals.pageflag==2)?'active':'' %>" %><a href="/mood">心情</a></li>
-			<li class="<%= (locals.pageflag==5)?'active':'' %>" %><a href="/article">文章</a></li>
-			<li class="<%= (locals.pageflag==3)?'active':'' %>" %><a href="/fastlink">快链</a></li>
-			<li class="<%= (locals.pageflag==4)?'active':'' %>" %><a href="/xiaohua">笑话</a></li>
+			<li class="<%= (locals.pageflag== -1)?'active':'' %>" %><a href="/">广场</a></li>
+			<li class="<%= (locals.pageflag== 0)?'active':'' %>" %><a href="/mood">心情</a></li>
+			<li class="<%= (locals.pageflag== 2)?'active':'' %>" %><a href="/article">文章</a></li>
+			<li class="<%= (locals.pageflag== 1)?'active':'' %>" %><a href="/fastlink">快链</a></li>
+			<li class="<%= (locals.pageflag== 4)?'active':'' %>" %><a href="/xiaohua">笑话</a></li>
 		</ul> 
 
 		<% if(locals.userinfo){%>	
@@ -44,14 +44,14 @@
 				</ul>  
 			<%}else{%> 
 				<ul class="reg_login navbar-nav navbar-right">
-					<li><a class="optionaccess" href="/reg">注册</a></li>
-					<li><a class="optionaccess" href="/login?prelink=<%= typeof(curpath) == 'undefined'?"":curpath %>">登录</a></li>
+					<li><a class="optionaccess" data-toggle="modal" data-target="#regmodal">注册</a></li>
+					<li><a class="optionaccess" data-toggle="modal" data-target="#loginmodal">登录</a></li>
 				</ul> 
 			<%}%> 
  		<div class="headsearch"> 
 				<form class="navbar-form form-search" action="/search" method="GET">
 	              <div class="form-group">
-	                <input class="form-control" name="searchstr" type="text" value="" placeholder="search">
+	                <input class="form-control search-ipt" name="searchstr" type="text" value="" placeholder="search">
 	              </div>
 	              <i class="fa btn-search fa-search"></i>
 	              <i class="fa btn-close fa-times-circle"></i>
