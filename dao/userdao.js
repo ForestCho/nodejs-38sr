@@ -16,6 +16,10 @@ var getUserInfoByEmail = function(email,cb){
 	User.findOne({email:email},cb);
 }
 
+var getUserInfoByObj = function(obj,cb){
+	User.findOne(obj,cb);
+}
+
 var getUserInfoByLoginTypeAndAccessToken = function(logintype,access_token,cb){
 	User.findOne({logintype:logintype,access_token:access_token},cb);
 }
@@ -58,6 +62,10 @@ var saveNewUser = function(uid,name,email,pwd,relapath,relapath,cb){
 		photo:relapath
 	}); 
 	user.save(cb);  
+}
+//添加用户信息
+var saveNewUserObject = function(userobj,cb){
+	userobj.save(cb);  
 }
 var saveNewSinaUser = function(uid,name,locate,photo,access_token,logintype,gender,signature,oid,cb){
 	var user = new User({   
@@ -105,9 +113,12 @@ exports.getUserInfoByLoginTypeAndName = getUserInfoByLoginTypeAndName;
 
 exports.getNextUidOfUser = getNextUidOfUser;
 exports.saveNewUser = saveNewUser;
+exports.saveNewUserObject = saveNewUserObject;
 exports.saveNewSinaUser = saveNewSinaUser;
 exports.saveNewQQUser = saveNewQQUser;
 exports.updateUserInfo = updateUserInfo;
 exports.updateUserInfoFree = updateUserInfoFree;
 exports.getNumberOfAllUser = getNumberOfAllUser;
 exports.getUserListByScore = getUserListByScore;
+
+exports.getUserInfoByObj = getUserInfoByObj;
