@@ -3,51 +3,51 @@
 <body>
 <% include partial/nav %>
 <div class="mainwrap">
-	<div class="page_header_info">
-		<% if(visituser){ %>
-		<h4>Ta的动态</h4>
-		<% } %>
-	</div>
 	<div class="rightwrap user_rightwrap">
 		<% include partial/sidebar %>
 	</div>
 	<div class="leftwrap ">
+		<div class="page_header_info">
+			<% if(visituser){ %>
+			<div class="tab-cell">Ta的最近动态<small>(<%=d.articlenum %>)</small></div>
+			<% } %>
+		</div>
 		<div class="user_near_article">
 			<% 	var nearArticle = d.data;
 			for(var i=0;i<nearArticle.length;i++){ %>
 			<div class="articleitem">
 				<% if(nearArticle[i].classify === 0){%>
 				<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 说
-				<%}else if(nearArticle[i].classify === 2){%>
-				<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 发布一篇
-					<%}else{%>
-					<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 分享来自
-						<%if(nearArticle[i]._sid){%>
-						<a href="#" class="sitetext" data-toggle="tooltip" data-placement="right" title="<%=nearArticle[i]._sid.sbrief %>"><%=nearArticle[i]._sid.sname %></a>
+					<%}else if(nearArticle[i].classify === 2){%>
+					<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 发布一篇
 						<%}else{%>
-						net
+						<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 分享来自
+							<%if(nearArticle[i]._sid){%>
+							<a href="#" class="sitetext" data-toggle="tooltip" data-placement="right" title="<%=nearArticle[i]._sid.sbrief %>"><%=nearArticle[i]._sid.sname %></a>
+							<%}else{%>
+							net
+							<%}%>
+						的快链</span>
+						<%if(nearArticle[i]._sid){%>
+						<img class="sitepic" src="<%=nearArticle[i]._sid.spic %>">
 						<%}%>
-					的快链</span>
-					<%if(nearArticle[i]._sid){%>
-					<img class="sitepic" src="<%=nearArticle[i]._sid.spic %>">
-					<%}%>
-					<%}%>	
-					<div class="reply">
-						<% if(typeof(locals.userinfo) !== 'undefined' && locals.userinfo.name === visituser){%>
-						<a class="deleteitem" data-tid="<%=nearArticle[i].tid %>">
-							<i class="fa fa-trash"></i>
-						</a>
-						<% }%>
-						<% if(locals.userinfo){ %>
-						<a href="/article/<%= nearArticle[i].tid %>">
-							<i class="fa fa-comment"></i>
-						</a>
-						<% }else{%>
-						<a href="/login?prelink=/article/<%= nearArticle[i].tid %>">
-							<i class="fa fa-comment"></i>
-						</a>
 						<%}%>
-					</div>
+						<div class="reply">
+							<% if(typeof(locals.userinfo) !== 'undefined' && locals.userinfo.name === visituser){%>
+							<a class="deleteitem" data-tid="<%=nearArticle[i].tid %>">
+								<i class="fa fa-trash"></i>
+							</a>
+							<% }%>
+							<% if(locals.userinfo){ %>
+							<a href="/article/<%= nearArticle[i].tid %>">
+								<i class="fa fa-comment"></i>
+							</a>
+							<% }else{%>
+							<a href="/login?prelink=/article/<%= nearArticle[i].tid %>">
+								<i class="fa fa-comment"></i>
+							</a>
+							<%}%>
+						</div>
 					</div>
 					<% if(nearArticle[i].classify === 0){%>
 					<% if(nearArticle[i].title &&nearArticle[i].title.length > 0 ){%>
