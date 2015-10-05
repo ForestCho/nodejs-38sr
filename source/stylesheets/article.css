@@ -1,0 +1,236 @@
+.rep_msg_box {
+	background-color: #fff; 
+	border-bottom: 1px solid #eee;
+}
+.nosignin{
+	text-align: center; 
+	background-color: #fff;
+	padding-top: 25px;
+	font-size: 15px;
+	padding-bottom: 25px;
+}
+.leftwrap .replywritepanel{
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 15px 0px;
+	background-color: #fff;
+}
+.reply_msg_item {
+	border-top: 1px solid #E0E0E0;
+	padding: 15px 20px 15px 20px;
+	overflow: hidden;
+}
+
+.reply_user_photo {
+	float: left;
+	width: 48px;
+	height: 48px;
+	overflow: hidden
+}
+
+.reply_user_photo img {
+	width: 48px;
+	height: 48px;
+	border-radius: 25px;
+	border: 2px solid #fff;
+	-webkit-transition: all .35s ease-in-out;
+	-moz-transition: all .35s ease-in-out;
+	transition: all .35s ease-in-out
+}
+
+.reply_user_photo .userlink:hover img {
+	border: 2px solid #D5C8DB
+}
+
+.reply_content_info {
+	margin-left: 55px
+}
+
+.reply_info span {
+	color: #999
+} 
+.article_head_info{
+	padding:5px 0px;
+}
+.article_head_info a{	
+	font:15px/1.5 "微软雅黑",Verdana,Geneva,sans-serif;
+	color: #838383;
+}
+
+.detail_content{
+	padding: 15px 20px;
+	padding-top: 10px;
+}
+.reply_user_name a{
+	font-size: 14px;
+	color: #838383;	
+}
+
+.reply_user_name a:hover {
+	color: #07695E; 
+}
+.article_head_info span:before {
+	content: "•";
+}
+.article_head_info span{ 
+	font:15px/1.5 "微软雅黑",Verdana,Geneva,sans-serif;
+	color: #838383;
+}
+.reply_date:before {
+	content: "•";
+}
+.reply_date{ 
+	font-size: 14px;
+	color: #838383;
+}
+.reply_content a{
+	color: #645A5A;
+}
+.reply_info .opt {
+	float: right
+}
+.replyat{
+	color: #999;
+}
+.articleitem_detail{
+	background-color: #FFF;
+	margin-top: 51px;
+	padding-bottom: 30px;
+	border-bottom: 1px solid #eee;
+}
+.msg_content_detail {
+	color: #333;
+	line-height: 1.8em;
+	overflow: hidden;
+	font: 15px/1.8 "微软雅黑",Verdana,Geneva,sans-serif;
+	border: 0 solid #ccc!important;
+	margin: 6px 0;
+	padding-bottom: 10px;
+	border-radius: 0;
+}
+.msg_content_detail pre{
+	font-size: 14px; 
+	padding: 5px 15px;
+	border: 0;
+	border-radius: 2px;
+	border-width: 1px 0;
+	background: #fff;
+	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+}
+.share {
+	text-align: center;
+	position: relative;
+	overflow: visible;
+}
+.other-article-info{
+	padding:0px 20px;
+}
+.other-article-info .articlelabel{
+	float:left;
+	margin-left: 0px;
+}
+.operator{
+	float:right;
+}
+.operator a {
+	color:#999999;
+	cursor: pointer;
+	margin-left: 10px;
+}  
+.arrow-top::before, .arrow-top::after {
+	position: absolute;
+	top: -10px;
+	left: 35%;
+	content: '';
+	display: inline-block;
+	border-left: 9px solid transparent;
+	border-right: 9px solid transparent;
+	border-bottom: 9px solid #d9d9d9;
+}
+.share .dropdown-menu img {
+	width: 16px;
+	height: 16px;
+	margin-top: -4px;
+	margin-right: 5px;
+}
+.share .dropdown-menu{
+	min-width: 100px;
+	right: -28px;
+	top: 25px;
+	left: auto;
+}
+.share .dropdown-menu li a {
+	display: block;
+	padding: 3px 10px;
+	clear: both;
+	font-weight: 400;
+	line-height: 1.42857143;
+	color: #333;
+	white-space: nowrap;
+}
+.detail_msg_head{
+	font-size: 19px;
+	color: #383838;
+	border-left: 4px solid #00a090;
+	padding: 8px 10px;
+	line-height: 19px;
+	height: 38px;
+}
+.no_reply_notice{
+	padding: 20px 0px;
+    text-align: center;
+    font-size: 15px;
+    color: #A4A4A4;
+}
+.nosignin a{
+	background-color: #569E97;
+	padding: 2px 6px; 
+	font-size: 15px;
+	color: #fff;
+}
+.nosignin a:hover{
+	background-color: #039082;
+	color: #fff; 
+} 
+.opt a {
+	color: #999;
+}
+.opt a:hover{
+	color:#777777;
+}
+.reply_info .replyat:hover img {
+	border: 2px solid #D5C8DB
+}
+.detail_content img{
+	width: 80%;
+	display: block;
+	margin: 0 auto;
+} 
+#replywrap{
+	position:relative;
+}
+#reply_input,.atreply{
+	width: 100%;
+	height: 30px;
+	resize: vertical;
+	border-radius: 4px;
+	padding: 4px 40px 4px 4px;
+}
+#repstr{
+	width: 100%;
+	margin-right: 0px;
+	position:relative;
+}
+.inputopt {
+  	display:none; 
+	position: absolute;
+	right: 20px;
+	bottom: 8px;
+}
+.inputopt button{
+	padding:0px;
+	background-color: transparent;
+	color:gray;
+	border:0px;
+
+}

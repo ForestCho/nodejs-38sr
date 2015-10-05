@@ -1,0 +1,90 @@
+.account_panel{
+	width: 100%;
+	height: 100%;
+	background-color:#fff;
+	margin: 0px auto;  
+	overflow: hidden;
+}
+.set-header{
+	background-color: #E9E7E7;
+	padding: 25px 10px 0px 10px;
+}
+.set-header .curset:hover{
+	background-color: #f5f5f5;	
+}
+.set-header a:hover {
+	background-color: #E9E7E7;
+}
+.setpanel {
+	padding: 40px 20px;
+	min-height: 400px;
+}
+ 
+.baseinfo form{
+	width:45%;
+} 
+.accountinfo form{
+	width:45%;
+}
+ 
+
+.settab { 
+	font-size: 16px;
+	line-height: 16px;
+	height: 30px;
+}
+
+.settab li {
+	display: block;
+	float: left;
+	height: 30px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+
+.settab a {
+	color: #00a090;
+	font-size: 16px;
+	height: 30px; 
+	float:left;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 0px;
+	padding-top: 7px;
+}
+
+.curset {
+	color: #00a090!important;
+	background-color: #fff;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 0px;
+	padding-top: 7px;
+	border-radius: 2px 2px 0px 0px; 
+}
+
+.wholeimg {
+	float: left
+}
+
+.previewimg {
+	float: left;
+	margin-left: 30px
+}
+
+.imgwrap {
+	overflow: hidden
+}
+
+.crop_preview {
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	overflow: hidden
+}
+
+.substy {
+	margin-top: 10px;
+	float: left
+}

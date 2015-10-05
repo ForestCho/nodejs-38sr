@@ -1,0 +1,21 @@
+/*.head_text {
+	font-size: 20px;
+	border-bottom: 2px solid #f3f3f3;
+	padding: 0 0 7px;
+	margin-bottom: 10px;
+	color: #555
+}*/
+.msgwrap{
+	background-color: #fff;
+	padding: 10px 20px 40px 20px;
+	min-height: 600px;
+}
+.msgitem {
+	padding: 10px;
+	padding-top: 10px;
+	border-bottom: 1px solid #F1F1F1;
+	margin-left: 30px
+}
+.msgitem:hover{
+	background-color: #F8F8F8;
+}

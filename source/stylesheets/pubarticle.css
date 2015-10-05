@@ -1,0 +1,145 @@
+.titlewrap{
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+} 
+.webuploader-element-invisible {
+	position: absolute!important;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px,1px,1px,1px);
+}
+.uploadname{
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	background: #00b7ee;
+	padding: 10px 15px;
+	color: #fff;
+	text-align: center;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.uploadwrap{
+	position: absolute;
+	overflow: hidden;
+	bottom: auto;
+	right: auto;
+	width: 86px;
+	height: 40px;
+	top: 0px;
+	left: 0px;
+}
+#pubstr{
+	width: 100%;
+}
+#pub_link_brief{
+	width:100%;
+}
+
+.btninner {
+	width: 124px;
+	overflow: hidden;
+	position:relative;
+	margin: 0 auto;
+}
+.choose-btn{
+	display:inline-block;
+	width: 126px; 
+	color: #fff; 
+	height: 40px; 
+	border: 0;
+	font-size: 16px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+	background-color: #5993E2;
+}
+.btninner:hover .choose-btn{
+	color:#ccc;
+	background-color: #568DEF;
+}
+.btninner input {
+	position: absolute;
+	right: 0;
+	top: 0;
+	cursor: pointer;
+	font-size: 100px;
+	height: 40px;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	overflow: hidden;
+} 
+.writepanel{
+	min-height: 500px;
+}
+.writepanel form{
+	margin-right: 0px !important;
+}
+.writepanel button{
+	width:100px;
+}
+.share_model{
+	font-size: 16px;
+	line-height: 16px;
+	height: 30px;
+	border-bottom: 1px solid #07695F;
+}
+.share_tab_active{
+	font-size: 16px;
+	height: 30px;
+	float: left;
+	padding: 7px 12px 0;
+	cursor: pointer;
+	border: 1px solid #07695F;
+	border-bottom: 1px solid #fff;
+}
+.share_model li {
+	display: block;
+	float: left;
+	height: 30px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+.share_model li a{
+	font-size: 16px;
+	height: 30px;
+	float: left;
+	padding: 7px 12px 0;
+	cursor:pointer;
+}
+#link_input{	 
+	margin-bottom: 15px;
+}
+.sublink_wrap{
+	float:right;
+	margin-top: 30px;
+}
+.subarticle_wrap{
+	float:right;
+	margin-top: 30px;
+}
+#url{
+	width:50%;
+	display:inline;
+	float:left;
+}
+#searchtitle{
+	margin-left: 14px;
+	width: 100px;
+}
+#tab_link{
+	margin-top: 23px;
+}
+#tab_share{
+	margin-top: 15px;
+}
+.tab_on{
+	display:block;
+}
+.tab_off{
+	display:none;
+}
+.loading{
+    display: none;
+}
