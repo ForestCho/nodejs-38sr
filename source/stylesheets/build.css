@@ -8343,7 +8343,7 @@ a.unfollowfri:hover{
 	-o-animation-fill-mode: both;
 	animation-fill-mode: both
 }
-.more_article{
+.nomore{
 	float: right;
 	width: 100%;
 	height: 40px;
@@ -8352,11 +8352,7 @@ a.unfollowfri:hover{
 	text-align: center;
 	cursor: pointer;
 	border-bottom: #eee 1px solid;
-}
-.more_article:hover{
-	color:#07695E;
-	background-color: #F8F8F8;
-}
+} 
 .get_more{
 	margin-top: 10px;
 	display: block;
@@ -8434,11 +8430,37 @@ a.unfollowfri:hover{
 	width: 45px;
 	margin: 0 auto; 
 }
-
+.page_header_info{
+	font-size: 15px;
+	margin-top: 15px;
+	height: 40px;
+	border-bottom: 2px solid #DCDDD9;
+}
 .page_header_info .tab-cell{
-	font-size: 18px;
-    padding: 10px 20px;
-    background-color: #E1E4E9;
+	border-bottom: 2px solid #DCDDD9;
+	padding: 5px 10px;
+	position: relative;
+	height: 40px;
+	margin-bottom: -2px;
+	display: inline-block;
+	color: #555;
+	-webkit-transition: all linear .2s;
+	-moz-transition: all linear .2s;
+	-ms-transition: all linear .2s;
+	-o-transition: all linear .2s;
+	transition: all linear .2s;
+}
+.page_header_info .active-tab-cell{
+	border-bottom: 2px solid #00a090;
+	padding: 5px 10px;
+	position: relative;
+	height: 40px;
+	margin-bottom: -2px;
+	display: inline-block;
+	color: #555;
+}
+.tab-cell:hover{
+	border-bottom: 2px solid #00a090;
 }
 .shijianpanel{
 	padding-top: 20px; 

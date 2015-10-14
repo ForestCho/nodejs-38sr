@@ -7,10 +7,22 @@
 		<div class="rightwrap user_rightwrap">
 			<% include partial/sidebar %>
 		</div>
-		<div class="leftwrap">			
+		<div class="leftwrap">
 			<div class="page_header_info">
-				<% if(visituser){ %>
-				<div class="tab-cell">Ta的最近动态<small>(<%=d.articlenum %>)</small></div>
+				<% if(cata == "mood"){ %>
+				<span class="active-tab-cell">心情</span>
+				<% }else{ %>
+				<a href="/user/<%= visituser %>/mood"><span class="tab-cell">心情</span></a>
+				<% } %>
+				<% if(cata == "article"){ %>
+				<span class="active-tab-cell">文章</span>
+				<% }else{ %>
+				<a href="/user/<%= visituser %>/article"><span class="tab-cell">文章</span></a>
+				<% } %>
+				<% if(cata == "fastlink"){ %>
+				<span class="active-tab-cell">快链</span>
+				<% }else{ %>
+				<a href="/user/<%= visituser %>/fastlink"><span class="tab-cell">快链</span></a>
 				<% } %>
 			</div>
 			<div class="user_near_article">
@@ -66,12 +78,33 @@
 						<div class="clearfix"></div>
 					</div>
 					<% } %>
-					<% if(nearArticle.length > 12 ){%>
-					<a href="/user/<%= visituser %>/article" class="get_more">
-						<div class="more_article fade_trans">查看<%= visituser%>更多心情</div>
-					</a>
+						<div class="navigator">
+					<% if(nearArticle.length > 12 ){%> 
+							<% if(d.currentpage > 1 ){%>
+							<a href="/user/<%= visituser %>/<%= cata %>/?pageid=<%= d.currentpage - 1  %>" class="last_page fade_trans">
+								&larr;上一页
+							</a>
+							<%}%>
+							<% if(nearArticle.length > config.index.list_article_size ){%>
+							<a href="/user/<%= visituser %>/<%= cata %>/?pageid=<%= d.currentpage - (-1)  %>" class="next_page fade_trans">
+								下一页&rarr;
+							</a>
+							<%}%>
+							<div class="page_numwrap">
+								<div class="page_num">
+									<%
+									var pagesize = config.index.list_article_size;
+									var pagenum = Math.ceil(d.articlenum/pagesize);
+									%>
+									<%= d.currentpage %>/<%= pagenum %>
+								</div>
+							</div>
+					<%}else{%>
+							<span style="nomore">全部显示</span>
 					<%}%>
+						</div>
 				</div>
+				
 			</div>
 			<div style="clear:both"></div>
 		</div>

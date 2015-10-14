@@ -135,9 +135,10 @@ var run = function(app){
 	app.post('/reply', reply.index);
 
 	//个人中心
-	app.get('/userinfo', user.getuserinfo);
-	app.get('/user/:username', user.index);
-	app.get('/user/:username/article', userarticle.index);
+	app.get('/userinfo', user.getuserinfo); 
+	app.get('/user/:username', user.cata); 
+	app.get('/user/:username/:cata', user.cata); 
+	/*app.get('/user/:username/article', userarticle.index);*/
 	app.get('/:username/follower', user.getfollower);
 	app.get('/:username/hefollower', user.gethefollower);
 
