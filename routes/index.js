@@ -10,10 +10,9 @@ var mongoose = require('mongoose');
 /*
  * GET home page.
  */
+ 
+ mongoose.connect('mongodb://127.0.0.1:27017/blogdb');
 
-//mongoose.connect('mongodb://caosl:123456@127.0.0.1:27017/blogdb');
-//mongoose.connect('mongodb://127.0.0.1:27017/blogdb');
- mongoose.connect('mongodb://caosl:123456@107.170.206.235:27017/blogdb'); 
 
 var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
     var p = 1;//pageid
