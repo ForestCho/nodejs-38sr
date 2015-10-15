@@ -79,7 +79,7 @@
 					</div>
 					<% } %>
 						<div class="navigator">
-					<% if(nearArticle.length > 12 ){%> 
+					<% if(nearArticle.length > 12){%> 
 							<% if(d.currentpage > 1 ){%>
 							<a href="/user/<%= visituser %>/<%= cata %>/?pageid=<%= d.currentpage - 1  %>" class="last_page fade_trans">
 								&larr;上一页
@@ -100,7 +100,7 @@
 								</div>
 							</div>
 					<%}else{%>
-							<span style="nomore">全部显示</span>
+							<span class="nomore">全部显示了</span>
 					<%}%>
 						</div>
 				</div>
