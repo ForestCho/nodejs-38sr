@@ -7,9 +7,8 @@ var RelationDao = require('../dao/relationdao');
 var EventProxy = require('eventproxy'); 
 var xssFilters = require('xss-filters');
 /*
- * GET article detail page.
+ * GET 文章详细页面
  */
-
  exports.detail = function (req, res) {
  	var tid = req.params.tid; 
  	var ep = new EventProxy();
@@ -117,6 +116,9 @@ var xssFilters = require('xss-filters');
 	});
  };
 
+/*
+ * 删除文章json
+ */
  exports.delete = function (req, res) {  	
  	var tid = req.query.tid; 
  	if(tid < 0){
