@@ -5,9 +5,8 @@ var	EventProxy = require('eventproxy');
 var sanitize = require('validator');
 var config = require('../config').config;
 /*
- * GET login page and do login
+ * 登录页面
  */
-
  exports.login = function (req, res) {
  	var prelink = "/";
  	var msg = {};
@@ -19,7 +18,9 @@ var config = require('../config').config;
  	msg.status = -1;
  	res.render('login', { title: '登录',prelink:prelink,msg:msg });
  };
-
+/*
+ * 登录动作
+ */
  exports.dologin = function (req, res) {
  	var name = sanitize.trim(req.body.uname);
  	var pwd = sanitize.trim(req.body.pwd);
@@ -73,7 +74,9 @@ var config = require('../config').config;
 		ep.emit("userinfo",tempuser);
  	})  	 
  };
-
+/*
+ * 用户授权认证
+ */
  exports.user_auth = function (req, res, next) {
  	if(req.session.user){ 		
  		var uid = req.session.user.uid;
