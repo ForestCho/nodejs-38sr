@@ -8,13 +8,11 @@ var EventProxy = require('eventproxy');
 
 /*
  *
- *GET user info
+ *获取用户信息
  */
-
 exports.getuserinfo = function(req, res) {
     var uid = req.query.uid;
     var rspjson = {};
-
     UserDao.getUserInfoByUid(uid, function(err, userinfo) {
         rspjson.name = userinfo.name;
         rspjson.cometime = util.date_format(userinfo.create_at, false, false);
@@ -24,24 +22,21 @@ exports.getuserinfo = function(req, res) {
         })
     });
 }
+
 /*
- * GET user page.
- */ 
-/*
- * GET user page.
+ * 用户界面心情，文章，快链分别展示
  */
 exports.cata = function(req, res) {
     var username = req.params.username;
-    var cata= "mood"; 
-    if(req.params.cata){
-    	cata = req.params.cata;
+    var cata = "mood";
+    if (req.params.cata) {
+        cata = req.params.cata;
     }
- 	var pageid = 1 ;
- 	var pagesize = config.index.list_article_size;
- 	if(req.query.pageid){
- 		pageid=req.query.pageid;
- 	} 
-    var pagesize = 12;
+    var pageid = 1;
+    var pagesize = config.index.list_article_size;
+    if (req.query.pageid) {
+        pageid = req.query.pageid;
+    }
     var curpath = '/';
     var currusername = '';
     if (typeof(req.session.user) !== 'undefined') {
@@ -65,9 +60,9 @@ exports.cata = function(req, res) {
         d.hefollowlist = hefollowlist;
         d.followernum = followernum;
         d.hefollowernum = hefollowernum;
-        d.articlenum = articlenum; 
- 		d.currentpage = pageid;
-        curpath = "/user/" + tempuser.name+"/"+cata;
+        d.articlenum = articlenum;
+        d.currentpage = pageid;
+        curpath = "/user/" + tempuser.name + "/" + cata;
         if (currusername && username !== currusername) {
             var curuid = 0;
             UserDao.getUserInfoByName(currusername, function(err, curuser) {
@@ -89,7 +84,7 @@ exports.cata = function(req, res) {
                         visituser: username,
                         d: d,
                         curpath: curpath,
-                        cata:cata
+                        cata: cata
                     });
                 });
             });
@@ -101,7 +96,7 @@ exports.cata = function(req, res) {
                     visituser: username,
                     d: d,
                     curpath: curpath,
-                    cata:cata
+                    cata: cata
                 });
             }
             return res.render('user', {
@@ -109,19 +104,15 @@ exports.cata = function(req, res) {
                 visituser: username,
                 d: d,
                 curpath: curpath,
-                cata:cata
+                cata: cata
             });
         }
-    });
-
-    ArticleDao.getNumberOfArticlesByUsername(username, function(err, doc) {
-        ep.emit("articlenum", doc);
     });
 
     UserDao.getUserInfoByName(username, function(err, tempuser) {
         ep.emit("tempuser", tempuser);
         var articleLimit;
-        if (cata=== "mood") {
+        if (cata === "mood") {
             articleLimit = {
                 uid: tempuser.uid,
                 classify: 0,
@@ -130,19 +121,25 @@ exports.cata = function(req, res) {
             }
         } else if (cata == "article") {
             articleLimit = {
+                uid: tempuser.uid,
                 classify: 2,
                 flag: 0,
                 isdelete: false
             }
         } else {
             articleLimit = {
+                uid: tempuser.uid,
                 classify: 1,
                 isdelete: false
             };
         }
+        ArticleDao.getNumberOfArticlesAsObect(articleLimit, function(err, doc) {
+            ep.emit("articlenum", doc);
+        });
+        console.log(articleLimit);
         Article.find(articleLimit).sort({
             'post_date': -1
-        }).skip((pageid-1)*pagesize).limit(pagesize+1).populate('_creator').populate('_sid').lean(true).exec(function(err, articlelist) {
+        }).skip((pageid - 1) * pagesize).limit(pagesize + 1).populate('_creator').populate('_sid').lean(true).exec(function(err, articlelist) {
             if (err) {
                 res.redirect('/404')
                 return;
@@ -197,7 +194,7 @@ exports.cata = function(req, res) {
 
 
 /*
- * GET user page.
+ * 用户关注页面
  */
 exports.getfollower = function(req, res) {
     var username = req.params.username;
@@ -245,7 +242,7 @@ exports.getfollower = function(req, res) {
 }
 
 /*
- * GET user page.
+ * 用户粉丝页面
  */
 exports.gethefollower = function(req, res) {
     var username = req.params.username;
