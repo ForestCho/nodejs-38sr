@@ -3,7 +3,7 @@ var	UserDao = require('../dao/userdao');
 var util = require('../lib/util'); 
 var EventProxy = require('eventproxy'); 
 /*
- * GET set page and do set.
+ * 基本设置页面
  */
  var baseDisplay = function (req, res) {
  	var username = req.session.user.name; 
@@ -30,7 +30,9 @@ var EventProxy = require('eventproxy');
  		}
  	});	
  };
-
+/*
+ * 账户设置页面
+ */
  var accountDisplay = function(req, res){  
  	var msg = {};
  	var tempmsg = req.flash('msg'); 
@@ -41,7 +43,9 @@ var EventProxy = require('eventproxy');
 	}  
  	res.render('accountset', { title: '个人设置',msg:msg });
  };
-
+/*
+ * 头像设置页面
+ */
  var avatarDisplay = function(req, res){
  	var username = req.session.user.name;
 	var msg = {};
@@ -65,7 +69,9 @@ var EventProxy = require('eventproxy');
  	});	 
  };
  
-
+/*
+ * 基本设置页面动作
+ */
  var doSetBaseInfo = function(req, res){
  	var email = req.body.email;
  	var signature = req.body.signature;
@@ -114,7 +120,9 @@ var EventProxy = require('eventproxy');
 
  	}); 
  };
-
+/*
+ * 账户设置动作
+ */
  var adoSetccountInfo = function(req, res){
  	var oldpwd = req.body.oldpwd;
  	var	newpwd = req.body.newpwd;

@@ -8,10 +8,8 @@ var cache = require('../common/cache');
 var EventProxy = require('eventproxy');
 var mongoose = require('mongoose');
 /*
- * GET home page.
+ * 公共查询函数
  */
-
-
 var commonQuery = function(req, res, curpath, articleLimit, cataZh, tagname) {
     var p = 1;//pageid
     var pagesize = config.index.list_article_size;
@@ -43,7 +41,6 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, tagname) {
         ep.emit("count", count);
     });
 
-
     ArticleDao.getArticleListLimitAsObject(puretext, p, pagesize, articleLimit, function(err, articlelist) {
         for (var i = 0; i < articlelist.length; i++) {
             var b = /<img[^>]+src="[^"]+"[^>]*>/g;
@@ -74,7 +71,9 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, tagname) {
 
 }
 
-//首页路由
+/*
+ * 标签页面
+ */
 exports.index = function(req, res) {
     var tagname = req.params.tagname;
     var flag = 0;

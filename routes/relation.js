@@ -5,11 +5,10 @@ var path = require('path');
 var mongoose = require('mongoose');
 var EventProxy = require('eventproxy'); 
 /*
- * GET do relation page.
+ * 关注用户动作
  */
  exports.follow = function (req, res) {  	
- 	if(!req.session.user){     
- 		console.log("cccc");
+ 	if(!req.session.user){      
  		res.json({status:'failed'}); 
  	}else{ 
  		var followUid = req.query.followuid;

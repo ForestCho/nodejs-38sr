@@ -2,9 +2,8 @@ var util = require('../lib/util');
 var MessageDao = require('../dao/messagedao'); 
 var EventProxy = require('eventproxy'); 
 /*
- * GET user page.
+ * 消息页面
  */
-
  exports.index = function (req, res,next) {   
  	var uid = req.session.user.uid; 
  	var ep = new EventProxy();

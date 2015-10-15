@@ -14,7 +14,6 @@ var	EventProxy = require('eventproxy');
 /*
  * 保存快链
  */
-
  exports.save = function (req, res) {
  	var url = req.query.url;
  	var publinkbrief = req.query.publinkbrief;

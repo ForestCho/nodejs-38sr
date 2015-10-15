@@ -11,9 +11,8 @@ var boson = new bosonnlp.BosonNLP("yoUTK8dE.3486.jTfMGWlrfZxc");
 //mongoose.connect('mongodb://localhost/blogdb');
 
 /*
- * GET publish article page.
+ * 发表note页面
  */
-
 exports.save = function(req, res) {
     var title = req.body.title;
     var mcontent = req.body.mcontent;

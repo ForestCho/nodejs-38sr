@@ -4,9 +4,8 @@ var UPYun = require('../lib/upyun').UPYun;
 var gm = require('gm')
 ,	fs = require('fs')
 ,	imageMagick = gm.subClass({ imageMagick : true });
-
-//do img upload and edit photo
-//
+ 
+//保存小头像
 exports.save_avatar = function(req, res) { 
 	var coords = req.body.coords.split('_');
 	var img_size = 64; 
@@ -205,7 +204,7 @@ var update_originphoto = function(ourl,username,callback){
 		callback(null)
 	});
 }
-
+//更新头像
 var update_avatar = function(url,username,callback){
 	var condition = {
 		name:username
@@ -221,6 +220,7 @@ var update_avatar = function(url,username,callback){
 	});
 }
 
+//修改图片尺寸
 function resizeImageByMax(temp_path,newpath,new_width,new_high,callback){
 	imageMagick(temp_path).size(function(err,size){
 		var x_w_h = size.width/size.height;   
@@ -244,5 +244,4 @@ function resizeImageByMax(temp_path,newpath,new_width,new_high,callback){
 		} 
 	}) 
 }
-exports.resizeImageByMax = resizeImageByMax;
-//resizeImageByMax("/home/caosl/web/mongoblog/routes/nnweqb1.jpg",500,400);
+exports.resizeImageByMax = resizeImageByMax; 

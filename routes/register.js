@@ -7,14 +7,16 @@ var sanitize = require('validator');
 var EventProxy = require('eventproxy');
 var util = require('../lib/util'); 
 /*
- * GET register page.
- */
- 
+ * 注册页面
+ */ 
 exports.reg = function(req, res) {
     res.render('register', {
         title: '注册'
     });
 };
+/*
+ * 注册动作
+ */ 
 exports.signup = function(req, res) {
     var token = req.query.token;
     var email = req.query.email;
@@ -33,6 +35,9 @@ exports.signup = function(req, res) {
         }
     });
 };
+/*
+ * 发送注册邮件
+ */ 
 exports.regemail = function(req, res) {
     var email = req.query.email;
     var msg = {};

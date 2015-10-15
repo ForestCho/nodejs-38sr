@@ -7,9 +7,8 @@ var MessageDao = require('../dao/messagedao');
 var	path = require('path');
 var	mongoose = require('mongoose');  
 /*
- * GET get replies page.
+ * 回复动作
  */
-
  exports.index = function (req, res) {
  	var repstr = req.body.repstr;
  	var	tid = req.body.tid;
