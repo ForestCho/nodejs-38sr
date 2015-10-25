@@ -119,12 +119,12 @@
 	text-decoration: none;
 }
 .article_msg_content{	
-	color: rgba(0,0,0,0.5);
+	color: #333;
 	line-height: 1.8em;
 	overflow: hidden;
-	font:16px/1.5 "微软雅黑", Verdana, Geneva, sans-serif;
+	font: 14px/1.7 "微软雅黑",Verdana,Geneva,sans-serif;
 	border: 0 solid #ccc!important;
-	margin: 6px 0px 6px 0px;
+	margin: 6px 0;
 	border-radius: 0;
 }
 .shuo_sty {
@@ -490,8 +490,13 @@
 	color: #333;
 }
 .urltype{
-	color:rgba(0,0,0,.5);
-	font:16px/1.5 "微软雅黑",Verdana,Geneva,sans-serif;
+	color: #333;
+	line-height: 1.8em;
+	overflow: hidden;
+	font: 14px/1.7 "微软雅黑",Verdana,Geneva,sans-serif;
+	border: 0 solid #ccc!important;
+	margin: 6px 0;
+	border-radius: 0;
 }
 .articletype:hover,.urltype:hover{  
 	color: #07695E;
