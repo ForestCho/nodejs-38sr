@@ -3,6 +3,7 @@ var User = require('../models/user');
 var Article = require('../models/article'); 
 var Reply = require('../models/reply'); 
 
+//通过id获取消息的详细
 exports.getDetailMessageById = function(id,callback){  
 	Message.findOne({_id: id}, function (err, message) {
 		if (err) {
@@ -38,7 +39,7 @@ exports.getDetailMessageById = function(id,callback){
 		}
 	});
 };
-
+//通过UID获取消息
 exports.getMessageByUid = function(uid,isread,callback){ 
 	Message.find({refuid:uid,isread:isread}).sort({'create_date':-1}).limit(20).exec(function(err,msglist){
 		if(err){
@@ -55,12 +56,14 @@ exports.getMessageByUid = function(uid,isread,callback){
 	});
 };
 
+//通过UID获取消息数量
 exports.getCountOfMessageByUid = function(uid,isread,callback){ 
 	Message.count({refuid:uid,isread:isread},function(err,count){
 		callback(err,count)
 	});
 };
 
+//保存回复
 exports.saveReplyMsg = function(uid,refuid,tid,rid,callback){ 
 	var msg = new Message({
 		type:'reply',
@@ -74,6 +77,7 @@ exports.saveReplyMsg = function(uid,refuid,tid,rid,callback){
 	});
 };
 
+//保存AT信息
 exports.saveAtMsg = function(uid,refuid,tid,rid,callback){ 
 	var msg = new Message({
 		type:'at',
@@ -87,6 +91,7 @@ exports.saveAtMsg = function(uid,refuid,tid,rid,callback){
 	});
 };
 
+//保存关注信息
 exports.saveFollowMsg = function(uid,refuid,callback){ 
 	var msg = new Message({
 		type:'follow',

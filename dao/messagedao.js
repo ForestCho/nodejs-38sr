@@ -3,6 +3,7 @@ var User = require('../models/user');
 var Article = require('../models/article'); 
 var Reply = require('../models/reply'); 
 
+//通过tid获取消息及详细
 exports.getDetailMessageById = function(id,callback){  
 	Message.findOne({_id: id}, function (err, message) {
 		if (err) {

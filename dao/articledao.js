@@ -2,15 +2,15 @@ var Article = require('../models/article');
 var UserDao = require('../dao/userdao'); 
 var	util = require('../lib/util');
 
-//得到文章
+//通过tid得到文章
 var getArticleByTid = function(tid,cb){
 	Article.findOne({tid:tid,isdelete:false}).populate('_creator').exec(cb)
 }
-//文章的数量
+//通过Object得到文章的数量
 var getNumberOfArticlesAsObect = function(articleLimit,cb){
  	Article.count(articleLimit,cb);
 }
-//文章的数量byUid
+//通过用户UID文章的数量
 var getNumberOfArticlesByUid = function(uid,cb){
  	Article.count({uid:uid,isdelete:false},cb);
 }
@@ -21,7 +21,7 @@ var getNumberOfArticlesByUsername = function(username,cb){
 	 	Article.count({uid:doc.uid,isdelete:false},cb);
 	});
 }
-
+//搜索内容获取数量
 var getNumberByContent = function(content,cb){
 	var searchStr = new RegExp(content);
  	Article.count({content:searchStr},cb);
@@ -66,12 +66,12 @@ var getArticleListLimitByUid = function(puretext,pageid,pagesize,flag,uid,trueti
 	 	cb(err,articlelist); 
  	}) 
 }
-
+//更新文章信息
 var updateArticleInfo = function(condition,update,options,cb){ 
 	Article.update(condition,update, options,cb); 
 }
 
-
+//获取最大的TID
 var getMaxTid = function(cb){ 
 	var tid = 0;
  	Article.findOne().sort({'tid':-1}).exec(function(err,maxarticle){  

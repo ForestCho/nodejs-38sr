@@ -67,6 +67,7 @@ var saveNewUser = function(uid,name,email,pwd,relapath,relapath,cb){
 var saveNewUserObject = function(userobj,cb){
 	userobj.save(cb);  
 }
+//保存注册为SINA用户
 var saveNewSinaUser = function(uid,name,locate,photo,access_token,logintype,gender,signature,oid,cb){
 	var user = new User({   
 		uid:uid,
@@ -81,6 +82,7 @@ var saveNewSinaUser = function(uid,name,locate,photo,access_token,logintype,gend
 	}); 
 	user.save(cb);  
 }
+//保存注册为QQ用户
 var saveNewQQUser = function(uid,name,locate,photo,logintype,gender,cb){
 	var user = new User({   
 		uid:uid,

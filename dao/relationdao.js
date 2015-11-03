@@ -2,18 +2,20 @@ var Relation = require('../models/relation')
 User = require('../models/user'),
 EventProxy = require('eventproxy'); 
 
+//通过UID获取关注列表
 var getListOfFollowersByUid = function(uid,callback){ 
 	var displaySize = 6; 
 	Relation.find({fuid:uid}).sort({'create_date':-1}).limit(displaySize).populate('_uid_info').exec(function(err,follerlist){
 		callback(err,follerlist);
 	}); 
 } 
-var getListOfAllFollowersByUid = function(uid,callback){ 
-	var displaySize = 6; 
+//通过UID获取所有的关注列表
+var getListOfAllFollowersByUid = function(uid,callback){  
 	Relation.find({fuid:uid}).sort({'create_date':-1}).populate('_uid_info').exec(function(err,follerlist){
 		callback(err,follerlist);
 	}); 
 } 
+//通过UID获取所有的关注数量
 var getNumberOfFollowersByUid = function(uid,callback){  
 	Relation.count({fuid:uid},callback);
 } 
@@ -40,7 +42,7 @@ var countByName = function(uname,funame,callback){
 		}
 	}); 
 } 
-
+//通过Name获取关注列表
 var getListOfFollowersByName = function(uname,callback){
 	var displaySize = 6;
 	var ep = new EventProxy();
@@ -59,6 +61,7 @@ var getListOfFollowersByName = function(uname,callback){
 		}
 	}); 
 } 
+//通过name获取所有的关注列表
 var getListOfAllFollowersByName = function(uname,callback){ 
 	var ep = new EventProxy();
 	ep.assign("userinfo",function(userinfo){ 
@@ -77,6 +80,7 @@ var getListOfAllFollowersByName = function(uname,callback){
 	}); 
 } 
 
+//通过name获取所有的关注数量
 var getNumberOfFollowersByName = function(uname,callback){    
 	var ep = new EventProxy();
 	ep.assign("userinfo",function(userinfo){ 
@@ -92,25 +96,27 @@ var getNumberOfFollowersByName = function(uname,callback){
 	}); 
 } 
 
-
+//获取他关注的人
 var getListOfHeFollowsByUid = function(uid,callback){
 	var displaySize = 6; 
 	Relation.find({uid:uid}).sort({'create_date':-1}).limit(displaySize).populate('_fuid_info').exec(function(err,follerlist){
 		callback(err,follerlist);
 	}); 
 } 
+//获取他所有关注的人
 var getListOfAllHeFollowsByUid = function(uid,callback){ 
 	Relation.find({uid:uid}).sort({'create_date':-1}).populate('_fuid_info').exec(function(err,follerlist){
 		callback(err,follerlist);
 	}); 
 } 
+//获取他关注的人的数量
 var getNumberOfHeFollowersByUid = function(uid,callback){  
 	Relation.count({uid:uid},callback);
 } 
 
 
 
-
+//根据name获取他关注的人
 var getListOfHeFollowsByName = function(uname,callback){
 	var displaySize = 6;
 	var ep = new EventProxy();
@@ -130,6 +136,7 @@ var getListOfHeFollowsByName = function(uname,callback){
 	}); 
 } 
 
+//根据name获取他所有关注的人
 var getListOfAllHeFollowsByName = function(uname,callback){ 
 	var ep = new EventProxy();
 	ep.assign("userinfo",function(userinfo){ 
@@ -148,6 +155,7 @@ var getListOfAllHeFollowsByName = function(uname,callback){
 	}); 
 } 
 
+//根据name获取他关注的人的数量
 var getNumberOfHeFollowersByName = function(uname,callback){   
 	var displaySize = 6;
 	var ep = new EventProxy();
