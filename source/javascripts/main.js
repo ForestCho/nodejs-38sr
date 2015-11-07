@@ -138,7 +138,7 @@ define("index", ["msgbox", "jquery", "popover", "zoom"], function(msgbox, $, pop
         var settings = {
             trigger: 'hover',
             title: '38锶',
-            content: '<p>This is webui popover demo.</p><p>just enjoy it and have fun !</p>',
+            content: '',//<p>This is webui popover demo.</p><p>just enjoy it and have fun !</p>',
             width: 250,
             multi: true,
             closeable: true,
@@ -668,18 +668,24 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
     //搜索框效果
     var btnsearch = document.getElementsByClassName("btn-search")[0];
     var btnclose = document.getElementsByClassName("btn-close")[0];
+    var headsearch = document.getElementsByClassName("headsearch")[0];
     var formsearch = document.getElementsByClassName("form-search")[0];
     var inputsearch = document.getElementsByClassName("search-ipt")[0];
     btnsearch.onclick = function() {
-        domop.addClass(formsearch, "active");
+        var y = $('.search-btn-wrap').offset().left;
+        var x = $('.search-btn-wrap').offset().top;  
+        var height = $('.search-btn-wrap').height();       
+        $(formsearch).css("left",(y+32-270)+"px");
+        $(formsearch).css("top",(height)+"px");
+        domop.addClass(headsearch, "active");
         inputsearch.focus();
     };
     btnclose.onclick = function() {
-        domop.removeClass(formsearch, "active");
+        domop.removeClass(headsearch, "active");
     };
-    inputsearch.onblur = function() {
-        domop.removeClass(formsearch, "active");
-    };
+ /*   inputsearch.onblur = function() {
+        domop.removeClass(headsearch, "active");
+    };*/
 }),
 require(["jquery", "bootstrap", "jqueryform", "jquerycaret", "underscore", "jquerymigrate", "jqueryatwho", "index", "article", "pub", "reglog", "user", "set", "common"],
     function($, bootstrap, jqueryform, jquerycaret, _, jquerymigrate, jqueryatwho, index, article, pub, reglog, user, set, common) {
