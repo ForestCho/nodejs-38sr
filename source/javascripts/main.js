@@ -573,14 +573,23 @@ define("article", ["msgbox", "jquery", "jquerymigrate", "jquerycaret", "undersco
     });
 }),
 define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap) {
-
-    $("#gotologin").click(function(){
+    $("#regbtn").click(function(){  
+        $('#regmodal').modal('show');
+        $("body").css('padding-right','0px');
+    });
+    $("#loginbtn").click(function(){ 
+        $('#loginmodal').modal('show');
+        $("body").css('padding-right','0px');
+    });
+    $("#gotologin").click(function(){        
         $('#regmodal').modal('hide');
         $('#loginmodal').modal('show');
+        $("body").css('padding-right','0px');
     });
     $("#gotoreg").click(function() {
         $('#loginmodal').modal('hide');
         $('#regmodal').modal('show');
+        $("body").css('padding-right','0px');
     });
     $("#sublogin").click(function() {
         var uname = $("#uname").val();
@@ -683,9 +692,9 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
     btnclose.onclick = function() {
         domop.removeClass(headsearch, "active");
     };
- /*   inputsearch.onblur = function() {
+    inputsearch.onblur = function() {
         domop.removeClass(headsearch, "active");
-    };*/
+    };
 }),
 require(["jquery", "bootstrap", "jqueryform", "jquerycaret", "underscore", "jquerymigrate", "jqueryatwho", "index", "article", "pub", "reglog", "user", "set", "common"],
     function($, bootstrap, jqueryform, jquerycaret, _, jquerymigrate, jqueryatwho, index, article, pub, reglog, user, set, common) {

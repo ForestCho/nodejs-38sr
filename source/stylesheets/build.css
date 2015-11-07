@@ -8616,6 +8616,9 @@ ul{
 	padding: 0px;
 	margin: 0px;
 } 
+.modal-open{
+    overflow: inherit ;
+}
 .mainwrap { 
 	width: 70%;
 	min-height: 400px;
