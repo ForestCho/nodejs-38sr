@@ -221,10 +221,9 @@
   display: block;
   width: 30px;
   height: 30px;
-  font-size: 20px;
-  top: 50%;
-  left: 50%;
-  position: absolute;
+  font-size: 20px; 
+  position: relative;
+  margin: 0 auto;
   background: url(../images/loading.gif) no-repeat;
 }
 @-webkit-keyframes rotate {

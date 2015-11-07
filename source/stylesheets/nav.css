@@ -36,29 +36,37 @@
 .headon .catawrap li a{
 	font-size: 14px;
 	background-color: transparent !important;
+	height: 34px;
 	padding: 6px 15px;
+} 
+.headsearch .form-search {
+	position: fixed;
+	top: 50px !important; 
+	margin: 0px;
+	right: 288px;
+	width: 270px;
+	padding: 0px;
+	transition: all 0.25s;
+	-moz-transition: all 0.25s; /* Firefox 4 */
+	-webkit-transition: all 0.25s; /* Safari 和 Chrome */
+	-o-transition: all 0.25s; /* Opera */
 }
 .headon .headsearch .form-search {
-	font-size: 14px;
-	position: relative;
-	color:#fff;
-	margin-right: 10px;
-	margin-top: 0px !important;
-	transition: all 0.3s;
-	-moz-transition: all 0.3s; /* Firefox 4 */
-	-webkit-transition: all 0.3s; /* Safari 和 Chrome */
-	-o-transition: all 0.3s; /* Opera */
-}
-.headsearch .form-search {
-	font-size: 14px;
-	position: relative;
-	color:#fff;
-	margin-right: 10px;
+	position: fixed;
+	top: 34px !important; 
+	margin: 0px;
+	right: 288px;
+	width: 270px;
+	padding: 0px;
+	transition: all 0.25s;
+	-moz-transition: all 0.25s; /* Firefox 4 */
+	-webkit-transition: all 0.25s; /* Safari 和 Chrome */
+	-o-transition: all 0.25s; /* Opera */
 }
 .container{
 	width:70% !important;
-	padding-right: 15px !important;
-	padding-left: 15px !important;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .logo{
 	padding:10px 2px 10px 2px;
@@ -99,6 +107,10 @@
 .catawrap li a{
 	font-size: 14px;
 	background-color: transparent !important;
+	height: 50px;
+}
+.catawrap li a:hover{ 
+	background-color: #0C8176 !important; 
 }
 .active a { 
 	border-bottom: 3px solid #FFFFFF; 
@@ -109,38 +121,63 @@
 } 
 .headsearch { 
 	float: right; 
+	height: 50px;
 	margin-right: 15px;
-}
-.headsearch .form-search {
 	font-size: 14px;
 	position: relative;
-	color:#fff;
-	margin-right: 10px;
+	color: #fff; 
+} 
+.headon .headsearch{
+	height: 34px;
 }
-.headsearch .navbar-form .form-control { 
+.headsearch .form-group{
+	background-color: #00a090;
+	padding: 10px;
+	opacity: 0;
+}
+.headsearch .form-control { 
 	padding:0px;
 	border: 0px solid;
-	border-radius: 0px;
-	transition: all .3s;
-	box-sizing: border-box;
-	width:0px;
-	background-color: #00a090;
+	border-radius: 0px; 
+	box-sizing: border-box; 
+	background-color: #fff;
 	border-bottom: 1px solid #FFF;
 }
 .form-control:focus {
 	box-shadow: inset 0 0px 0px #fff;  
 }
-.headsearch .navbar-form.active .form-control {
-		width: 150px !important;
-		padding-left: 8px;
-		cursor: text;
-		border-bottom: 1px solid #FFF;
+.headsearch.active .form-group{ 
+	opacity: 1;
+	background-color: #0C8176;
+}
+.headsearch.active .form-control { 
+	width: 250px; 
+	border-radius: 3px;
+	padding: 0px 10px;  
 }
 
-.headsearch .navbar-form .btn-close{
+.headsearch .search-btn-wrap{
+	width: 32px;	
+	height: 50px; 
+}
+.headon .headsearch .search-btn-wrap{
+	height: 34px;
+}
+.headon .headsearch i{
+	line-height:34px;
+}
+.headsearch.active .search-btn-wrap{ 
+	background-color: #0C8176; 
+}
+.headsearch .search-btn-wrap:hover{ 
+	background-color: #0C8176; 
+}
+.headsearch .btn-close{
 	position: absolute;
-	top: 10px;
+	line-height: 50px;
 	right: 0px;
+	width: 32px;
+	padding: 0px 10px;
 	cursor: pointer;
 	-webkit-transform: scale(0, 0);
 	-moz-transform: scale(0, 0);
@@ -150,22 +187,30 @@
 	transition: all .3s;
 }
 
-.headsearch .navbar-form.active .btn-close {
+.headsearch.active .btn-close { 
 	-webkit-transform: scale(1, 1);
 	-moz-transform: scale(1, 1);
 	transform: scale(1, 1);
 }
-.headsearch .navbar-form.active .fa-search {
-	left: 0;
-	right: auto;
+.headsearch.active .fa-search { 
+	-webkit-transform: scale(0, 0);
+	-moz-transform: scale(0, 0);
+	transform: scale(0, 0);
 } 
-.headsearch .navbar-form .fa-search {
+.headsearch .fa-search {
 	cursor: pointer;
 	position: absolute;
-	top: 10px;
+	line-height: 50px;
+	padding: 0px 10px;
 	right: 0;
 	transition: all .3s;
-}
+	-webkit-transform: scale(1, 1);
+	-moz-transform: scale(1, 1);
+	transform: scale(1, 1);
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	transition: all .3s;
+} 
 .account_opt {
 	float: right; 
 }
@@ -206,32 +251,29 @@
 }
 .reg_login {
 	float: right;  
-}
-
-.reg_login ul {
-	min-width: 50px
-}
+} 
 .optionaccess{
 	display: block;
 	color:#fff !important;
-	font-size: 14px;
-	margin-right: 10px; 
-	line-height: 55px;
+	font-size: 14px; 
+	padding: 15px 8px;
+	height: 50px;
 	float: right;	
 	transition: all 0.3s;
 	-moz-transition: all 0.3s; /* Firefox 4 */
 	-webkit-transition: all 0.3s; /* Safari 和 Chrome */
 	-o-transition: all 0.3s; /* Opera */
 }
-.headon	.optionaccess{
-	display: block;
-	color:#fff !important;
-	font-size: 14px;
-	margin-right: 10px; 
-	line-height: 35px;
-	float: right;
-	padding-top: 0px;
+.optionaccess:hover {
+	text-decoration: none;
+	background-color: #0C8176 !important;
+	color: #D1D1D1;
 }
+ 
+.headon .optionaccess{
+	font-size: 14px; 
+	height: 34px;
+	padding: 6px 8px;
 }
 .reg_login .dropdown-toggle {
 	display: block; 
@@ -256,12 +298,7 @@
 }
 .reg_login li {
 	list-style: none;
-}
-
-.reg_login a:hover {
-	text-decoration: none;
-	color: #D1D1D1
-}
+} 
 .reg_login ul {
 	min-width: 50px;
 	left: -15px;

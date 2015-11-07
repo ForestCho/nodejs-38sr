@@ -6916,12 +6916,12 @@ button.close {
 	text-decoration: none;
 }
 .article_msg_content{	
-	color: rgba(0,0,0,0.5);
+	color: #333;
 	line-height: 1.8em;
 	overflow: hidden;
-	font:16px/1.5 "微软雅黑", Verdana, Geneva, sans-serif;
+	font: 14px/1.7 "微软雅黑",Verdana,Geneva,sans-serif;
 	border: 0 solid #ccc!important;
-	margin: 6px 0px 6px 0px;
+	margin: 6px 0;
 	border-radius: 0;
 }
 .shuo_sty {
@@ -7287,8 +7287,13 @@ button.close {
 	color: #333;
 }
 .urltype{
-	color:rgba(0,0,0,.5);
-	font:16px/1.5 "微软雅黑",Verdana,Geneva,sans-serif;
+	color: #333;
+	line-height: 1.8em;
+	overflow: hidden;
+	font: 14px/1.7 "微软雅黑",Verdana,Geneva,sans-serif;
+	border: 0 solid #ccc!important;
+	margin: 6px 0;
+	border-radius: 0;
 }
 .articletype:hover,.urltype:hover{  
 	color: #07695E;
@@ -7325,6 +7330,10 @@ button.close {
 	overflow: hidden;
 }
 
+
+.modal_regwrap .modal-content{ 
+	border-radius: 0px;
+}
 .modal_regwrap input {
 	border-radius: 4px;
 	padding-left: 35px;
@@ -7340,8 +7349,7 @@ button.close {
 }
 
 .modal_regwrap .modal-footer{
-	padding-left: 30px;
-	padding-right: 30px;
+	padding: 30px; 
 	position:relative;
 }
 .modal_regwrap .modal-footer button{
@@ -7535,29 +7543,37 @@ button.close {
 .headon .catawrap li a{
 	font-size: 14px;
 	background-color: transparent !important;
+	height: 34px;
 	padding: 6px 15px;
+} 
+.headsearch .form-search {
+	position: fixed;
+	top: 50px !important; 
+	margin: 0px;
+	right: 288px;
+	width: 270px;
+	padding: 0px;
+	transition: all 0.25s;
+	-moz-transition: all 0.25s; /* Firefox 4 */
+	-webkit-transition: all 0.25s; /* Safari 和 Chrome */
+	-o-transition: all 0.25s; /* Opera */
 }
 .headon .headsearch .form-search {
-	font-size: 14px;
-	position: relative;
-	color:#fff;
-	margin-right: 10px;
-	margin-top: 0px !important;
-	transition: all 0.3s;
-	-moz-transition: all 0.3s; /* Firefox 4 */
-	-webkit-transition: all 0.3s; /* Safari 和 Chrome */
-	-o-transition: all 0.3s; /* Opera */
-}
-.headsearch .form-search {
-	font-size: 14px;
-	position: relative;
-	color:#fff;
-	margin-right: 10px;
+	position: fixed;
+	top: 34px !important; 
+	margin: 0px;
+	right: 288px;
+	width: 270px;
+	padding: 0px;
+	transition: all 0.25s;
+	-moz-transition: all 0.25s; /* Firefox 4 */
+	-webkit-transition: all 0.25s; /* Safari 和 Chrome */
+	-o-transition: all 0.25s; /* Opera */
 }
 .container{
 	width:70% !important;
-	padding-right: 15px !important;
-	padding-left: 15px !important;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .logo{
 	padding:10px 2px 10px 2px;
@@ -7598,6 +7614,10 @@ button.close {
 .catawrap li a{
 	font-size: 14px;
 	background-color: transparent !important;
+	height: 50px;
+}
+.catawrap li a:hover{ 
+	background-color: #0C8176 !important; 
 }
 .active a { 
 	border-bottom: 3px solid #FFFFFF; 
@@ -7608,38 +7628,63 @@ button.close {
 } 
 .headsearch { 
 	float: right; 
+	height: 50px;
 	margin-right: 15px;
-}
-.headsearch .form-search {
 	font-size: 14px;
 	position: relative;
-	color:#fff;
-	margin-right: 10px;
+	color: #fff; 
+} 
+.headon .headsearch{
+	height: 34px;
 }
-.headsearch .navbar-form .form-control { 
+.headsearch .form-group{
+	background-color: #00a090;
+	padding: 10px;
+	opacity: 0;
+}
+.headsearch .form-control { 
 	padding:0px;
 	border: 0px solid;
-	border-radius: 0px;
-	transition: all .3s;
-	box-sizing: border-box;
-	width:0px;
-	background-color: #00a090;
+	border-radius: 0px; 
+	box-sizing: border-box; 
+	background-color: #fff;
 	border-bottom: 1px solid #FFF;
 }
 .form-control:focus {
 	box-shadow: inset 0 0px 0px #fff;  
 }
-.headsearch .navbar-form.active .form-control {
-		width: 150px !important;
-		padding-left: 8px;
-		cursor: text;
-		border-bottom: 1px solid #FFF;
+.headsearch.active .form-group{ 
+	opacity: 1;
+	background-color: #0C8176;
+}
+.headsearch.active .form-control { 
+	width: 250px; 
+	border-radius: 3px;
+	padding: 0px 10px;  
 }
 
-.headsearch .navbar-form .btn-close{
+.headsearch .search-btn-wrap{
+	width: 32px;	
+	height: 50px; 
+}
+.headon .headsearch .search-btn-wrap{
+	height: 34px;
+}
+.headon .headsearch i{
+	line-height:34px;
+}
+.headsearch.active .search-btn-wrap{ 
+	background-color: #0C8176; 
+}
+.headsearch .search-btn-wrap:hover{ 
+	background-color: #0C8176; 
+}
+.headsearch .btn-close{
 	position: absolute;
-	top: 10px;
+	line-height: 50px;
 	right: 0px;
+	width: 32px;
+	padding: 0px 10px;
 	cursor: pointer;
 	-webkit-transform: scale(0, 0);
 	-moz-transform: scale(0, 0);
@@ -7649,22 +7694,30 @@ button.close {
 	transition: all .3s;
 }
 
-.headsearch .navbar-form.active .btn-close {
+.headsearch.active .btn-close { 
 	-webkit-transform: scale(1, 1);
 	-moz-transform: scale(1, 1);
 	transform: scale(1, 1);
 }
-.headsearch .navbar-form.active .fa-search {
-	left: 0;
-	right: auto;
+.headsearch.active .fa-search { 
+	-webkit-transform: scale(0, 0);
+	-moz-transform: scale(0, 0);
+	transform: scale(0, 0);
 } 
-.headsearch .navbar-form .fa-search {
+.headsearch .fa-search {
 	cursor: pointer;
 	position: absolute;
-	top: 10px;
+	line-height: 50px;
+	padding: 0px 10px;
 	right: 0;
 	transition: all .3s;
-}
+	-webkit-transform: scale(1, 1);
+	-moz-transform: scale(1, 1);
+	transform: scale(1, 1);
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	transition: all .3s;
+} 
 .account_opt {
 	float: right; 
 }
@@ -7705,32 +7758,29 @@ button.close {
 }
 .reg_login {
 	float: right;  
-}
-
-.reg_login ul {
-	min-width: 50px
-}
+} 
 .optionaccess{
 	display: block;
 	color:#fff !important;
-	font-size: 14px;
-	margin-right: 10px; 
-	line-height: 55px;
+	font-size: 14px; 
+	padding: 15px 8px;
+	height: 50px;
 	float: right;	
 	transition: all 0.3s;
 	-moz-transition: all 0.3s; /* Firefox 4 */
 	-webkit-transition: all 0.3s; /* Safari 和 Chrome */
 	-o-transition: all 0.3s; /* Opera */
 }
-.headon	.optionaccess{
-	display: block;
-	color:#fff !important;
-	font-size: 14px;
-	margin-right: 10px; 
-	line-height: 35px;
-	float: right;
-	padding-top: 0px;
+.optionaccess:hover {
+	text-decoration: none;
+	background-color: #0C8176 !important;
+	color: #D1D1D1;
 }
+ 
+.headon .optionaccess{
+	font-size: 14px; 
+	height: 34px;
+	padding: 6px 8px;
 }
 .reg_login .dropdown-toggle {
 	display: block; 
@@ -7755,12 +7805,7 @@ button.close {
 }
 .reg_login li {
 	list-style: none;
-}
-
-.reg_login a:hover {
-	text-decoration: none;
-	color: #D1D1D1
-}
+} 
 .reg_login ul {
 	min-width: 50px;
 	left: -15px;
@@ -8140,9 +8185,11 @@ button.close {
 	position: fixed;
 	text-align: center;
 	line-height: 30px;
-	bottom: 0px;
-	width: 35px;
-	height: 35px;
+	background-color: rgba(0, 160, 144, 0.3);
+	bottom: -45px;
+	width: 40px;
+	height: 40px;
+	padding: 5px;
 	margin-right: 120px;
 	font-size: 12px;
 	cursor: pointer;
@@ -8153,7 +8200,15 @@ button.close {
 	-o-transition: all linear .2s;
 	transition: all linear .2s;
 }
-
+#gotopbtn:hover{
+	background-color: rgba(0, 160, 144, 0.8);
+}
+#gotopbtn  span{	
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    color: #fff;
+}
 .yjfk {
 	position: fixed;
 	top: 150px;
@@ -9096,10 +9151,9 @@ ul{
   display: block;
   width: 30px;
   height: 30px;
-  font-size: 20px;
-  top: 50%;
-  left: 50%;
-  position: absolute;
+  font-size: 20px; 
+  position: relative;
+  margin: 0 auto;
   background: url(../images/loading.gif) no-repeat;
 }
 @-webkit-keyframes rotate {

@@ -533,6 +533,10 @@
 	overflow: hidden;
 }
 
+
+.modal_regwrap .modal-content{ 
+	border-radius: 0px;
+}
 .modal_regwrap input {
 	border-radius: 4px;
 	padding-left: 35px;
@@ -548,8 +552,7 @@
 }
 
 .modal_regwrap .modal-footer{
-	padding-left: 30px;
-	padding-right: 30px;
+	padding: 30px; 
 	position:relative;
 }
 .modal_regwrap .modal-footer button{
