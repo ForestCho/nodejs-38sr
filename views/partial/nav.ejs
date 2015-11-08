@@ -25,8 +25,8 @@
 		<% if(locals.userinfo){%>	
 				<ul class="reg_login navbar-nav navbar-right">  
 					<li class="dropdown">
-       			    	<a class="dropdown-toggle optionaccess" data-toggle="dropdown" href="#"><%=locals.userinfo.name %><sup class="badge"><%=(locals.userinfo.msgcount!== 0)?locals.userinfo.msgcount:'' %></sup><span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
+       			    	<a class="dropdown-toggle optionaccess" data-toggle="dropdown" href="#" id="optionaccess"><%=locals.userinfo.name %><sup class="badge"><%=(locals.userinfo.msgcount!== 0)?locals.userinfo.msgcount:'' %></sup><span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu" id="optionaccesslist">
 						        <li><a href="/pub"> 发布一个</a></li> 
 						        <li class="divider"></li>
 						        <li><a href="/user/<%=locals.userinfo.name %>">个人中心</a></li>
@@ -42,9 +42,9 @@
 					</li> 
 				</ul>  
 			<%}else{%> 
-				<ul class="reg_login navbar-nav navbar-right">
-					<li><a class="optionaccess" data-toggle="modal" data-target="#regmodal">注册</a></li>
-					<li><a class="optionaccess" data-toggle="modal" data-target="#loginmodal">登录</a></li>
+				<ul class="un_reg_login navbar-nav navbar-right">
+					<li><a class="optionaccess" id="regbtn">注册</a></li>
+					<li><a class="optionaccess" id="loginbtn">登录</a></li>
 				</ul> 
 			<%}%> 
  		<div class="headsearch"> 
