@@ -591,6 +591,14 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
         $('#regmodal').modal('show');
         $("body").css('padding-right','0px');
     });
+    $("#imagemodalbtn").click(function(){ 
+        $('#imagemodal').modal('show');
+        $("body").css('padding-right','0px');
+    });
+    $("#linkmodalbtn").click(function(){ 
+        $('#linkmodal').modal('show');
+        $("body").css('padding-right','0px');
+    });
     $("#sublogin").click(function() {
         var uname = $("#uname").val();
         var pwd = $("pwd").val();
@@ -636,6 +644,37 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
     });
 
     $("[data-toggle='tooltip']").tooltip();
+
+    var closeFlag = false;
+    $("#optionaccess").on("mouseenter",function(){
+        $("#optionaccesslist").css("display","block"); 
+        $(this).parent().addClass("open");
+        closeFlag = false;
+    });
+    $("#optionaccess").on("mouseleave",function(){
+        closeFlag = true;
+        setTimeout(function(){
+            if(closeFlag)
+            {                 
+                $("#optionaccess").parent().removeClass("open");
+                $("#optionaccesslist").css("display","none"); 
+            }
+        },500);        
+    });
+     $("#optionaccesslist").on("mouseenter",function(){  
+        closeFlag = false;
+    });
+
+    $("#optionaccesslist").on("mouseleave",function(){ 
+        closeFlag = true;
+        setTimeout(function(){  
+            if(closeFlag)
+            {                 
+                $("#optionaccess").parent().removeClass("open");
+                $("#optionaccesslist").css("display","none"); 
+            }
+        },500);        
+    });
     //到顶部效果
     var TopObj = document.getElementById("gotopbtn");
 

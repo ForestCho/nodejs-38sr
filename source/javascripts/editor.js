@@ -6814,13 +6814,11 @@ function createIcon(name, options) {
       el.title = el.title.replace('Alt', '⌥');
     }
   }
-  if(name === "image"){
-    el.setAttribute("data-toggle","modal");
-    el.setAttribute("data-target","#imagemodal"); 
+  if(name === "image"){ 
+    el.setAttribute("id","imagemodalbtn"); 
   }
-  if(name === "link"){
-    el.setAttribute("data-toggle","modal");
-    el.setAttribute("data-target","#linkmodal"); 
+  if(name === "link"){ 
+    el.setAttribute("id","linkmodalbtn"); 
   }
   el.className = options.className || 'icon-' + name;
   return el;
