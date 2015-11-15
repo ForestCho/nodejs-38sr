@@ -19,7 +19,7 @@ require.config({
         jqueryatwho: './lib/jquery.atwho.min',
         editor: './lib/editor.min',
         pretty: './lib/pretty.min',
-        popover: './lib/jquery.webui.popover',
+        popover: './lib/jquery.webui.popover.min',
         zoom: './lib/zoom.min'
     }
 }),
@@ -136,8 +136,7 @@ define("index", ["msgbox", "jquery", "popover", "zoom"], function(msgbox, $, pop
     });
     (function() {
         var settings = {
-            trigger: 'hover',
-            title: '38锶',
+            trigger: 'hover', 
             content: '',//<p>This is webui popover demo.</p><p>just enjoy it and have fun !</p>',
             width: 250,
             multi: true,
@@ -159,9 +158,9 @@ define("index", ["msgbox", "jquery", "popover", "zoom"], function(msgbox, $, pop
                     content: function(data) {
                         title = "ccc";
                         var html = '<ul class="list-group">';
-                        html += '<li class="list-group-item">昵称:' + data.name + '</li>';
-                        html += '<li class="list-group-item">加入:' + data.cometime + '</li>';
-                        html += '<li class="list-group-item">心情数:' + data.articlenum + '</li>';
+                        html += '<li class="list-group-item"><i class="fa fa-user"></i>'+data.name + '</li>';
+                        html += '<li class="list-group-item"><i class="fa fa-calendar"></i>' + data.cometime + '</li>';
+                        html += '<li class="list-group-item"><i class="fa fa-leaf"></i>' + data.articlenum + '</li>';
                         html += '</ul>';
                         return html;
                     }
@@ -597,6 +596,14 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
     });
     $("#linkmodalbtn").click(function(){ 
         $('#linkmodal').modal('show');
+        $("body").css('padding-right','0px');
+    });
+    $("#nosiginin-login").click(function(){ 
+        $('#loginmodal').modal('show');
+        $("body").css('padding-right','0px');
+    });
+    $("#nosiginin-reg").click(function(){ 
+        $('#regmodal').modal('show');
         $("body").css('padding-right','0px');
     });
     $("#sublogin").click(function() {

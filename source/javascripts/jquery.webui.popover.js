@@ -13,8 +13,7 @@
 					delay:300,
 					cache:true,
 					multi:false,
-					arrow:true,
-					title:'',
+					arrow:true, 
 					content:'',
 					closeable:false,
 					padding:false,
@@ -22,9 +21,7 @@
 					type:'html',
 					template:'<div class="webui-popover">'+
 								'<div class="arrow"></div>'+
-								'<div class="webui-popover-inner">'+
-									//'<a href="#" class="close">x</a>'+
-									'<h3 class="webui-popover-title"></h3>'+
+								'<div class="webui-popover-inner">'+ 
 									'<div class="webui-popover-content"><i class="icon-refresh"></i></div>'+
 								'</div>'+
 							'</div>'
@@ -92,8 +89,7 @@
 						this.hideAll();
 					}
 					// use cache by default, if not cache setted  , reInit the contents 
-					if (!this.options.cache||!this._poped){
-						this.setTitle(this.getTitle());
+					if (!this.options.cache||!this._poped){ 
 						if (!this.options.closeable){
 							$target.find('.close').off('click').remove();
 						}
@@ -124,6 +120,7 @@
 						//placement
 						placement = 'bottom',
 						e = $.Event('show.' + pluginType);
+						console.log($target[0]);
 					//if (this.hasContent()){
 					this.$element.trigger(e);
 					//}
@@ -140,6 +137,7 @@
 					placement = this.getPlacement(elementPos,targetHeight);
 
 					this.initTargetEvents();
+					console.log(targetHeight);
 				    var postionInfo = this.getTargetPositin(elementPos,placement,targetWidth,targetHeight);
 					this.$target.css(postionInfo.position).addClass(placement).addClass('in');
 
@@ -180,24 +178,10 @@
 						this.$target = $(this.options.template);
 					}
 					return this.$target;
-				},
-				getTitleElement:function(){
-					return this.getTarget().find('.'+pluginClass+'-title');
-				},
+				}, 
 				getContentElement:function(){
 					return this.getTarget().find('.'+pluginClass+'-content');
-				},
-				getTitle:function(){
-					return this.options.title||this.$element.attr('data-title')||this.$element.attr('title');
-				},
-				setTitle:function(title){
-					var $titleEl = this.getTitleElement();
-					if (title){
-						$titleEl.html(title);
-					}else{
-						$titleEl.remove();
-					}
-				},
+				},  
 				hasContent:function () {
 					return this.getContent();
 				},
@@ -312,18 +296,17 @@
 					}else{
 						placement = this.$element.data('placement')||this.options.placement;
 					}
-
 					if (placement==='auto'){
-						if (pageX<clientWidth/3){
+						if (pageX<clientWidth/3){ 
 							if (pageY<clientHeight/3){
-								placement = 'bottom-right';
+								placement = 'bottom-right'; 
 							}else if (pageY<clientHeight*2/3){
-								placement = 'top-right';
+								placement = 'top-right'; 
 							}else{
-								placement = 'top-right';
+								placement = 'top-right'; 
 							}
 							//placement= pageY>targetHeight+arrowSize?'top-right':'bottom-right';
-						}else if (pageX<clientWidth*2/3){
+						}else if (pageX<clientWidth*2/3){ 
 							if (pageY<clientHeight/3){
 								placement = 'bottom';
 							}else if (pageY<clientHeight*2/3){
@@ -373,7 +356,8 @@
 			          case 'right':
 			            position = {top: pos.top + pos.height / 2 - targetHeight / 2, left: pos.left + pos.width};
 			            break;
-			          case 'top-right':
+			          case 'top-right': 
+			           console.log(pos.top+"-"+targetHeight);
 			            position = {top: pos.top - targetHeight, left: pos.left-fixedW};
 			            arrowOffset = {left: elementW/2 + fixedW};
 			            break;

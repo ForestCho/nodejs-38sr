@@ -511,16 +511,23 @@
 }
 .pagination li a, .pagination li span {
 	background-color: #fafafa;
-	color: #999;
-	border-color: #e6e6e6;
+	color: #999; 
+	border: 2px solid #fafafa; 
+	border-color:#fafafa !important;
+	height: 34px;	
+}
+
+.pagination .active a{
+	background-color:#fafafa !important;
+	border-bottom: 2px solid #428bca !important;
+	color: #999;	
 }
 .pagination li a:hover, 
 .pagination li span:hover, 
 .pagination li a:focus, 
-.pagination li span:focus {
-	color: #232F38;
-	background-color: #eee;
-	border-color: #ddd;
+.pagination li span:focus { 
+	border-bottom: 2px solid #428bca ;	
+	color: #999;	 
 }
 .a_loading{
 	background: #fff;
