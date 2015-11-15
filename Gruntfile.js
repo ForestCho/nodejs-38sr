@@ -26,7 +26,8 @@ module.exports = function(grunt) {
                     'source/stylesheets/jquery.atwho.css',  
                     'source/stylesheets/jquery.webui.popover.css',
                     'source/stylesheets/zoom.css',
-                    'source/stylesheets/pretty.css'
+                    'source/stylesheets/pretty.css',
+                    'source/stylesheets/editor.css'
                 ],
                 dest: 'source/stylesheets/build.css'
             },     
@@ -144,6 +145,16 @@ module.exports = function(grunt) {
                 src: 'source/stylesheets/build.css',
                 dest: 'public/stylesheets/build.min.css'
             },
+        },
+        watch: {
+            css: {
+                files: ['source/stylesheets/*.css'],
+                tasks: ['concat','cssmin']
+            },
+            script: {
+                files: ['source/javascripts/*.js'],
+                tasks: ['uglify']
+            }
         }
     });
 
@@ -151,8 +162,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     //注册任务
-    grunt.registerTask('default', ['concat', 'uglify', 'cssmin']);
+    grunt.registerTask('default', ['concat', 'uglify', 'cssmin','watch']);
 
 };
