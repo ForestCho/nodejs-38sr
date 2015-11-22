@@ -119,8 +119,7 @@
 						targetHeight = $target[0].offsetHeight,
 						//placement
 						placement = 'bottom',
-						e = $.Event('show.' + pluginType);
-						console.log($target[0]);
+						e = $.Event('show.' + pluginType); 
 					//if (this.hasContent()){
 					this.$element.trigger(e);
 					//}
@@ -136,8 +135,7 @@
 					targetHeight = $target[0].offsetHeight;
 					placement = this.getPlacement(elementPos,targetHeight);
 
-					this.initTargetEvents();
-					console.log(targetHeight);
+					this.initTargetEvents(); 
 				    var postionInfo = this.getTargetPositin(elementPos,placement,targetWidth,targetHeight);
 					this.$target.css(postionInfo.position).addClass(placement).addClass('in');
 
@@ -356,8 +354,7 @@
 			          case 'right':
 			            position = {top: pos.top + pos.height / 2 - targetHeight / 2, left: pos.left + pos.width};
 			            break;
-			          case 'top-right': 
-			           console.log(pos.top+"-"+targetHeight);
+			          case 'top-right':  
 			            position = {top: pos.top - targetHeight, left: pos.left-fixedW};
 			            arrowOffset = {left: elementW/2 + fixedW};
 			            break;
