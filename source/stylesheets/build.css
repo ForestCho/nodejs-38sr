@@ -6909,21 +6909,7 @@ button.close {
 	border: 0 solid #ccc!important;
 	margin: 6px 0px 6px 0px;
 	border-radius: 0;
-}
-.article_title{	
-	color: #07695F;
-	font-size: 18px;
-	text-decoration: none;
-}
-.article_msg_content{	
-	color: #333;
-	line-height: 1.8em;
-	overflow: hidden;
-	font: 14px/1.7 "微软雅黑",Verdana,Geneva,sans-serif;
-	border: 0 solid #ccc!important;
-	margin: 6px 0;
-	border-radius: 0;
-}
+} 
 .shuo_sty {
 	font-size: 14px;
 	color: #777;
@@ -7309,7 +7295,7 @@ button.close {
 .pagination li a, .pagination li span {
 	background-color: #fafafa;
 	color: #999; 
-	border: 2px solid #fafafa; 
+	border-width: 0px; 
 	border-color:#fafafa !important;
 	height: 34px;	
 }
@@ -7319,12 +7305,16 @@ button.close {
 	border-bottom: 2px solid #428bca !important;
 	color: #999;	
 }
+
+.pagination .disabled a{
+	background-color:#fafafa !important; 
+}
 .pagination li a:hover, 
 .pagination li span:hover, 
 .pagination li a:focus, 
 .pagination li span:focus { 
-	border-bottom: 2px solid #428bca ;	
-	color: #999;	 
+	border-bottom: 2px solid #eee !important; 
+	color: #999 !important;	 
 }
 .a_loading{
 	background: #fff;
@@ -7950,7 +7940,40 @@ a.optionaccess:hover {
 	padding: 5px 0px;
 	font-size: 18px;
 }
+.tagname i{
+	margin-right: 5px;
+}
 .tagcount{
+	font-size: 15px;
+	padding: 5px 0px;
+	color: #707070;
+}
+.locatewrap{
+	margin-top: 20px;
+}
+.locatename{
+	padding: 5px 0px;
+	font-size: 18px;
+}
+.locatename i{
+	margin-right: 5px;
+}
+.locatecount{
+	font-size: 15px;
+	padding: 5px 0px;
+	color: #707070;
+}
+.sitewrap{
+	margin-top: 20px;
+}
+.sitename{
+	padding: 5px 0px;
+	font-size: 18px;
+}
+.sitename i{
+	margin-right: 5px;
+}
+.sitecount{
 	font-size: 15px;
 	padding: 5px 0px;
 	color: #707070;
