@@ -1,5 +1,7 @@
 var index = require('./routes/index'); 
 var tags = require('./routes/tags'); 
+var locate = require('./routes/locate'); 
+var site = require('./routes/site'); 
 var user = require('./routes/user');
 var userarticle = require('./routes/userarticle');
 var reg = require('./routes/register'); 
@@ -106,6 +108,8 @@ var run = function(app){
 	app.get('/fastlink', index.fastlink); 
 	app.get('/xiaohua', index.xiaohua); 
 	app.get('/tags/:tagname', tags.index);
+	app.get('/locate/:locatename', locate.index);
+	app.get('/site/:site_id', site.index);
 
 	//注册路由
 	app.get('/reg', reg.reg);
