@@ -51,16 +51,16 @@
 					</div>
 					<% if(nearArticle[i].classify === 0){%>
 					<% if(nearArticle[i].title &&nearArticle[i].title.length > 0 ){%>
-					<p class="item_title"><a href="/article/<%= nearArticle[i].tid %>"><%= nearArticle[i].title %></a></p>
+					<p class="item_title"><a href="/article/<%= nearArticle[i].tid %>" class="urltype"><%= nearArticle[i].title %></a></p>
 					<%}%>
 					<div class="msg_content"><%- nearArticle[i].newcontent %> </div>
 					<%}else if(nearArticle[i].classify === 2){%>
 					<% if(nearArticle[i].title &&nearArticle[i].title.length > 0 ){%>
-					<p class="item_title"><a href="/t/<%= nearArticle[i].tid %>"><%= nearArticle[i].title %></a></p>
+					<p class="item_title"><a href="/t/<%= nearArticle[i].tid %>" class="urltype"><%= nearArticle[i].title %></a></p>
 					<%}%>
 					<div class="msg_content"><%- nearArticle[i].newcontent %> </div>
 					<%}else{%>
-					<p class="item_title"><a href="/redirect?url=<%= nearArticle[i].title %>" target="_blank"><%= nearArticle[i].content %><i class="fa fa-external-link"></i></a></p>
+					<p class="item_title"><a href="/redirect?url=<%= nearArticle[i].title %>" target="_blank"  class="urltype"><%= nearArticle[i].content %><i class="fa fa-external-link"></i></a></p>
 					<%}%>
 					<div class="clearfix"></div>
 				</div>

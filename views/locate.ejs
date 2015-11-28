@@ -1,15 +1,10 @@
-
 <% include partial/header%>
 </head>
 <body>
 <% include partial/nav %>
-<div class="mainwrap">
-	<% if(!locals.userinfo){%>
-	<div class="rightwrap">
-		<%}else{%>
-		<div class="rightwrap index_rightwrap">
-			<%}%>
-			<% include partial/indexsidebar %>
+<div class="mainwrap"> 
+		<div class="rightwrap"> 
+			<% include partial/locatesidebar %>
 		</div>
 		<div class="leftwrap">
 			<div class="allmsg">
@@ -56,7 +51,7 @@
 							<%}else{%>
 							<span>分享来自
 								<%if(result[i]._sid){%>
-								<a  class="sitetext" href="/site/<%- result[i]._sid._id %>/"  data-toggle="tooltip" data-placement="right" title="<%=result[i]._sid.sbrief %>"><%=result[i]._sid.sname %></a>
+								<a  class="sitetext" data-toggle="tooltip" data-placement="right" title="<%=result[i]._sid.sbrief %>"><%=result[i]._sid.sname %></a>
 								<%}else{%>
 								net
 								<%}%>

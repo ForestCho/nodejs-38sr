@@ -22,9 +22,14 @@
 					<div>
 						<div> 
 							<% if(result[i].title &&result[i].title.length > 0 ){%>
-							<p class="article_title"><a href="/t/<%= result[i].tid %>"><%= result[i].title %></a></p>
+							<p class="item_title"><a href="/t/<%= result[i].tid %>" class="articletype"><%= result[i].title %></a>
+								<% if(result[i].imagelength > 0 ){%>
+								<i class="fa fa-picture-o">
+								</i><%=result[i].imagelength%>
+								<%}%>
+							</p>
 							<%}%>							
-							<div class="article_msg_content"><%- result[i].newcontent %> </div>
+							<div class="msg_content"><%- result[i].newcontent %> </div>
 						</div>
 						<div class="otherinfowrap">
 							<div class="articledate">
