@@ -602,6 +602,10 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
         $('#loginmodal').modal('show');
         $("body").css('padding-right','0px');
     });
+    $(".replylink").click(function(){ 
+        $('#loginmodal').modal('show');
+        $("body").css('padding-right','0px');
+    });
     $("#nosiginin-reg").click(function(){ 
         $('#regmodal').modal('show');
         $("body").css('padding-right','0px');

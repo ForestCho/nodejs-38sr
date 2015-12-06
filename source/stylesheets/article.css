@@ -1,6 +1,7 @@
 .rep_msg_box {
 	background-color: #fff; 
 	border-bottom: 1px solid #eee;
+	margin-top: 20px;
 }
 .nosignin{
 	text-align: center; 
@@ -171,7 +172,7 @@
 .detail_msg_head{
 	font-size: 19px;
 	color: #383838;
-	border-left: 4px solid #00a090;
+	background-color: #f5f5f5;
 	padding: 8px 10px;
 	line-height: 19px;
 	height: 38px;
@@ -215,6 +216,11 @@
 	resize: vertical;
 	border-radius: 4px;
 	padding: 4px 40px 4px 4px;
+	-webkit-transition: all linear 0.2s;
+	-moz-transition: all linear 0.2s;
+	-ms-transition: all linear 0.2s;
+	-o-transition: all linear 0.2s;
+	transition: all linear 0.2s;
 }
 #repstr{
 	width: 100%;

@@ -65,14 +65,12 @@
 
 .articleitem {  
 	padding: 10px 20px;
-	background-color: #FFF;
-	margin-top: 1px; 
+	background-color: #FFF; 
 	border-bottom: 1px solid #f0f0f0
 }
 .articleitem-first {
 	padding: 10px 20px;
-	background-color: #FFF;
-	margin-top: 1px;
+	background-color: #FFF; 
 	border-radius: 0px 0px 5px 5px;
 }
 /*
@@ -491,9 +489,7 @@
 
 .pagination_container{
 	width: 100%;
-	background-color: #fff;
-	margin-top: 1px;
-	border-radius: 5px 5px 0px 0px;
+	background-color: #fff;  
 }
 .pagination li a, .pagination li span {
 	background-color: #fafafa;

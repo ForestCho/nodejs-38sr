@@ -12,7 +12,7 @@ var replies = d.replies;
 	</div>
 	<div class="leftwrap">
 		<div class="articleitem_detail detailinfo">
-			<div class="detail_msg_head add_bottom_dashed">
+			<div class="detail_msg_head add_bottom_solid">
 				<% if(articlecontent.title &&articlecontent.title.length > 0 ){%>
 				<%= articlecontent.title %>
 				<%}else{%>
@@ -109,7 +109,7 @@ var replies = d.replies;
 										<% if(locals.userinfo){ %>
 										<a class="replyat" href="#"   data-tid="<%= replies[i].tid %>" data-rid="<%= replies[i].rid %>" data-ruid="<%= replies[i]._creator.uid %>" data-runame="<%= replies[i]._creator.name %>"><i class="fa fa-reply"></i>回复</a>
 										<% }else{%>
-										<a class="replylink" data-toggle="modal" data-target="#loginmodal" ><i class="fa fa-reply"></i>回复</a>
+										<a class="replylink" ><i class="fa fa-reply"></i>回复</a>
 										<%}%>
 										<% if(i==0){%>
 										•<%= "沙发"%>

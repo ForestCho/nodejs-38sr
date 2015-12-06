@@ -36,8 +36,7 @@ ul{
 	width: 70%;
 	min-height: 400px;
 	margin: 10px auto 0;
-	margin-top: 70px;
-	background-color: #fff;
+	margin-top: 70px; 
 }
 
 .mainwrap a:hover { 
@@ -200,6 +199,9 @@ ul{
 }
 .add_bottom_dashed{
 	border-bottom:1px dashed #E0E0E0;
+}
+.add_bottom_solid{
+	border-bottom:1px solid #E0E0E0;
 }
 @media screen and (max-width: 979px) {
 

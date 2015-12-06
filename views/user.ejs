@@ -36,7 +36,7 @@
 							<%}else{%>
 							<div class="msg_date"><i class="fa fa-clock-o"></i><%= nearArticle[i].convertdate  %> 分享来自
 								<%if(nearArticle[i]._sid){%>
-								<a href="#" class="sitetext" data-toggle="tooltip" data-placement="right" title="<%=nearArticle[i]._sid.sbrief %>"><%=nearArticle[i]._sid.sname %></a>
+								<a href="/site/<%- nearArticle[i]._sid._id %>/" class="sitetext" data-toggle="tooltip" data-placement="right" title="<%=nearArticle[i]._sid.sbrief %>"><%=nearArticle[i]._sid.sname %></a>
 								<%}else{%>
 								net
 								<%}%>

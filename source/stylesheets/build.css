@@ -6561,6 +6561,7 @@ button.close {
 .rep_msg_box {
 	background-color: #fff; 
 	border-bottom: 1px solid #eee;
+	margin-top: 20px;
 }
 .nosignin{
 	text-align: center; 
@@ -6731,7 +6732,7 @@ button.close {
 .detail_msg_head{
 	font-size: 19px;
 	color: #383838;
-	border-left: 4px solid #00a090;
+	background-color: #f5f5f5;
 	padding: 8px 10px;
 	line-height: 19px;
 	height: 38px;
@@ -6775,6 +6776,11 @@ button.close {
 	resize: vertical;
 	border-radius: 4px;
 	padding: 4px 40px 4px 4px;
+	-webkit-transition: all linear 0.2s;
+	-moz-transition: all linear 0.2s;
+	-ms-transition: all linear 0.2s;
+	-o-transition: all linear 0.2s;
+	transition: all linear 0.2s;
 }
 #repstr{
 	width: 100%;
@@ -6862,14 +6868,12 @@ button.close {
 
 .articleitem {  
 	padding: 10px 20px;
-	background-color: #FFF;
-	margin-top: 1px; 
+	background-color: #FFF; 
 	border-bottom: 1px solid #f0f0f0
 }
 .articleitem-first {
 	padding: 10px 20px;
-	background-color: #FFF;
-	margin-top: 1px;
+	background-color: #FFF; 
 	border-radius: 0px 0px 5px 5px;
 }
 /*
@@ -7288,9 +7292,7 @@ button.close {
 
 .pagination_container{
 	width: 100%;
-	background-color: #fff;
-	margin-top: 1px;
-	border-radius: 5px 5px 0px 0px;
+	background-color: #fff;  
 }
 .pagination li a, .pagination li span {
 	background-color: #fafafa;
@@ -8482,10 +8484,10 @@ a.unfollowfri:hover{
 	color: #808080 !important;	
 }
 .navigator{	
-    width: 100%; 
-    margin-top: 10px;
-    padding: 10px 20px;
+    width: 100%;  
     display: block;
+    background-color: #fff;
+    padding: 5px;
 }
 .next_page{
 	float: right;
@@ -8552,6 +8554,7 @@ a.unfollowfri:hover{
 	font-size: 15px;
 	margin-top: 15px;
 	height: 40px;
+	background-color: #f5f5f5;
 	border-bottom: 2px solid #DCDDD9;
 }
 .page_header_info .tab-cell{
@@ -8686,8 +8689,7 @@ ul{
 	width: 70%;
 	min-height: 400px;
 	margin: 10px auto 0;
-	margin-top: 70px;
-	background-color: #fff;
+	margin-top: 70px; 
 }
 
 .mainwrap a:hover { 
@@ -8850,6 +8852,9 @@ ul{
 }
 .add_bottom_dashed{
 	border-bottom:1px dashed #E0E0E0;
+}
+.add_bottom_solid{
+	border-bottom:1px solid #E0E0E0;
 }
 @media screen and (max-width: 979px) {
 
