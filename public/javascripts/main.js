@@ -18,7 +18,7 @@ require.config({
         underscore: './lib/underscore.min',
         jqueryatwho: './lib/jquery.atwho.min',
         editor: './lib/editor.min',
-        popover: './lib/jquery.webui.popover', 
+        popover: './lib/jquery.webui.popover.min', 
         zoom: './lib/zoom.min'
     }
 }),

@@ -10,8 +10,8 @@ var mongoose = require('mongoose');
 /*
  * GET home page.
  */
- 
- mongoose.connect('mongodb://127.0.0.1:27017/blogdb');
+ mongoose.connect('mongodb://caosl:123456@107.170.206.235:27017/blogdb');
+ // mongoose.connect('mongodb://127.0.0.1:27017/blogdb')
 
 
 var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
@@ -33,7 +33,7 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
         d.hotuser = hotuser; 
         d.count = count;
         res.render(classify == 2 ? 'indexarticle' : 'index', {
-            title: '做一名简单的锶者!',
+            title: '做一体化的IT社区!',
             curpath: curpath,
             d: d,
             p: p, 
@@ -55,7 +55,7 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
             if (articlelist[i].classify == 1) {
                 articlelist[i].title = encodeURIComponent(articlelist[i].title);
             }
-            var briefnum = (classify == 2) ? 80 : 180;
+            var briefnum = 180;
             var contentlength = util.getSize(newcontent);
             if (imglist !== null) {
                 if (imglist.length > 0) {
@@ -75,6 +75,7 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
             if (contentlength > briefnum) {
                 newcontent = newcontent + '...';
             }
+            articlelist[i].imagelength = imglist !== null?imglist.length:0;
             articlelist[i].newcontent = newcontent;
         } 
         ep.emit("articlelist", articlelist);
@@ -104,10 +105,7 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
                 })
             );
         }
-    }));
-/*    UserDao.getNumberOfAllUser(function(err, usercount) {
-        ep.emit("usercount", usercount);
-    });*/
+    })); 
 }
 
 //首页路由

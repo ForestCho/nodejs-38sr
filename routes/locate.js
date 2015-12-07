@@ -27,8 +27,7 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, locatename) 
         var d = [];
         d.count = count;
         d.locatename = locatename;
-        d.data = articlelist;
-        console.log(articlelist.length);
+        d.data = articlelist; 
         res.render('locate', {
             title: '做一名简单的锶者!',
             curpath: curpath,

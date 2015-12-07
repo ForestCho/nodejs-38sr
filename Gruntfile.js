@@ -102,23 +102,19 @@ module.exports = function(grunt) {
                 src: 'source/javascripts/jquery.webui.popover.js',
                 dest: 'public/javascripts/lib/jquery.webui.popover.min.js'
             },
-            bulid11: {
+            bulid12: {
                 src: 'source/javascripts/jquery.form.js',
                 dest: 'public/javascripts/lib/jquery.form.min.js'
-            },
-            bulid12: {
-                src: 'source/javascripts/jquery.webui.popover.js',
-                dest: 'public/javascripts/lib/jquery.webui.popover.min.js'
-            },
-            bulid12: {
+            }, 
+            bulid13: {
                 src: 'source/javascripts/editor.js',
                 dest: 'public/javascripts/lib/editor.min.js'
             },
-            bulid13: {
+            bulid14: {
                 src: 'source/javascripts/zoom.js',
                 dest: 'public/javascripts/lib/zoom.min.js'
             },      
-            bulid14: {
+            bulid15: {
                 src: 'source/javascripts/pretty.js',
                 dest: 'public/javascripts/lib/pretty.min.js'
             },                  

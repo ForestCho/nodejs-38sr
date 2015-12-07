@@ -28,8 +28,7 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, site_id) {
         var d = [];
         d.count = count;
         d.sitename = sitename;
-        d.data = articlelist;
-        console.log(articlelist.length);
+        d.data = articlelist; 
         res.render('site', {
             title: '做一名简单的锶者!',
             curpath: curpath,

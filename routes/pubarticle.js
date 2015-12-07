@@ -68,10 +68,12 @@ exports.save = function(req, res) {
                 console.log(data);
             var labeljson = data[0];
                 console.log(labeljson);
-            for (var i = 0; i < (labeljson.length > 5 ? 5 : labeljson.length); i++) {
-                label +=labeljson[i][1] + ',' 
-                console.log(label);
-            };
+            if(typeof(labeljson) !== 'undefined'){
+                for (var i = 0; i < (labeljson.length > 5 ? 5 : labeljson.length); i++) {
+                    label +=labeljson[i][1] + ',' 
+                    console.log(label);
+                };                
+            }
    		    ep.emit("label", label);
         });
     } else {
