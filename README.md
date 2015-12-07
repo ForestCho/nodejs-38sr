@@ -6,7 +6,7 @@
 ##使用方法
 * 将项目clone到本地，`git clone git@github.com:ForestCho/nodejs-38sr.git`
 * 安装模块依赖项 `npm install`
-* 安装'ImageMagick','redis'本地模块
+* 安装`ImageMagick`,`redis`本地模块
 * 将`temp_config.js`更名为`config.js`, 并在目录下执行'grunt'生成css和js
 * 启动项目`node app.js`，在服务器上为了防止非正常关闭，可以用`forever start app.js`
 * 通过`http://localhost:3000/`访问
