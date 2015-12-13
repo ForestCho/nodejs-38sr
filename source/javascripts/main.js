@@ -81,8 +81,6 @@ define("msgbox", ["domop"], function(domop) {
 }),
 
 define("index", ["msgbox", "jquery", "popover", "zoom"], function(msgbox, $, popover, zoom) {
-
-    /*       $("a[rel=fancypic]").fancybox(); */
     $('.articleitem').hover(
         function() {
             $(this).find('.otherinfowrap').css("opacity", "1");
@@ -746,7 +744,113 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
         domop.removeClass(headsearch, "active");
     };
 }),
-require(["jquery", "bootstrap", "jqueryform", "jquerycaret", "underscore", "jquerymigrate", "jqueryatwho", "index", "article", "pub", "reglog", "user", "set", "common"],
-    function($, bootstrap, jqueryform, jquerycaret, _, jquerymigrate, jqueryatwho, index, article, pub, reglog, user, set, common) {
+
+define("admin", ["jquery"], function($) {
+    var spanMessage = $("#spanMessage"); 
+    var spic = $("#spic");
+    $("#sitepicfile").wrap("<form id='uploadsitepic' action='/sitepicupload' method='post' enctype='multipart/form-data'></form>");
+      $("#sitepicfile").change(function(){   
+      $("#uploadsitepic").ajaxSubmit({
+        dataType:  'json',
+        beforeSend: function() {
+              spanMessage.text("正在上传..."); 
+          }, 
+        success: function(msg) {
+          if(msg.type == 0){          
+                spanMessage.text("上传失败");
+          }else{            
+                spanMessage.text("上传成功");  
+                spic.val(msg.content); 
+          }
+        },
+        error:function(){   
+                spanMessage.text("上传失败");     
+        }
+      });
+    });  
+        $("#addsite").click(function(){     
+            var sname=$('#sname').val();
+            var sdomain=$('#sdomain').val();
+            var sbrief=$('#sbrief').val();
+            var spic=$('#spic').val();
+            var params = {sname:sname,sbrief:sbrief,sdomain:sdomain,spic:spic};
+            $.ajax({
+                data: params,
+                url: '/addsite',
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                type: 'get',
+                success: function(data){
+                    if(0 === data.status) { 
+                        $("#spanMessage").html("Site增加成功");
+                    } else {
+                        $("#spanMessage").html("Site增加失败");
+                    } 
+                },
+                error: function(){
+                        $("#spanMessage").html("ERROR");
+                }
+            });
+        });
+    $("#updatesite").click(function(){       
+            var snname=$('#snname').val();
+            var sndomain=$('#sndomain').val();
+            var snbrief=$('#snbrief').val();
+            var snpic=$('#snpic').val();
+            var params = {snname:snname,snbrief:snbrief,sndomain:sndomain,snpic:snpic};
+            $.ajax({
+                data: params,
+                url: '/updatesite',
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                type: 'get',
+                success: function(data){
+                    if(0 === data.status) { 
+                        $("#spanMessage2").html("Site编辑成功");
+                    } else {
+                        $("#spanMessage2").html("Site编辑失败");
+                    } 
+                },
+                error: function(){
+                        $("#spanMessage2").html("ERROR");
+                }
+            });
+        });
+    $("#sndomain").blur(function(){         
+            var snameobj = $('#snname');
+            var sdomainobj = $('#sndomain');
+            var sbriefobj = $('#snbrief');
+            var spicobj = $('#snpic');
+            var domainName = sdomainobj.val();
+            var params = {domainname:domainName};   
+            $.ajax({
+                data: params,
+                url: '/getsite',
+                dataType: 'json',
+                cache: false,
+                timeout: 5000,
+                type: 'get',
+                success: function(data){
+                    if(0 === data.status) {  
+                        snameobj.val(data.site.sname);
+                        sbriefobj.val(data.site.sbrief);
+                        spicobj.val(data.site.spic);
+                    } else {
+                        $("#spanMessage2").html("Site查找失败");
+                        snameobj.val("");
+                        sbriefobj.val("");
+                        spicobj.val("");
+                    } 
+                },
+                error: function(){
+                        $("#spanMessage2").html("ERROR");
+                }
+            });
+    });
+}),
+require(["jquery", "bootstrap", "jqueryform", "jquerycaret", "underscore", "jquerymigrate", "jqueryatwho", "index", "article", "pub", "reglog", "user", "set", "common","admin"],
+    function($, bootstrap, jqueryform, jquerycaret, _, jquerymigrate, jqueryatwho, index, article, pub, reglog, user, set, common,admin) {
 
     });

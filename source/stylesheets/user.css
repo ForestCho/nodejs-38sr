@@ -29,8 +29,7 @@ a.unfollowfri:hover{
 	height: 40px;
 	line-height: 40px;
 	background-color: #fff;
-	text-align: center;
-	cursor: pointer;
+	text-align: center; 
 	border-bottom: #eee 1px solid;
 } 
 .get_more{
@@ -47,7 +46,7 @@ a.unfollowfri:hover{
     width: 100%;  
     display: block;
     background-color: #fff;
-    padding: 5px;
+    padding: 5px 0px;
 }
 .next_page{
 	float: right;

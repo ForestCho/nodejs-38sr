@@ -6683,6 +6683,32 @@ button.close {
 	position: relative;
 	overflow: visible;
 }
+
+.tag-item a:hover{
+	opacity: 0.8;
+}
+.label-item a { 
+    text-decoration: none;
+    font-weight: 400;
+    background-color: #DFE2E6;
+    font-size: 10px;
+    color: #999;
+    height: 18px;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.12);
+    line-height: 18px;
+    float: left;
+    padding: 0 10px 0 10px;
+    position: relative; 
+    margin: 0 2px 0 3px;
+}  
+.label-item{
+	list-style: none;
+	float:left;
+} 
+.label-item a:hover {
+	opacity: 0.8;
+}
+
 .other-article-info{
 	padding:0px 20px;
 }
@@ -6940,8 +6966,9 @@ button.close {
 	text-decoration: none;
 }
 .sitepic{
-	width:20px;
-	height: 20px;
+	width:18px;
+	height: 18px;
+	border-radius: 9px;
 }
 .otherinfowrap {
 	position: relative;
@@ -6994,84 +7021,6 @@ button.close {
 	float:left;
 }
 
-.tag-item a:hover{
-	opacity: 0.8;
-}
-.label-item a {
-	display: inline-block;
-	text-decoration: none;
-	font-weight: normal;
-	font-size: 10px;
-	color: #fff;
-	height: 18px;
-	line-height: 18px;
-	float: left;
-	padding: 0 5px 0px 10px;
-	position: relative;
-	-webkit-border-radius: 0 5px 5px 0;
-	border-radius: 0 5px 5px 0;
-	margin: 0px 7px 0px 8px
-	font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
-}
-.label-item a:before {
-	content: " ";
-	width: 0px;
-	height: 0px;
-	position: absolute;
-	top: 0;
-	left: -18px;
-	border: 9px solid transparent;
-}
-.label-item a:after {
-	content: " ";
-	width: 4px;
-	height: 4px;
-	background-color: #fff;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	-webkit-box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
-	box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
-	position: absolute;
-	top: 7px;
-	left: 2px;
-}
-.label-item{
-	list-style: none;
-	float:left;
-}
-.label-item a.color1 {
-  background: #ff945c;
-}
-.label-item a.color1:before {
-  border-right-color: #ff945c;
-}
-.label-item a.color2 {
-  background: #f5c7b7;
-}
-.label-item a.color2:before {
-  border-right-color: #f5c7b7;
-}
-.label-item a.color3 {
-  background: #ba8f6c;
-}
-.label-item a.color3:before {
-  border-right-color: #ba8f6c;
-}
-.label-item a.color4 {
-  background: #cfb7c4;
-}
-.label-item a.color4:before {
-  border-right-color: #cfb7c4;
-}
-.label-item a.color5 {
-  background: #7b5d5f;
-}
-.label-item a.color5:before {
-  border-right-color: #7b5d5f;
-}
-.label-item a:hover {
-	opacity: 0.8;
-}
 .leftwrap i{
 	margin-right: 5px;
 }
@@ -8469,8 +8418,7 @@ a.unfollowfri:hover{
 	height: 40px;
 	line-height: 40px;
 	background-color: #fff;
-	text-align: center;
-	cursor: pointer;
+	text-align: center; 
 	border-bottom: #eee 1px solid;
 } 
 .get_more{
@@ -8487,7 +8435,7 @@ a.unfollowfri:hover{
     width: 100%;  
     display: block;
     background-color: #fff;
-    padding: 5px;
+    padding: 5px 0px;
 }
 .next_page{
 	float: right;

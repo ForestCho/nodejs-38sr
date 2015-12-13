@@ -52,11 +52,11 @@
 								</a>
 								<% }%>
 								<% if(locals.userinfo){ %>
-								<a href="/article/<%= nearArticle[i].tid %>">
+								<a href="/t/<%= nearArticle[i].tid %>">
 									<i class="fa fa-comment"></i>
 								</a>
 								<% }else{%>
-								<a href="/login?prelink=/article/<%= nearArticle[i].tid %>">
+								<a href="/login?prelink=/t/<%= nearArticle[i].tid %>">
 									<i class="fa fa-comment"></i>
 								</a>
 								<%}%>
@@ -64,7 +64,7 @@
 						</div>
 						<% if(nearArticle[i].classify === 0){%>
 						<% if(nearArticle[i].title &&nearArticle[i].title.length > 0 ){%>
-						<p class="item_title"><a href="/article/<%= nearArticle[i].tid %>"><%= nearArticle[i].title %></a></p>
+						<p class="item_title"><a href="/t/<%= nearArticle[i].tid %>"><%= nearArticle[i].title %></a></p>
 						<%}%>
 						<div class="msg_content"><%- nearArticle[i].newcontent %> </div>
 						<%}else if(nearArticle[i].classify === 2){%>

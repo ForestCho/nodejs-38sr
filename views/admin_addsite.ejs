@@ -98,30 +98,5 @@
     </div>
   </div>
 </div>
-
- <script type="text/javascript"> 
-    var spanMessage = $("#spanMessage"); 
-    var spic = $("#spic");
-    $("#sitepicfile").wrap("<form id='uploadsitepic' action='/sitepicupload' method='post' enctype='multipart/form-data'></form>");
-      $("#sitepicfile").change(function(){   
-      $("#uploadsitepic").ajaxSubmit({
-        dataType:  'json',
-        beforeSend: function() {
-              spanMessage.text("正在上传..."); 
-          }, 
-        success: function(msg) {
-          if(msg.type == 0){          
-                spanMessage.text("上传失败");
-          }else{            
-                spanMessage.text("上传成功");  
-                spic.val(msg.content); 
-          }
-        },
-        error:function(){   
-                spanMessage.text("上传失败");     
-        }
-      });
-    });  
-    </script>
  
 
