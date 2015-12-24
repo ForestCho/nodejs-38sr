@@ -6,6 +6,10 @@ var getUserInfoByName = function(name,cb){
 	User.findOne({name:name},cb);
 }
 
+var getAdminUserInfoByName = function(name,cb){
+	User.findOne({name:name,admin:1},cb);
+}
+
 //用用户id去拿用户信息
 var getUserInfoByUid = function(uid,cb){
 	User.findOne({uid:uid},cb);
@@ -106,6 +110,7 @@ var updateUserInfo = function(user,cb){
 }
 
 exports.getUserInfoByName = getUserInfoByName;
+exports.getAdminUserInfoByName = getAdminUserInfoByName;
 exports.getUserInfoByUid = getUserInfoByUid;
 exports.getUserInfoByEmail = getUserInfoByEmail;
 

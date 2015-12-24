@@ -16,8 +16,7 @@ var boson = new bosonnlp.BosonNLP("yoUTK8dE.3486.jTfMGWlrfZxc");
 exports.save = function(req, res) {
     var title = req.body.title;
     var mcontent = req.body.mcontent;
-    var label = req.body.label;
-    var cateid = req.body.cateid;
+    var label = req.body.label; 
     var classify = 0;
     var name = req.session.user.name;
     var uid = 0;
@@ -28,15 +27,13 @@ exports.save = function(req, res) {
     console.log(mcontent);
     ep.assign("userinfo", "tid","label", function(userinfo, tid,label) {
         uid = userinfo.uid;
-
         var articleItem = new Article({
             tid: tid,
             title: title,
             content: content,
             mcontent:mcontent,
             uid: uid,
-            _creator: userinfo._id,
-            flag: cateid,
+            _creator: userinfo._id, 
             classify: classify,
             label:label,
             isdelete: false
