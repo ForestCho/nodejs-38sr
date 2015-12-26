@@ -1,0 +1,27 @@
+<% include ./partial/header%>
+</head>
+<body class="loginbg">
+<div class="loginwrap am-form am-form-horizontal"> 
+		<div class="am-form-group">
+			<label for="doc-ipt-3" class="am-u-sm-2 am-form-label">邮箱</label>
+			<div class="am-u-sm-10">
+				<input  type="text" id="regemail" name="regemail" placeholder="email">
+			</div>
+		</div>
+		<div class="am-form-group">
+			<div class="col-sm-10">
+				<button type="submit" class="am-btn am-btn-primary" id="subemail">注册</button>
+			</div>
+		</div>
+	</form>
+	<div style="clear:both"></div>
+	<div class="msgbox">
+		<% if(typeof(msg) !== 'undefined' && msg.status !== -1){ %>
+		<div class="am-alert <%=(msg.status === 1)?"am-alert-success":"am-alert-warning" %>" role='alert'>
+			<%-msg.content %>
+		</div>
+		<% } %>
+	</div>
+</div>
+</body>
+</html>

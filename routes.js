@@ -24,16 +24,21 @@ var error = require('./routes/common/500');
 var search = require('./routes/search');
 var feedback = require('./routes/feedback');
 
-//test function
-
-//var  api = require('./routes/api');
+//管理权限
+var admin_reg = require('./routes/admin/register'); 
+var admin_logout = require('./routes/admin/logout');
+var admin_forgetpwd = require('./routes/admin/forgetpwd');
+var admin_login = require('./routes/admin/login'); 
+var admin_admin = require('./routes/admin/admin');
+var admin_article = require('./routes/admin/article');
+var admin_site = require('./routes/admin/site');
 
 var publink = require('./routes/publink');
 
 //admin
 var admin = require('./routes/admin');
 var crawer = require('./routes/crawer');
-var admin_site  = require('./routes/admin_site');
+//var admin_site  = require('./routes/admin_site');
 
 //手机api
 var xqjson = require('./routes/xqjson');
@@ -208,10 +213,10 @@ var run = function(app){
  	app.get('/admin_site', admin.admin_addsite); 
  	app.get('/admin_articles', admin.admin_articles); 
  	
- 	app.get('/addsite',admin_site.addsite);
+ /*	app.get('/addsite',admin_site.addsite);
  	app.get('/updatesite',admin_site.updatesite);
  	app.get('/getsite',admin_site.getsite);
- 	app.post('/sitepicupload',admin_site.sitepicupload);
+ 	app.post('/sitepicupload',admin_site.sitepicupload);*/
 
 
  	//爬虫地址
@@ -246,8 +251,31 @@ var run = function(app){
 	app.get('/userarticlejson', userjson.articlelist); 
 	
 
-/*app.get('/api/posts/', api.posts);
-app.get('/partials/:name', api.partials); */
+//管理路由
+
+    app.get('/admin/login', admin_login.login);
+    app.post('/admin/login', admin_login.dologin); 
+    app.get('/admin/reg', admin_reg.reg);
+    app.post('/admin/reg', admin_reg.doreg);
+    app.get('/admin/regemail', admin_reg.regemail);
+    app.get('/admin/signup', admin_reg.signup); 
+    app.get('/admin/sendmail', admin_forgetpwd.get);
+    app.post('/admin/sendmail', admin_forgetpwd.sendmail);
+    app.get('/admin/resetpwd', admin_forgetpwd.resetpwd);
+    app.post('/admin/resetpwd', admin_forgetpwd.doreset);
+    app.get('/admin/index', admin_admin.index);
+    app.get('/admin/logout', admin_logout.logout);
+    app.get('/admin/list', admin_article.list);
+    app.get('/admin/deletearticle', admin_article.delete); 
+ 
+    app.get('/admin/getsite', admin_site.getsite);
+    app.get('/admin/updatesiteindex', admin_site.updatesiteindex);
+    app.get('/admin/updatesite', admin_site.updatesite);
+    app.get('/admin/addsiteindex', admin_site.addsiteindex);
+    app.get('/admin/addsite', admin_site.addsite);
+    app.get('/admin/delsite', admin_site.delsite);
+ 	app.post('/admin/sitepicupload',admin_site.sitepicupload);
+
 
 　//********************************************************************//
 　//**********************＊***以功能路由********************************//

@@ -1,0 +1,46 @@
+<% include ./partial/header%>
+</head>
+<body class="loginbg">
+<div class="loginwrap">
+	<form class="am-form am-form-horizontal" role="form" action="/admin/reg" method="POST">
+		<div class="am-form-group">
+			<label for="doc-ipt-3" class="am-u-sm-2 am-form-label">邮箱</label>
+			<div class="am-u-sm-10">
+				<input type="email"  id="email" value='<%= typeof(email)== 'undefined'?'':email %>' name="email" readonly placeholder="邮箱">
+			</div>
+		</div>
+		<div class="am-form-group">
+			<label for="doc-ipt-3" class="am-u-sm-2 am-form-label">帐号</label>
+			<div class="am-u-sm-10">
+				<input  type="text" id="uname" name="uname" value='<%= typeof(name)== 'undefined'?'':name %>' placeholder="帐号">
+			</div>
+		</div>
+		<div class="am-form-group">
+			<label for="doc-ipt-3" class="am-u-sm-2 am-form-label">密码</label>
+			<div class="am-u-sm-10">
+				<input type="password" id="pwd" name="pwd" placeholder="密码">
+			</div>
+		</div>
+		<div class="am-form-group">
+			<label for="doc-ipt-3" class="am-u-sm-2 am-form-label">密码</label>
+			<div class="am-u-sm-10">
+				<input type="password" class="form-control pwdbg" id="pwdagain" name="pwdagain" placeholder="再次密码 ">
+			</div>
+		</div>
+		<div class="am-form-group">
+			<div class="col-sm-10">
+				<button type="submit"  id="loginBtnSub" class="am-btn am-btn-primary">注册</button>
+			</div>
+		</div>
+	</form>
+	<div style="clear:both"></div>
+	<div class="msgbox">
+		<% if(typeof(msg) !== 'undefined' && msg.status !== -1){ %>
+		<div class="am-alert <%=(msg.status === 1)?"am-alert-success":"am-alert-warning" %>" role='alert'>
+			<%-msg.content %>
+		</div>
+		<% } %>
+	</div>
+</div>
+</body>
+</html>

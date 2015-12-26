@@ -1,0 +1,75 @@
+<% include ./partial/header%>
+</head>
+<body>
+<% include ./partial/nav%>
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <% include ./partial/catasidebar%>
+  <!-- sidebar end -->
+  <!-- content start -->
+  <div class="admin-content">
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">Site </strong><small>/ Site 增加</small></div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-6">
+      <div class="am-btn-toolbar">
+        <div class="am-btn-group am-btn-group-xs">
+          <a type="button" class="am-btn am-btn-default" href="/admin/addarticle"><span class="am-icon-plus"></span> 新增</a>
+          <button type="button" class="am-btn am-btn-default" data-am-modal="{target: '#linkmodal', closeViaDimmer: 0, width: 400, height: 225}"><span class="am-icon-trash-o"></span> 删除</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="am-u-sm-12">
+      <div class="am-alert " id="notice" style="display:none" role='alert'>
+      </div>
+      <div class="am-form am-form-horizontal">
+        <div class="am-g am-margin-top">
+          <div class="am-u-sm-4 am-u-md-2 am-text-right">
+            网站域名
+          </div>
+          <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+            <input type="text" class="am-input-sm" id="sdomain" name="sdomain" placeholder="网站域名">
+          </div>
+        </div>
+        <div class="am-g am-margin-top">
+          <div class="am-u-sm-4 am-u-md-2 am-text-right">
+            网站名字
+          </div>
+          <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+            <input type="text" class="am-input-sm" id="sname" name="sname" placeholder="网站名字">
+          </div>
+        </div>
+        <div class="am-g am-margin-top">
+          <div class="am-u-sm-4 am-u-md-2 am-text-right">
+            网站简介
+          </div>
+          <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+            <input type="text" class="am-input-sm" id="sbrief" name="sbrief" placeholder="网站简介">
+          </div>
+        </div>
+        <div class="am-g am-margin-top">
+          <div class="am-u-sm-4 am-u-md-2 am-text-right">
+            网站图片
+          </div>
+          <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+            <input type="text" class="am-input-sm" id="spic" name="spic" placeholder="网站图片">
+          </div>
+        </div>
+        <div class="am-form-group am-form-file am-u-sm-offset-2 am-margin-top">
+          <button type="button" class="am-btn am-btn-danger am-btn-sm">
+          <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+          <input type="file" id="sitepicfile" name="picture" multiple>
+        </div>
+        <div id="file-list"></div>
+      </div>
+      <div class="am-margin">
+        <button type="button" class="am-btn am-btn-primary am-btn-xs"  id="addsite">提交保存</button>
+      </div>
+    </div>
+    
+    <!-- content end -->
+  </div>
+</div>
+</body>
+</html>
