@@ -1,8 +1,21 @@
+var Article = require('../../models/article'); 
+var UserDao = require('../../dao/userdao');
+var util = require('../../lib/util');
+var Relation = require('../../models/relation');
+var relationdao = require('../../dao/relationdao');
+var EventProxy = require('eventproxy'); 
+var moment = require('moment');
 /*
  * GET user page.
- */  
+ */
+exports.login = function(req, res) {
+    return res.render('admin/login', {
+        title: 'adminlogin'
+    });
+}
+
 exports.index = function(req, res) { 
-        res.render('admin/index', {
-            title: 'adminindex'
-        }); 
+    res.render('admin/index', {
+        title: 'adminindex'
+    }); 
 } 

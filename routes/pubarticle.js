@@ -7,8 +7,7 @@ var mongoose = require('mongoose');
 var EventProxy = require('eventproxy');
 var bosonnlp = require('bosonnlp');
 var marked = require('marked');
-var boson = new bosonnlp.BosonNLP("yoUTK8dE.3486.jTfMGWlrfZxc");
-//mongoose.connect('mongodb://localhost/blogdb');
+var boson = new bosonnlp.BosonNLP("yoUTK8dE.3486.jTfMGWlrfZxc"); 
 
 /*
  * 发表note页面
@@ -23,8 +22,7 @@ exports.save = function(req, res) {
     var tid = 0;
     var label = '';
     var ep = new EventProxy();
-    var content = marked(mcontent);
-    console.log(mcontent);
+    var content = marked(mcontent); 
     ep.assign("userinfo", "tid","label", function(userinfo, tid,label) {
         uid = userinfo.uid;
         var articleItem = new Article({
@@ -79,11 +77,9 @@ exports.save = function(req, res) {
     UserDao.getUserInfoByName(name, function(err, userinfo) {
         ep.emit("userinfo", userinfo);
     });
-
     ArticleDao.getMaxTid(function(err, maxtid) {
         ep.emit("tid", maxtid);
-    })
-
+    }) 
 };
 
 exports.index = function(req, res) {

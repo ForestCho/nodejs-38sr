@@ -16,7 +16,7 @@ var gm = require('gm')
  * GET admin_addsite page.
  */
  exports.addsiteindex = function (req, res) { 	 
-	return res.render('admin/addsite', { title:'admin_addsite'});   
+	return res.render('admin/addsite', { title:'新增SIte'});   
 } 
 
 /*
@@ -143,7 +143,7 @@ exports.getsite = function (req, res) {
  }; 
 
  exports.updatesiteindex = function (req, res) { 	 
-	return res.render('admin/updatesite', { title:'admin_addsite'});   
+	return res.render('admin/updatesite', { title:'更新Site'});   
 } 
 
 //update

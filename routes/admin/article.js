@@ -8,6 +8,9 @@ var config = require('../../config').config;
 var UPYun = require('../../lib/upyun').UPYun;
 var marked = require('marked');
 var util = require('../../lib/util');
+var bosonnlp = require('bosonnlp');
+var marked = require('marked');
+var boson = new bosonnlp.BosonNLP("yoUTK8dE.3486.jTfMGWlrfZxc"); 
 /*
  * GET publish a new site
  */
@@ -21,12 +24,7 @@ exports.list = function(req, res) {
     if (req.query.p) {
         p = req.query.p;
     }
-    var articleLimit = {
-        '$or': [{
-            flag: flag
-        }, {
-            classify: classify
-        }],
+    var articleLimit = { 
         isdelete: false
     };
 
@@ -84,27 +82,28 @@ exports.getarticle = function(req, res) {
 
 exports.save = function(req, res) {
     var title = req.body.title;
-    var content = req.body.content;
-    var smallimg = req.body.smallimg;
-    var flag = req.body.flag;
+    var mcontent = req.body.mcontent;
+    var label = req.body.label; 
     var classify = 0;
     var name = req.session.user.name;
     var uid = 0;
-    var tid = 0;
+    var tid = 0; 
     var ep = new EventProxy();
-    ep.assign("userinfo", "tid", function(userinfo, tid) {
+    var content = marked(mcontent); 
+    ep.assign("userinfo", "tid","label", function(userinfo, tid,label) {
         uid = userinfo.uid;
         var articleItem = new Article({
             tid: tid,
             title: title,
-            smallimg: smallimg,
             content: content,
+            mcontent:mcontent,
             uid: uid,
-            _creator: userinfo._id,
-            flag: flag,
+            _creator: userinfo._id, 
             classify: classify,
+            label:label,
             isdelete: false
         });
+        console.log(articleItem);
         ArticleDao.saveNewArticleAsObject(articleItem, function() {
             var condition = {
                 uid: uid
@@ -114,50 +113,79 @@ exports.save = function(req, res) {
                     score: 1
                 }
             };
+        console.log(articleItem);
             var options = false;
             UserDao.updateUserInfoFree(condition, update, options, function(err, num) {
                 if (err) {
                     res.redirect('/500')
                     return;
                 };
-                res.redirect('/admin/list');
+                res.redirect('admin/index');
             });
         });
     })
+
+    if (title.length > 0) {
+        classify = 2;
+        if(label.length == 0 || label ==''){
+            boson.extractKeywords(util.delHtmlTag(content), function(data) {
+                data = JSON.parse(data);
+                var labeljson = data[0];
+                    console.log(labeljson);
+                if(typeof(labeljson) !== 'undefined'){
+                    for (var i = 0; i < (labeljson.length > 5 ? 5 : labeljson.length); i++) {
+                        label +=labeljson[i][1] + ',' 
+                    };                
+                }
+                ep.emit("label", label);
+            });            
+        }else{
+            ep.emit("label", label);            
+        }
+    } else {
+        if(label.length == 0 || label ==''){
+            ep.emit("label", label);        
+        }else{
+            ep.emit("label", label);            
+        }
+    }
     UserDao.getUserInfoByName(name, function(err, userinfo) {
         ep.emit("userinfo", userinfo);
     });
     ArticleDao.getMaxTid(function(err, maxtid) {
         ep.emit("tid", maxtid);
-    })
+    }) 
 };
+
+
 exports.updatearticle = function(req, res) {
     var tid = req.body.tid;
     var title = req.body.title;
-    var content = req.body.content;
-    var smallimg = req.body.smallimg;
-    var flag = req.body.flag;
-    var condition = {
-        tid: tid
-    };
-    var update = {
-        $set: {
-            title: title,
-            smallimg: smallimg,
-            content: content,
-            smallimg: smallimg,
-            flag: flag
-        }
-    };
-    var options = false;
-    ArticleDao.updateArticleInfo(condition, update, options, function(err, num) {
-        if (err) {
-            res.redirect('/500')
-            return;
+    var mcontent = req.body.mcontent; 
+    var label = req.body.label;
+    var marked = require('marked');
+
+    var ep = new EventProxy();
+    var content = marked(mcontent);  
+        var condition = {
+            tid: tid
         };
-        console.log(num);
-        res.redirect('/admin/list');
-    });
+        var update = {
+            $set: {
+                title: title, 
+                label: label,
+                content: content  
+            }
+        };
+        var options = false;
+        ArticleDao.updateArticleInfo(condition, update, options, function(err, num) {
+            if (err) {
+                console.log(err)
+                res.redirect('/500')
+                return;
+            };
+            res.redirect('/admin/getarticle/'+tid);
+        });    
 };
 
 exports.delete = function(req, res) {

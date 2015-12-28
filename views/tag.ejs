@@ -13,13 +13,8 @@
 				%>
 				<% for(var i= 0;i<result.length;i++){
 				if(result[i]){
-				%>
-				<% if(i==0){
 				%> 
-					<div class="articleitem-first">
-				<%}else{%>
-					<div class="articleitem">
-				<%}%> 
+				<div class="articleitem"> 
 					<div>
 						<div> 
 							<% if(result[i].title &&result[i].title.length > 0 ){%>
@@ -39,7 +34,7 @@
 									var labelarr = result[i].label.split(",");
 									for(var j=0 ;j<((labelarr.length-1)>4?4:(labelarr.length-1));j++){
 										%> 
-											<a  href="/tags/<%- labelarr[j]%>/"  style="font-size: 12px;"><%- labelarr[j]%></a> 
+											<a  href="/tag/<%- labelarr[j]%>/"><%- labelarr[j]%></a> 
 										<%}%> 
 									<%}
 								}%>

@@ -28,7 +28,7 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, tagname) {
         d.count = count;
         d.tagname = tagname;
         d.data = articlelist;
-        res.render('tags', {
+        res.render('tag', {
             title: '做一名简单的锶者!',
             curpath: curpath,
             d: d,
@@ -83,8 +83,7 @@ exports.index = function(req, res) {
     res.locals.pageflag = 5;
     console.log(tagname);
     var articleLimit = {
-        classify: classify,
-        flag: flag,
+        classify: classify, 
         isdelete: false,
         label: new RegExp(tagname + ',')
     };

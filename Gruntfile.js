@@ -30,41 +30,11 @@ module.exports = function(grunt) {
                     'source/stylesheets/editor.css'
                 ],
                 dest: 'source/stylesheets/build.css'
-            },     
-            concatjs: {
-                src: [ 
-                    'source/javascripts/underscore.js',
-                    'source/javascripts/bootstrap.js',
-                    'source/javascripts/base.js',  
-                    'source/javascripts/admin.js',
-                    'source/javascripts/texiao.js' 
-                ],
-                dest: 'source/javascripts/build.js'
-            },     
-            concatjs1: {
-                src: [ 
-                    'source/javascripts/jquery.js',
-                    'source/javascripts/jquery.migrate.js',
-                    'source/javascripts/jquery.caret.js',
-                    'source/javascripts/jquery.atwho.js', 
-                    'source/javascripts/jquery.jcrop.js', 
-                    'source/javascripts/jquery.webui.popover.js',
-                    'source/javascripts/jquery.form.js'
-                ],
-                dest: 'source/javascripts/lib.js'
             }
         },
         uglify: {
             options: {
                 banner: ''
-            },
-            bulid0: {
-                src: 'source/javascripts/build.js',
-                dest: 'public/javascripts/build.min.js'
-            },
-            bulid1: {
-                src: 'source/javascripts/lib.js',
-                dest: 'public/javascripts/lib.min.js'
             },
             bulid2: {
                 src: 'source/javascripts/underscore.js',
@@ -117,11 +87,45 @@ module.exports = function(grunt) {
             bulid15: {
                 src: 'source/javascripts/pretty.js',
                 dest: 'public/javascripts/lib/pretty.min.js'
-            },                  
+            },       
+            //common//          
             bulid16: {
+                src: 'source/javascripts/marked.js',
+                dest: 'public/javascripts/marked.min.js'
+            },            
+            bulid17: {
+                src: 'source/javascripts/require.js',
+                dest: 'public/javascripts/require.min.js'
+            },             
+            bulid18: {
                 src: 'source/javascripts/main.js',
                 dest: 'public/javascripts/main.min.js'
-            }                      
+            },
+            //admin     
+            bulid19: {
+                src: 'source/javascripts/admin.js',
+                dest: 'public/javascripts/admin/admin.min.js'
+            },            
+            bulid20: {
+                src: 'source/javascripts/amazeui.js',
+                dest: 'public/javascripts/admin/amazeui.min.js'
+            },             
+            bulid21: {
+                src: 'source/javascripts/editor.js',
+                dest: 'public/javascripts/admin/editor.min.js'
+            },          
+            bulid22: {
+                src: 'source/javascripts/jquery.form.js',
+                dest: 'public/javascripts/admin/jquery.form.min.js'
+            },       
+            bulid23: {
+                src: 'source/javascripts/jquery.js',
+                dest: 'public/javascripts/admin/jquery.min.js'
+            },               
+            bulid24: {
+                src: 'source/javascripts/marked.js',
+                dest: 'public/javascripts/admin/marked.min.js'
+            },                              
                    
 
 
@@ -140,6 +144,10 @@ module.exports = function(grunt) {
             csscompact1: {
                 src: 'source/stylesheets/build.css',
                 dest: 'public/stylesheets/build.min.css'
+            },
+            csscompact2: {
+                src: 'source/stylesheets/admin/admin.css',
+                dest: 'public/stylesheets/admin/admin.min.css'
             },
         },
         watch: {

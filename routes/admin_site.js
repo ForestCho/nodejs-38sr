@@ -10,10 +10,7 @@ var UPYun = require('../lib/upyun').UPYun;
 var gm = require('gm')
 ,	fs = require('fs')
 ,	imageMagick = gm.subClass({ imageMagick : true });
-
-//mongoose.connect('mongodb://caosl:123456@127.0.0.1:27017/blogdb');
-//mongoose.connect('mongodb://localhost/blogdb');
-
+ 
 /*
  * GET publish a new site
  */

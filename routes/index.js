@@ -10,8 +10,9 @@ var mongoose = require('mongoose');
 /*
  * GET home page.
  */
- mongoose.connect('mongodb://caosl:123456@107.170.206.235:27017/blogdb');
- // mongoose.connect('mongodb://127.0.0.1:27017/blogdb')
+//mongoose.connect('mongodb://caosl:123456@127.0.0.1:27017/blogdb');
+//mongoose.connect('mongodb://caosl:123456@107.170.206.235:27017/blogdb');
+mongoose.connect('mongodb://127.0.0.1:27017/blogdb')
 
 
 var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
@@ -115,12 +116,7 @@ exports.index = function(req, res) {
     var classify = 1;
     var curpath = "/";
     res.locals.pageflag = -1;
-    var articleLimit = {
-        '$or': [{
-            flag: flag
-        }, {
-            classify: classify
-        }],
+    var articleLimit = { 
         isdelete: false
     };
     commonQuery(req, res, curpath, articleLimit, cataZh, classify);
@@ -148,8 +144,7 @@ exports.article = function(req, res) {
     var curpath = "/article";
     res.locals.pageflag = 2;
     var articleLimit = {
-        classify: classify,
-        flag: flag,
+        classify: classify, 
         isdelete: false
     };
     commonQuery(req, res, curpath, articleLimit, cataZh, classify);
