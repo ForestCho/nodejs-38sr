@@ -12,14 +12,14 @@ var replies = d.replies;
 	</div>
 	<div class="leftwrap">
 		<div class="articleitem_detail detailinfo">
-			<div class="detail_msg_head add_bottom_solid">
+			<div class="detail_msg_head">
+				<div style="padding: 10px 5px;color:#333">
 				<% if(articlecontent.title &&articlecontent.title.length > 0 ){%>
 				<%= articlecontent.title %>
 				<%}else{%>
 				<%= articlecontent.purecontent %>
 				<%}%>
-			</div>
-			<div class="detail_content">
+				</div>
 				<div class="article_head_info">
 					<span> 来自
 						<a class="title username_text" id=<%= articlecontent.tid %> href="/user/<%= articlecontent._creator.name %>"><%= articlecontent._creator.name %>
@@ -32,6 +32,8 @@ var replies = d.replies;
 						<%= articlecontent.view_count  %> 次阅读
 					</span>
 				</div>
+			</div>
+			<div class="detail_content">
 			<div class="msg_content_detail"><%- articlecontent.content %> </div>
 		</div>
 		<%

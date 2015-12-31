@@ -12,8 +12,7 @@
 .regpanel {
 	margin-top: 35px;
 	margin-left: 20px;
-	margin-right: 20px;
-	width: 700px;
+	margin-right: 20px; 
 	overflow: hidden
 }
 .reglogin_head_info{ 

@@ -30,10 +30,7 @@
 						        <li><a href="/pub"> 发布一个</a></li> 
 						        <li class="divider"></li>
 						        <li><a href="/user/<%=locals.userinfo.name %>">个人中心</a></li>
-						        <li><a href="/set">个人设置</a></li> 
-								<% if(locals.userinfo.admin == 1){%>	
-						       		 <li><a href="/admin">管理</a></li> 
-								<% }%>	
+						        <li><a href="/set">个人设置</a></li>  
 						        <li><a href="/message">消息<span class="badge"><%=(locals.userinfo.msgcount!== 0)?locals.userinfo.msgcount:'' %></span></a></li> 
 						        <li class="divider"></li>
 							 	<li><a href="/logout">安全登出</a></li>	

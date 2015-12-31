@@ -470,11 +470,9 @@ define("set", ["jquery", "jqueryjcrop"], function($, jqueryjcrop) {
 
 }),
 define("article", ["msgbox", "jquery", "jquerymigrate", "jquerycaret", "underscore", "jqueryatwho","pretty"], function(msgbox, $, jquerymigrate, jquerycaret, _, jqueryatwho,pretty) {
-
-        $(".detail_content pre").addClass("prettyprint ");
-        $(".detail_content pre").addClass("linenums ");
+    $(".detail_content pre").addClass("prettyprint ");
+    $(".detail_content pre").addClass("linenums ");
     prettyPrint(); 
-
     
     var names = $('.username_text').map(function(idx, obj) {
         return $(obj).text().trim();
@@ -508,9 +506,9 @@ define("article", ["msgbox", "jquery", "jquerymigrate", "jquerycaret", "undersco
             success: function(data) {
                 if (data.status === 'success') {
                     if ($("#relatebtn").hasClass("followfri")) {
-                        $("#relatebtn").text("取消关注-");
+                        $("#relatebtn").html("<i class='fa fa-minus'></i>  取消关注");
                     } else {
-                        $("#relatebtn").text("关注此人+");
+                        $("#relatebtn").html("<i class='fa fa-plus'></i>   关注此人");
                     }
                     $("#relatebtn").toggleClass("unfollowfri");
                     $("#relatebtn").toggleClass("followfri");
@@ -612,11 +610,11 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
         var uname = $("#uname").val();
         var pwd = $("pwd").val();
         var noticeMsg = $("#noticemsg1");
-        if (uname.length < 5) {
+        if (uname.length < 0) {
             noticeMsg.html("账号格式有误");
             return false;
         }
-        if (pwd.length < 7) {
+        if (pwd.length < 0) {
             noticeMsg.html("密码输入不对");
             return false;
         }
@@ -743,114 +741,9 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
     inputsearch.onblur = function() {
         domop.removeClass(headsearch, "active");
     };
-}),
-
-define("admin", ["jquery"], function($) {
-    var spanMessage = $("#spanMessage"); 
-    var spic = $("#spic");
-    $("#sitepicfile").wrap("<form id='uploadsitepic' action='/sitepicupload' method='post' enctype='multipart/form-data'></form>");
-      $("#sitepicfile").change(function(){   
-      $("#uploadsitepic").ajaxSubmit({
-        dataType:  'json',
-        beforeSend: function() {
-              spanMessage.text("正在上传..."); 
-          }, 
-        success: function(msg) {
-          if(msg.type == 0){          
-                spanMessage.text("上传失败");
-          }else{            
-                spanMessage.text("上传成功");  
-                spic.val(msg.content); 
-          }
-        },
-        error:function(){   
-                spanMessage.text("上传失败");     
-        }
-      });
-    });  
-        $("#addsite").click(function(){     
-            var sname=$('#sname').val();
-            var sdomain=$('#sdomain').val();
-            var sbrief=$('#sbrief').val();
-            var spic=$('#spic').val();
-            var params = {sname:sname,sbrief:sbrief,sdomain:sdomain,spic:spic};
-            $.ajax({
-                data: params,
-                url: '/addsite',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data){
-                    if(0 === data.status) { 
-                        $("#spanMessage").html("Site增加成功");
-                    } else {
-                        $("#spanMessage").html("Site增加失败");
-                    } 
-                },
-                error: function(){
-                        $("#spanMessage").html("ERROR");
-                }
-            });
-        });
-    $("#updatesite").click(function(){       
-            var snname=$('#snname').val();
-            var sndomain=$('#sndomain').val();
-            var snbrief=$('#snbrief').val();
-            var snpic=$('#snpic').val();
-            var params = {snname:snname,snbrief:snbrief,sndomain:sndomain,snpic:snpic};
-            $.ajax({
-                data: params,
-                url: '/updatesite',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data){
-                    if(0 === data.status) { 
-                        $("#spanMessage2").html("Site编辑成功");
-                    } else {
-                        $("#spanMessage2").html("Site编辑失败");
-                    } 
-                },
-                error: function(){
-                        $("#spanMessage2").html("ERROR");
-                }
-            });
-        });
-    $("#sndomain").blur(function(){         
-            var snameobj = $('#snname');
-            var sdomainobj = $('#sndomain');
-            var sbriefobj = $('#snbrief');
-            var spicobj = $('#snpic');
-            var domainName = sdomainobj.val();
-            var params = {domainname:domainName};   
-            $.ajax({
-                data: params,
-                url: '/getsite',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data){
-                    if(0 === data.status) {  
-                        snameobj.val(data.site.sname);
-                        sbriefobj.val(data.site.sbrief);
-                        spicobj.val(data.site.spic);
-                    } else {
-                        $("#spanMessage2").html("Site查找失败");
-                        snameobj.val("");
-                        sbriefobj.val("");
-                        spicobj.val("");
-                    } 
-                },
-                error: function(){
-                        $("#spanMessage2").html("ERROR");
-                }
-            });
-    });
-}),
-require(["jquery", "bootstrap", "jqueryform", "jquerycaret", "underscore", "jquerymigrate", "jqueryatwho", "index", "article", "pub", "reglog", "user", "set", "common","admin"],
-    function($, bootstrap, jqueryform, jquerycaret, _, jquerymigrate, jqueryatwho, index, article, pub, reglog, user, set, common,admin) {
+}), 
+ 
+require(["jquery", "bootstrap", "jqueryform", "jquerycaret", "underscore", "jquerymigrate", "jqueryatwho", "index", "article", "pub", "reglog", "user", "set", "common"],
+    function($, bootstrap, jqueryform, jquerycaret, _, jquerymigrate, jqueryatwho, index, article, pub, reglog, user, set, common) {
 
     });

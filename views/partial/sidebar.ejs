@@ -3,7 +3,7 @@ var userinfo = d.userinfo;
 %>
 			<div class="userinfo">
 			<div class="baseinfo">
-				<h3><%= userinfo.name %></h3>
+				<div class="baseinfo-name"><%= userinfo.name %></div>
 				<img src=<%= userinfo.originphoto %>>
 				<p>第<%= userinfo.uid %>位成员</p>
 				<p><%= userinfo.joinDate %></p>	 
@@ -13,7 +13,13 @@ var userinfo = d.userinfo;
 				<% if(typeof(locals.userinfo) !== 'undefined' && locals.userinfo.name === userinfo.name){%>
 					<p><a href="/set">个人设置</a></p>
 				<%}else{%>
-					<p><a id="relatebtn" class=<%= (d.isfollow)?'unfollowfri':'followfri' %>  data_id="<%=userinfo.uid %>"><%= (d.isfollow)?'取消关注-':'关注此人+' %></a></p>
+					<p><a id="relatebtn" class=<%= (d.isfollow)?'unfollowfri':'followfri' %>  data_id="<%=userinfo.uid %>">
+					<%if(d.isfollow){%>
+						<i class="fa fa-minus"></i>  取消关注
+					<%}else{%>
+						<i class="fa fa-plus"></i>  关注此人
+					<%}%> 
+					</a></p>
 				<%}%>
 				</div>
 				<div class="follower">				

@@ -174,6 +174,7 @@ exports.updatearticle = function(req, res) {
             $set: {
                 title: title, 
                 label: label,
+                mcontent: mcontent,
                 content: content  
             }
         };

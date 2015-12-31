@@ -12,6 +12,7 @@ a {
 }  
 a:hover{
 	cursor:pointer;
+	text-decoration: none;
 }
 input:focus,textarea:focus{
 	outline:0;
@@ -32,6 +33,9 @@ ul{
 .modal-open{
     overflow: inherit ;
 }
+.modal-content{
+	border-radius: 0px;
+}
 .mainwrap { 
 	width: 70%;
 	min-height: 400px;
@@ -39,10 +43,7 @@ ul{
 	margin-top: 70px; 
 }
 
-.mainwrap a:hover { 
-	text-decoration: none
-}
-
+ 
 .inputopt {
 	float: right;
 	margin-top: 5px
@@ -90,8 +91,7 @@ ul{
 .aboutpanel {
 	margin-top: 20px;
 	margin-left: 20px;
-	margin-right: 20px;
-	width: 700px;
+	margin-right: 20px; 
 	overflow: hidden
 }
 
@@ -125,50 +125,42 @@ ul{
 }
 
 .followfri {
-	display: inline-block;
-	padding: 7px 12px;
-	background: -moz-linear-gradient(#39E,#2389de);
-	background: -webkit-linear-gradient(#39E,#2389de);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3399ee',endColorstr='#ff2389de')";
-	border: 1px solid #39E;
-	color: #fff;
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
-	text-decoration: none;
+    border: 1px solid #7aa9cc;
+    color: #7aa9cc;
+    border-radius: 15px;
+    display: inline-block;
+    height: 34px;
+    line-height: 32px;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 120px;
 	cursor: pointer;
 }
 
 .followfri:hover {
-	background: -moz-linear-gradient(#28d,#1278cd);
-	background: -webkit-linear-gradient(#28d,#1278cd);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2288dd',endColorstr='#ff1278cd')";
-	border: 1px solid #28d;
 	color: #fff;
-	text-decoration: none
+    background-color: #7aa9cc;
 }
 
 .unfollowfri {
-	display: inline-block;
-	padding: 7px 12px;
-	background: -moz-linear-gradient(#AA9294,#8A8383);
-	background: -webkit-linear-gradient(#AA9294,#8A8383);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3399ee',endColorstr='#ff2389de')";
-	border: 1px solid #AA9294;
-	color: #fff;
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
-	text-decoration: none
+    border: 1px solid #7aa9cc;
+    color: #fff;
+    background-color: #7aa9cc;
+    border-radius: 15px;
+    display: inline-block;
+    height: 34px;
+    line-height: 32px;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 120px;
+	cursor: pointer;
 }
 
 .unfollowfri:hover {
-	background: -moz-linear-gradient(#5C4446,#7C7676);
-	background: -webkit-linear-gradient(#5C4446,#7C7676);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2288dd',endColorstr='#ff1278cd')";
-	border: 1px solid #5C4446;
-	color: #fff;
-	text-decoration: none
+    color: #7aa9cc;
+    background-color: transparent;
 }
 
 #gmsgbox{

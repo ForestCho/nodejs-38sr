@@ -1,10 +1,3 @@
-a.followfri:hover{
-	color: #fff;
-} 
-a.unfollowfri:hover{
-	color: #fff;
-} 
-
 .articleitem .reply{
 	display: inline-block;
 	float: right;
@@ -23,14 +16,11 @@ a.unfollowfri:hover{
 	-o-animation-fill-mode: both;
 	animation-fill-mode: both
 }
-.nomore{
-	float: right;
-	width: 100%;
-	height: 40px;
-	line-height: 40px;
+.nomore{ 
+	width: 100%; 
+	line-height: 20px;
 	background-color: #fff;
-	text-align: center; 
-	border-bottom: #eee 1px solid;
+	text-align: center;  
 } 
 .get_more{
 	margin-top: 10px;
@@ -46,7 +36,7 @@ a.unfollowfri:hover{
     width: 100%;  
     display: block;
     background-color: #fff;
-    padding: 5px 0px;
+    padding: 15px 10px;
 }
 .next_page{
 	float: right;
