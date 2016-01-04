@@ -30,7 +30,7 @@ var xssFilters = require('xss-filters');
  				d.hefollowernum = hefollowernum;
  				res.locals.pageflag = 4 ;
  				res.locals.userinfo = req.session.user;  
- 				curpath = '/article/'+tid;
+ 				curpath = '/t/'+tid;
 
  				if(d.articlecontent.title && d.articlecontent.title.length > 0 ){
 						title = d.articlecontent.title 

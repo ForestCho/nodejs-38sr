@@ -65,9 +65,18 @@ var	EventProxy = require('eventproxy');
  		if(siteinfo){
  			ep.emit("siteinfo",siteinfo);
  		}else{
- 			SiteDao.getDefaultSid(function(err,siteinfo){
- 				ep.emit("siteinfo",siteinfo);	
- 			})
+ 			SiteDao.getMaxSid(function(err, maxsid) {
+				var site = new Site({
+					sid: maxsid,
+					sname: domain,
+					sdomain: domain,
+					sbrief: domain,
+					spic: "http://srpic.b0.upaiyun.com/site/www.38sr.com.jpg"
+				});
+				SiteDao.saveNewSite(site, function(err) { 
+ 					ep.emit("siteinfo",site);	 
+				});
+			}); 
  		}
  	});
 

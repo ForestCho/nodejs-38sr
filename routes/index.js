@@ -13,8 +13,7 @@ var mongoose = require('mongoose');
 //mongoose.connect('mongodb://caosl:123456@127.0.0.1:27017/blogdb');
 //mongoose.connect('mongodb://caosl:123456@107.170.206.235:27017/blogdb');
 mongoose.connect('mongodb://127.0.0.1:27017/blogdb')
-
-
+ 
 var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
     var p = 1;//pageid
     var pagesize = config.index.list_article_size;
@@ -55,6 +54,9 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
             var newcontent = articlelist[i].purecontent;
             if (articlelist[i].classify == 1) {
                 articlelist[i].title = encodeURIComponent(articlelist[i].title);
+               /* if(articlelist[i]._sid.sid == 0){
+                    util.getDomain(articlelist[i].title);
+                }*/
             }
             var briefnum = 180;
             var contentlength = util.getSize(newcontent);

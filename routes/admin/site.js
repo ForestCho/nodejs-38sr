@@ -37,8 +37,7 @@ var gm = require('gm')
 		        sdomain:sdomain,
 		        sbrief:sbrief,
 		        spic:spic
- 		});  
- 		console.log(site);
+ 		});   
  		SiteDao.saveNewSite(site,function(err){ 	
  			var rspobj = {};
  			if(err){

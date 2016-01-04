@@ -1,5 +1,5 @@
-var	UserDao = require('../dao/userdao'); 
-var	ArticleDao = require('../dao/articledao'); 
+var	UserDao = require('../../dao/userdao'); 
+var	ArticleDao = require('../../dao/articledao'); 
 var	path = require('path');
 var	mongoose = require('mongoose');
 var	EventProxy = require('eventproxy');

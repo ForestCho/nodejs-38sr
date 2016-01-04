@@ -1,8 +1,8 @@
-var	UserDao = require('../dao/userdao');  
+var	UserDao = require('../../dao/userdao');  
 var fs = require('fs');
-var UPYun = require('../lib/upyun').UPYun;
+var UPYun = require('../../lib/upyun').UPYun;
 var path = require('path');
-var config = require('../config').config;
+var config = require('../../config').config;
 var sanitize = require('validator'); 
 
  exports.doregister = function (req, res) {

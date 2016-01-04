@@ -1,5 +1,5 @@
-var LikeDao =  require('../dao/likedao'); 
-var ArticleDao = require('../dao/articledao');
+var LikeDao =  require('../../dao/likedao'); 
+var ArticleDao = require('../../dao/articledao');
 var path = require('path');
 var mongoose = require('mongoose');
 var EventProxy = require('eventproxy'); 

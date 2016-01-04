@@ -1,9 +1,9 @@
-var	UserDao = require('../dao/userdao');  
-var	ZymryjDao = require('../dao/zymryjdao');   
-var	util = require('../lib/util');   
-var	ArticleDao = require('../dao/articledao');   
+var	UserDao = require('../../dao/userdao');  
+var	ZymryjDao = require('../../dao/zymryjdao');   
+var	util = require('../../lib/util');   
+var	ArticleDao = require('../../dao/articledao');   
 var	moment = require('moment'); 
-var	config = require('../config').config;
+var	config = require('../../config').config;
 var	EventProxy = require('eventproxy');
 /*
  * GET home page.

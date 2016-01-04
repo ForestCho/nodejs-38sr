@@ -1,9 +1,3 @@
-var	UserDao = require('../dao/userdao'); 
-var	ArticleDao = require('../dao/articledao'); 
-var	ReplyDao = require('../dao/replydao'); 
-var util = require('../lib/util'); 
-var at = require('../lib/at'); 
-var relationdao = require('../dao/relationdao'); 
 var EventProxy = require('eventproxy'); 
 var http = require('http');
 var cheerio = require('cheerio');  
@@ -11,9 +5,8 @@ var cheerio = require('cheerio');
  * GET article detail page.
  */
 exports.view = function (req, res) {
- 	res.render('yct', { title: 'yangchengtong' });
-  }; 
-
+ 	res.render('/other/yct', { title: 'yangchengtong' });
+  };  
  exports.index = function (req, res) {
  	var cardid = req.query.cardid;   
  	var baseUrl = "http://112.94.161.30/busiqry/user-card-balance!otherBalanceQry.action?openid=oKYOJjrmYzlhXoYcI0wEPKJOfhek&cardno=";//qiongrenqiongshi  

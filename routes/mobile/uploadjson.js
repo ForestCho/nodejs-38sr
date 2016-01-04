@@ -1,6 +1,6 @@
 var path = require('path');
-var config = require('../config').config;
-var UPYun = require('../lib/upyun').UPYun;
+var config = require('../../config').config;
+var UPYun = require('../../lib/upyun').UPYun;
 var gm = require('gm')
 ,	fs = require('fs')
 ,	imageMagick = gm.subClass({ imageMagick : true });

@@ -3,5 +3,5 @@
  */
 
  exports.test = function (req, res) { 
- 	res.render('weixin', { title: '中国古代八大美女'});
+ 	res.render('/other/weixin', { title: '中国古代八大美女'});
  };

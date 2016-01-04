@@ -1,7 +1,7 @@
 <div class="articleitem" ng-repeat="article in articlelist"> 
 		<div class="photowrap"><a class="userlink show-pop-async" data-uid={{ article._creator.uid }} href="/user/{{ article._creator.name }}"><img src={{ article._creator.photo }}></a></div>
 		<div style="margin-left:55px;">
-			<div>
+			<div> 
 				<a class="title" id={{ article.tid }} href="/user/{{ article._creator.name }}">{{ article._creator.name }}</a> 
 				<span>说</span> 
 				<p class="item_title"><a href="/article/{{ article.tid }}">{{ article.title }}</a></p>

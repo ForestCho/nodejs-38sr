@@ -1,9 +1,9 @@
-var	util = require('../lib/util'); 
-var	MessageDao = require('../dao/messagedao'); 
-var	UserDao = require('../dao/userdao'); 
+var	util = require('../../lib/util'); 
+var	MessageDao = require('../../dao/messagedao'); 
+var	UserDao = require('../../dao/userdao'); 
 var	EventProxy = require('eventproxy'); 
 var sanitize = require('validator');
-var config = require('../config').config;
+var config = require('../../config').config;
 
 
  exports.dologin = function (req, res) {

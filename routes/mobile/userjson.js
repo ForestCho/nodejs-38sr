@@ -1,9 +1,9 @@
-var Article = require('../models/article'); 
-var	UserDao = require('../dao/userdao'); 
-var util = require('../lib/util');
-var Relation = require('../models/relation');
-var RelationDao = require('../dao/relationdao');
-var ArticleDao = require('../dao/articledao');
+var Article = require('../../models/article'); 
+var	UserDao = require('../../dao/userdao'); 
+var util = require('../../lib/util');
+var Relation = require('../../models/relation');
+var RelationDao = require('../../dao/relationdao');
+var ArticleDao = require('../../dao/articledao');
 var EventProxy = require('eventproxy'); 
 
 /*

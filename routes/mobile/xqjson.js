@@ -1,9 +1,9 @@
-var	UserDao = require('../dao/userdao');  
-var	ZymryjDao = require('../dao/zymryjdao');   
-var	util = require('../lib/util');   
-var	ArticleDao = require('../dao/articledao');   
+var	UserDao = require('../../dao/userdao');  
+var	ZymryjDao = require('../../dao/zymryjdao');   
+var	util = require('../../lib/util');   
+var	ArticleDao = require('../../dao/articledao');   
 var	moment = require('moment'); 
-var	config = require('../config').config;
+var	config = require('../../config').config;
 var	EventProxy = require('eventproxy');
 /*
  * GET home page.
@@ -14,8 +14,7 @@ var	EventProxy = require('eventproxy');
  	var pagesize = config.index.list_article_size;
  	var puretext = true;
  	var list_hot_user_size = config.index.list_hot_user_size;
- 	var count = 0;
- 	var flag = 0;
+ 	var count = 0; 
  	if(req.query.page){
  		page=req.query.page;
  	} 
@@ -31,7 +30,7 @@ var	EventProxy = require('eventproxy');
  			res.json(d);  
  	});
 
-	var articleLimit = {flag:flag,isdelete:false}; 
+	var articleLimit = {isdelete:false}; 
 	ArticleDao.getNumberOfArticlesAsObect(articleLimit,function (err,count) {
 		ep.emit("count",count);
  	});

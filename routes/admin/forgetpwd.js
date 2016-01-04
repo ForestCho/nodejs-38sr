@@ -18,8 +18,10 @@ exports.resetpwd = function(req, res) {
     var email = req.query.email;
     var token = req.query.token;
     var msg = {};
-    Repwd.findOne({_id: token}, function(err, temprepwd) {
-        if (err) { 
+    Repwd.findOne({
+        _id: token
+    }, function(err, temprepwd) {
+        if (err) {
             res.redirect('500');
         }
         if (!temprepwd) {
@@ -119,7 +121,7 @@ exports.doreset = function(req, res) {
     Repwd.findOne({
         _id: token
     }, function(err, temprepwd) {
-        if (err) { 
+        if (err) {
             res.redirect('500');
         }
         if (!temprepwd) {

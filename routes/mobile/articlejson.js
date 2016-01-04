@@ -1,9 +1,9 @@
-var	UserDao = require('../dao/userdao'); 
-var	ArticleDao = require('../dao/articledao'); 
-var	ReplyDao = require('../dao/replydao'); 
-var util = require('../lib/util'); 
-var At = require('../lib/at');
-var relationdao = require('../dao/relationdao'); 
+var	UserDao = require('../../dao/userdao'); 
+var	ArticleDao = require('../../dao/articledao'); 
+var	ReplyDao = require('../../dao/replydao'); 
+var util = require('../../lib/util'); 
+var At = require('../../lib/at');
+var relationdao = require('../../dao/relationdao'); 
 var EventProxy = require('eventproxy'); 
 /*
  * GET article detail page.

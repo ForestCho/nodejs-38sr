@@ -1,4 +1,4 @@
-var ArticleDao = require('../../dao/articledao'); 
+var ArticleDao = require('../../dao/articledao');
 var UserDao = require('../../dao/userdao');
 var Article = require('../../models/article');
 var mongoose = require('mongoose');
@@ -10,42 +10,42 @@ var marked = require('marked');
 var util = require('../../lib/util');
 var bosonnlp = require('bosonnlp');
 var marked = require('marked');
-var boson = new bosonnlp.BosonNLP("yoUTK8dE.3486.jTfMGWlrfZxc"); 
+var boson = new bosonnlp.BosonNLP("yoUTK8dE.3486.jTfMGWlrfZxc");
 /*
  * GET publish a new site
  */
 exports.list = function(req, res) {
-    var p = 1;//pageid
+    var p = 1; //pageid
     var classify = 1;
-    var curpath  = "/admin/list";
+    var curpath = "/admin/list";
     var flag = 0;
     var pagesize = config.index.list_admin_article_size;
     var count = 0;
     if (req.query.p) {
         p = req.query.p;
     }
-    var articleLimit = { 
+    var articleLimit = {
         isdelete: false
     };
 
     var ep = new EventProxy();
-    ep.assign("articlelist",'count', function(articlelist, hotuser, zymryj,count) {
-        var d = []; 
-        d.data = articlelist; 
+    ep.assign("articlelist", 'count', function(articlelist, hotuser, zymryj, count) {
+        var d = [];
+        d.data = articlelist;
         d.count = count;
         res.render('admin/articlelist', {
             title: '文章管理',
             curpath: curpath,
             d: d,
             p: p
-        });  
+        });
     });
 
     ArticleDao.getNumberOfArticlesAsObect(articleLimit, function(err, count) {
         ep.emit("count", count);
     });
 
-     ArticleDao.getArticleListLimitAsObject(true, p, pagesize, articleLimit, function(err, articlelist) {
+    ArticleDao.getArticleListLimitAsObject(true, p, pagesize, articleLimit, function(err, articlelist) {
         for (var i = 0; i < articlelist.length; i++) {
             var b = /<img[^>]+src="[^"]+"[^>]*>/g;
             var imglist = articlelist[i].content.match(b)
@@ -54,53 +54,53 @@ exports.list = function(req, res) {
                 articlelist[i].title = encodeURIComponent(articlelist[i].title);
             }
             var briefnum = 18;
-            var contentlength = util.getSize(newcontent); 
-            newcontent = newcontent.substring(0, (contentlength > briefnum*2) ? util.getIndex(newcontent,briefnum*2) : contentlength).trim();
- 
-            articlelist[i].imagelength = imglist !== null?imglist.length:0;
+            var contentlength = util.getSize(newcontent);
+            newcontent = newcontent.substring(0, (contentlength > briefnum * 2) ? util.getIndex(newcontent, briefnum * 2) : contentlength).trim();
+
+            articlelist[i].imagelength = imglist !== null ? imglist.length : 0;
             articlelist[i].newcontent = newcontent;
-        } 
+        }
         ep.emit("articlelist", articlelist);
-    }) 
+    })
 };
 
-exports.addarticle = function(req, res) { 
-        res.render('admin/addarticle', {
-            title: '增加文章', 
-        }); 
+exports.addarticle = function(req, res) {
+    res.render('admin/addarticle', {
+        title: '增加文章',
+    });
 };
 
 exports.getarticle = function(req, res) {
-    var tid = req.params.tid; 
-        ArticleDao.getArticleByTid(tid, function(err, article) {
-            res.render('admin/updatearticle', {
-                title: article.title,
-                article: article, 
-            });
-        }); 
+    var tid = req.params.tid;
+    ArticleDao.getArticleByTid(tid, function(err, article) {
+        res.render('admin/updatearticle', {
+            title: article.title,
+            article: article,
+        });
+    });
 };
 
 exports.save = function(req, res) {
     var title = req.body.title;
     var mcontent = req.body.mcontent;
-    var label = req.body.label; 
+    var label = req.body.label;
     var classify = 0;
     var name = req.session.user.name;
     var uid = 0;
-    var tid = 0; 
+    var tid = 0;
     var ep = new EventProxy();
-    var content = marked(mcontent); 
-    ep.assign("userinfo", "tid","label", function(userinfo, tid,label) {
+    var content = marked(mcontent);
+    ep.assign("userinfo", "tid", "label", function(userinfo, tid, label) {
         uid = userinfo.uid;
         var articleItem = new Article({
             tid: tid,
             title: title,
             content: content,
-            mcontent:mcontent,
+            mcontent: mcontent,
             uid: uid,
-            _creator: userinfo._id, 
+            _creator: userinfo._id,
             classify: classify,
-            label:label,
+            label: label,
             isdelete: false
         });
         console.log(articleItem);
@@ -113,7 +113,7 @@ exports.save = function(req, res) {
                     score: 1
                 }
             };
-        console.log(articleItem);
+            console.log(articleItem);
             var options = false;
             UserDao.updateUserInfoFree(condition, update, options, function(err, num) {
                 if (err) {
@@ -127,26 +127,26 @@ exports.save = function(req, res) {
 
     if (title.length > 0) {
         classify = 2;
-        if(label.length == 0 || label ==''){
+        if (label.length == 0 || label == '') {
             boson.extractKeywords(util.delHtmlTag(content), function(data) {
                 data = JSON.parse(data);
                 var labeljson = data[0];
-                    console.log(labeljson);
-                if(typeof(labeljson) !== 'undefined'){
+                console.log(labeljson);
+                if (typeof(labeljson) !== 'undefined') {
                     for (var i = 0; i < (labeljson.length > 5 ? 5 : labeljson.length); i++) {
-                        label +=labeljson[i][1] + ',' 
-                    };                
+                        label += labeljson[i][1] + ','
+                    };
                 }
                 ep.emit("label", label);
-            });            
-        }else{
-            ep.emit("label", label);            
+            });
+        } else {
+            ep.emit("label", label);
         }
     } else {
-        if(label.length == 0 || label ==''){
-            ep.emit("label", label);        
-        }else{
-            ep.emit("label", label);            
+        if (label.length == 0 || label == '') {
+            ep.emit("label", label);
+        } else {
+            ep.emit("label", label);
         }
     }
     UserDao.getUserInfoByName(name, function(err, userinfo) {
@@ -154,39 +154,39 @@ exports.save = function(req, res) {
     });
     ArticleDao.getMaxTid(function(err, maxtid) {
         ep.emit("tid", maxtid);
-    }) 
+    })
 };
 
 
 exports.updatearticle = function(req, res) {
     var tid = req.body.tid;
     var title = req.body.title;
-    var mcontent = req.body.mcontent; 
+    var mcontent = req.body.mcontent;
     var label = req.body.label;
     var marked = require('marked');
 
     var ep = new EventProxy();
-    var content = marked(mcontent);  
-        var condition = {
-            tid: tid
+    var content = marked(mcontent);
+    var condition = {
+        tid: tid
+    };
+    var update = {
+        $set: {
+            title: title,
+            label: label,
+            mcontent: mcontent,
+            content: content
+        }
+    };
+    var options = false;
+    ArticleDao.updateArticleInfo(condition, update, options, function(err, num) {
+        if (err) {
+            console.log(err)
+            res.redirect('/500')
+            return;
         };
-        var update = {
-            $set: {
-                title: title, 
-                label: label,
-                mcontent: mcontent,
-                content: content  
-            }
-        };
-        var options = false;
-        ArticleDao.updateArticleInfo(condition, update, options, function(err, num) {
-            if (err) {
-                console.log(err)
-                res.redirect('/500')
-                return;
-            };
-            res.redirect('/admin/getarticle/'+tid);
-        });    
+        res.redirect('/admin/getarticle/' + tid);
+    });
 };
 
 exports.delete = function(req, res) {
