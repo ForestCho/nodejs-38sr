@@ -566,6 +566,15 @@ define("article", ["msgbox", "jquery", "jquerymigrate", "jquerycaret", "undersco
             $(this).parent().find(".inputopt").css("display", "none");
         }
     });
+    $('.reply_msg_item').hover(
+        function() {
+            $(this).find('.opt').css("opacity", "1");
+        },
+        function() {
+            $(this).find('.opt').css("opacity", "0.6");
+        }
+    );
+
 }),
 define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap) {
     $("#regbtn").click(function(){  
@@ -610,11 +619,11 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
         var uname = $("#uname").val();
         var pwd = $("pwd").val();
         var noticeMsg = $("#noticemsg1");
-        if (uname.length < 0) {
+        if (uname.length == 0) {
             noticeMsg.html("账号格式有误");
             return false;
         }
-        if (pwd.length < 0) {
+        if (pwd.length == 0) {
             noticeMsg.html("密码输入不对");
             return false;
         }

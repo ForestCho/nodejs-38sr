@@ -76,331 +76,94 @@ $(document).ready(function() {
         }
       });
     });  
-        $("#addsite").click(function(){     
-            var sname=$('#sname').val();
-            var sdomain=$('#sdomain').val();
-            var sbrief=$('#sbrief').val();
-            var spic=$('#spic').val();
-            var params = {sname:sname,sbrief:sbrief,sdomain:sdomain,spic:spic};
-            $.ajax({
-                data: params,
-                url: '/admin/addsite',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data){
-                    if(0 === data.status) { 
-                        $("#spanMessage").html("Site增加成功");
-                    } else {
-                        $("#spanMessage").html("Site增加失败");
-                    } 
-                },
-                error: function(){
-                        $("#spanMessage").html("ERROR");
-                }
-            });
-        });
-    $("#updatesite").click(function(){       
-            var snname=$('#snname').val();
-            var sndomain=$('#sndomain').val();
-            var snbrief=$('#snbrief').val();
-            var snpic=$('#snpic').val();
-            var params = {snname:snname,snbrief:snbrief,sndomain:sndomain,snpic:snpic};
-            $.ajax({
-                data: params,
-                url: '/admin/updatesite',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data){
-                    if(0 === data.status) { 
-                        $("#spanMessage2").html("Site编辑成功");
-                    } else {
-                        $("#spanMessage2").html("Site编辑失败");
-                    } 
-                },
-                error: function(){
-                        $("#spanMessage2").html("ERROR");
-                }
-            });
-        });
-    $("#sndomain").blur(function(){         
-            var snameobj = $('#snname');
-            var sdomainobj = $('#sndomain');
-            var sbriefobj = $('#snbrief');
-            var spicobj = $('#snpic');
-            var domainName = sdomainobj.val();
-            var params = {domainname:domainName};   
-            $.ajax({
-                data: params,
-                url: '/admin/getsite',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data){
-                    if(0 === data.status) {  
-                        snameobj.val(data.site.sname);
-                        sbriefobj.val(data.site.sbrief);
-                        spicobj.val(data.site.spic);
-                    } else {
-                        $("#spanMessage2").html("Site查找失败");
-                        snameobj.val("");
-                        sbriefobj.val("");
-                        spicobj.val("");
-                    } 
-                },
-                error: function(){
-                        $("#spanMessage2").html("ERROR");
-                }
-            });
+       
+    $("#addsite").click(function(){     
+        var sname=$('#sname').val();
+        var sdomain=$('#sdomain').val();
+        var sbrief=$('#sbrief').val();
+        var spic=$('#spic').val();
+        var params = {sname:sname,sbrief:sbrief,sdomain:sdomain,spic:spic};
+        $.ajax({
+            data: params,
+            url: '/admin/addsite',
+            dataType: 'json',
+            cache: false,
+            timeout: 5000,
+            type: 'get',
+            success: function(data){
+                if(0 === data.status) { 
+                    $("#spanMessage").html("Site增加成功");
+                } else {
+                    $("#spanMessage").html("Site增加失败");
+                } 
+            },
+            error: function(){
+                    $("#spanMessage").html("ERROR");
+            }
+        });        
     });
 
-    //glaxy删除行为
-    $('.glaxydeletebtn').on('click', function() {
-        $('#my-confirm').modal({
-            relatedTarget: this,
-            onConfirm: function(options) {
-                var $link = $(this.relatedTarget);
-                var gid = $link.data('id');
-                var params = {
-                    gid: gid
-                };
-                var notice = $("#notice");
-                $.ajax({
-                    data: params,
-                    url: '/admin/deleteglaxy',
-                    dataType: 'json',
-                    cache: false,
-                    timeout: 5000,
-                    type: 'get',
-                    success: function(data) {
-                        if (data.status === 1) {
-                            notice.addClass("am-alert-success");
-                            notice.css("display", "block")
-                            $("#" + gid).remove();
-                            notice.text("删除成功");
-                            return;
-                        }
-                        if (data.status === -1) {
-                            notice.addClass("am-alert-error");
-                            notice.css("display", "block")
-                            notice.text("系统错误");
-                            return;
-                        }
-                        if (data.status === 0) {
-                            notice.addClass("am-alert-warning");
-                            notice.css("display", "block")
-                            notice.text("参数错误");
-                            return;
-                        }
-                    },
-                    error: function() {
-                        notice.addClass("am-alert-error");
-                        notice.css("display", "block")
-                        notice.text("参数错误");
-                        return;
-                    }
-                });
+    $("#updatesite").click(function(){       
+        var snname=$('#snname').val();
+        var sndomain=$('#sndomain').val();
+        var snbrief=$('#snbrief').val();
+        var snpic=$('#snpic').val();
+        var params = {snname:snname,snbrief:snbrief,sndomain:sndomain,snpic:snpic};
+        $.ajax({
+            data: params,
+            url: '/admin/updatesite',
+            dataType: 'json',
+            cache: false,
+            timeout: 5000,
+            type: 'get',
+            success: function(data){
+                if(0 === data.status) { 
+                    $("#spanMessage2").html("Site编辑成功");
+                } else {
+                    $("#spanMessage2").html("Site编辑失败");
+                } 
             },
-            // closeOnConfirm: false,
-            onCancel: function() {}
+            error: function(){
+                    $("#spanMessage2").html("ERROR");
+            }
         });
     });
-    $('.glaxyupdatemodalbtn').on('click', function(e) {
-        var $modal = $('#updateglaxymodal'); 
-        var $target = $(e.target);
-        if (($target).hasClass('js-modal-open')) {  
-            var _id = $(this).attr('data-id');    
-            $("#u_id").val(_id); 
-            var params = {_id:_id};   
-            $.ajax({
-                data: params,
-                url: '/admin/getglaxy',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data){
-                    if(1 === data.status) {    
-                        var gname = $("#ugname"); 
-                        var gimg = $("#ugimg");
-                        var gurl = $("#ugurl");
-                        var gorder = $("#ugorder");   
-                        gname.val(data.glaxy.gname);
-                        gimg.val(data.glaxy.gimg);
-                        gurl.val(data.glaxy.gurl);
-                        gorder.val(data.glaxy.gorder);  
-                    } else { 
-                        $("#updateglaxymodal .message").html("ERROR");
-                    } 
-                },
-                error: function(){
-                        $("#updateglaxymodal .message").html("ERROR");
-                }
-            });
-            $modal.modal({
-                width: 500,
-                height: 355
-            });  
-        }
-    });
-    $("#updateglaxybtn").click(function(){ 
-            var _id = $("#u_id").val(); 
-            var gname = $("#ugname").val(); 
-            var gimg = $("#ugimg").val(); 
-            var gurl = $("#ugurl").val(); 
-            var gorder = $("#ugorder").val();    
-            var params = {_id:_id,gname:gname,gimg:gimg,gurl:gurl,gorder:gorder};
-            $.ajax({
-                data: params,
-                url: '/admin/updateglaxy',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data){
-                    if(1 === data.status) { 
-                        $("#updateglaxymodal .message").html("glaxy更新成功");
-                    } else {
-                        $("#updateglaxymodal .message").html("glaxy更新失败");
-                    } 
-                },
-                error: function(){
-                        $("#updateglaxymodal .message").html("ERROR");
-                }
-            });
-    });
-    //cata删除行为 
-    var $modal = $('#updatecatamodal'); 
-    $('.cataupdatemodalbtn').on('click', function(e) {
-        var $target = $(e.target);
-        if (($target).hasClass('js-modal-open')) {  
-            var cid = $(this).attr('data-id');            
-            $("#ucid").val(cid); 
-            var params = {cid:cid};   
-            $.ajax({
-                data: params,
-                url: '/admin/getcata',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data){
-                    if(1 === data.status) {   
-                        var cname = $("#ucname"); 
-                        var cengname = $("#ucengname");
-                        var cbrief = $("#ucbrief");
-                        var cpid = $("#ucpid");
-                        var cflag = $("#ucflag");
-                        var corder = $("#ucorder");  
-                        cname.val(data.cata.cname);
-                        cengname.val(data.cata.cengname);
-                        cbrief.val(data.cata.cbrief);
-                        cpid.val(data.cata.cpid);
-                        cflag.val(data.cata.cflag);
-                        corder.val(data.cata.corder);
-                    } else { 
-                        $("#updatecatamodal .message").html("ERROR");
-                    } 
-                },
-                error: function(){
-                        $("#updatecatamodal .message").html("ERROR");
-                }
-            });
-            $modal.modal({
-                width: 500,
-                height: 395
-            }); 
-            var cpid = $("#cpid");
-            var cname = $("#cname");
-            var cengname = $("#cengname");
-            var cbrief = $("#cbrief");
-            var corder = $("#corder");
-        }
-    });
-    $("#updatecatabtn").click(function(){      
-            var cid = $("#ucid").val(); 
-            var cname = $("#ucname").val(); 
-            var cengname = $("#ucengname").val();
-            var cbrief = $("#ucbrief").val();
-            var cpid = $("#ucpid").val();
-            var cflag = $("#ucflag").val();            
-            var corder = $("#ucorder").val();  
-            var params = {cid:cid,cname:cname,cengname:cengname,cbrief:cbrief,cpid:cpid,cflag:cflag,corder:corder};
-            $.ajax({
-                data: params,
-                url: '/admin/updatecata',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data){
-                    if(1 === data.status) { 
-                        $("#updatecatamodal .message").html("cata更新成功");
-                    } else {
-                        $("#updatecatamodal .message").html("cata更新失败");
-                    } 
-                },
-                error: function(){
-                        $("#updatecatamodal .message").html("ERROR");
-                }
-            });
-    });
-    $('.catadeletebtn').on('click', function() {
-        $('#my-confirm').modal({
-            relatedTarget: this,
-            onConfirm: function(options) {
-                var $link = $(this.relatedTarget);
-                var cid = $link.data('id');
-                var params = {
-                    cid: cid
-                };
-                var notice = $("#notice");
-                $.ajax({
-                    data: params,
-                    url: '/admin/deletecata',
-                    dataType: 'json',
-                    cache: false,
-                    timeout: 5000,
-                    type: 'get',
-                    success: function(data) {
-                        if (data.status === 1) {
-                            notice.addClass("am-alert-success");
-                            notice.css("display", "block")
-                            $("#" + cid).remove();
-                            notice.text("删除成功");
-                            return;
-                        }
-                        if (data.status === -1) {
-                            notice.addClass("am-alert-error");
-                            notice.css("display", "block")
-                            notice.text("系统错误");
-                            return;
-                        }
-                        if (data.status === 0) {
-                            notice.addClass("am-alert-warning");
-                            notice.css("display", "block")
-                            notice.text("参数错误");
-                            return;
-                        }
-                    },
-                    error: function() {
-                        notice.addClass("am-alert-error");
-                        notice.css("display", "block")
-                        notice.text("参数错误");
-                        return;
-                    }
-                });
+
+    $("#sndomain").blur(function(){         
+        var snameobj = $('#snname');
+        var sdomainobj = $('#sndomain');
+        var sbriefobj = $('#snbrief');
+        var spicobj = $('#snpic');
+        var domainName = sdomainobj.val();
+        var params = {domainname:domainName};   
+        $.ajax({
+            data: params,
+            url: '/admin/getsite',
+            dataType: 'json',
+            cache: false,
+            timeout: 5000,
+            type: 'get',
+            success: function(data){
+                if(0 === data.status) {  
+                    snameobj.val(data.site.sname);
+                    sbriefobj.val(data.site.sbrief);
+                    spicobj.val(data.site.spic);
+                } else {
+                    $("#spanMessage2").html("Site查找失败");
+                    snameobj.val("");
+                    sbriefobj.val("");
+                    spicobj.val("");
+                } 
             },
-            // closeOnConfirm: false,
-            onCancel: function() {}
+            error: function(){
+                    $("#spanMessage2").html("ERROR");
+            }
         });
-    }); 
-    //article删除行为
-    $('.articledeletebtn').on('click', function() {
+    });
+  
+  
+  
+    $('.articledeletebtn').on('click', function() { 
         $('#my-confirm').modal({
             relatedTarget: this,
             onConfirm: function(options) {
@@ -450,6 +213,68 @@ $(document).ready(function() {
             onCancel: function() {}
         });
     });
+
+    var editor = new Editor();  
+    editor.render(document.getElementById('postcontent'));
+
+    $("#subarticle").click(function() { 
+        var contentStr = editor.codemirror.getValue();   
+        if (contentStr.length == 0) {
+            msgbox.showMsgBox(false, "输入不能为空");
+            return false;
+        }
+        if (contentStr.length < 10) {
+            msgbox.showMsgBox(false, "输入不能为空");
+            return false;
+        }
+        return true;
+    });
+    $("#link").change(function() {
+        if ($("#link").val().length > 0) {
+            $("#insertlinkbtn").show();
+        } else {
+            $("#insertlinkbtn").hide();
+        }
+    });
+    $("#insertlinkbtn").click(function() {
+        var linkmodal = $("#linkmodal");
+        var linkname = $("#linkname").val();
+        var link = $("#link").val();
+        editor.codemirror.replaceSelection("[" + linkname + "](" + link + ")");
+        linkmodal.modal('hide'); 
+    });
+    $("#savepic").click(function() {
+      var imagemodal = $("#imagemodal");
+        var imgurl = $("#submitinfo").text();
+        var i = imgurl.lastIndexOf('/');
+        var l = imgurl.length;
+        var imgname = imgurl.substring(i > 0 ? (i + 1) : 0, l > 0 ? l : 0);
+        editor.codemirror.replaceSelection("![" + imgname + "](" + imgurl + ")");
+        imagemodal.modal('hide'); 
+    });
+    var submitinfo = $(".submitinfo");
+    var insertbtn = $("#savepic");
+    $("#choose").wrap("<form id='uploadpic' action='/picupload' method='post' enctype='multipart/form-data'></form>");
+    $("#choose").change(function() {
+        $("#uploadpic").ajaxSubmit({
+            dataType: 'json',
+            beforeSend: function() {
+                submitinfo.text("正在上传...");
+                insertbtn.hide();
+            },
+            success: function(msg) {
+                if (msg.type == 0) {
+                    submitinfo.text(msg.content);
+                } else {
+                    submitinfo.text(msg.content);
+                    insertbtn.show();
+                }
+            },
+            error: function() {
+                insertbtn.hide();
+            }
+        });
+    });  
 
     var submitinfo = $("#submitinfo");
     var insertbtn = $("#savepic");

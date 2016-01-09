@@ -1,5 +1,5 @@
 var index = require('./routes/index'); 
-var tags = require('./routes/tags'); 
+var tag = require('./routes/tag'); 
 var locate = require('./routes/locate'); 
 var site = require('./routes/site'); 
 var user = require('./routes/user');
@@ -9,6 +9,7 @@ var login = require('./routes/login');
 var logout = require('./routes/logout');
 var forgetpwd = require('./routes/forgetpwd');
 var pub = require('./routes/pubarticle');
+var publink = require('./routes/publink');
 var about = require('./routes/about');  
 var article = require('./routes/article');
 var reply = require('./routes/reply');
@@ -33,38 +34,32 @@ var admin_admin = require('./routes/admin/admin');
 var admin_article = require('./routes/admin/article');
 var admin_site = require('./routes/admin/site');
 
-var publink = require('./routes/publink');
+ 
 
-//admin
-var admin = require('./routes/admin');
-var crawer = require('./routes/crawer');
-//var admin_site  = require('./routes/admin_site');
-
-//手机api
-var xqjson = require('./routes/xqjson');
-var catajson = require('./routes/catajson');
-var mryjjson = require('./routes/mryjjson'); 
-var loginjson = require('./routes/loginjson'); 
-var registerjson = require('./routes/registerjson'); 
-var writejson = require('./routes/writejson');
-var replyjson = require('./routes/replyjson');
-var uploadjson = require('./routes/uploadjson');
-var articlejson = require('./routes/articlejson');
-var likejson = require('./routes/likejson');
-var userjson = require('./routes/userjson');
-var userarticlejson = require('./routes/userjson');
+//手机端
+var xqjson = require('./routes/mobile/xqjson');
+var catajson = require('./routes/mobile/catajson');
+var mryjjson = require('./routes/mobile/mryjjson'); 
+var loginjson = require('./routes/mobile/loginjson'); 
+var registerjson = require('./routes/mobile/registerjson'); 
+var writejson = require('./routes/mobile/writejson');
+var replyjson = require('./routes/mobile/replyjson');
+var uploadjson = require('./routes/mobile/uploadjson');
+var articlejson = require('./routes/mobile/articlejson');
+var likejson = require('./routes/mobile/likejson');
+var userjson = require('./routes/mobile/userjson');
+var userarticlejson = require('./routes/mobile/userjson');
 
 //小功能路由
-var yangchengtong = require('./routes/yangchengtong');  
-var weixin = require('./routes/weixin');
+var yangchengtong = require('./routes/other/yangchengtong');  
+var weixin = require('./routes/other/weixin');
 
-var run = function(app){
- 
+var run = function(app){ 
 	app.get('*',function (req,res,next) {
 		var originalUrl = req.originalUrl; 
 		var site_login_pass = ['/logout','/reply','/set/account','/set/avatar','/set','/message'];
 		var site_login_refuse = ['/login','/reg'];
-		var site_admin = ['/admin','/admin_site','/admin_crawer','/admin_articles'];
+		var site_admin = ['/admin/index','/admin/addsiteindex','/admin/updatesiteindex','/admin/addarticle','/admin/list'];
 		for(var i = 0 ;i < site_login_pass.length ; i++){
 			if(originalUrl === site_login_pass[i]){
 				if(!req.session.user){
@@ -75,7 +70,7 @@ var run = function(app){
 				return;
 			}
 		} 
-			for(var i = 0 ;i < site_login_refuse.length ; i++){
+		for(var i = 0 ;i < site_login_refuse.length ; i++){
 			if(originalUrl === site_login_refuse[i]){
 				if(req.session.user){
 					res.redirect('/');
@@ -88,11 +83,11 @@ var run = function(app){
 		for(var i = 0 ;i < site_admin.length ; i++){ 
 			if(originalUrl === site_admin[i]){
 				if(!req.session.user){
-					res.redirect('/');
+					res.redirect('/admin/login');
 					return ;
 				}
 				if(req.session.user.admin == 0){
-					res.redirect('/');
+					res.redirect('/admin/login');
 					return ;					
 				}
 				next();
@@ -104,7 +99,7 @@ var run = function(app){
 
 
 　//********************************************************************//
-　//**********************＊***网站主功能********************************//
+　//*************************网站主功能********************************//
 　//********************************************************************// 
 	//网站路由
 	app.get('/', index.index); 
@@ -112,7 +107,8 @@ var run = function(app){
 	app.get('/article', index.article); 
 	app.get('/fastlink', index.fastlink); 
 	app.get('/xiaohua', index.xiaohua); 
-	app.get('/tags/:tagname', tags.index);
+	app.get('/tag/:tagname', tag.index);
+	app.get('/tags/:tagname', tag.index);
 	app.get('/locate/:locatename', locate.index);
 	app.get('/site/:site_id', site.index);
 
@@ -133,7 +129,6 @@ var run = function(app){
 
 	//登出路由
 	app.get('/logout', logout.logout);
-
 
 	//心情详细页面路由
 	app.get('/article/:tid', article.detail);
@@ -157,8 +152,6 @@ var run = function(app){
 	app.get('/set/account', set.accountDisplay);
 	app.post('/set/account', set.adoSetccountInfo);
 	app.get('/set/avatar', set.avatarDisplay);
-
-
  
  	//关注与取消关注
  	app.get('/newrelation', relation.follow); 
@@ -188,8 +181,6 @@ var run = function(app){
  	app.get('/404', lost.index);
  	app.get('/500', error.index);
 
-
-
 	//发表页面
 	app.get('/pub', pub.index);
 	//发表心情提交地址
@@ -206,25 +197,6 @@ var run = function(app){
 
 
 　//********************************************************************//
-　//**********************＊***以下为管理路由********************************//
-　//********************************************************************// 　
- 	app.get('/admin', admin.index);  	
- 	app.get('/admin_crawer', admin.admin_crawer); 
- 	app.get('/admin_site', admin.admin_addsite); 
- 	app.get('/admin_articles', admin.admin_articles); 
- 	
- /*	app.get('/addsite',admin_site.addsite);
- 	app.get('/updatesite',admin_site.updatesite);
- 	app.get('/getsite',admin_site.getsite);
- 	app.post('/sitepicupload',admin_site.sitepicupload);*/
-
-
- 	//爬虫地址
- 	app.get('/crawer', crawer.index);
-
-
-
-　//********************************************************************//
 　//**********************＊***以下为手机端********************************//
 　//********************************************************************// 
 	//手机app请求
@@ -238,9 +210,7 @@ var run = function(app){
 	app.post('/loginjson', loginjson.dologin);
 	app.post('/registerjson', registerjson.doregister);
 	app.post('/sinaregisterjson', registerjson.dosinaregister);
-	app.post('/qqregisterjson', registerjson.doqqregister);
-
-	
+	app.post('/qqregisterjson', registerjson.doqqregister);	
 	app.get('/writejson', writejson.dowrite);
 	app.get('/replylistjson', replyjson.getreplylist); 
 	app.post('/replyjson', replyjson.doreply); ;
@@ -249,10 +219,13 @@ var run = function(app){
 	app.get('/likejson', likejson.like); 
 	app.get('/userjson', userjson.index); 
 	app.get('/userarticlejson', userjson.articlelist); 
-	
 
-//管理路由
 
+
+　//********************************************************************//
+　//**********************＊***以下为管理路由********************************//
+　//********************************************************************//  
+    //登录注册等账户管理
     app.get('/admin/login', admin_login.login);
     app.post('/admin/login', admin_login.dologin); 
     app.get('/admin/reg', admin_reg.reg);
@@ -263,11 +236,20 @@ var run = function(app){
     app.post('/admin/sendmail', admin_forgetpwd.sendmail);
     app.get('/admin/resetpwd', admin_forgetpwd.resetpwd);
     app.post('/admin/resetpwd', admin_forgetpwd.doreset);
-    app.get('/admin/index', admin_admin.index);
     app.get('/admin/logout', admin_logout.logout);
+
+
+    app.get('/admin/index', admin_admin.index);
+
+    //文章管理
     app.get('/admin/list', admin_article.list);
+    app.get('/admin/addarticle', admin_article.addarticle);
+    app.post('/admin/savearticle', admin_article.save); 
     app.get('/admin/deletearticle', admin_article.delete); 
+    app.get('/admin/getarticle/:tid', admin_article.getarticle); 
+    app.post('/admin/updatearticle', admin_article.updatearticle); 
  
+ 	//site管理
     app.get('/admin/getsite', admin_site.getsite);
     app.get('/admin/updatesiteindex', admin_site.updatesiteindex);
     app.get('/admin/updatesite', admin_site.updatesite);
@@ -278,7 +260,7 @@ var run = function(app){
 
 
 　//********************************************************************//
-　//**********************＊***以功能路由********************************//
+　//*************************小功能路由********************************//
 　//********************************************************************// 　
 	app.get('/yangchengtong', yangchengtong.index);
 	app.get('/yangchengtongv', yangchengtong.view);  

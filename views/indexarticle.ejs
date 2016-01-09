@@ -50,7 +50,7 @@
 								</div>
 								<div class="author-wrap">
 									<i class="fa fa-user"></i>
-									<a class="userlink" id=<%= result[i].tid %> href="/user/<%= result[i]._creator.name %>"><%= result[i]._creator.name %></a>
+									<a class="userlink show-pop-async" data-uid=<%= result[i]._creator.uid %> id=<%= result[i].tid %> href="/user/<%= result[i]._creator.name %>"><%= result[i]._creator.name %></a>
 								</div>
 								<div class="operwrap btn-group">
 									<a class="viewbtn btn" data-tid="<%= result[i].tid %>" title="查看"><span><%= (result[i].view_count>0)?result[i].view_count:'' %></span><i class="fa fa-eye"></i></a>
