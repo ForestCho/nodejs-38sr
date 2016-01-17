@@ -491,3 +491,17 @@
 	right: 15px;
 	background: #fff;
 }
+
+  
+.guanzhu,.quxiaoguanzhu{
+    color: #fff;
+	display: inline-block;
+    padding: 2px 14px;
+    background-color: #00A090;
+    margin-left: 5px;
+    border-radius: 3px;
+}
+.guanzhu:hover,.quxiaoguanzhu:hover{
+    color: #fff;
+    background-color: #18A89A;	
+}

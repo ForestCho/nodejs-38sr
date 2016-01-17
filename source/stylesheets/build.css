@@ -4613,7 +4613,7 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 .pagination>.disabled>a,.pagination>.disabled>a:focus,.pagination>.disabled>a:hover,.pagination>.disabled>span,.pagination>.disabled>span:focus,.pagination>.disabled>span:hover {
 	color: #777;
-	cursor: not-allowed;
+	/*cursor: not-allowed;*/
 	background-color: #fff;
 	border-color: #ddd
 }
@@ -7326,6 +7326,20 @@ button.close {
 	right: 15px;
 	background: #fff;
 }
+
+  
+.guanzhu,.quxiaoguanzhu{
+    color: #fff;
+	display: inline-block;
+    padding: 2px 14px;
+    background-color: #00A090;
+    margin-left: 5px;
+    border-radius: 3px;
+}
+.guanzhu:hover,.quxiaoguanzhu:hover{
+    color: #fff;
+    background-color: #18A89A;	
+}
 .leftreg {
 	float: left;
 	width: 65%;
@@ -7388,7 +7402,8 @@ button.close {
 	background-color: #3D72AC; 
 }
 .accountbg {
-	background: url(../images/y_accountbg.png) 10px 10px no-repeat
+	background: url(../images/y_accountbg.png) 10px 10px no-repeat;
+	background-size: 16px 17px;
 }
 
 .emailbg {
@@ -8243,12 +8258,12 @@ a.optionaccess:hover {
 
 .pubnotice {
 	margin-top: 20px;
+	margin-left: 5px;
 }
 
 .pubnotice li {
 	font-size: 16px;
-	line-height: 2em;
-	list-style: square;
+	line-height: 2em; 
 }
 
 .pubnotice li div {
@@ -9234,8 +9249,8 @@ ul{
 }
 .webui-popover i.icon-refresh {
   display: block;
-  width: 30px;
-  height: 35px;
+  width: 37px;
+  height: 37px;
   font-size: 20px; 
   position: relative;
   margin: 0 auto;

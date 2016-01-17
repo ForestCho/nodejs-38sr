@@ -345,12 +345,12 @@
 
 .pubnotice {
 	margin-top: 20px;
+	margin-left: 5px;
 }
 
 .pubnotice li {
 	font-size: 16px;
-	line-height: 2em;
-	list-style: square;
+	line-height: 2em; 
 }
 
 .pubnotice li div {

@@ -267,7 +267,7 @@
 									.on('mouseleave',$.proxy(this.mouseleaveHandler,this));
 					}
 					this.$target.find('.close').off('click').on('click', $.proxy(this.hide,this));
-					this.$target.off('click.webui-popover').on('click.webui-popover',$.proxy(this.targetClickHandler,this));
+					//this.$target.off('click.webui-popover').on('click.webui-popover',$.proxy(this.targetClickHandler,this));
 				},
 				getUid:function(){
 					 var uid = this.$element.data('uid');

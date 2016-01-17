@@ -80,7 +80,7 @@ define("msgbox", ["domop"], function(domop) {
     }
 }),
 
-define("index", ["msgbox", "jquery", "popover", "zoom"], function(msgbox, $, popover, zoom) {
+define("index", ["msgbox", "jquery","popover", "zoom"], function(msgbox, $, popover, zoom) {
     $('.articleitem').hover(
         function() {
             $(this).find('.otherinfowrap').css("opacity", "1");
@@ -131,7 +131,8 @@ define("index", ["msgbox", "jquery", "popover", "zoom"], function(msgbox, $, pop
                 }
             }
         });
-    });
+    }); 
+  
     (function() {
         var settings = {
             trigger: 'hover', 
@@ -156,7 +157,15 @@ define("index", ["msgbox", "jquery", "popover", "zoom"], function(msgbox, $, pop
                     content: function(data) {
                         title = "ccc";
                         var html = '<ul class="list-group">';
-                        html += '<li class="list-group-item"><i class="fa fa-user"></i>'+data.name + '</li>';
+                        if(data.self == true){
+                            html += '<li class="list-group-item"><i class="fa fa-user"></i>'+data.name + '</li>';
+                        }else{
+                            if(data.isfollow == false){
+                                html += '<li class="list-group-item"><i class="fa fa-user"></i>'+data.name + '<a class="guanzhu" data_id='+data.uid+'>关注</a></li>';
+                            }else{
+                                html += '<li class="list-group-item"><i class="fa fa-user"></i>'+data.name + '<a class="quxiaoguanzhu" data_id='+data.uid+'>取消</a></li>';
+                            } 
+                        }
                         html += '<li class="list-group-item"><i class="fa fa-calendar"></i>' + data.cometime + '</li>';
                         html += '<li class="list-group-item"><i class="fa fa-leaf"></i>' + data.articlenum + '</li>';
                         html += '</ul>';
@@ -175,13 +184,64 @@ define("index", ["msgbox", "jquery", "popover", "zoom"], function(msgbox, $, pop
                         }
                         $('#eventLogs').text($('#eventLogs').text() + '\n' + log);
                     });
-            });
-
-
+            }); 
         }
         initPopover();
 
     })();
+
+      function relationAjax(params,_obj){ 
+        $.ajax({
+            data: params,
+            url: '/newrelation',
+            dataType: 'json',
+            cache: false,
+            timeout: 5000,
+            type: 'get',
+            success: function(data) {
+                if (data.status === 'success') {      
+                    if(params.follow){
+                        _obj.removeClass("guanzhu");
+                        _obj.addClass("quxiaoguanzhu"); 
+                        _obj.text("取消");
+                    }else{
+                        _obj.removeClass("quxiaoguanzhu");
+                        _obj.addClass("guanzhu"); 
+                        _obj.text("关注"); 
+                    }
+                    msgbox.showMsgBox(true, "操作成功!!");
+                    return;
+                }
+                if (data.status === "failed") {
+                    msgbox.showMsgBox(false, "请先登录!!");
+                }
+                if (data.status === "error") {
+                    msgbox.showMsgBox(false, "发生错误!!");
+                }
+            }
+        });
+    } 
+    $(document).on('click','.guanzhu',function() { 
+            var followuid = $(this).attr('data_id'); 
+            var params = {
+                followuid: followuid,
+                follow: true
+            };
+            var _obj = $(this);
+            _obj.text("...");
+            relationAjax(params,_obj);
+    });  
+    $(document).on('click','.quxiaoguanzhu',function() { 
+            var followuid = $(this).attr('data_id'); 
+            var params = {
+                followuid: followuid,
+                follow: false
+            };
+            var _obj = $(this);
+            _obj.text("...");
+            relationAjax(params,_obj);
+    });  
+
 }),
 define("reglog", ["msgbox", "jquery"], function(msgbox, $) {
     function fucCheckLength(strTemp) {
@@ -614,6 +674,31 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
     $("#nosiginin-reg").click(function(){ 
         $('#regmodal').modal('show');
         $("body").css('padding-right','0px');
+    });
+
+    $('#uname').blur(function() { 
+        var input = $(this);
+        var name = input.val();
+        var params = {
+            name: name
+        };
+        $.ajax({
+            data: params,
+            url: '/getphoto',
+            dataType: 'json',
+            cache: false,
+            timeout: 5000,
+            type: 'get',
+            beforeSend: function() {},
+            success: function(data) {
+                if (data.status == 1) {
+                    input.css("background-image","url("+data.photo+")"); 
+                }else{
+                    input.css("background-image","url(../images/y_accountbg.png)");
+
+                } 
+            }
+        });
     });
     $("#sublogin").click(function() {
         var uname = $("#uname").val();
