@@ -12,14 +12,53 @@ var EventProxy = require('eventproxy');
  */
 exports.getuserinfo = function(req, res) {
     var uid = req.query.uid;
+    var currusername = '';
+    if (typeof(req.session.user) !== 'undefined') {
+        currusername = req.session.user.name;
+    }
     var rspjson = {};
     UserDao.getUserInfoByUid(uid, function(err, userinfo) {
         rspjson.name = userinfo.name;
+        rspjson.uid = userinfo.uid;
+        rspjson.photo = userinfo.photo;
         rspjson.cometime = util.date_format(userinfo.create_at, false, false);
         ArticleDao.getNumberOfArticlesByUid(uid, function(err, num) {
             rspjson.articlenum = num;
-            res.json(rspjson);
+            if (currusername) {
+                if(userinfo.name == currusername){
+                    rspjson.self = true;
+                    rspjson.isfollow = false;
+                    res.json(rspjson);
+                }else{
+                    rspjson.self = false;
+                    RelationDao.countByName(currusername, userinfo.name, function(err, nums) {
+                        rspjson.isfollow = false;
+                        if (nums > 0) {
+                            rspjson.isfollow = true;
+                        }
+                        res.json(rspjson);
+                    })                
+                }
+            } else {
+                rspjson.self = false;
+                rspjson.isfollow = false;
+                res.json(rspjson);
+            }
         })
+    });
+}
+
+exports.getuserinfobyname = function(req, res) {
+    var name = req.query.name;
+    var rspjson = {};
+    UserDao.getUserInfoByName(name, function(err, userinfo) {
+        if (userinfo) {
+            rspjson.photo = userinfo.photo;
+            rspjson.status = 1;
+        } else {
+            rspjson.status = 0;
+        }
+        res.json(rspjson);
     });
 }
 
