@@ -68,4 +68,14 @@
 			</div>
 			<div style="clear:both"></div>
 		</div>
+		<div id="tags-bar">
+				<ul class="tag-list">			
+				<% 
+					var tags = d.tags;
+					for(var i= 0;i<tags.length;i++){%>
+					<li class="tag-single"> <a href="/tag/<%- tags[i]%>/"><%- tags[i]%></a> </li>
+
+				<%}%> 
+				</ul>			
+		</div>
 		<% include partial/footer %>
