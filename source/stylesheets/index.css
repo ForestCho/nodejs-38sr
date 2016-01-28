@@ -505,3 +505,37 @@
     color: #fff;
     background-color: #18A89A;	
 }
+
+#tags-bar {
+    position: fixed;
+    bottom: -100px;
+    width: 100%;
+    height: 30px;
+    background-color: rgba(34, 32, 32, 0.74);
+    -webkit-transition: all linear .2s;
+    -moz-transition: all linear .2s;
+    -ms-transition: all linear .2s;
+    -o-transition: all linear .2s;
+    transition: all linear .2s;
+}
+.tag-list{    
+	list-style: none;
+    margin: 0;
+    display: block;
+    width: 800px;
+    height: 30px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0;
+}
+
+.tag-list li a{    
+	float: left;
+    padding: 0px 5px;
+    height: 30px; 
+    color: #ddd;
+    line-height: 30px;
+} 
+.tag-list li a:hover{    
+    background-color: rgba(34, 32, 32, 1);
+} 

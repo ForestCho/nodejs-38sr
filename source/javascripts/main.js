@@ -217,6 +217,15 @@ define("index", ["msgbox", "jquery","popover", "zoom"], function(msgbox, $, popo
                 }
                 if (data.status === "error") {
                     msgbox.showMsgBox(false, "发生错误!!");
+                }                
+                if(params.follow){
+                    _obj.removeClass("quxiaoguanzhu");
+                    _obj.addClass("guanzhu"); 
+                    _obj.text("关注"); 
+                }else{
+                    _obj.removeClass("guanzhu");
+                    _obj.addClass("quxiaoguanzhu"); 
+                    _obj.text("取消");
                 }
             }
         });
@@ -778,7 +787,7 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
     });
     //到顶部效果
     var TopObj = document.getElementById("gotopbtn");
-
+    var tagsBar = document.getElementById("tags-bar"); 
     function setScrollTop(value) {
         document.documentElement.scrollTop = value;
         document.body.scrollTop = value;
@@ -806,8 +815,30 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
         } else {
             domop.removeClass(body, "headon");
         }
+        tagsBarTopBtnInit();
+      }
 
+    tagsBarTopBtnInit();
+    function tagsBarTopBtnInit(){
         getScrollTop() > 130 ? TopObj.style.bottom = "80px" : TopObj.style.bottom = "-45px";
+        var height=getClientHeight();
+        var theight = getScrollTop();
+        var rheight = getScrollHeight();
+        var bheight = rheight - theight - height;
+        bheight < 100? tagsBar.style.bottom = "-100px": tagsBar.style.bottom = "0px";
+  
+    }
+    function getClientHeight(){   
+        var clientHeight=0;   
+        if(document.body.clientHeight&&document.documentElement.clientHeight){   
+            var clientHeight=(document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;           
+        }else{   
+            var clientHeight=(document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;       
+        }   
+        return clientHeight;   
+    }
+    function getScrollHeight(){   
+        return Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);   
     }
 
     function getScrollTop() {
