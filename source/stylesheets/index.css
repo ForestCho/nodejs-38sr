@@ -517,6 +517,7 @@
     -ms-transition: all linear .2s;
     -o-transition: all linear .2s;
     transition: all linear .2s;
+    z-index: 999;
 }
 .tag-list{    
 	list-style: none;
@@ -527,8 +528,13 @@
     margin: 0 auto;
     overflow: hidden;
     padding: 0;
-}
-
+} 
+.tag-list li{    
+	float: left; 
+    height: 30px; 
+    color: #AEAEAE;
+    line-height: 30px;
+} 
 .tag-list li a{    
 	float: left;
     padding: 0px 5px;

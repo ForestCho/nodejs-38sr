@@ -70,7 +70,7 @@
 	overflow: hidden;
 } 
 .writepanel{
-	min-height: 500px;
+	min-height: 600px;
 }
 .writepanel form{
 	margin-right: 0px !important;
@@ -82,7 +82,7 @@
 	font-size: 16px;
 	line-height: 16px;
 	height: 30px;
-	border-bottom: 1px solid #07695F;
+	border-bottom: 1px solid #ccc;
 }
 .share_tab_active{
 	font-size: 16px;
@@ -90,7 +90,7 @@
 	float: left;
 	padding: 7px 12px 0;
 	cursor: pointer;
-	border: 1px solid #07695F;
+	border: 1px solid #ccc;
 	border-bottom: 1px solid #fff;
 }
 .share_model li {

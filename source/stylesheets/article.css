@@ -11,10 +11,14 @@
 	padding-bottom: 25px;
 }
 .leftwrap .replywritepanel{
+	height: 140px;
 	margin: 0 auto;
 	overflow: hidden;
-	padding: 15px 0px;
+	padding: 15px 20px;
 	background-color: #fff;
+}
+.replywritepanel form{
+	padding: 10px 0px;
 }
 .reply_msg_item {
 	border-top: 1px solid #EAE7E7;
@@ -240,9 +244,11 @@
 } 
 #replywrap{
 	position:relative;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 #reply_input,.atreply{
-	width: 100%;
+	width: 615px;
 	height: 30px;
 	resize: vertical;
 	border-radius: 4px;
@@ -253,8 +259,10 @@
 	-o-transition: all linear 0.2s;
 	transition: all linear 0.2s;
 }
+
 #repstr{
 	width: 100%;
+	padding: 0px 15px 0px 0px;
 	margin-right: 0px;
 	position:relative;
 }
@@ -270,4 +278,24 @@
 	color:gray;
 	border:0px;
 
+}
+
+
+.selfimg{
+	float: left;
+	width: 48px; 
+}
+.selfimg img{
+	display: block;
+	width: 30px; 
+	margin:0 auto;
+	border-radius: 24px;	
+	-webkit-transition: all linear 0.2s;
+	-moz-transition: all linear 0.2s;
+	-ms-transition: all linear 0.2s;
+	-o-transition: all linear 0.2s;
+	transition: all linear 0.2s;
+} 
+.writebox{	
+	float: right;
 }

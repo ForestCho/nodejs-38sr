@@ -6572,10 +6572,14 @@ button.close {
 	padding-bottom: 25px;
 }
 .leftwrap .replywritepanel{
+	height: 140px;
 	margin: 0 auto;
 	overflow: hidden;
-	padding: 15px 0px;
+	padding: 15px 20px;
 	background-color: #fff;
+}
+.replywritepanel form{
+	padding: 10px 0px;
 }
 .reply_msg_item {
 	border-top: 1px solid #EAE7E7;
@@ -6801,9 +6805,11 @@ button.close {
 } 
 #replywrap{
 	position:relative;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 #reply_input,.atreply{
-	width: 100%;
+	width: 615px;
 	height: 30px;
 	resize: vertical;
 	border-radius: 4px;
@@ -6814,8 +6820,10 @@ button.close {
 	-o-transition: all linear 0.2s;
 	transition: all linear 0.2s;
 }
+
 #repstr{
 	width: 100%;
+	padding: 0px 15px 0px 0px;
 	margin-right: 0px;
 	position:relative;
 }
@@ -6833,6 +6841,25 @@ button.close {
 
 }
 
+
+.selfimg{
+	float: left;
+	width: 48px; 
+}
+.selfimg img{
+	display: block;
+	width: 30px; 
+	margin:0 auto;
+	border-radius: 24px;	
+	-webkit-transition: all linear 0.2s;
+	-moz-transition: all linear 0.2s;
+	-ms-transition: all linear 0.2s;
+	-o-transition: all linear 0.2s;
+	transition: all linear 0.2s;
+} 
+.writebox{	
+	float: right;
+}
 .meiriyiju {
 	margin: 0 auto;
 	overflow: hidden;
@@ -7352,6 +7379,7 @@ button.close {
     -ms-transition: all linear .2s;
     -o-transition: all linear .2s;
     transition: all linear .2s;
+    z-index: 999;
 }
 .tag-list{    
 	list-style: none;
@@ -7362,8 +7390,13 @@ button.close {
     margin: 0 auto;
     overflow: hidden;
     padding: 0;
-}
-
+} 
+.tag-list li{    
+	float: left; 
+    height: 30px; 
+    color: #AEAEAE;
+    line-height: 30px;
+} 
 .tag-list li a{    
 	float: left;
     padding: 0px 5px;
@@ -8433,7 +8466,7 @@ a.optionaccess:hover {
 	overflow: hidden;
 } 
 .writepanel{
-	min-height: 500px;
+	min-height: 600px;
 }
 .writepanel form{
 	margin-right: 0px !important;
@@ -8445,7 +8478,7 @@ a.optionaccess:hover {
 	font-size: 16px;
 	line-height: 16px;
 	height: 30px;
-	border-bottom: 1px solid #07695F;
+	border-bottom: 1px solid #ccc;
 }
 .share_tab_active{
 	font-size: 16px;
@@ -8453,7 +8486,7 @@ a.optionaccess:hover {
 	float: left;
 	padding: 7px 12px 0;
 	cursor: pointer;
-	border: 1px solid #07695F;
+	border: 1px solid #ccc;
 	border-bottom: 1px solid #fff;
 }
 .share_model li {

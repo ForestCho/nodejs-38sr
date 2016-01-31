@@ -115,12 +115,13 @@
 		</div>
 		<div id="tags-bar">
 				<ul class="tag-list">			
+					<li class="tag-single">热门标签：</li>
 				<% 
 					var tags = d.tags;
 					for(var i= 0;i<tags.length;i++){%>
 					<li class="tag-single"> <a href="/tag/<%- tags[i]%>/"><%- tags[i]%></a> </li>
 
 				<%}%> 
-				</ul>			
+				</ul>	 		
 		</div>
 		<% include partial/footer %>

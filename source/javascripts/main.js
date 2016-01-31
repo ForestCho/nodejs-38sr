@@ -598,7 +598,7 @@ define("article", ["msgbox", "jquery", "jquerymigrate", "jquerycaret", "undersco
         var rinput = '<input type="hidden" name="rid" value="' + rid + '">';
         var ruidinput = '<input type="hidden" name="ruid" value="' + ruid + '">';
         var rnameinput = '<input type="hidden" name="runame" value="' + runame + '">';
-        var textarea = '<textarea row="3" name="repstr" class="atreply" id="replytoreply" style="width:100%;resize: vertical;"></textarea>';
+        var textarea = '<textarea row="3" name="repstr" class="atreply" id="replytoreply" style="width:615px;resize: vertical;"></textarea>';
         var btnrep = '<div class="inputopt"><button type="submit" class="btn  btn-sm">回复</button></div>';
         var formhead = '<form id="replywrap" class="navbar-form" action="/reply" method="post">';
         var formtail = '</form>';
@@ -624,15 +624,33 @@ define("article", ["msgbox", "jquery", "jquerymigrate", "jquerycaret", "undersco
         }
     });
 
-    $('textarea.atreply').live("focus", function() {
+    $('textarea#replytoreply').live("focus", function() {
         $(this).css("height", "80px");
         $(this).parent().find(".inputopt").css("display", "inline-block");
     });
-    $('textarea.atreply').live("blur", function() {
-        var replyContent = $(this).val();
+    $('textarea#replytoreply').live("blur", function() { 
+        var reg = /^@\w+[\s]*$/;
+        var contentIpt = $(this).val(); 
+        if(reg.test(contentIpt)|| contentIpt.length ==0){
+            $(this).css("height", "0px");
+            $(this).parent().find(".inputopt").css("display", "none"); 
+            setTimeout("$('#replywrap').remove()", 210)
+        }else{
+            $(this).css("height", "30px");
+            $(this).parent().find(".inputopt").css("display", "none");            
+        }
+    });
+    $('textarea#reply_input').live("focus", function() {
+        $(this).css("height", "80px");
+        $(this).parent().find(".inputopt").css("display", "inline-block");
+        $('.selfimg img').css("width","48px");
+    });
+    $('textarea#reply_input').live("blur", function() {
+        var replyContent = $(this).val(); 
         if (replyContent.length == 0) {
             $(this).css("height", "30px");
             $(this).parent().find(".inputopt").css("display", "none");
+        $('.selfimg img').css("width","30px");
         }
     });
     $('.reply_msg_item').hover(

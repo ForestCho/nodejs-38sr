@@ -137,6 +137,9 @@ var replies = d.replies;
 					<div class="replywritepanel">
 						<form class="navbar-form navbar-right" id="repstr" name="repstr" method="POST" action="/reply">
 							<input type="hidden" name="tid" id="tid" value="<%=articlecontent.tid %>"/>
+							<div class="selfimg">
+								<img src="<%-locals.userinfo.photo %>" alt="">
+							</div>
 							<input type="hidden" name="ruid" value="<%=articlecontent._creator.uid %>">
 							<textarea type="text" class="writebox atreply" name="repstr" id="reply_input" placeholder="回复点什么呢?"></textarea>
 							<div class="inputopt"><button type="submit"   id="subarticle">回复</button></div>
