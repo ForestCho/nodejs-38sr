@@ -6562,7 +6562,7 @@ button.close {
 .rep_msg_box {
 	background-color: #fff; 
 	border-bottom: 1px solid #eee;
-	margin-top: 20px;
+	margin-top: 10px;
 }
 .nosignin{
 	text-align: center; 
@@ -6770,7 +6770,7 @@ button.close {
 .detail_msg_head{
 	font-size: 19px;
 	color: #383838; 
-	padding: 10px 10px;
+	padding: 10px 20px;
 	line-height: 19px; 
 }
 .no_reply_notice{
@@ -6861,6 +6861,13 @@ button.close {
 	float: right;
 }
 
+#rep_msg_head{
+    height: 40px;
+    font-size: 19px;
+    color: #383838;
+    padding: 10px 20px;
+    line-height: 20px;
+}
 #last-reply-time{
 	color: #838383;
     font-size: 12px;
@@ -6869,6 +6876,11 @@ button.close {
 
 #last-reply-time::before{
 	content: "|";
+}
+#reply-num{
+	float: right;	
+	color: #838383;
+    font-size: 12px;
 }
 .meiriyiju {
 	margin: 0 auto;
@@ -7793,7 +7805,7 @@ button.close {
 	position: relative;
 	background: #0C8176;
 	display: block;
-	padding: 3px 20px;
+	padding: 0px 20px;
 	height: 34px;
 	clear: both;
 	font-weight: 400;
@@ -7806,7 +7818,7 @@ button.close {
 	display: block;
     position: absolute;
     left: 15px;
-    top: 13px;
+    top: 9px;
     width: 16px;
     height: 16px;
 }
@@ -8046,7 +8058,7 @@ a.optionaccess:hover {
 }
 
 .userinfo {
-	padding: 10px 0px;
+	padding: 15px 0px;
 }
 
 .baseinfo {
@@ -8767,6 +8779,9 @@ a:hover{
 	cursor:pointer;
 	text-decoration: none;
 }
+.text-align{
+	text-align: center;
+}
 input:focus,textarea:focus{
 	outline:0;
 	border-color:rgba(82,168,236,0.8); 
@@ -8793,7 +8808,7 @@ ul{
 	width: 970px;
 	min-height: 400px;
 	margin: 10px auto 0;
-	margin-top: 70px; 
+	margin-top: 60px; 
 }
 
  
@@ -8840,6 +8855,19 @@ ul{
 }
 .otherlink:hover{
 	color: #707b91;
+}
+.about-site{
+	width: 725px;
+    margin-left: 114px;
+    margin-left: 154px;
+    text-align: left;
+}
+.git-notice{	
+    width: 725px;
+    margin-left: 154px;
+    text-align: left;
+    color: #ccc;
+    font-size: 14px;
 }
 .aboutpanel {
 	margin-top: 20px;

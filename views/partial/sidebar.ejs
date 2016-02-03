@@ -13,13 +13,15 @@ var userinfo = d.userinfo;
 				<% if(typeof(locals.userinfo) !== 'undefined' && locals.userinfo.name === userinfo.name){%>
 					<p><a href="/set">个人设置</a></p>
 				<%}else{%>
-					<p><a id="relatebtn" class=<%= (d.isfollow)?'unfollowfri':'followfri' %>  data_id="<%=userinfo.uid %>">
-					<%if(d.isfollow){%>
-						<i class="fa fa-minus"></i>  取消关注
-					<%}else{%>
-						<i class="fa fa-plus"></i>  关注此人
-					<%}%> 
-					</a></p>
+					<p class="text-align">
+						<a id="relatebtn" class=<%= (d.isfollow)?'unfollowfri':'followfri' %>  data_id="<%=userinfo.uid %>">
+							<%if(d.isfollow){%>
+								<i class="fa fa-minus"></i>  取消关注
+							<%}else{%>
+								<i class="fa fa-plus"></i>  关注此人
+							<%}%> 
+						</a>
+					</p>
 				<%}%>
 				</div>
 				<div class="follower">				

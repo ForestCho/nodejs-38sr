@@ -245,7 +245,7 @@
 	position: relative;
 	background: #0C8176;
 	display: block;
-	padding: 3px 20px;
+	padding: 0px 20px;
 	height: 34px;
 	clear: both;
 	font-weight: 400;
@@ -258,7 +258,7 @@
 	display: block;
     position: absolute;
     left: 15px;
-    top: 13px;
+    top: 9px;
     width: 16px;
     height: 16px;
 }

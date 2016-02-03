@@ -1,7 +1,7 @@
 .rep_msg_box {
 	background-color: #fff; 
 	border-bottom: 1px solid #eee;
-	margin-top: 20px;
+	margin-top: 10px;
 }
 .nosignin{
 	text-align: center; 
@@ -209,7 +209,7 @@
 .detail_msg_head{
 	font-size: 19px;
 	color: #383838; 
-	padding: 10px 10px;
+	padding: 10px 20px;
 	line-height: 19px; 
 }
 .no_reply_notice{
@@ -300,6 +300,13 @@
 	float: right;
 }
 
+#rep_msg_head{
+    height: 40px;
+    font-size: 19px;
+    color: #383838;
+    padding: 10px 20px;
+    line-height: 20px;
+}
 #last-reply-time{
 	color: #838383;
     font-size: 12px;
@@ -308,4 +315,9 @@
 
 #last-reply-time::before{
 	content: "|";
+}
+#reply-num{
+	float: right;	
+	color: #838383;
+    font-size: 12px;
 }
