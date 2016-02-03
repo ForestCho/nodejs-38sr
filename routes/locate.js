@@ -79,7 +79,7 @@ exports.index = function(req, res) {
     var locatename = req.params.locatename;
     var flag = 0; 
     var cataZh = "篇文章";
-    var curpath = "/article";
+    var curpath = "/locate/"+locatename;
     res.locals.pageflag = 5;  
     var articleLimit = { 
         flag: flag,

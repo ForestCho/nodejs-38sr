@@ -12,10 +12,10 @@ var EventProxy = require('eventproxy');
  	var username  = req.params.username;
  	var currusername = '';
  	var curpath = '/';
- 	var pageid = 1 ;
+ 	var p = 1 ;
  	var pagesize = config.index.list_article_size;
- 	if(req.query.pageid){
- 		pageid=req.query.pageid;
+ 	if(req.query.p){
+ 		p = req.query.p;
  	} 
 
  	if(typeof(req.session.user) !== 'undefined' ){
@@ -40,7 +40,7 @@ var EventProxy = require('eventproxy');
  		d.followernum = followernum;
  		d.hefollowernum = hefollowernum;
  		d.articlenum = articlenum;
- 		d.currentpage = pageid;
+ 		d.currentpage = p;
  		curpath = "/user/"+tempuser.name+"/article/";
  		if(currusername){
 			var curuid = 0;  
@@ -53,8 +53,7 @@ var EventProxy = require('eventproxy');
 				Relation.count({uid:curuid,fuid:tempuser.uid},function(err,nums){ 
 					if(nums > 0){ 
 						d.isfollow = true ; 
-					} 						
-					console.log(res.locals.userinfo)
+					} 						 
 					res.locals.userinfo = req.session.user; 
 					return	res.render('userarticle', { title:username+'的心情',visituser:username,d:d,curpath:curpath}); 
 
@@ -68,9 +67,8 @@ var EventProxy = require('eventproxy');
 
 
 	UserDao.getUserInfoByName(username,function(err,tempuser) { 
-		ep.emit("tempuser",tempuser);		
-		console.log(tempuser.uid);
-		Article.find({uid:tempuser.uid,isdelete:false}).sort({'post_date':-1}).skip((pageid-1)*pagesize).limit(pagesize+1).populate('_creator').populate('_sid').exec(function(err,articlelist){
+		ep.emit("tempuser",tempuser);		 
+		Article.find({uid:tempuser.uid,isdelete:false}).sort({'post_date':-1}).skip((p-1)*pagesize).limit(pagesize+1).populate('_creator').populate('_sid').exec(function(err,articlelist){
 			if (err){
  				res.redirect('common/404')
  				return ;

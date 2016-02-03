@@ -71,10 +71,10 @@ exports.cata = function(req, res) {
     if (req.params.cata) {
         cata = req.params.cata;
     }
-    var pageid = 1;
+    var p = 1;
     var pagesize = config.index.list_article_size;
-    if (req.query.pageid) {
-        pageid = req.query.pageid;
+    if (req.query.p) {
+        p = req.query.p;
     }
     var curpath = '/';
     var currusername = '';
@@ -100,7 +100,7 @@ exports.cata = function(req, res) {
         d.followernum = followernum;
         d.hefollowernum = hefollowernum;
         d.articlenum = articlenum;
-        d.currentpage = pageid;
+        d.currentpage = p;
         curpath = "/user/" + tempuser.name + "/" + cata;
         if (currusername && username !== currusername) {
             var curuid = 0;
@@ -178,7 +178,7 @@ exports.cata = function(req, res) {
         console.log(articleLimit);
         Article.find(articleLimit).sort({
             'post_date': -1
-        }).skip((pageid - 1) * pagesize).limit(pagesize + 1).populate('_creator').populate('_sid').lean(true).exec(function(err, articlelist) {
+        }).skip((p - 1) * pagesize).limit(pagesize + 1).populate('_creator').populate('_sid').lean(true).exec(function(err, articlelist) {
             if (err) {
                 res.redirect('/404')
                 return;

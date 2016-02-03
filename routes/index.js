@@ -11,8 +11,8 @@ var mongoose = require('mongoose');
  * GET home page.
  */
 //mongoose.connect('mongodb://caosl:123456@127.0.0.1:27017/blogdb');
-//mongoose.connect('mongodb://caosl:123456@107.170.206.235:27017/blogdb');
-mongoose.connect('mongodb://127.0.0.1:27017/blogdb')
+mongoose.connect('mongodb://caosl:123456@107.170.206.235:27017/blogdb');
+//mongoose.connect('mongodb://127.0.0.1:27017/blogdb')
  
 var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
     var p = 1;//pageid
@@ -27,11 +27,13 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
         res.locals.userinfo = req.session.user;
     }
     var ep = new EventProxy();
+    var tags = ['PHP','正则','前端','JavaScript','测试','java','linux','面试','mysql','试题','数据库','编程','源码','爬虫','html','工具','less','sublime','插件'];
     ep.assign("articlelist", "hotuser", 'zymryj','count', function(articlelist, hotuser, zymryj,count) {
         var d = []; 
         d.data = articlelist;
         d.hotuser = hotuser; 
         d.count = count;
+        d.tags = tags;
         res.render(classify == 2 ? 'indexarticle' : 'index', {
             title: '做一体化的IT社区!',
             curpath: curpath,

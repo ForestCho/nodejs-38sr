@@ -79,7 +79,7 @@ exports.index = function(req, res) {
     var flag = 0;
     var classify = 2;
     var cataZh = "篇文章";
-    var curpath = "/article";
+    var curpath = "/tag/"+tagname;
     res.locals.pageflag = 5;
     console.log(tagname);
     var articleLimit = {

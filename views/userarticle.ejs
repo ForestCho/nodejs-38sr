@@ -67,12 +67,12 @@
 				<% } %>
 				<div class="navigator">
 					<% if(d.currentpage > 1 ){%>
-					<a href="/user/<%= visituser %>/article/?pageid=<%= d.currentpage - 1  %>" class="last_page fade_trans">
+					<a href="/user/<%= visituser %>/article/?p=<%= d.currentpage - 1  %>" class="last_page fade_trans">
 						&larr;上一页
 					</a>
 					<%}%>
 					<% if(nearArticle.length > config.index.list_article_size ){%>
-					<a href="/user/<%= visituser %>/article/?pageid=<%= d.currentpage - (-1)  %>" class="next_page fade_trans">
+					<a href="/user/<%= visituser %>/article/?p=<%= d.currentpage - (-1)  %>" class="next_page fade_trans">
 						下一页&rarr;
 					</a>
 					<%}%>
