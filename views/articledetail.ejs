@@ -92,7 +92,14 @@ var replies = d.replies;
 					<!-- UJian Button END -->
 					<div class="rep_msg_box">
 						<% if(replies.length > 0){%>
-						<div class="detail_msg_head">回复</div>
+						<div class="detail_msg_head">
+							回复 
+							<% if(replies){ %>
+								<label id="last-reply-time">
+									直到 <%=replies[replies.length-1].convertdate%>
+								</label> 
+							<%}%>
+						</div>
 						<% if(replies){ %>
 						<% for(i=0;i< replies.length;i++){%>
 						<div class="reply_msg_item">

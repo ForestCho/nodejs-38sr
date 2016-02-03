@@ -251,7 +251,7 @@
 	width: 615px;
 	height: 30px;
 	resize: vertical;
-	border-radius: 4px;
+	border-radius: 0px;
 	padding: 4px 40px 4px 4px;
 	-webkit-transition: all linear 0.2s;
 	-moz-transition: all linear 0.2s;
@@ -298,4 +298,14 @@
 } 
 .writebox{	
 	float: right;
+}
+
+#last-reply-time{
+	color: #838383;
+    font-size: 12px;
+    font-weight: 200; 
+}
+
+#last-reply-time::before{
+	content: "|";
 }
