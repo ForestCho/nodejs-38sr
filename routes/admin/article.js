@@ -11,8 +11,13 @@ var util = require('../../lib/util');
 var bosonnlp = require('bosonnlp');
 var marked = require('marked');
 var boson = new bosonnlp.BosonNLP("yoUTK8dE.3486.jTfMGWlrfZxc");
-/*
- * GET publish a new site
+
+
+/**
+ * [list description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
 exports.list = function(req, res) {
     var p = 1; //pageid
@@ -64,12 +69,24 @@ exports.list = function(req, res) {
     })
 };
 
+/**
+ * [addarticle description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.addarticle = function(req, res) {
     res.render('admin/addarticle', {
         title: '增加文章',
     });
 };
 
+/**
+ * [getarticle description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.getarticle = function(req, res) {
     var tid = req.params.tid;
     ArticleDao.getArticleByTid(tid, function(err, article) {
@@ -80,6 +97,12 @@ exports.getarticle = function(req, res) {
     });
 };
 
+/**
+ * [save description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.save = function(req, res) {
     var title = req.body.title;
     var mcontent = req.body.mcontent;
@@ -157,7 +180,12 @@ exports.save = function(req, res) {
     })
 };
 
-
+/**
+ * [updatearticle description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.updatearticle = function(req, res) {
     var tid = req.body.tid;
     var title = req.body.title;
@@ -189,6 +217,12 @@ exports.updatearticle = function(req, res) {
     });
 };
 
+/**
+ * [delete description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.delete = function(req, res) {
     var tid = req.query.tid;
     if (tid < 0) {

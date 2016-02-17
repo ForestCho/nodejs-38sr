@@ -5,9 +5,13 @@ var	User = require('../models/user');
 var At = require('../lib/at');
 var MessageDao = require('../dao/messagedao');
 var	path = require('path');
-var	mongoose = require('mongoose');  
-/*
- * 回复动作
+var	mongoose = require('mongoose'); 
+
+/**
+ * [index 回复动作]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
  exports.index = function (req, res) {
  	var repstr = req.body.repstr;

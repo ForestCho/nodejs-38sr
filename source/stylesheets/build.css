@@ -3022,8 +3022,8 @@ select[multiple].input-lg,textarea.input-lg {
 .btn.active,.btn:active {
 	background-image: none;
 	outline: 0;
-	-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-	box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+/* 	-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+box-shadow: inset 0 3px 5px rgba(0,0,0,.125) */
 }
 
 .btn.disabled,.btn[disabled],fieldset[disabled] .btn {
@@ -6617,7 +6617,7 @@ button.close {
 	font-size: 12px;
 } 
 .article_head_info{
-	padding: 5px 5px 10px 5px;
+	padding: 5px 0px 10px 0px;
     border-bottom: 1px solid #E0E0E0;
 }
 .article_head_info a{	
@@ -6763,6 +6763,7 @@ button.close {
 	padding: 3px 10px;
 	clear: both;
 	font-weight: 400;
+	margin:0px;
 	line-height: 1.42857143;
 	color: #333;
 	white-space: nowrap;
@@ -7092,6 +7093,9 @@ button.close {
 }
 .operwrap i{
 	margin-left: 5px;
+}
+.operwrap .btn:active{	
+	background-color: #eee;
 }
 .biaotai .likebtn{
 	color: #999;
@@ -8868,6 +8872,12 @@ ul{
     text-align: left;
     color: #ccc;
     font-size: 14px;
+}
+.git-notice a{
+	color: #ccc;
+}
+.git-notice a:hover{
+	text-decoration: underline;
 }
 .aboutpanel {
 	margin-top: 20px;

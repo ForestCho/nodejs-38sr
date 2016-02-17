@@ -4,8 +4,13 @@ var UPYun = require('../lib/upyun').UPYun;
 var gm = require('gm')
 ,	fs = require('fs')
 ,	imageMagick = gm.subClass({ imageMagick : true });
- 
-//保存小头像
+  
+/**
+ * [save_avatar 保存小头像]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.save_avatar = function(req, res) { 
 	var coords = req.body.coords.split('_');
 	var img_size = 64; 
@@ -47,8 +52,13 @@ exports.save_avatar = function(req, res) {
 		});	
 	});  
 };
-
-//图片上传
+ 
+/**
+ * [picupload 图片上传]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.picupload = function(req, res) { 
 	var temp_path = req.files.picture.path;	//获取用户上传过来的文件的当前路径
 	var filename = req.files.picture.name;
@@ -97,8 +107,13 @@ exports.picupload = function(req, res) {
 	})
 	 	
 };
-
-//头像上传
+ 
+/**
+ * [imgupload 头像上传 ]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.imgupload = function(req, res) { 
 	var temp_path = req.files.img.path;	//获取用户上传过来的文件的当前路径
 	var filename = req.files.img.name;
@@ -188,8 +203,14 @@ exports.imgupload = function(req, res) {
 		}
 	}) 
 };
-
-//更新原始信息
+ 
+/**
+ * [update_originphoto 更新原始信息]
+ * @param  {[type]}   ourl
+ * @param  {[type]}   username
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var update_originphoto = function(ourl,username,callback){
 	var condition = {
 		name:username
@@ -204,7 +225,14 @@ var update_originphoto = function(ourl,username,callback){
 		callback(null)
 	});
 }
-//更新头像
+
+/**
+ * [update_avatar 更新头像]
+ * @param  {[type]}   url
+ * @param  {[type]}   username
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var update_avatar = function(url,username,callback){
 	var condition = {
 		name:username
@@ -219,8 +247,16 @@ var update_avatar = function(url,username,callback){
 		callback(null)
 	});
 }
-
-//修改图片尺寸
+ 
+/**
+ * [resizeImageByMax 修改图片尺寸]
+ * @param  {[type]}   temp_path
+ * @param  {[type]}   newpath
+ * @param  {[type]}   new_width
+ * @param  {[type]}   new_high
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 function resizeImageByMax(temp_path,newpath,new_width,new_high,callback){
 	imageMagick(temp_path).size(function(err,size){
 		var x_w_h = size.width/size.height;   

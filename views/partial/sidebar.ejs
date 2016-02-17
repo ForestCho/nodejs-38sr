@@ -3,8 +3,8 @@ var userinfo = d.userinfo;
 %>
 			<div class="userinfo">
 			<div class="baseinfo">
-				<div class="baseinfo-name"><%= userinfo.name %></div>
-				<img src=<%= userinfo.originphoto %>>
+				<div class="baseinfo-name"><%= userinfo.name %></div> 
+				<img src=<%= typeof(userinfo.originphoto)!== 'undefined'?userinfo.originphoto:userinfo.photo %>>
 				<p>第<%= userinfo.uid %>位成员</p>
 				<p><%= userinfo.joinDate %></p>	 
 				<% if(typeof(userinfo.intro) !== 'undefined') {%>

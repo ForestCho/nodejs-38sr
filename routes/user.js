@@ -6,9 +6,12 @@ var RelationDao = require('../dao/relationdao');
 var ArticleDao = require('../dao/articledao');
 var EventProxy = require('eventproxy');
 
-/*
- *
- *获取用户信息
+
+/**
+ * [getuserinfo 获取用户]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
 exports.getuserinfo = function(req, res) {
     var uid = req.query.uid;
@@ -48,6 +51,12 @@ exports.getuserinfo = function(req, res) {
     });
 }
 
+/**
+ * [getuserinfobyname 获取用户信息]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.getuserinfobyname = function(req, res) {
     var name = req.query.name;
     var rspjson = {};
@@ -61,9 +70,12 @@ exports.getuserinfobyname = function(req, res) {
         res.json(rspjson);
     });
 }
-
-/*
- * 用户界面心情，文章，快链分别展示
+ 
+/**
+ * [cata 用户界面心情，文章，快链分别展示]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
 exports.cata = function(req, res) {
     var username = req.params.username;
@@ -231,9 +243,12 @@ exports.cata = function(req, res) {
     });
 }
 
-
-/*
- * 用户关注页面
+ 
+/**
+ * [getfollower 用户关注页面]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
 exports.getfollower = function(req, res) {
     var username = req.params.username;
@@ -279,9 +294,13 @@ exports.getfollower = function(req, res) {
         ep.emit("followerlist", followerlist);
     });
 }
+ 
 
-/*
- * 用户粉丝页面
+/**
+ * [gethefollower 用户粉丝页面]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
 exports.gethefollower = function(req, res) {
     var username = req.params.username;

@@ -5,7 +5,12 @@ var	EventProxy = require('eventproxy');
 var sanitize = require('validator');
 var config = require('../../config').config;
 
-
+/**
+ * [dologin description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.dologin = function (req, res) {
  	var name = sanitize.trim(req.body.uname);
  	var pwd = sanitize.trim(req.body.pwd); 

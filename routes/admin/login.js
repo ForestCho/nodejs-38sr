@@ -2,11 +2,14 @@ var util = require('../../lib/util');
 var UserDao = require('../../dao/userdao');
 var EventProxy = require('eventproxy');
 var sanitize = require('validator');
-var config = require('../../config').config;
-/*
- * GET login page and do login
- */
+var config = require('../../config').config; 
 
+/**
+ * [login login page and do login]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.login = function(req, res) { 
     var msg = {}; 
     msg.status = -1;
@@ -16,6 +19,12 @@ exports.login = function(req, res) {
     });
 };
 
+/**
+ * [dologin description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.dologin = function(req, res) {
     var name = sanitize.trim(req.body.uname);
     var pwd = sanitize.trim(req.body.pwd); 
@@ -83,6 +92,13 @@ exports.dologin = function(req, res) {
     })
 };
 
+/**
+ * [user_auth description]
+ * @param  {[type]}   req
+ * @param  {[type]}   res
+ * @param  {Function} next
+ * @return {[type]}
+ */
 exports.user_auth = function(req, res, next) {
     if (req.session.user) {
         var uid = req.session.user.uid;

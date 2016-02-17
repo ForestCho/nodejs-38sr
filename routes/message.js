@@ -1,8 +1,13 @@
 var util = require('../lib/util');
 var MessageDao = require('../dao/messagedao'); 
-var EventProxy = require('eventproxy'); 
-/*
- * 消息页面
+var EventProxy = require('eventproxy');  
+
+/**
+ * [index 消息页面]
+ * @param  {[type]}   req
+ * @param  {[type]}   res
+ * @param  {Function} next
+ * @return {[type]}
  */
  exports.index = function (req, res,next) {   
  	var uid = req.session.user.uid; 

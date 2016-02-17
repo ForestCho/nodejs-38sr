@@ -4,8 +4,12 @@ var	UserDao = require('../dao/userdao');
 var	EventProxy = require('eventproxy'); 
 var sanitize = require('validator');
 var config = require('../config').config;
-/*
- * 登录页面
+
+/**
+ * [login 登录页面]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
  exports.login = function (req, res) {
  	var prelink = "/";
@@ -18,8 +22,12 @@ var config = require('../config').config;
  	msg.status = -1;
  	res.render('login', { title: '登录',prelink:prelink,msg:msg });
  };
-/*
- * 登录动作
+
+/**
+ * [dologin 登录动作]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
  exports.dologin = function (req, res) {
  	var name = sanitize.trim(req.body.uname);
@@ -74,8 +82,15 @@ var config = require('../config').config;
 		ep.emit("userinfo",tempuser);
  	})  	 
  };
-/*
- * 用户授权认证
+
+
+/**
+ * [user_auth 用户授权
+ ]
+ * @param  {[type]}   req
+ * @param  {[type]}   res
+ * @param  {Function} next
+ * @return {[type]}
  */
  exports.user_auth = function (req, res, next) {
  	if(req.session.user){ 		

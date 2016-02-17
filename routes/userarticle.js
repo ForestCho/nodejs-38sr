@@ -4,9 +4,13 @@ var util = require('../lib/util');
 var Relation = require('../models/relation');
 var RelationDao = require('../dao/relationdao');
 var ArticleDao = require('../dao/articledao');
-var EventProxy = require('eventproxy'); 
-/*
- * GET user page.
+var EventProxy = require('eventproxy');
+
+/**
+ * [index user page.]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
  exports.index = function (req, res) {  
  	var username  = req.params.username;

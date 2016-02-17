@@ -8,11 +8,12 @@ var request = require('request');
 var util = require('../lib/util');
 var	mongoose = require('mongoose'); 
 var	EventProxy = require('eventproxy');
-
-//mongoose.connect('mongodb://localhost/blogdb');
-
-/*
- * 保存快链
+ 
+/**
+ * [save 保存快链]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
  exports.save = function (req, res) {
  	var url = req.query.url;
@@ -81,19 +82,26 @@ var	EventProxy = require('eventproxy');
  	});
 
  };
-
-/*
-*快链点击
-**/
+ 
+/**
+ * [redirect 快链点击]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.redirect =function(req,res){
  	var url = req.query.url; 
  	console.log(url);	
  	res.redirect(url);
  };
 
-/*
-*查询快链标题
-**/
+
+/**
+ * [getlinktitle 查询快链标题]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.getlinktitle = function(req, res){
  	var url = req.query.url;
  	var msg = {}; 

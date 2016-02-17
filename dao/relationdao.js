@@ -2,24 +2,49 @@ var Relation = require('../models/relation')
 User = require('../models/user'),
 EventProxy = require('eventproxy'); 
 
-//通过UID获取关注列表
+
+/**
+ * [getListOfFollowersByUid 通过UID获取关注列表]
+ * @param  {[type]}   uid
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var getListOfFollowersByUid = function(uid,callback){ 
 	var displaySize = 6; 
 	Relation.find({fuid:uid}).sort({'create_date':-1}).limit(displaySize).populate('_uid_info').exec(function(err,follerlist){
 		callback(err,follerlist);
 	}); 
 } 
-//通过UID获取所有的关注列表
+
+/**
+ * [getListOfAllFollowersByUid 通过UID获取所有的关注列表]
+ * @param  {[type]}   uid
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var getListOfAllFollowersByUid = function(uid,callback){  
 	Relation.find({fuid:uid}).sort({'create_date':-1}).populate('_uid_info').exec(function(err,follerlist){
 		callback(err,follerlist);
 	}); 
-} 
-//通过UID获取所有的关注数量
+}  
+
+/**
+ * [getNumberOfFollowersByUid 通过UID获取所有的关注数量]
+ * @param  {[type]}   uid
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var getNumberOfFollowersByUid = function(uid,callback){  
 	Relation.count({fuid:uid},callback);
 } 
 
+/**
+ * [countByName description]
+ * @param  {[type]}   uname
+ * @param  {[type]}   funame
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var countByName = function(uname,funame,callback){ 
 	var ep = new EventProxy();
 	ep.assign("userinfo","fuserinfo",function(userinfo,fuserinfo){ 
@@ -42,7 +67,13 @@ var countByName = function(uname,funame,callback){
 		}
 	}); 
 } 
-//通过Name获取关注列表
+
+/**
+ * [getListOfFollowersByName 通过Name获取关注列表]
+ * @param  {[type]}   uname
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var getListOfFollowersByName = function(uname,callback){
 	var displaySize = 6;
 	var ep = new EventProxy();
@@ -61,7 +92,13 @@ var getListOfFollowersByName = function(uname,callback){
 		}
 	}); 
 } 
-//通过name获取所有的关注列表
+
+/**
+ * [getListOfAllFollowersByName 通过name获取所有的关注列表]
+ * @param  {[type]}   uname
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var getListOfAllFollowersByName = function(uname,callback){ 
 	var ep = new EventProxy();
 	ep.assign("userinfo",function(userinfo){ 
@@ -79,8 +116,13 @@ var getListOfAllFollowersByName = function(uname,callback){
 		}
 	}); 
 } 
-
-//通过name获取所有的关注数量
+ 
+/**
+ * [getNumberOfFollowersByName 通过name获取所有的关注数量]
+ * @param  {[type]}   uname
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var getNumberOfFollowersByName = function(uname,callback){    
 	var ep = new EventProxy();
 	ep.assign("userinfo",function(userinfo){ 
@@ -95,28 +137,48 @@ var getNumberOfFollowersByName = function(uname,callback){
 		}
 	}); 
 } 
-
-//获取他关注的人
+ 
+/**
+ * [getListOfHeFollowsByUid 获取他关注的人 ]
+ * @param  {[type]}   uid
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var getListOfHeFollowsByUid = function(uid,callback){
 	var displaySize = 6; 
 	Relation.find({uid:uid}).sort({'create_date':-1}).limit(displaySize).populate('_fuid_info').exec(function(err,follerlist){
 		callback(err,follerlist);
 	}); 
 } 
-//获取他所有关注的人
+
+/**
+ * [getListOfAllHeFollowsByUid 获取他所有关注的人]
+ * @param  {[type]}   uid
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var getListOfAllHeFollowsByUid = function(uid,callback){ 
 	Relation.find({uid:uid}).sort({'create_date':-1}).populate('_fuid_info').exec(function(err,follerlist){
 		callback(err,follerlist);
 	}); 
-} 
-//获取他关注的人的数量
+}  
+
+/**
+ * [getNumberOfHeFollowersByUid 获取他关注的人的数量]
+ * @param  {[type]}   uid
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var getNumberOfHeFollowersByUid = function(uid,callback){  
 	Relation.count({uid:uid},callback);
-} 
-
-
-
-//根据name获取他关注的人
+}  
+ 
+/**
+ * [getListOfHeFollowsByName 根据name获取他关注的人]
+ * @param  {[type]}   uname
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var getListOfHeFollowsByName = function(uname,callback){
 	var displaySize = 6;
 	var ep = new EventProxy();
@@ -135,8 +197,13 @@ var getListOfHeFollowsByName = function(uname,callback){
 		}
 	}); 
 } 
-
-//根据name获取他所有关注的人
+ 
+/**
+ * [getListOfAllHeFollowsByName 根据name获取他所有关注的人]
+ * @param  {[type]}   uname
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var getListOfAllHeFollowsByName = function(uname,callback){ 
 	var ep = new EventProxy();
 	ep.assign("userinfo",function(userinfo){ 
@@ -155,7 +222,12 @@ var getListOfAllHeFollowsByName = function(uname,callback){
 	}); 
 } 
 
-//根据name获取他关注的人的数量
+/**
+ * [getNumberOfHeFollowersByName 根据name获取他关注的人的数量]
+ * @param  {[type]}   uname
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var getNumberOfHeFollowersByName = function(uname,callback){   
 	var displaySize = 6;
 	var ep = new EventProxy();

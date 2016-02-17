@@ -2,9 +2,12 @@ var LikeDao =  require('../dao/likedao');
 var ArticleDao = require('../dao/articledao');
 var path = require('path');
 var mongoose = require('mongoose');
-var EventProxy = require('eventproxy'); 
-/*
- * GET process operator of like page.
+var EventProxy = require('eventproxy');  
+/**
+ * [like process operator of like page.]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
  exports.like = function (req, res) {  	
  	//status 0 success

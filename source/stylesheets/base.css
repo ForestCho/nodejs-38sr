@@ -104,6 +104,12 @@ ul{
     color: #ccc;
     font-size: 14px;
 }
+.git-notice a{
+	color: #ccc;
+}
+.git-notice a:hover{
+	text-decoration: underline;
+}
 .aboutpanel {
 	margin-top: 20px;
 	margin-left: 20px;

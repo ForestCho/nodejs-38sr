@@ -12,6 +12,12 @@ var	mongoose = require('mongoose');
  
 var EventProxy = require('eventproxy'); 
 
+/**
+ * [doreply description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.doreply = function (req, res) {
  	var repstr = req.body.repstr;
  	var	tid = req.body.tid; 
@@ -96,6 +102,12 @@ var EventProxy = require('eventproxy');
 }; 
 
 
+/**
+ * [getreplylist description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.getreplylist = function (req, res) {
  	var tid = req.query.tid; 
  	var ep = new EventProxy();

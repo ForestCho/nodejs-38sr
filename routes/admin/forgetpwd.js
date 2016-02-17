@@ -3,17 +3,26 @@ var nodemailer = require('nodemailer');
 var util = require('../../lib/util');
 var EventProxy = require('eventproxy');
 var Repwd = require('../../models/repwd');
-var sanitize = require('validator');
-/*
- * GET find password page.
- */
+var sanitize = require('validator'); 
 
+/**
+ * [get find password page]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.get = function(req, res) {
     res.render('admin/getpwdmail', {
         title: '找回密码'
     });
 };
 
+/**
+ * [resetpwd description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.resetpwd = function(req, res) {
     var email = req.query.email;
     var token = req.query.token;
@@ -61,6 +70,13 @@ exports.resetpwd = function(req, res) {
         });
     });
 }
+
+/**
+ * [sendmail description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.sendmail = function(req, res) {
     var usermail = req.body.email;
     var randomPwd = util.random_string(12);
@@ -110,6 +126,12 @@ exports.sendmail = function(req, res) {
     });
 };
 
+/**
+ * [doreset description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.doreset = function(req, res) {
     var email = sanitize.trim(req.body.email);
     var pwd = sanitize.trim(req.body.pwd);

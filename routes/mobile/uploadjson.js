@@ -6,6 +6,12 @@ var gm = require('gm')
 ,	imageMagick = gm.subClass({ imageMagick : true });
  
 //图片上传
+/**
+ * [uploadpic description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.uploadpic = function(req, res) { 
 	var temp_path = req.files.picture.path;	//获取用户上传过来的文件的当前路径
 	var filename = req.files.picture.name;
@@ -44,6 +50,15 @@ exports.uploadpic = function(req, res) {
 	})	 	
 };
  
+ /**
+  * [resizeImageByMax description]
+  * @param  {[type]}   temp_path
+  * @param  {[type]}   newpath
+  * @param  {[type]}   new_width
+  * @param  {[type]}   new_high
+  * @param  {Function} callback
+  * @return {[type]}
+  */
  function resizeImageByMax(temp_path,newpath,new_width,new_high,callback){
 	imageMagick(temp_path).size(function(err,size){
 		console.log(size);

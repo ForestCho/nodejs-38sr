@@ -3,9 +3,13 @@ var	UserDao = require('../dao/userdao');
 var MessageDao = require('../dao/messagedao');
 var path = require('path');
 var mongoose = require('mongoose');
-var EventProxy = require('eventproxy'); 
-/*
- * 关注用户动作
+var EventProxy = require('eventproxy');  
+
+/**
+ * [follow 关注用户动作]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
  exports.follow = function (req, res) {  	
  	if(!req.session.user){      

@@ -8,8 +8,16 @@ var config = require('../config').config;
 var cache = require('../common/cache');
 var EventProxy = require('eventproxy');
 var mongoose = require('mongoose');
-/*
- * 公共查询函数
+
+/**
+ * [commonQuery 公共查询函数]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @param  {[type]} curpath
+ * @param  {[type]} articleLimit
+ * @param  {[type]} cataZh
+ * @param  {[type]} site_id
+ * @return {[type]}
  */
 var commonQuery = function(req, res, curpath, articleLimit, cataZh, site_id) {
     var p = 1;//pageid

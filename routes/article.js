@@ -6,8 +6,12 @@ var at = require('../lib/at');
 var RelationDao = require('../dao/relationdao'); 
 var EventProxy = require('eventproxy'); 
 var xssFilters = require('xss-filters');
-/*
- * GET 文章详细页面
+
+/**
+ * [detail 文章详细页面]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
  exports.detail = function (req, res) {
  	var tid = req.params.tid; 
@@ -115,9 +119,12 @@ var xssFilters = require('xss-filters');
 		}); 
 	});
  };
-
-/*
- * 删除文章json
+ 
+/**
+ * [delete 删除文章json]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
  exports.delete = function (req, res) {  	
  	var tid = req.query.tid; 

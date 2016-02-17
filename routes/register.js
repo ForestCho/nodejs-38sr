@@ -6,17 +6,26 @@ var config = require('../config').config;
 var sanitize = require('validator');
 var EventProxy = require('eventproxy');
 var util = require('../lib/util'); 
-/*
- * 注册页面
- */ 
+
+
+/**
+ * [reg 注册页面]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.reg = function(req, res) {
     res.render('register', {
         title: '注册'
     });
-};
-/*
- * 注册动作
- */ 
+}; 
+
+/**
+ * [signup 注册动作]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.signup = function(req, res) {
     var token = req.query.token;
     var email = req.query.email;
@@ -35,9 +44,13 @@ exports.signup = function(req, res) {
         }
     });
 };
-/*
- * 发送注册邮件
- */ 
+
+/**
+ * [regemail 发送注册邮件]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.regemail = function(req, res) {
     var email = req.query.email;
     var msg = {};
@@ -119,6 +132,13 @@ exports.regemail = function(req, res) {
         })
     });
 };
+
+/**
+ * [doreg description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.doreg = function(req, res) {
     var name = sanitize.trim(req.body.uname);
     var email = sanitize.trim(req.body.email); 

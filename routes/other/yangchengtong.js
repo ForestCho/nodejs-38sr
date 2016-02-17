@@ -1,8 +1,12 @@
 var EventProxy = require('eventproxy'); 
 var http = require('http');
 var cheerio = require('cheerio');  
-/*
- * GET article detail page.
+
+/**
+ * [view description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
 exports.view = function (req, res) {
  	res.render('/other/yct', { title: 'yangchengtong' });

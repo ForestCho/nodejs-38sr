@@ -3,9 +3,14 @@ var	ArticleDao = require('../../dao/articledao');
 var	path = require('path');
 var	mongoose = require('mongoose');
 var	EventProxy = require('eventproxy');
-
-//mongoose.connect('mongodb://localhost/blogdb');
  
+ 
+ /**
+  * [dowrite description]
+  * @param  {[type]} req
+  * @param  {[type]} res
+  * @return {[type]}
+  */
  exports.dowrite = function (req, res) {
  	var title = req.query.title;
  	var content = req.query.content; 

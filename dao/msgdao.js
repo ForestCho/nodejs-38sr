@@ -3,7 +3,12 @@ var User = require('../models/user');
 var Article = require('../models/article'); 
 var Reply = require('../models/reply'); 
 
-//通过id获取消息的详细
+/**
+ * [getDetailMessageById 通过id获取消息的详细]
+ * @param  {[type]}   id
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 exports.getDetailMessageById = function(id,callback){  
 	Message.findOne({_id: id}, function (err, message) {
 		if (err) {
@@ -39,7 +44,14 @@ exports.getDetailMessageById = function(id,callback){
 		}
 	});
 };
-//通过UID获取消息
+
+/**
+ * [getMessageByUid 通过UID获取消息]
+ * @param  {[type]}   uid
+ * @param  {[type]}   isread
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 exports.getMessageByUid = function(uid,isread,callback){ 
 	Message.find({refuid:uid,isread:isread}).sort({'create_date':-1}).limit(20).exec(function(err,msglist){
 		if(err){
@@ -56,14 +68,28 @@ exports.getMessageByUid = function(uid,isread,callback){
 	});
 };
 
-//通过UID获取消息数量
+/**
+ * [getCountOfMessageByUid 通过UID获取消息数量]
+ * @param  {[type]}   uid
+ * @param  {[type]}   isread
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 exports.getCountOfMessageByUid = function(uid,isread,callback){ 
 	Message.count({refuid:uid,isread:isread},function(err,count){
 		callback(err,count)
 	});
 };
-
-//保存回复
+ 
+/**
+ * [saveReplyMsg 保存回复]
+ * @param  {[type]}   uid
+ * @param  {[type]}   refuid
+ * @param  {[type]}   tid
+ * @param  {[type]}   rid
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 exports.saveReplyMsg = function(uid,refuid,tid,rid,callback){ 
 	var msg = new Message({
 		type:'reply',
@@ -77,7 +103,15 @@ exports.saveReplyMsg = function(uid,refuid,tid,rid,callback){
 	});
 };
 
-//保存AT信息
+/**
+ * [saveAtMsg 保存AT信息]
+ * @param  {[type]}   uid
+ * @param  {[type]}   refuid
+ * @param  {[type]}   tid
+ * @param  {[type]}   rid
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 exports.saveAtMsg = function(uid,refuid,tid,rid,callback){ 
 	var msg = new Message({
 		type:'at',
@@ -90,8 +124,14 @@ exports.saveAtMsg = function(uid,refuid,tid,rid,callback){
 		callback(err);
 	});
 };
-
-//保存关注信息
+ 
+/**
+ * [saveFollowMsg 保存关注信息]
+ * @param  {[type]}   uid
+ * @param  {[type]}   refuid
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 exports.saveFollowMsg = function(uid,refuid,callback){ 
 	var msg = new Message({
 		type:'follow',

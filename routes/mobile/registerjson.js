@@ -5,6 +5,12 @@ var path = require('path');
 var config = require('../../config').config;
 var sanitize = require('validator'); 
 
+/**
+ * [doregister description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.doregister = function (req, res) {
  	var name = sanitize.trim(req.body.uname);
  	var email = sanitize.trim(req.body.email);
@@ -77,6 +83,12 @@ var sanitize = require('validator');
 };
 
 
+/**
+ * [dosinaregister description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.dosinaregister = function (req, res) {
  	var oid = sanitize.trim(req.body.oid);
  	var name = sanitize.trim(req.body.name);
@@ -137,6 +149,12 @@ var sanitize = require('validator');
 	});
 };
 
+/**
+ * [doqqregister description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.doqqregister = function (req, res) { 
  	var name = sanitize.trim(req.body.name);
  	var locate = sanitize.trim(req.body.locate); 

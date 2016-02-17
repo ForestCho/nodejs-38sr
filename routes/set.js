@@ -1,9 +1,13 @@
 var User = require('../models/user'); 
 var	UserDao = require('../dao/userdao'); 
 var util = require('../lib/util'); 
-var EventProxy = require('eventproxy'); 
-/*
- * 基本设置页面
+var EventProxy = require('eventproxy');  
+
+/**
+ * [baseDisplay 基本设置页面]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
  var baseDisplay = function (req, res) {
  	var username = req.session.user.name; 

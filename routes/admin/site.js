@@ -11,18 +11,23 @@ var gm = require('gm')
 ,	fs = require('fs')
 ,	imageMagick = gm.subClass({ imageMagick : true });
  
-
-/*
- * GET admin_addsite page.
+  
+/**
+ * [addsiteindex admin_addsite page]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
  exports.addsiteindex = function (req, res) { 	 
 	return res.render('admin/addsite', { title:'新增SIte'});   
 } 
-
-/*
- * GET publish a new site
+ 
+/**
+ * [addsite publish a new site]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
-
  exports.addsite = function (req, res) {
  	var sname = req.query.sname;
  	var sdomain = req.query.sdomain;
@@ -60,8 +65,13 @@ var gm = require('gm')
  	})
 
  }; 
-
-//图片上传
+ 
+/**
+ * [sitepicupload 图片上传]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.sitepicupload = function(req, res) { 
 	var temp_path = req.files.picture.path;	//获取用户上传过来的文件的当前路径
 	var filename = req.files.picture.name;
@@ -107,8 +117,13 @@ exports.sitepicupload = function(req, res) {
 	})
 	 	
 };
-
-//delete site
+ 
+/**
+ * [delsite delete site]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.delsite = function (req, res) { 
  	var sdeldomain = req.query.sdeldomain;  
 	var siteLimit = {sdomain:sdeldomain};

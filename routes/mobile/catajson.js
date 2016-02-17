@@ -10,26 +10,61 @@ var	EventProxy = require('eventproxy');
  */
  var cataArr = new Array('xinqing','joke','yule','baoliao','qinggan','qiongshi');
  var cataArrZH = new Array('心情','笑话','娱乐','爆料','情感','囧事');
+
+ /**
+  * [xiaohua description]
+  * @param  {[type]} req
+  * @param  {[type]} res
+  * @return {[type]}
+  */
  exports.xiaohua = function (req, res) { 
  	var flag = 1; 	 
  	category(req,res,flag)
 
  }
+
+ /**
+  * [yule description]
+  * @param  {[type]} req
+  * @param  {[type]} res
+  * @return {[type]}
+  */
  exports.yule = function (req, res) { 
  	var flag = 2;
  	category(req,res,flag)
 
  }
+
+ /**
+   * [baoliao description]
+   * @param  {[type]} req
+   * @param  {[type]} res
+   * @return {[type]}
+   */
  exports.baoliao = function (req, res) { 
  	var flag = 3;
  	category(req,res,flag)
 
  }
+
+  /**
+   * [qinggan description]
+   * @param  {[type]} req
+   * @param  {[type]} res
+   * @return {[type]}
+   */
  exports.qinggan = function (req, res) { 
  	var flag = 4;
  	category(req,res,flag)
 
  }
+
+ /**
+  * [qiongshi description]
+  * @param  {[type]} req
+  * @param  {[type]} res
+  * @return {[type]}
+  */
  exports.qiongshi = function (req, res) { 
  	var flag = 5;
  	category(req,res,flag)

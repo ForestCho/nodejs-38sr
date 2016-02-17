@@ -120,6 +120,7 @@ var run = function(app){
 	//登录路由 
 	app.get('/login', login.login);
 	app.post('/login', login.dologin);
+	app.get('/getphoto', user.getuserinfobyname); 
 
 	//找回密码路由
 	app.get('/sendmail', forgetpwd.get);
@@ -154,7 +155,7 @@ var run = function(app){
 	app.get('/set/avatar', set.avatarDisplay);
  
  	//关注与取消关注
- 	app.get('/newrelation', relation.follow); 
+ 	app.get('/newrelation', relation.follow);  
  	//喜欢提交地址
  	app.get('/like',like.like);
  	//消息页面

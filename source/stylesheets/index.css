@@ -209,6 +209,9 @@
 .operwrap i{
 	margin-left: 5px;
 }
+.operwrap .btn:active{	
+	background-color: #eee;
+}
 .biaotai .likebtn{
 	color: #999;
 	display: inline-block;

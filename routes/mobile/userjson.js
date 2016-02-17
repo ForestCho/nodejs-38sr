@@ -5,11 +5,13 @@ var Relation = require('../../models/relation');
 var RelationDao = require('../../dao/relationdao');
 var ArticleDao = require('../../dao/articledao');
 var EventProxy = require('eventproxy'); 
-
-/*
-*
-*GET user info
-*/ 
+ 
+/**
+ * [index user info]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.index = function (req, res) {  
  	var curuid  = req.query.curuid; 
  	var myuid = 0;
@@ -66,6 +68,12 @@ var EventProxy = require('eventproxy');
 } 
 
 
+/**
+ * [articlelist description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.articlelist = function (req, res) { 
  	var page = 1;
  	var pagesize = config.index.list_article_size;

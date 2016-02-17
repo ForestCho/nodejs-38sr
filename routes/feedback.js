@@ -7,11 +7,14 @@ var	Reply = require('../models/reply');
 var at = require('../lib/at'); 
 var RelationDao = require('../dao/relationdao'); 
 var EventProxy = require('eventproxy'); 
-var xssFilters = require('xss-filters');
-/*
- * GET article detail page.
- */
+var xssFilters = require('xss-filters'); 
 
+/**
+ * [index 网站反馈页面]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.index = function (req, res) { 
  	var proxy = new EventProxy(); 
  	var curpath = '/';
@@ -44,6 +47,13 @@ var xssFilters = require('xss-filters');
  		});
  	}); 
  };
+
+ /**
+  * [dofb 反馈回复动作]
+  * @param  {[type]} req
+  * @param  {[type]} res
+  * @return {[type]}
+  */
  exports.dofb = function (req, res) {
  	var repstr = req.body.repstr;
  	var	tid = req.body.tid;

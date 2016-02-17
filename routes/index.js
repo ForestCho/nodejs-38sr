@@ -5,15 +5,18 @@ var ArticleDao = require('../dao/articledao');
 var moment = require('moment');
 var config = require('../config').config;
 var cache = require('../common/cache');
-var EventProxy = require('eventproxy');
-var mongoose = require('mongoose');
-/*
- * GET home page.
+var EventProxy = require('eventproxy');   
+
+/**
+ * [commonQuery description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @param  {[type]} curpath
+ * @param  {[type]} articleLimit
+ * @param  {[type]} cataZh
+ * @param  {[type]} classify
+ * @return {[type]}
  */
-//mongoose.connect('mongodb://caosl:123456@127.0.0.1:27017/blogdb');
-mongoose.connect('mongodb://caosl:123456@107.170.206.235:27017/blogdb');
-//mongoose.connect('mongodb://127.0.0.1:27017/blogdb')
- 
 var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
     var p = 1;//pageid
     var pagesize = config.index.list_article_size;
@@ -112,8 +115,13 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
         }
     })); 
 }
-
-//首页路由
+ 
+/**
+ * [index 首页路由]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.index = function(req, res) {
     var flag = 0;
     var cataZh = "个记录";
@@ -125,22 +133,31 @@ exports.index = function(req, res) {
     };
     commonQuery(req, res, curpath, articleLimit, cataZh, classify);
 }
-
-//心情路由
-exports.mood = function(req, res) {
-    var flag = 0;
+ 
+/**
+ * [mood 心情路由]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
+exports.mood = function(req, res) { 
     var classify = 0;
     var cataZh = "条心情";
     var curpath = "/mood";
     res.locals.pageflag = 0;
     var articleLimit = {
-        classify: classify,
-        flag: flag,
+        classify: classify, 
         isdelete: false
     };
     commonQuery(req, res, curpath, articleLimit, cataZh, classify);
-}
-//article路由
+} 
+
+/**
+ * [article article路由]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.article = function(req, res) {
     var flag = 0;
     var classify = 2;
@@ -152,8 +169,14 @@ exports.article = function(req, res) {
         isdelete: false
     };
     commonQuery(req, res, curpath, articleLimit, cataZh, classify);
-}
-//快链路由
+} 
+
+/**
+ * [fastlink 快链路由]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.fastlink = function(req, res) {
     var classify = 1;
     var cataZh = "条快链";
@@ -165,8 +188,13 @@ exports.fastlink = function(req, res) {
     };
     commonQuery(req, res, curpath, articleLimit, cataZh, classify);
 }
-
-//笑话路由
+ 
+/**
+ * [xiaohua 笑话路由 ]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.xiaohua = function(req, res) {
     var curpath = "/xiaohua";
     var cataZh = "句笑话";

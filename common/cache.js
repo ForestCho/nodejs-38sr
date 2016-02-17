@@ -1,6 +1,12 @@
 var redis  = require('./redis');
 var _      = require('lodash'); 
 
+/**
+ * [get description]
+ * @param  {[type]}   key
+ * @param  {Function} callback
+ * @return {[type]}
+ */
 var get = function (key, callback) {
   var t = new Date();
   redis.get(key, function (err, data) {
@@ -15,9 +21,14 @@ var get = function (key, callback) {
   });
 };
 
-exports.get = get;
 
-// time 参数可选，秒为单位
+/**
+ * [set time 参数可选，秒为单位]
+ * @param {[type]}   key
+ * @param {[type]}   value
+ * @param {[type]}   time
+ * @param {Function} callback
+ */
 var set = function (key, value, time, callback) {
   var t = new Date();
 
@@ -35,4 +46,5 @@ var set = function (key, value, time, callback) {
   } 
 };
 
+exports.get = get;
 exports.set = set;

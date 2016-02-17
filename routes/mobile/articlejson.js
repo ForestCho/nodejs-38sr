@@ -4,11 +4,14 @@ var	ReplyDao = require('../../dao/replydao');
 var util = require('../../lib/util'); 
 var At = require('../../lib/at');
 var relationdao = require('../../dao/relationdao'); 
-var EventProxy = require('eventproxy'); 
-/*
- * GET article detail page.
- */
+var EventProxy = require('eventproxy');  
 
+/**
+ * [getdetail article detail page]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.getdetail = function (req, res) {
  	var tid = req.query.tid;   
 	var summaryNum = 3;

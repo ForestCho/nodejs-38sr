@@ -56,7 +56,7 @@
 	font-size: 12px;
 } 
 .article_head_info{
-	padding: 5px 5px 10px 5px;
+	padding: 5px 0px 10px 0px;
     border-bottom: 1px solid #E0E0E0;
 }
 .article_head_info a{	
@@ -202,6 +202,7 @@
 	padding: 3px 10px;
 	clear: both;
 	font-weight: 400;
+	margin:0px;
 	line-height: 1.42857143;
 	color: #333;
 	white-space: nowrap;

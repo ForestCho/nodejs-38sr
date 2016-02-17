@@ -1,6 +1,11 @@
 var Zymryj = require('../models/zymryj'); 
 var	util = require('../lib/util');
 
+/**
+ * [getZymryjOfCurrday description]
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var getZymryjOfCurrday = function(cb){	
  	var now = new Date();
 	Zymryj.findOne({create_at:{$gt: util.getStartOfCurrDay(now),$lt: util.getEndOfCurrDay(now)}},null,{sort:{'create_at':-1},limit:1},function(err,tempzymryj){ 
@@ -15,6 +20,15 @@ var getZymryjOfCurrday = function(cb){
  	});
 }
 //添加
+/**
+ * [saveNewZymryj description]
+ * @param  {[type]}   cncontent
+ * @param  {[type]}   encontent
+ * @param  {[type]}   img
+ * @param  {[type]}   create_at
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var saveNewZymryj = function(cncontent,encontent,img,create_at,cb){
 	var zyItem = new Zymryj({  
 	        cncontent:cncontent,

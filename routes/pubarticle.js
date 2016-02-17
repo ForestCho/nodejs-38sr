@@ -9,8 +9,12 @@ var bosonnlp = require('bosonnlp');
 var marked = require('marked');
 var boson = new bosonnlp.BosonNLP("yoUTK8dE.3486.jTfMGWlrfZxc"); 
 
-/*
- * 发表note页面
+
+/**
+ * [save 发表article页面]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
 exports.save = function(req, res) {
     var title = req.body.title;
@@ -82,6 +86,12 @@ exports.save = function(req, res) {
     }) 
 };
 
+/**
+ * [index description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.index = function(req, res) {
     if (!req.session.user) {
         var prelink = "pub";

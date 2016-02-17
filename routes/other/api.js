@@ -9,6 +9,13 @@ var cache = require('../../common/cache');
 var EventProxy = require('eventproxy');
 var mongoose = require('mongoose'); 
 
+
+/**
+ * [posts description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
 exports.posts = function (req, res) { 
   var pageid = req.query.pageid;
   var pagesize = config.index.list_article_size;
@@ -60,6 +67,12 @@ exports.posts = function (req, res) {
   })  
 };
  
+/**
+ * [partials description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.partials = function (req, res) {
   var name = req.params.name;
   console.log(name);

@@ -5,10 +5,13 @@ var	ArticleDao = require('../../dao/articledao');
 var	moment = require('moment'); 
 var	config = require('../../config').config;
 var	EventProxy = require('eventproxy');
-/*
- * GET home page.
- */
 
+/**
+ * [index description]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
+ */
  exports.index = function (req, res) { 
  	var page = 1;
  	var pagesize = config.index.list_article_size;

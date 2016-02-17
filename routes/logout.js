@@ -1,7 +1,10 @@
 var config = require('../config').config;
-
-/*
- * 登出
+ 
+/**
+ * [logout 登出]
+ * @param  {[type]} req
+ * @param  {[type]} res
+ * @return {[type]}
  */
  exports.logout = function (req, res) {
   	req.session.destroy();

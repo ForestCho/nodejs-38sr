@@ -1,37 +1,84 @@
 var User = require('../models/user'); 
 var	util = require('../lib/util');  
 
-//用用户名字去拿用户信息
+
+/**
+ * [getUserInfoByName 用用户名字去拿用户信息]
+ * @param  {[type]}   name
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var getUserInfoByName = function(name,cb){
 	User.findOne({name:name},cb);
 }
 
+/**
+ * [getAdminUserInfoByName description]
+ * @param  {[type]}   name
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var getAdminUserInfoByName = function(name,cb){
 	User.findOne({name:name,admin:1},cb);
 }
 
-//用用户id去拿用户信息
+/**
+ * [getUserInfoByUid 用用户id去拿用户信息]
+ * @param  {[type]}   uid
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var getUserInfoByUid = function(uid,cb){
 	User.findOne({uid:uid},cb);
 }
-
-//用用户email去拿用户信息
+ 
+/**
+ * [getUserInfoByEmail 用用户email去拿用户信息]
+ * @param  {[type]}   email
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var getUserInfoByEmail = function(email,cb){
 	User.findOne({email:email},cb);
 }
 
+/**
+ * [getUserInfoByObj description]
+ * @param  {[type]}   obj
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var getUserInfoByObj = function(obj,cb){
 	User.findOne(obj,cb);
 }
 
+/**
+ * [getUserInfoByLoginTypeAndAccessToken description]
+ * @param  {[type]}   logintype
+ * @param  {[type]}   access_token
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var getUserInfoByLoginTypeAndAccessToken = function(logintype,access_token,cb){
 	User.findOne({logintype:logintype,access_token:access_token},cb);
 }
+
+/**
+ * [getUserInfoByLoginTypeAndName description]
+ * @param  {[type]}   logintype
+ * @param  {[type]}   name
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var getUserInfoByLoginTypeAndName = function(logintype,name,cb){
 	User.findOne({logintype:logintype,name:name},cb);
 }
-
-//得到新增用户的uid
+ 
+/**
+ * [getNextUidOfUser 得到新增用户的uid]
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var getNextUidOfUser = function(cb){
 	var uid = 1;
 	User.findOne().sort({'uid':-1}).exec(function(err,doc){  
@@ -46,16 +93,37 @@ var getNextUidOfUser = function(cb){
 		return cb(err); 
 	});
 }
-
-//得到用户数量
+ 
+/**
+ * [getNumberOfAllUser 得到用户数量]
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var getNumberOfAllUser = function(cb){
  	User.count({},cb);
 }
 
+/**
+ * [getUserListByScore description]
+ * @param  {[type]}   list_hot_user_size
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var getUserListByScore = function(list_hot_user_size,cb){
 	User.find().limit(list_hot_user_size).sort({score:-1}).exec(cb);
 }
-//添加用户信息
+
+/**
+ * [saveNewUser 添加用户信息]
+ * @param  {[type]}   uid
+ * @param  {[type]}   name
+ * @param  {[type]}   email
+ * @param  {[type]}   pwd
+ * @param  {[type]}   relapath
+ * @param  {[type]}   relapath
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var saveNewUser = function(uid,name,email,pwd,relapath,relapath,cb){
 	var user = new User({   
 		uid:uid,
@@ -67,11 +135,31 @@ var saveNewUser = function(uid,name,email,pwd,relapath,relapath,cb){
 	}); 
 	user.save(cb);  
 }
-//添加用户信息
+
+/**
+ * [saveNewUserObject 添加用户信息]
+ * @param  {[type]}   userobj
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var saveNewUserObject = function(userobj,cb){
 	userobj.save(cb);  
 }
-//保存注册为SINA用户
+
+/**
+ * [saveNewSinaUser 保存注册为SINA用户]
+ * @param  {[type]}   uid
+ * @param  {[type]}   name
+ * @param  {[type]}   locate
+ * @param  {[type]}   photo
+ * @param  {[type]}   access_token
+ * @param  {[type]}   logintype
+ * @param  {[type]}   gender
+ * @param  {[type]}   signature
+ * @param  {[type]}   oid
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var saveNewSinaUser = function(uid,name,locate,photo,access_token,logintype,gender,signature,oid,cb){
 	var user = new User({   
 		uid:uid,
@@ -86,7 +174,18 @@ var saveNewSinaUser = function(uid,name,locate,photo,access_token,logintype,gend
 	}); 
 	user.save(cb);  
 }
-//保存注册为QQ用户
+
+/**
+ * [saveNewQQUser 保存注册为QQ用户]
+ * @param  {[type]}   uid
+ * @param  {[type]}   name
+ * @param  {[type]}   locate
+ * @param  {[type]}   photo
+ * @param  {[type]}   logintype
+ * @param  {[type]}   gender
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var saveNewQQUser = function(uid,name,locate,photo,logintype,gender,cb){
 	var user = new User({   
 		uid:uid,
@@ -99,12 +198,25 @@ var saveNewQQUser = function(uid,name,locate,photo,logintype,gender,cb){
 	user.save(cb);  
 }
 
-//更新用户信息By User
+
+/**
+ * [updateUserInfoFree 更新用户信息By User]
+ * @param  {[type]}   condition
+ * @param  {[type]}   update
+ * @param  {[type]}   options
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var updateUserInfoFree = function(condition,update,options,cb){ 
 	User.update(condition,update,options,cb); 
 }
-
-//更新用户信息By User
+ 
+/**
+ * [updateUserInfo 更新用户信息By User]
+ * @param  {[type]}   user
+ * @param  {Function} cb
+ * @return {[type]}
+ */
 var updateUserInfo = function(user,cb){ 
 	user.save(cb);
 }
