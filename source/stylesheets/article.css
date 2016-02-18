@@ -219,15 +219,13 @@
     font-size: 15px;
     color: #A4A4A4;
 }
-.nosignin a{
-	background-color: #569E97;
-	padding: 2px 6px; 
-	font-size: 15px;
-	color: #fff;
+.nosignin a{ 
+	padding: 0px 4px; 
+	font-size: 15px; 
+	color: #00a090;
 }
 .nosignin a:hover{
-	background-color: #039082;
-	color: #fff; 
+	text-decoration: underline;
 } 
 .opt a {
 	color: #999;

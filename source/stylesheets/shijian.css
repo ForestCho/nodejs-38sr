@@ -3,54 +3,75 @@
 	padding-bottom: 20px;
 	padding-left: 50px;
 	width: 100%; 
-}
-.point{
-	width: 55px;
-	height: 55px;
-	position: absolute;
-	top: 0;
-	left: 160px;
-	background: url(./point.png) no-repeat 0px 18px; 
-	overflow: hidden;
-}
-.point b {
-	height: 16px;
-	width: 16px;
-	background: #fff;
-	display: block;
-	margin: 17px 0 0 19px;
-	border-radius: 18px;
-	border: 2px solid #6bc30d; 
-	position: absolute;
-	top: 0;
-	left: 0;
 } 
+.through{
+	position: relative;
+}
+
+.through:before{
+	display: block;
+    position: absolute;
+    content: ' ';
+    top: 0;
+    bottom: 0;
+    left: 190px;
+    width: 0;
+    border-left: 2px solid rgba(0,0,0,.06);
+    height: 100%;
+
+}
 .through li{
 	height: 110px;
 	vertical-align: bottom;
 	overflow: hidden;
-	position: relative;
+	position: relative; 
+}
+
+.through li:hover:before{
+	box-shadow:0 0 0 3px rgba(0,0,0,.1)
+}
+
+.through li:before {
+    position: absolute;
+    display: inline-block;
+    left: 181px;
+    top: 18px;
+    width: 20px;
+    height: 20px;
+    background-color: #00a090;
+    border: 5px solid #fff;
+    content: ' ';
+    border-radius: 10px;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
 }
 #timewrap{  
 	overflow: hidden;
-	margin: 0 auto;
-	background: url(../images/linebg.gif)  repeat-y 187px 0; 
+	margin: 0 auto; 
 	padding-top: 60px;
 }
-.linewrap .date{
-	position: absolute;
-	top: 0;
-	left: 0px;
-	height: 55px;
-	width: 150px;
-	line-height: 55px;
-	text-align: right;
+
+.through li .date{ 
+    margin-top: 20px; 
+    width: 150px;
+    text-align: right;
 }
-.linewrap .detail {
+
+.through li .detail {
 	position: absolute;
 	top: 0;
 	left: 215px;
 	height: 55px;
 	width: 400px; 
 	text-align: left;
+}
+.through li .detail .detail-head{ 
+	font-size: 18px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.through li .detail h5{  
+    margin-left: 15px;
 }

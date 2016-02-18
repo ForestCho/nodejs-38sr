@@ -838,13 +838,16 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
 
     tagsBarTopBtnInit();
     function tagsBarTopBtnInit(){
-        getScrollTop() > 130 ? TopObj.style.bottom = "80px" : TopObj.style.bottom = "-45px";
+        if(TopObj){
+            getScrollTop() > 130 ? TopObj.style.bottom = "85px" : TopObj.style.bottom = "-45px";
+        }
         var height=getClientHeight();
         var theight = getScrollTop();
         var rheight = getScrollHeight();
         var bheight = rheight - theight - height;
-        bheight < 100? tagsBar.style.bottom = "-100px": tagsBar.style.bottom = "0px";
-  
+        if(tagsBar){
+            bheight < 100? tagsBar.style.bottom = "-100px": tagsBar.style.bottom = "0px";
+        }
     }
     function getClientHeight(){   
         var clientHeight=0;   
@@ -888,5 +891,5 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
  
 require(["jquery", "bootstrap", "jqueryform", "jquerycaret", "underscore", "jquerymigrate", "jqueryatwho", "index", "article", "pub", "reglog", "user", "set", "common"],
     function($, bootstrap, jqueryform, jquerycaret, _, jquerymigrate, jqueryatwho, index, article, pub, reglog, user, set, common) {
-
-    });
+        console.log("你好，我好，大家好!!!");
+});

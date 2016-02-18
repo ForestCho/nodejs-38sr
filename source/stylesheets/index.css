@@ -63,11 +63,11 @@
     height: 250px;
   }
 
-.articleitem {  
+.articleitem {   
 	padding: 10px 20px;
 	background-color: #FFF; 
 	border-bottom: 1px solid #f0f0f0
-}
+} 
 .articleitem-first {
 	padding: 10px 20px;
 	background-color: #FFF; 
@@ -145,8 +145,8 @@
 	position: relative;
 	font-size: 14px;
 	color: #777; 
-	height: 35px;
-	padding: 8px 0px;
+	height: 30px;
+	padding: 8px 0px 0px 0px;
 	opacity: 0.8;
 }
 .articledate{ 
@@ -374,7 +374,9 @@
 .site_link {
 	margin-top: 20px
 }
-
+.google-ad{
+	margin-top: 20px;
+}
 .site_list {
 	padding-left: 10px;
 	margin-top: 10px
@@ -459,6 +461,9 @@
 	background-color: #e4e4e4;
 }
 
+.modal_regwrap .modal-content{
+	border: 0px;
+}
 .modal_regwrap .col-sm-10{
 	width:100%;
 }

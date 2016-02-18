@@ -6780,15 +6780,13 @@ button.close {
     font-size: 15px;
     color: #A4A4A4;
 }
-.nosignin a{
-	background-color: #569E97;
-	padding: 2px 6px; 
-	font-size: 15px;
-	color: #fff;
+.nosignin a{ 
+	padding: 0px 4px; 
+	font-size: 15px; 
+	color: #00a090;
 }
 .nosignin a:hover{
-	background-color: #039082;
-	color: #fff; 
+	text-decoration: underline;
 } 
 .opt a {
 	color: #999;
@@ -6948,11 +6946,11 @@ button.close {
     height: 250px;
   }
 
-.articleitem {  
+.articleitem {   
 	padding: 10px 20px;
 	background-color: #FFF; 
 	border-bottom: 1px solid #f0f0f0
-}
+} 
 .articleitem-first {
 	padding: 10px 20px;
 	background-color: #FFF; 
@@ -7030,8 +7028,8 @@ button.close {
 	position: relative;
 	font-size: 14px;
 	color: #777; 
-	height: 35px;
-	padding: 8px 0px;
+	height: 30px;
+	padding: 8px 0px 0px 0px;
 	opacity: 0.8;
 }
 .articledate{ 
@@ -7259,7 +7257,9 @@ button.close {
 .site_link {
 	margin-top: 20px
 }
-
+.google-ad{
+	margin-top: 20px;
+}
 .site_list {
 	padding-left: 10px;
 	margin-top: 10px
@@ -7344,6 +7344,9 @@ button.close {
 	background-color: #e4e4e4;
 }
 
+.modal_regwrap .modal-content{
+	border: 0px;
+}
 .modal_regwrap .col-sm-10{
 	width:100%;
 }
@@ -8704,56 +8707,77 @@ a.optionaccess:hover {
 	padding-bottom: 20px;
 	padding-left: 50px;
 	width: 100%; 
-}
-.point{
-	width: 55px;
-	height: 55px;
-	position: absolute;
-	top: 0;
-	left: 160px;
-	background: url(./point.png) no-repeat 0px 18px; 
-	overflow: hidden;
-}
-.point b {
-	height: 16px;
-	width: 16px;
-	background: #fff;
-	display: block;
-	margin: 17px 0 0 19px;
-	border-radius: 18px;
-	border: 2px solid #6bc30d; 
-	position: absolute;
-	top: 0;
-	left: 0;
 } 
+.through{
+	position: relative;
+}
+
+.through:before{
+	display: block;
+    position: absolute;
+    content: ' ';
+    top: 0;
+    bottom: 0;
+    left: 190px;
+    width: 0;
+    border-left: 2px solid rgba(0,0,0,.06);
+    height: 100%;
+
+}
 .through li{
 	height: 110px;
 	vertical-align: bottom;
 	overflow: hidden;
-	position: relative;
+	position: relative; 
+}
+
+.through li:hover:before{
+	box-shadow:0 0 0 3px rgba(0,0,0,.1)
+}
+
+.through li:before {
+    position: absolute;
+    display: inline-block;
+    left: 181px;
+    top: 18px;
+    width: 20px;
+    height: 20px;
+    background-color: #00a090;
+    border: 5px solid #fff;
+    content: ' ';
+    border-radius: 10px;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
 }
 #timewrap{  
 	overflow: hidden;
-	margin: 0 auto;
-	background: url(../images/linebg.gif)  repeat-y 187px 0; 
+	margin: 0 auto; 
 	padding-top: 60px;
 }
-.linewrap .date{
-	position: absolute;
-	top: 0;
-	left: 0px;
-	height: 55px;
-	width: 150px;
-	line-height: 55px;
-	text-align: right;
+
+.through li .date{ 
+    margin-top: 20px; 
+    width: 150px;
+    text-align: right;
 }
-.linewrap .detail {
+
+.through li .detail {
 	position: absolute;
 	top: 0;
 	left: 215px;
 	height: 55px;
 	width: 400px; 
 	text-align: left;
+}
+.through li .detail .detail-head{ 
+	font-size: 18px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.through li .detail h5{  
+    margin-left: 15px;
 }
 .followlist_wrap img{
 	
@@ -8841,6 +8865,7 @@ ul{
 	margin-top: 5px;
 }
 .copyright {
+	height: 85px;
 	text-align: center;
 	padding-top: 10px;
 	padding-bottom: 10px;
