@@ -8,7 +8,8 @@ var path = require('path');
 var routes = require('./routes');
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://caosl:123456@107.170.206.235:27017/blogdb'); 
+//mongoose.connect('mongodb://caosl:123456@107.170.206.235:27017/blogdb'); 
+mongoose.connect('mongodb://127.0.0.1:27017/blogdb'); 
 var app = express();
 
 // all environments
