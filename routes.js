@@ -103,6 +103,7 @@ var run = function(app){
 　//********************************************************************// 
 	//网站路由
 	app.get('/', index.index); 
+	app.get('/gc', index.gc); 
 	app.get('/mood', index.mood); 
 	app.get('/article', index.article); 
 	app.get('/fastlink', index.fastlink); 
