@@ -598,7 +598,7 @@ define("article", ["msgbox", "jquery", "jquerymigrate", "jquerycaret", "undersco
         var rinput = '<input type="hidden" name="rid" value="' + rid + '">';
         var ruidinput = '<input type="hidden" name="ruid" value="' + ruid + '">';
         var rnameinput = '<input type="hidden" name="runame" value="' + runame + '">';
-        var textarea = '<textarea row="3" name="repstr" class="atreply" id="replytoreply" style="width:615px;resize: vertical;"></textarea>';
+        var textarea = '<textarea row="3" name="repstr" class="atreply" id="replytoreply" style="width:630px;resize: vertical;"></textarea>';
         var btnrep = '<div class="inputopt"><button type="submit" class="btn  btn-sm">回复</button></div>';
         var formhead = '<form id="replywrap" class="navbar-form" action="/reply" method="post">';
         var formtail = '</form>';
@@ -824,7 +824,22 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
     }
 
     //顶部导航栏效果
-    window.onscroll = function() {
+    window.onscroll = function() {      
+        tagsBarTopBtnInit();
+      }
+
+    tagsBarTopBtnInit();
+    function tagsBarTopBtnInit(){
+        // if(TopObj){
+        //     getScrollTop() > 130 ? TopObj.style.bottom = "85px" : TopObj.style.bottom = "-45px";
+        // }
+        var height=getClientHeight();
+        var theight = getScrollTop();
+        var rheight = getScrollHeight();
+        var bheight = rheight - theight - height;
+        if(tagsBar){
+            bheight < 100? tagsBar.style.bottom = "-100px": tagsBar.style.bottom = "0px";
+        }
         var t = document.documentElement.scrollTop || document.body.scrollTop;
         var body = document.getElementsByTagName("body")[0];
         var navigate = document.getElementById("navigate");
@@ -832,21 +847,6 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
             domop.addClass(body, "headon");
         } else {
             domop.removeClass(body, "headon");
-        }
-        tagsBarTopBtnInit();
-      }
-
-    tagsBarTopBtnInit();
-    function tagsBarTopBtnInit(){
-        if(TopObj){
-            getScrollTop() > 130 ? TopObj.style.bottom = "85px" : TopObj.style.bottom = "-45px";
-        }
-        var height=getClientHeight();
-        var theight = getScrollTop();
-        var rheight = getScrollHeight();
-        var bheight = rheight - theight - height;
-        if(tagsBar){
-            bheight < 100? tagsBar.style.bottom = "-100px": tagsBar.style.bottom = "0px";
         }
     }
     function getClientHeight(){   

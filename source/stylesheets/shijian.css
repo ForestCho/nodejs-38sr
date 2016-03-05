@@ -49,7 +49,7 @@
 #timewrap{  
 	overflow: hidden;
 	margin: 0 auto; 
-	padding-top: 60px;
+	padding: 60px 0px;
 }
 
 .through li .date{ 

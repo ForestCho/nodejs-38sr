@@ -36,7 +36,7 @@
 .headon .catawrap li a{
 	font-size: 14px;
 	background-color: transparent !important;
-	height: 34px;
+	height: 35px;
 	padding: 6px 15px;
 } 
 .headsearch .form-search {
@@ -103,6 +103,7 @@
 }
 .navbar{
 	border-radius: 0px;
+	border-width: 0px;
 }
 .catawrap li a{
 	font-size: 14px;
@@ -237,7 +238,7 @@
 	text-decoration: none;
 	color: #D1D1D1
 }
-#optionaccesslist{
+#optionaccesslist{ 
 	background-color: #0C8176;
 	padding: 0px;
 }
@@ -281,6 +282,10 @@
 	padding: 15px 8px;
 	text-align: center;
 	color: #fff;   
+	transition: all 0.3s;
+	-moz-transition: all 0.3s; /* Firefox 4 */
+	-webkit-transition: all 0.3s; /* Safari 和 Chrome */
+	-o-transition: all 0.3s; /* Opera */
 }
 .reg_login .open a.optionaccess{
 	background-color: #0C8176 !important;
@@ -327,12 +332,13 @@ a.optionaccess:hover {
 	background-color: #0B685F;
 }
 .headon .optionaccess{
-	font-size: 14px; 
 	height: 34px;
+	font-size: 14px; 
 	padding: 6px 8px;
 } 
 .headon .reg_login .optionaccess {
 	display: block; 
+	height: 35px;
 	float: right;
 	color: #fff !important;
 	background-color: #00a090 !important; 
@@ -348,4 +354,39 @@ a.optionaccess:hover {
 	line-height: 20px;
 	padding-top: 8px;
 	padding-bottom: 0px;
+}
+
+.hasmsg{
+	position: absolute;
+ 	top: 13px;
+    right: 8px;
+    background: #FF9F83;
+    border-radius: 33px;
+    padding: 2px 2px;
+    width: 7px;
+    height: 7px;
+    display: inline-block;    
+	transition: all 0.3s;
+	-moz-transition: all 0.3s; /* Firefox 4 */
+	-webkit-transition: all 0.3s; /* Safari 和 Chrome */
+	-o-transition: all 0.3s; /* Opera */
+}
+.headon .hasmsg{
+ 	top: 7px;
+
+}
+.msgnum{
+	display: inline-block;
+    margin-left: 4px;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #FF9F83;
+    border-radius: 10px;
 }

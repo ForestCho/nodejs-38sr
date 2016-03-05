@@ -247,7 +247,7 @@
 	padding-right: 0px;
 }
 #reply_input,.atreply{
-	width: 615px;
+	width: 630px;
 	height: 30px;
 	resize: vertical;
 	border-radius: 0px;
@@ -260,15 +260,15 @@
 }
 
 #repstr{
-	width: 100%;
-	padding: 0px 15px 0px 0px;
+	width: 685px;
+	padding: 0px;
 	margin-right: 0px;
 	position:relative;
 }
 .inputopt {
   	display:none; 
 	position: absolute;
-	right: 20px;
+	right: 10px;
 	bottom: 8px;
 }
 .inputopt button{
@@ -276,7 +276,9 @@
 	background-color: transparent;
 	color:gray;
 	border:0px;
-
+}
+.inputopt button:hover{ 
+	background-color: #eee; 
 }
 
 

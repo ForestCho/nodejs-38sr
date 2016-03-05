@@ -6808,7 +6808,7 @@ button.close {
 	padding-right: 0px;
 }
 #reply_input,.atreply{
-	width: 615px;
+	width: 630px;
 	height: 30px;
 	resize: vertical;
 	border-radius: 0px;
@@ -6821,15 +6821,15 @@ button.close {
 }
 
 #repstr{
-	width: 100%;
-	padding: 0px 15px 0px 0px;
+	width: 685px;
+	padding: 0px;
 	margin-right: 0px;
 	position:relative;
 }
 .inputopt {
   	display:none; 
 	position: absolute;
-	right: 20px;
+	right: 10px;
 	bottom: 8px;
 }
 .inputopt button{
@@ -6837,7 +6837,9 @@ button.close {
 	background-color: transparent;
 	color:gray;
 	border:0px;
-
+}
+.inputopt button:hover{ 
+	background-color: #eee; 
 }
 
 
@@ -6955,6 +6957,10 @@ button.close {
 	padding: 10px 20px;
 	background-color: #FFF; 
 	border-radius: 0px 0px 5px 5px;
+}
+
+.articlemsg span{
+	color: #07695F;
 }
 /*
 	box-shadow: 2px 0 5px rgba(214, 214, 215, 0.9), -2px 0 5px rgba(214, 214, 215, 0.9);*/
@@ -7280,6 +7286,9 @@ button.close {
 	margin-left: 10px;
 	font-size: 13px;
 }
+.item_title a:visited{
+	color: #888;
+}
 .articletype{
 	color: #333;
 }
@@ -7603,7 +7612,7 @@ button.close {
 .headon .catawrap li a{
 	font-size: 14px;
 	background-color: transparent !important;
-	height: 34px;
+	height: 35px;
 	padding: 6px 15px;
 } 
 .headsearch .form-search {
@@ -7670,6 +7679,7 @@ button.close {
 }
 .navbar{
 	border-radius: 0px;
+	border-width: 0px;
 }
 .catawrap li a{
 	font-size: 14px;
@@ -7804,7 +7814,7 @@ button.close {
 	text-decoration: none;
 	color: #D1D1D1
 }
-#optionaccesslist{
+#optionaccesslist{ 
 	background-color: #0C8176;
 	padding: 0px;
 }
@@ -7848,6 +7858,10 @@ button.close {
 	padding: 15px 8px;
 	text-align: center;
 	color: #fff;   
+	transition: all 0.3s;
+	-moz-transition: all 0.3s; /* Firefox 4 */
+	-webkit-transition: all 0.3s; /* Safari 和 Chrome */
+	-o-transition: all 0.3s; /* Opera */
 }
 .reg_login .open a.optionaccess{
 	background-color: #0C8176 !important;
@@ -7894,12 +7908,13 @@ a.optionaccess:hover {
 	background-color: #0B685F;
 }
 .headon .optionaccess{
-	font-size: 14px; 
 	height: 34px;
+	font-size: 14px; 
 	padding: 6px 8px;
 } 
 .headon .reg_login .optionaccess {
 	display: block; 
+	height: 35px;
 	float: right;
 	color: #fff !important;
 	background-color: #00a090 !important; 
@@ -7917,6 +7932,40 @@ a.optionaccess:hover {
 	padding-bottom: 0px;
 }
 
+.hasmsg{
+	position: absolute;
+ 	top: 13px;
+    right: 8px;
+    background: #FF9F83;
+    border-radius: 33px;
+    padding: 2px 2px;
+    width: 7px;
+    height: 7px;
+    display: inline-block;    
+	transition: all 0.3s;
+	-moz-transition: all 0.3s; /* Firefox 4 */
+	-webkit-transition: all 0.3s; /* Safari 和 Chrome */
+	-o-transition: all 0.3s; /* Opera */
+}
+.headon .hasmsg{
+ 	top: 7px;
+
+}
+.msgnum{
+	display: inline-block;
+    margin-left: 4px;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #FF9F83;
+    border-radius: 10px;
+}
 .account_panel{
 	width: 100%;
 	height: 100%;
@@ -8376,53 +8425,6 @@ a.optionaccess:hover {
 	line-height: 1.8em;
 	list-style: none;
 }
-#gotopbtn {
-	position: fixed;
-	text-align: center;
-	line-height: 30px;
-	background-color: rgba(0, 160, 144, 0.3);
-	bottom: -45px;
-	width: 40px;
-	height: 40px;
-	padding: 5px;
-	margin-right: 120px;
-	font-size: 12px;
-	cursor: pointer;
-	right: 0;
-	-webkit-transition: all linear .2s;
-	-moz-transition: all linear .2s;
-	-ms-transition: all linear .2s;
-	-o-transition: all linear .2s;
-	transition: all linear .2s;
-}
-#gotopbtn:hover{
-	background-color: rgba(0, 160, 144, 0.8);
-}
-#gotopbtn  span{	
-    width: 30px;
-    height: 30px;
-    font-size: 30px;
-    color: #fff;
-}
-.yjfk {
-	position: fixed;
-	top: 150px;
-	right: 0;
-	width: 26px;
-	height: 90px
-}
-
-.yjfk a {
-	display: block;
-	background: url(/images/fk.gif) no-repeat;
-	width: 26px;
-	height: 90px;
-	overflow: hidden
-}
-
-.yjfk a:hover {
-	background-position: 0 -90px
-}
 .titlewrap{
 	margin-top: 15px;
 	margin-bottom: 20px;
@@ -8753,7 +8755,7 @@ a.optionaccess:hover {
 #timewrap{  
 	overflow: hidden;
 	margin: 0 auto; 
-	padding-top: 60px;
+	padding: 60px 0px;
 }
 
 .through li .date{ 
@@ -8866,6 +8868,7 @@ ul{
 }
 .copyright {
 	height: 85px;
+	overflow: hidden;
 	text-align: center;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -8891,8 +8894,7 @@ ul{
     margin-left: 154px;
     text-align: left;
 }
-.git-notice{	
-    width: 725px;
+.git-notice{	 
     margin-left: 154px;
     text-align: left;
     color: #ccc;
@@ -8903,6 +8905,15 @@ ul{
 }
 .git-notice a:hover{
 	text-decoration: underline;
+}
+
+#gotopbtn{
+	float: right;
+	margin-right: 130px;
+}
+#gotopbtn:hover{
+	cursor: pointer;
+	color: #07695E; 
 }
 .aboutpanel {
 	margin-top: 20px;
@@ -9012,7 +9023,9 @@ ul{
 	border-bottom:1px solid #E0E0E0;
 }
 @media screen and (max-width: 979px) {
-
+	.adsbygoogle{
+		display:none !important;
+	}
   	.leftwrap {
   		width: 100%;
   		min-width: 0px;
@@ -9069,6 +9082,9 @@ ul{
 	.leftreg {
 		 margin-left: 0px !important;
 	} 
+	.about-site,.git-notice{
+		margin-left: 5px;
+	}
 }
 
 .ad_wrap{
