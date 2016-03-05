@@ -23,14 +23,13 @@
 					<div class="articleitem"> 
 					<div class="photowrap"><a class="userlink show-pop-async" data-uid=<%= result[i]._creator.uid %> href="/user/<%= result[i]._creator.name %>"><img src=<%= result[i]._creator.photo %>></a></div>
 					<div style="margin-left:55px;">
-						<div>
+						<div class="articlemsg">
 							<a class="title" id=<%= result[i].tid %> href="/user/<%= result[i]._creator.name %>"><%= result[i]._creator.name %></a>
 							<%
 							if(result[i].location){
 							%>
-							在
-							<a href="/locate/<%- result[i].location %>/" ><span class="sitetext"><%- result[i].location %></span></a>
-							
+							<span>在</span>
+							<a href="/locate/<%- result[i].location %>/" ><span class="sitetext"><%- result[i].location %></span></a>							
 							<%}%>
 							<% if(result[i].classify === 0){%>
 							<span>说
@@ -66,7 +65,7 @@
 							<%if(result[i]._sid){%>
 							<img class="sitepic" src="<%=result[i]._sid.spic %>">
 							<%}%>
-							<p class="item_title"><a href="/redirect?url=<%= result[i].title %>" target="_blank" class="urltype"><%= result[i].content %><i class="fa fa-external-link"></i></a></p>
+							<p class="item_title"><a href="/redirect?url=<%= result[i].title %>" target="_blank" class="urltype"><%= result[i].content %></a></p>
 							<%}%>
 						</div>
 						<div class="otherinfowrap">
