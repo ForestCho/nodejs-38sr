@@ -16,7 +16,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class=" collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="catawrap nav navbar-nav" role="tablist">  
-			<li class="<%= (locals.pageflag== -1)?'active':'' %>" %><a href="/">广场</a></li>
+			<li class="<%= (locals.pageflag== -1)?'active':'' %>" %><a href="/gc">广场</a></li>
 			<li class="<%= (locals.pageflag== 0)?'active':'' %>" %><a href="/mood">心情</a></li>
 			<li class="<%= (locals.pageflag== 2)?'active':'' %>" %><a href="/article">文章</a></li>
 			<li class="<%= (locals.pageflag== 1)?'active':'' %>" %><a href="/fastlink">快链</a></li> 
@@ -25,17 +25,24 @@
 		<% if(locals.userinfo){%>	
 				<ul class="reg_login navbar-nav navbar-right">  
 					<li class="dropdown">
-       			    	<a class="dropdown-toggle optionaccess" data-toggle="dropdown" href="#" id="optionaccess"><%=locals.userinfo.name %><sup class="badge"><%=(locals.userinfo.msgcount!== 0)?locals.userinfo.msgcount:'' %></sup><span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu" id="optionaccesslist">
+       			    	<a class="dropdown-toggle optionaccess" data-toggle="dropdown" href="#" id="optionaccess"><%=locals.userinfo.name %>
+								<% if(locals.userinfo.msgcount!== 0){ %>
+       			    				<div class="hasmsg"></div>       
+						      	<%}%>			    	
+       			    	</a>
+						<ul class="dropdown-menu" role="menu" id="optionaccesslist">
 						        <li><a href="/pub"><i class="fa fa-edit"></i> 发布一个</a></li> 
 						        <li class="divider"></li>
 						        <li><a href="/user/<%=locals.userinfo.name %>"><i class="fa fa-circle-o-notch"></i>  个人中心</a></li>
 						        <li><a href="/set"> <i class="fa fa-cog"> </i> 账号设置</a></li>  
-						        <li><a href="/message"><i class="fa fa-bell"></i>  通知<span class="badge"><%=(locals.userinfo.msgcount!== 0)?locals.userinfo.msgcount:'' %></span></a></li> 
+						        <li><a href="/message"><i class="fa fa-bell"></i>  通知
+									<% if(locals.userinfo.msgcount!== 0){ %>
+						      		  <span class="msgnum"><%=(locals.userinfo.msgcount!== 0)?locals.userinfo.msgcount:'' %></span> 
+						      		<%}%>
+						        </a></li> 
 						        <li class="divider"></li>
 							 	<li><a href="/logout"><i class="fa fa-sign-out"></i> 安全登出</a></li>	
-					        </ul>  
-					    </a> 
+					    </ul>   
 					</li> 
 				</ul>  
 			<%}else{%> 
