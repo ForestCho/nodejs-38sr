@@ -81,6 +81,15 @@ define("msgbox", ["domop"], function(domop) {
 }),
 
 define("index", ["msgbox", "jquery","popover", "zoom"], function(msgbox, $, popover, zoom) {
+    function setCookie(name,value,days){ 
+        var exp  = new Date();
+        exp.setTime(exp.getTime() + days*24*60*60*1000);
+        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+    }
+    $('#tags-close').click(function(){
+        $('#tags-bar').fadeOut(200);
+        setCookie('DIS_TAGS',1,3); 
+    });
     $('.articleitem').hover(
         function() {
             $(this).find('.otherinfowrap').css("opacity", "1");

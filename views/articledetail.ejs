@@ -144,19 +144,19 @@ var replies = d.replies;
 						<%}%>
 					</div>
 					<%if(locals.userinfo){%>
-					<div class="replywritepanel">
-						<form class="navbar-form navbar-right" id="repstr" name="repstr" method="POST" action="/reply">
-							<input type="hidden" name="tid" id="tid" value="<%=articlecontent.tid %>"/>
-							<div class="selfimg">
-								<img src="<%-locals.userinfo.photo %>" alt="">
-							</div>
-							<input type="hidden" name="ruid" value="<%=articlecontent._creator.uid %>">
-							<textarea type="text" class="writebox atreply" name="repstr" id="reply_input" placeholder="回复点什么呢?"></textarea>
-							<div class="inputopt"><button type="submit"   id="subarticle">回复</button></div>
-						</form>
-					</div>
+						<div class="replywritepanel">
+							<form class="navbar-form navbar-right" id="repstr" name="repstr" method="POST" action="/reply">
+								<input type="hidden" name="tid" id="tid" value="<%=articlecontent.tid %>"/>
+								<div class="selfimg">
+									<img src="<%-locals.userinfo.photo %>" alt="">
+								</div>
+								<input type="hidden" name="ruid" value="<%=articlecontent._creator.uid %>">
+								<textarea type="text" class="writebox atreply" name="repstr" id="reply_input" placeholder="回复点什么呢?"></textarea>
+								<div class="inputopt"><button type="submit"   id="subarticle">回复</button></div>
+							</form>
+						</div>
 					<%}else{%>
-					<div class="nosignin"><a id="nosiginin-login">登录</a>后才能回复， 没有账号？点击这里<a id="nosiginin-reg">注册</a></div>
+						<div class="nosignin"><a id="nosiginin-login">登录</a>后才能回复， 没有账号？点击这里<a id="nosiginin-reg">注册</a></div>
 					<%}%>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

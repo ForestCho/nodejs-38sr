@@ -400,12 +400,10 @@
 .item_title i{
 	margin-left: 10px;
 	font-size: 13px;
-}
-.item_title a:visited{
-	color: #888;
-}
+} 
 .articletype{
 	color: #333;
+	font-size: 16px;
 }
 .urltype{
 	color: #333;
@@ -462,10 +460,14 @@
 
  
 .modal_regwrap input {
-	border-radius: 4px;
-	padding-left: 35px;
-	border: 0;
-	background-color: #e4e4e4;
+	border-radius: 0px;
+    padding-left: 35px;
+    border: 0;
+    background-color: #FFF;
+    border-bottom: 1px solid #eee;
+    -webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
 }
 
 .modal_regwrap .modal-content{
@@ -484,6 +486,12 @@
 }
 .modal_regwrap .modal-footer button{
 	width:100%;
+	border-radius: 0px;
+	background-color: #00a090;
+    border-color: #00a090;
+}
+.modal_regwrap .modal-footer button:hover{
+	background-color: #089385;
 }
 .modal_regwrap .wrap_col_sm{	
 	padding-right: 15px;
@@ -491,19 +499,19 @@
 }
 
 .modal_regwrap .switch-back{
-	position: absolute;
-	min-height: 20px; 
-	padding: 0px 8px;
-	top: -10px;
-	left: 15px;
+    position: absolute;
+    min-height: 20px;
+    padding: 0px 6px;
+    top: -10px;
+    left: 26px;
 	background: #fff;
 }
 .modal_regwrap .switch-back2{
-	position: absolute;
-	min-height: 20px; 
-	padding: 0px 8px;
-	top: -10px;
-	right: 15px;
+    position: absolute;
+    min-height: 20px;
+    padding: 0 6px;
+    top: -10px;
+    right: 26px;
 	background: #fff;
 }
 
@@ -560,3 +568,19 @@
 .tag-list li a:hover{    
     background-color: rgba(34, 32, 32, 1);
 } 
+#tags-close{	
+    float: right;
+    display: inline-block;
+    color: #fff;
+    height: 30px;
+    top: 0px;
+    right: 10px;
+    padding: 0px 9px;
+    position: absolute;
+    line-height: 30px;
+
+}
+#tags-close:hover{
+	cursor: pointer;
+	background-color: rgba(34,32,32,1);
+}

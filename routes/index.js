@@ -30,12 +30,18 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
         res.locals.userinfo = req.session.user;
     }
     var ep = new EventProxy();
-    var tags = ['PHP', '正则', '前端', 'JavaScript', '测试', 'java', 'linux', '面试', 'mysql', '试题', '数据库', '编程', '源码', '爬虫', 'html', '工具', 'less', 'sublime', '插件'];
+
+    var DIS_TAGS = req.cookies["DIS_TAGS"];  
+    var tags = [];
+    if(DIS_TAGS !== '1' ){
+        tags = ['PHP', '正则', '前端', 'JavaScript', '测试', 'java', 'linux', '面试', 'mysql', '试题', '数据库', '编程', '源码', '爬虫', 'html', '工具', 'less', 'sublime', '插件'];
+    }
     ep.assign("articlelist", "hotuser", 'zymryj', 'count', function(articlelist, hotuser, zymryj, count) {
         var d = [];
         d.data = articlelist;
         d.hotuser = hotuser;
         d.count = count;
+    console.log(tags);
         d.tags = tags;
         res.render(classify == 2 ? 'indexarticle' : 'index', {
             title: '做一体化的IT社区!',
@@ -122,13 +128,13 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
  * @param  {[type]} res
  * @return {[type]}
  */
-exports.index = function(req, res) {
-    var cookie = req.cookies["SR_TAB"];
+exports.index = function(req, res) { 
+    var cookie = req.cookies["SR_TAB"];  
     switch (cookie) {
         case '-1':
             gc(req, res);
             break;
-        case "0":
+        case "0": 
             mood(req, res);
             break;
         case "1":
@@ -172,7 +178,7 @@ exports.gc = gc = function(req, res) {
  * @return {[type]}
  */
 exports.mood = mood = function(req, res) {
-    var classify = 0;
+    var classify = 0; 
     var cataZh = "条心情";
     var curpath = "/mood";
     res.locals.pageflag = 0;
@@ -180,10 +186,11 @@ exports.mood = mood = function(req, res) {
         classify: classify,
         isdelete: false
     };
+    console.log(cataZh);
     res.cookie("SR_TAB", '0', {
         path: config.cookie_path,
         maxAge: 1000 * 60 * 60 * 24 * 7
-    });
+    }); 
     commonQuery(req, res, curpath, articleLimit, cataZh, classify);
 }
 

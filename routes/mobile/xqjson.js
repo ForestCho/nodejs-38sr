@@ -33,7 +33,9 @@ var	EventProxy = require('eventproxy');
  			res.json(d);  
  	});
 
-	var articleLimit = {isdelete:false}; 
+	var articleLimit = {
+        classify: 2,
+        isdelete: false}; 
 	ArticleDao.getNumberOfArticlesAsObect(articleLimit,function (err,count) {
 		ep.emit("count",count);
  	});
