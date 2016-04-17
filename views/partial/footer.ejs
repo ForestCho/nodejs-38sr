@@ -1,15 +1,12 @@
 <footer class="copyright">
 	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', 'UA-74642468-1', 'auto');
-	  ga('send', 'pageview');
-
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-74642468-1', 'auto');
+	ga('send', 'pageview');
 	</script>
-
 	<!-- Modal -->
 	<div class="modal fade" id="regmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal_regwrap">
@@ -24,9 +21,9 @@
 							<input  class="form-control emailbg" id="regemail" name="regemail" placeholder="email">
 						</div>
 					</div>
-					<div id="noticemsg"></div>
+					<div id="noticemsg" class="noticesty"></div>
 				</div>
-				<div class="modal-footer">					
+				<div class="modal-footer">
 					<div class="switch-back">
 						已有帐号？<a id="gotologin">登录到38SR»</a>
 					</div>
@@ -43,46 +40,45 @@
 					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 					<h4 class="modal-title" id="myModalLabel">快速登录</h4>
 				</div>
-				<form class="form-horizontal" id="loginform" role="form" action="/login" method="POST">
-					<div class="modal-body">
-						<div class="form-group">
-							<div class="wrap_col_sm">
-								<input  class="form-control accountbg" id="uname" name="uname" placeholder="帐号">
-							</div>
+				<!-- 	<form class="form-horizontal" id="loginform" role="form" action="/login" method="POST"> -->
+				<div class="modal-body">
+					<div class="form-group">
+						<div class="wrap_col_sm">
+							<input  class="form-control accountbg" id="uname" name="uname" placeholder="帐号">
 						</div>
-						<div class="form-group">
-							<div class="wrap_col_sm">
-								<input type="password" class="form-control pwdbg" id="pwd" name="pwd" placeholder="密码">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="wrap_col_sm">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> 记住密码
-									</label>
-								</div>
-							</div>
-						</div>
-						<div id="noticemsg1"></div>
 					</div>
-					<div class="modal-footer">
-						<div class="switch-back">
-							还没有帐号？<a id="gotoreg">点击注册»</a>
+					<div class="form-group">
+						<div class="wrap_col_sm">
+							<input type="password" class="form-control pwdbg" id="pwd" name="pwd" placeholder="密码">
 						</div>
-						<div class="switch-back2">
-							<a id="gotoreg" href="/sendmail">忘记密码»</a>
-						</div>
-						<input type="hidden" id="prelink" name="prelink" value="<%= typeof(curpath) == 'undefined'?"":curpath %>">
-						<button type="submit" class="btn btn-success" id="sublogin">登录</button>
 					</div>
-				</form>
+					<div class="form-group" style="overflow:hidden;height: 28px;">
+						<div class="wrap_col_sm">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="remember" id="remember"> 记住密码
+								</label>
+							</div> 
+						</div>
+					</div>
+					<div id="noticemsg1" class="noticesty"></div>
+				</div>
+				<div class="modal-footer">
+					<div class="switch-back">
+						还没有帐号？<a id="gotoreg">点击注册»</a>
+					</div>
+					<div class="switch-back2">
+						<a id="gotoreg" href="/sendmail">忘记密码»</a>
+					</div>
+					<input type="hidden" id="prelink" name="prelink" value="<%= typeof(curpath) == 'undefined'?"":curpath %>">
+					<button type="submit" class="btn btn-success" id="sublogin">登录</button>
+				</div>
 			</div>
 		</div>
 	</div>
-	 
+	
 	<div class="about-site">
-		<span>版权所有 © 2014 38SR.COM</span> 
+		<span>版权所有 © 2014 38SR.COM</span>
 		<a href="/about" class="otherlink">关于</a>
 		<a href="/shijian" class="otherlink">成长线</a>
 		<a href="/feedback" class="otherlink">反馈</a>

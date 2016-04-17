@@ -1,8 +1,12 @@
 .titlewrap{
 	margin-top: 15px;
-	margin-bottom: 20px;
-}
+	margin-bottom: 20px; 
 } 
+.titlewrap #title{
+	width: 80%;
+    border-radius: 0px;
+    box-shadow: none;
+}
 .webuploader-element-invisible {
 	position: absolute!important;
 	clip: rect(1px 1px 1px 1px);
@@ -34,6 +38,8 @@
 }
 #pub_link_brief{
 	width:100%;
+    border-radius: 0px;
+    box-shadow: none;
 }
 
 .btninner {
@@ -110,6 +116,10 @@
 }
 #link_input{	 
 	margin-bottom: 15px;
+}
+#url{ 
+    border-radius: 0px;
+    box-shadow: none;
 }
 .sublink_wrap{
 	float:right;

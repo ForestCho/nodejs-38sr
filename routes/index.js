@@ -5,7 +5,7 @@ var ArticleDao = require('../dao/articledao');
 var moment = require('moment');
 var config = require('../config').config;
 var cache = require('../common/cache');
-var EventProxy = require('eventproxy');
+var EventProxy = require('eventproxy'); 
 
 /**
  * [commonQuery description]
@@ -40,8 +40,7 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
         var d = [];
         d.data = articlelist;
         d.hotuser = hotuser;
-        d.count = count;
-    console.log(tags);
+        d.count = count; 
         d.tags = tags;
         res.render(classify == 2 ? 'indexarticle' : 'index', {
             title: '做一体化的IT社区!',
@@ -63,13 +62,7 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
             var b = /<img[^>]+src="[^"]+"[^>]*>/g;
             var imglist = articlelist[i].content.match(b)
             var newcontent = articlelist[i].purecontent;
-            if (articlelist[i].classify == 1) {
-                articlelist[i].title = encodeURIComponent(articlelist[i].title);
-                /* if(articlelist[i]._sid.sid == 0){
-                     util.getDomain(articlelist[i].title);
-                 }*/
-            }
-            var briefnum = 180;
+            var briefnum = 120;
             var contentlength = util.getSize(newcontent);
             if (imglist !== null) {
                 if (imglist.length > 0) {
@@ -88,6 +81,12 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
             }
             if (contentlength > briefnum) {
                 newcontent = newcontent + '...';
+            }             
+            if (articlelist[i].classify == 1) {
+                articlelist[i].title = encodeURIComponent(articlelist[i].title); 
+            }
+            if (articlelist[i].classify == 0) { 
+                articlelist[i].title = util.getFirstSentence(articlelist[i].purecontent);
             }
             articlelist[i].imagelength = imglist !== null ? imglist.length : 0;
             articlelist[i].newcontent = newcontent;
@@ -129,6 +128,11 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
  * @return {[type]}
  */
 exports.index = function(req, res) { 
+    var ip = req.headers['x-forwarded-for'] ||
+        req.connection.remoteAddress ||
+        req.socket.remoteAddress ||
+        req.connection.socket.remoteAddress;
+        console.log(ip);
     var cookie = req.cookies["SR_TAB"];  
     switch (cookie) {
         case '-1':

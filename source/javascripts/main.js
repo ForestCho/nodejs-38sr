@@ -672,7 +672,7 @@ define("article", ["msgbox", "jquery", "jquerymigrate", "jquerycaret", "undersco
     );
 
 }),
-define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap) {
+define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap) {  
     $("#regbtn").click(function(){  
         $('#regmodal').modal('show');
         $("body").css('padding-right','0px');
@@ -735,19 +735,48 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
                 } 
             }
         });
-    });
-    $("#sublogin").click(function() {
+    }); 
+
+    function noticeMan(node,text){
+        node.html("<p>"+text+"</p>");
+        setTimeout(function(){
+            node.children().eq(0).fadeOut(500);
+        },4000);
+    }
+    $("#sublogin").click(function() {      
         var uname = $("#uname").val();
-        var pwd = $("pwd").val();
-        var noticeMsg = $("#noticemsg1");
+        var pwd = $("#pwd").val();
+        var remember = $("#remember").val();
+        var noticeMsg = $("#noticemsg1");  
         if (uname.length == 0) {
-            noticeMsg.html("账号格式有误");
+            noticeMan(noticeMsg,"账号格式有误");
             return false;
         }
         if (pwd.length == 0) {
-            noticeMsg.html("密码输入不对");
+            noticeMan(noticeMsg,"密码输入不对"); 
             return false;
         }
+        var params = {
+            uname: uname,
+            pwd: pwd,
+            remember: remember
+        };
+        $.ajax({
+            data: params,
+            url: '/login',
+            dataType: 'json',
+            cache: false,
+            timeout: 5000,
+            type: 'post',
+            beforeSend: function() {},
+            success: function(data) {
+                if (data.status == 1) {
+                   location.reload();
+                } else {
+                    noticeMan(noticeMsg,data.content);  
+                }
+            }
+        });
         return true;
     });
 
@@ -756,7 +785,7 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
         var regEmailValue = $("#regemail").val();
         var noticeMsg = $("#noticemsg");
         if (!reg.test(regEmailValue)) {
-            noticeMsg.html("邮箱格式不对哦");
+            noticeMan(noticeMsg,"邮箱格式不对哦");   
             return false;
         }
         var params = {
@@ -774,12 +803,12 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
                 if (data.status == 1) {
                     noticeMsg.html(data.content);
                 } else {
-                    noticeMsg.html(data.content);
+                     noticeMan(noticeMsg,data.content);    
                 }
             }
         });
     });
-
+ 
     $("[data-toggle='tooltip']").tooltip();
 
     var closeFlag = false;
@@ -900,5 +929,5 @@ define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap)
  
 require(["jquery", "bootstrap", "jqueryform", "jquerycaret", "underscore", "jquerymigrate", "jqueryatwho", "index", "article", "pub", "reglog", "user", "set", "common"],
     function($, bootstrap, jqueryform, jquerycaret, _, jquerymigrate, jqueryatwho, index, article, pub, reglog, user, set, common) {
-        console.log("你好，我好，大家好!!!");
+         console.log("你好，我好，大家好!!!");
 });

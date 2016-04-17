@@ -37,6 +37,7 @@ var admin_site = require('./routes/admin/site');
  
 
 //手机端
+var indexjson = require('./routes/mobile/indexjson');
 var xqjson = require('./routes/mobile/xqjson');
 var catajson = require('./routes/mobile/catajson');
 var mryjjson = require('./routes/mobile/mryjjson'); 
@@ -203,6 +204,9 @@ var run = function(app){
 　//********************************************************************// 
 	//手机app请求
  	app.get('/xqjson', xqjson.index); 
+ 	app.get('/json/mood', indexjson.mood); 
+ 	app.get('/json/article', indexjson.article); 
+ 	app.get('/json/fastlink', indexjson.fastlink); 
 	app.get('/xiaohuajson', catajson.xiaohua);
 	app.get('/yulejson', catajson.yule);
 	app.get('/baoliaojson', catajson.baoliao);

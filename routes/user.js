@@ -166,15 +166,13 @@ exports.cata = function(req, res) {
         if (cata === "mood") {
             articleLimit = {
                 uid: tempuser.uid,
-                classify: 0,
-                flag: 0,
+                classify: 0, 
                 isdelete: false
             }
         } else if (cata == "article") {
             articleLimit = {
                 uid: tempuser.uid,
-                classify: 2,
-                flag: 0,
+                classify: 2, 
                 isdelete: false
             }
         } else {

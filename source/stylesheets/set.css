@@ -22,6 +22,10 @@
  
 .baseinfo form{
 	width:45%;
+}
+.account_panel input,.account_panel textarea{	
+    border-radius: 0px;
+    box-shadow: none;
 } 
 .accountinfo form{
 	width:45%;

@@ -584,3 +584,12 @@
 	cursor: pointer;
 	background-color: rgba(34,32,32,1);
 }
+ 
+.noticesty{	
+	width: 100%;
+    -webkit-transition: all linear .2s;
+    -moz-transition: all linear .2s;
+    -ms-transition: all linear .2s;
+    -o-transition: all linear .2s;
+    transition: all linear .2s;
+}

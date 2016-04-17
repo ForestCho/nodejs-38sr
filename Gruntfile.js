@@ -124,9 +124,7 @@ module.exports = function(grunt) {
             bulid24: {
                 src: 'source/javascripts/marked.js',
                 dest: 'public/javascripts/admin/marked.min.js'
-            },                              
-                   
-
+            },            
 
 
             

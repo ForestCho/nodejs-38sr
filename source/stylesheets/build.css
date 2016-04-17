@@ -6797,8 +6797,7 @@ button.close {
 .reply_info .replyat:hover img {
 	border: 2px solid #D5C8DB
 }
-.detail_content img{
-	width: 80%;
+.detail_content img{  
 	display: block;
 	margin: 0 auto;
 } 
@@ -7469,6 +7468,15 @@ button.close {
 	cursor: pointer;
 	background-color: rgba(34,32,32,1);
 }
+ 
+.noticesty{	
+	width: 100%;
+    -webkit-transition: all linear .2s;
+    -moz-transition: all linear .2s;
+    -ms-transition: all linear .2s;
+    -o-transition: all linear .2s;
+    transition: all linear .2s;
+}
 .leftreg {
 	float: left;
 	width: 65%;
@@ -8014,6 +8022,10 @@ a.optionaccess:hover {
  
 .baseinfo form{
 	width:45%;
+}
+.account_panel input,.account_panel textarea{	
+    border-radius: 0px;
+    box-shadow: none;
 } 
 .accountinfo form{
 	width:45%;
@@ -8451,9 +8463,13 @@ a.optionaccess:hover {
 }
 .titlewrap{
 	margin-top: 15px;
-	margin-bottom: 20px;
-}
+	margin-bottom: 20px; 
 } 
+.titlewrap #title{
+	width: 80%;
+    border-radius: 0px;
+    box-shadow: none;
+}
 .webuploader-element-invisible {
 	position: absolute!important;
 	clip: rect(1px 1px 1px 1px);
@@ -8485,6 +8501,8 @@ a.optionaccess:hover {
 }
 #pub_link_brief{
 	width:100%;
+    border-radius: 0px;
+    box-shadow: none;
 }
 
 .btninner {
@@ -8561,6 +8579,10 @@ a.optionaccess:hover {
 }
 #link_input{	 
 	margin-bottom: 15px;
+}
+#url{ 
+    border-radius: 0px;
+    box-shadow: none;
 }
 .sublink_wrap{
 	float:right;
@@ -9019,7 +9041,7 @@ ul{
 	-moz-transition: all 0.3s;	/* Firefox 4 */
 	-webkit-transition: all 0.3s;	/* Safari 和 Chrome */
 	-o-transition: all 0.3s;	/* Opera */ 
-	height: 54px;
+	height: 50px;
 	text-align:center;
 	width: 100%;
 	color: #fff;
@@ -9594,11 +9616,12 @@ pre.prettyprint.linenums {
 
 /* Specify class=linenums on a pre to get line numbering */
 ol.linenums {
+  margin-bottom: 0px;
   color: #1E347B;  }
 
 ol.linenums li {
   color: #BEBEC5;
-  line-height: 30px;
+  line-height: 25px;
   padding-left: 12px;
   text-shadow: 0 1px 0 #FFFFFF; }
 

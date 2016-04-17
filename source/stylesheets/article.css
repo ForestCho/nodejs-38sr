@@ -236,8 +236,7 @@
 .reply_info .replyat:hover img {
 	border: 2px solid #D5C8DB
 }
-.detail_content img{
-	width: 80%;
+.detail_content img{  
 	display: block;
 	margin: 0 auto;
 } 

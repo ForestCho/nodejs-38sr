@@ -200,7 +200,7 @@ ul{
 	-moz-transition: all 0.3s;	/* Firefox 4 */
 	-webkit-transition: all 0.3s;	/* Safari 和 Chrome */
 	-o-transition: all 0.3s;	/* Opera */ 
-	height: 54px;
+	height: 50px;
 	text-align:center;
 	width: 100%;
 	color: #fff;
