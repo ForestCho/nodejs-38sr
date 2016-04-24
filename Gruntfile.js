@@ -20,7 +20,7 @@ module.exports = function(grunt) {
                     'source/stylesheets/shijian.css',
                     'source/stylesheets/followlist.css',
                     'source/stylesheets/base.css',
-                    'source/stylesheets/admin.css',
+                    'source/stylesheets/admin/admin.css',
                     'source/stylesheets/jcrop.css',
                     'source/stylesheets/jquery.atwho.css',  
                     'source/stylesheets/jquery.webui.popover.css',
@@ -150,6 +150,10 @@ module.exports = function(grunt) {
         watch: {
             css: {
                 files: ['source/stylesheets/*.css'],
+                tasks: ['concat','cssmin']
+            },
+            css1: {
+                files: ['source/stylesheets/admin/*.css'],
                 tasks: ['concat','cssmin']
             },
             script: {

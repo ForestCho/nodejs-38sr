@@ -161,11 +161,26 @@ ul{
 }
 
 
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+ul {
+  margin-top: 0;
+}
+
 .admin-icon-yellow {
   color: #ffbe40;
 }
 
 .admin-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1500;
   font-size: 1.4rem;
   margin-bottom: 0;
 }
@@ -175,6 +190,9 @@ ul{
 }
 
 .admin-main {
+  position: relative;
+  height: 100%;
+  padding-top: 51px;
   background: #f3f3f3;
 }
 
@@ -190,6 +208,10 @@ ul{
   min-height: 100%;
   float: left;
   border-right: 1px solid #cecece;
+}
+
+.admin-sidebar.am-active {
+  z-index: 1600;
 }
 
 .admin-sidebar-list {
@@ -222,10 +244,34 @@ ul{
 }
 
 .admin-content {
-  width: auto;
-  overflow: hidden;
-  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   background: #fff;
+}
+
+.admin-content,
+.admin-sidebar {
+  height: 100%;
+  overflow-x: hidden; 
+}
+
+.admin-content-body {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+.admin-content-footer {
+  font-size: 85%;
+  color: #777;
 }
 
 .admin-content-list {
@@ -382,4 +428,129 @@ ul{
     text-align: left !important;
   }
 
+}
+
+/*
+* user.html css
+*/
+.user-info {
+  margin-bottom: 15px;
+}
+
+.user-info .am-progress {
+  margin-bottom: 4px;
+}
+
+.user-info p {
+  margin: 5px;
+}
+
+.user-info-order {
+  font-size: 1.4rem;
+}
+
+/*
+* errorLog.html css
+*/
+
+.error-log .am-pre-scrollable {
+  max-height: 40rem;
+}
+
+/*
+* table.html css
+*/
+
+.table-main {
+  font-size: 1.4rem;
+  padding: .5rem;
+}
+
+.table-main button {
+  background: #fff;
+}
+
+.table-check {
+  width: 30px;
+}
+
+.table-id {
+  width: 50px;
+}
+
+@media only screen and (max-width: 640px) {
+  .table-select {
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+}
+
+/*
+gallery.html css
+*/
+
+.gallery-list li {
+  padding: 10px;
+}
+
+.gallery-list a {
+  color: #666;
+}
+
+.gallery-list a:hover {
+  color: #3bb4f2;
+}
+
+.gallery-title {
+  margin-top: 6px;
+  font-size: 1.4rem;
+}
+
+.gallery-desc {
+  font-size: 1.2rem;
+  margin-top: 4px;
+}
+
+/*
+ 404.html css
+*/
+
+.page-404 {
+  background: #fff;
+  border: none;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.am-collapsed .am-icon-angle-right {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.am-icon-angle-right {  
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.am-table .am-btn-default{
+  background-color: #fff;
+}
+.table-main{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+a.am-btn-default:visited{
+  color: #3bb4f2;
+}
+
+.am-content-head{
+      border-bottom: 1px solid #eeeeee;
+          padding: 0.8rem;
+    padding-left: 1.6rem;
 }

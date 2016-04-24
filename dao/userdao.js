@@ -221,10 +221,23 @@ var updateUserInfo = function(user,cb){
 	user.save(cb);
 }
 
+var getNumberOUsersAsObect = function(userLimit,cb){
+ 	User.count(userLimit,cb);
+}
+
+
+var getUserListLimitAsObject = function(puretext,pageid,pagesize,userLimit,cb){ 
+ 	User.find(userLimit).sort({'post_date':-1}).skip((pageid-1)*pagesize).limit(pagesize).lean(true).exec(function(err,userlist){
+		cb(err,userlist); 
+ 	}) 
+}
+
 exports.getUserInfoByName = getUserInfoByName;
 exports.getAdminUserInfoByName = getAdminUserInfoByName;
 exports.getUserInfoByUid = getUserInfoByUid;
 exports.getUserInfoByEmail = getUserInfoByEmail;
+exports.getUserListLimitAsObject = getUserListLimitAsObject;
+exports.getNumberOUsersAsObect = getNumberOUsersAsObect;
 
 exports.getUserInfoByLoginTypeAndAccessToken = getUserInfoByLoginTypeAndAccessToken;
 exports.getUserInfoByLoginTypeAndName = getUserInfoByLoginTypeAndName;

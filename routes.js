@@ -33,7 +33,7 @@ var admin_login = require('./routes/admin/login');
 var admin_admin = require('./routes/admin/admin');
 var admin_article = require('./routes/admin/article');
 var admin_site = require('./routes/admin/site');
-
+var admin_user = require('./routes/admin/user');
  
 
 //手机端
@@ -264,6 +264,9 @@ var run = function(app){
     app.get('/admin/delsite', admin_site.delsite);
  	app.post('/admin/sitepicupload',admin_site.sitepicupload);
 
+ 	//用户管理
+    app.get('/admin/userlist', admin_user.list);
+ 	//
 
 　//********************************************************************//
 　//*************************小功能路由********************************//

@@ -34,10 +34,10 @@ exports.list = function(req, res) {
     };
 
     var ep = new EventProxy();
-    ep.assign("articlelist", 'count', function(articlelist, hotuser, zymryj, count) {
+    ep.assign("articlelist", 'count', function(articlelist, count) {
         var d = [];
         d.data = articlelist;
-        d.count = count;
+        d.count = count; 
         res.render('admin/articlelist', {
             title: '文章管理',
             curpath: curpath,
@@ -51,19 +51,15 @@ exports.list = function(req, res) {
     });
 
     ArticleDao.getArticleListLimitAsObject(true, p, pagesize, articleLimit, function(err, articlelist) {
-        for (var i = 0; i < articlelist.length; i++) {
-            var b = /<img[^>]+src="[^"]+"[^>]*>/g;
-            var imglist = articlelist[i].content.match(b)
-            var newcontent = articlelist[i].purecontent;
+        for (var i = 0; i < articlelist.length; i++) { 
             if (articlelist[i].classify == 1) {
                 articlelist[i].title = encodeURIComponent(articlelist[i].title);
             }
-            var briefnum = 18;
-            var contentlength = util.getSize(newcontent);
-            newcontent = newcontent.substring(0, (contentlength > briefnum * 2) ? util.getIndex(newcontent, briefnum * 2) : contentlength).trim();
-
-            articlelist[i].imagelength = imglist !== null ? imglist.length : 0;
-            articlelist[i].newcontent = newcontent;
+            if (articlelist[i].classify == 0) { 
+                articlelist[i].title = util.getFirstSentence(articlelist[i].purecontent);
+            }
+            var titlelength = articlelist[i].title.length;
+            articlelist[i].title = articlelist[i].title.substring(0,(titlelength>24)?24:titlelength); 
         }
         ep.emit("articlelist", articlelist);
     })

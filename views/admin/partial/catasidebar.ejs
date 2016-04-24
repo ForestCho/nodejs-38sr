@@ -23,13 +23,24 @@
 						<a href="/admin/list"  class="am-cf"><span class="am-icon-list"></span> 文章列表</a></li>
 					</ul>
 				</li>
+				<li>
+					<a data-am-collapse="{target: '#userman'}">
+						<span class="am-icon-user "></span> 用户管理<span class="am-icon-angle-right am-fr am-margin-right"></span>
+					</a>
+					<ul class="am-list admin-sidebar-sub am-collapse am-in" id="userman"> 
+						<li>
+						<a href="/admin/userlist"  class="am-cf"><span class="am-icon-list"></span> 用户列表</a></li>
+					</ul>
+				</li>
 				<li><a href="/admin/logout"><span class="am-icon-sign-out"></span> 注销</a></li>
-			</ul>
-			<div class="am-panel am-panel-default admin-sidebar-panel">
-				<div class="am-panel-bd">
-					<p><span class="am-icon-bookmark"></span> 公告</p>
-					<p>时光静好，与君语；细水流年，与君同。</p>
-				</div>
+		</ul>
+		<div class="am-panel am-panel-default" style="margin-top:10px">
+			<div class="am-panel-bd">
+				<p><span class="am-icon-bookmark"></span> 公告</p>
+				<p>时光静好，与君语；细水流年，与君同。</p>
 			</div>
 		</div>
 	</div>
+</div>
+	<!-- 按钮触发器， 需要指定 target --> 
+ <a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
