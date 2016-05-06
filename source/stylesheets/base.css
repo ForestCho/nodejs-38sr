@@ -61,7 +61,7 @@ ul{
 	width: 245px;
 	padding: 0 15px 10px;
 	background-color: #fff;
-	border-left: 1px solid #f0f0f0;
+	border-left: 1px solid #E9DDC6;
 } 
 .leftwrap {
 	  margin-right: 245px;
@@ -210,7 +210,7 @@ ul{
 	padding: 10px 0px;
 }
 .msgbox_success{	
-	background: #00a090;
+	background: #FFF;
 }
 .msgbox_error{
 	background: #A6AB56; 
