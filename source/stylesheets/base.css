@@ -58,8 +58,7 @@ ul{
 } 
 .rightwrap {
 	float: right; 
-	width: 245px;
-	padding: 0 15px 10px;
+	width: 245px; 
 	background-color: #fff;
 	border-left: 1px solid #E9DDC6;
 } 
@@ -195,37 +194,16 @@ ul{
     background-color: transparent;
 }
 
-#gmsgbox{
-	transition: all 0.3s;
-	-moz-transition: all 0.3s;	/* Firefox 4 */
-	-webkit-transition: all 0.3s;	/* Safari 和 Chrome */
-	-o-transition: all 0.3s;	/* Opera */ 
-	height: 50px;
-	text-align:center;
-	width: 100%;
-	color: #fff;
-	position: fixed; 
-	z-index: 1033;
-	font-size: 19px;
-	padding: 10px 0px;
-}
-.msgbox_success{	
-	background: #FFF;
-}
-.msgbox_error{
-	background: #A6AB56; 
-}
-.msgboxin{
-	top:0px;
-}
-.msgboxout{
-	top:-50px;
-}
 .add_bottom_dashed{
 	border-bottom:1px dashed #E0E0E0;
 }
 .add_bottom_solid{
 	border-bottom:1px solid #E0E0E0;
+}
+
+.modal-body input{	
+    border-radius: 0px;
+    box-shadow: none;
 }
 @media screen and (max-width: 979px) {
 	.adsbygoogle{

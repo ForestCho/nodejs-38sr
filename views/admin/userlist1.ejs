@@ -1,0 +1,87 @@
+<% include ./partial/header%>
+</head>
+<body>
+<% include ./partial/nav%>
+<div class="am-cf admin-main">
+	<!-- sidebar start -->
+	<% include ./partial/catasidebar%>
+	<!-- sidebar end -->
+	<!-- content start -->
+	<div class="admin-content">
+		<div class="admin-content-body">
+			<div class="am-cf am-content-head">
+				<strong class="am-text-primary am-text-lg">用户列表</strong> / <small>user list</small>
+			</div> 
+      		<div class="am-g am-margin-top"> 
+				<div class="am-u-sm-12 am-u-md-6">
+					<div class="am-btn-toolbar">
+						<div class="am-btn-group am-btn-group-xs">
+							<a type="button" class="am-btn am-btn-default" href="/admin/addarticle"><span class="am-icon-plus"></span> 新增</a>
+							<button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only articledeletebtn" data-am-modal="{target: '#linkmodal', closeViaDimmer: 0, width: 400, height: 225}"><span class="am-icon-trash-o"></span> 删除</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-12">
+					<div class="am-alert " id="notice" style="display:none" role='alert'>
+					</div>
+					<table class="am-table am-table-striped am-table-hover table-main">
+						<thead>
+							<tr>
+								<th class="table-id">ID</th>
+								<th class="table-name">用户名</th>
+								<th class="table-email">邮箱</th>
+								<th class="table-time">加入时间</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% var userlist = d.data %>
+							<% for(var i=0;i<userlist.length;i++){%>
+							<tr id="<%=userlist[i].uid%>">
+								<td class="table-id"><%=userlist[i].uid%></td>
+								<td class="table-name">
+									<a  target="_blank">
+										<%=userlist[i].name%>
+									</a>
+								</td>
+								<td class="table-time"><%=userlist[i].email %></td>
+								<td class="table-time"><%=userlist[i].create_at%></td>
+								<td class="table-set">
+									<div class="am-btn-toolbar">
+										<div class="am-btn-group am-btn-group-xs">
+											<a class="am-btn am-btn-default am-btn-xs am-text-secondary" href="/admin/getarticle/<%-userlist[i].uid%>"><span class="am-icon-pencil-square-o"></span> 编辑</a>
+											<a class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only userbanbtn" data-id="<%=userlist[i].uid%>"><span class="am-icon-trash-o"></span> 禁言</a>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<%}%>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="am-g">
+				<div class="am-u-sm-12">
+					<% include partial/pagination%>
+				</div>
+			</div>
+		</div>
+	</div>
+		<!-- content end -->
+	<!-- modalbegin --> 
+	<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+	  <div class="am-modal-dialog">
+	    <div class="am-modal-hd">功能正在完善</div>
+	    <div class="am-modal-bd">
+	     
+	    </div>
+	    <div class="am-modal-footer">
+	      <span class="am-modal-btn">确定</span>
+	    </div>
+	  </div>
+	</div>
+
+</div>
+</body>
+</html>

@@ -262,7 +262,8 @@
 }
 
 .userfresh {
-	margin-top: 20px
+	margin-top: 20px;	
+	padding: 0px 10px 10px;
 }
 
 .userfresh img {
@@ -291,6 +292,7 @@
 }
 .downloadapp{
 	margin-top: 20px;
+	padding: 0px 10px 10px;
 }
 .fansuserlink{
 	width: 100%;
@@ -376,10 +378,12 @@
 	line-height: 28px
 }
 .site_link {
-	margin-top: 20px
+	margin-top: 20px;
+	padding: 0px 10px 10px;
 }
 .google-ad{
 	margin-top: 20px;
+	padding: 0px 10px 10px;
 }
 .site_list {
 	padding-left: 10px;

@@ -56,17 +56,22 @@
 }
 
 .userinfo {
-	padding: 15px 0px;
+	padding: 0px;
 }
 
 .baseinfo {
-	background-color: #f5f5f5;
-	padding: 10px;
+    background-color: #f5f5f5;
+    padding: 10px;
 }
 
 .baseinfo-name {
-	font-size: 22px;
-	line-height: 42px;
+    font-size: 15px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 10px;
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #DCDDD9;
+}
 }
 
 .intropre {
@@ -93,6 +98,9 @@
 	padding: 30px 10px 10px 30px;
 }
 
+.follower{	
+	padding: 0px 10px;
+}
 .follower a:hover {
 	color: #07695E;
 }
@@ -194,6 +202,7 @@
 
 .site_intro {
 	margin-top: 20px;
+	padding: 0px 10px 10px;
 }
 
 .site_list a {
@@ -208,6 +217,7 @@
 }
 
 .pubone {
+	padding: 0px 10px 10px;
 	padding-bottom: 30px;
 }
 
@@ -278,6 +288,7 @@
 }
 
 .everyday {
+	padding: 0px 10px 10px;
 	position: relative;
 	overflow: hidden;
 	width: 100%;

@@ -7,7 +7,7 @@ $(document).ready(function() {
         var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
         var regEmailValue = $("#regemail").val();
         if (!reg.test(regEmailValue)) {
-            var textinfo = "<div class='am-alert am-alert-warning' role='alert'>邮箱格式不对哦</div>";
+            var textinfo = "<div class='alert alert-warning' role='alert'>邮箱格式不对哦</div>";
             $(".msgbox").append(textinfo);
             return false;
         }
@@ -24,10 +24,10 @@ $(document).ready(function() {
             beforeSend: function() {},
             success: function(data) {
                 if (data.status == 1) {
-                    var textinfo = "<div class='am-alert am-alert-success' role='alert'>" + data.content + "</div>";
+                    var textinfo = "<div class='alert alert-warning' role='alert'>" + data.content + "</div>";
                     $(".msgbox").append(textinfo);
                 } else {
-                    var textinfo = "<div class='am-alert am-alert-warning' role='alert'>" + data.content + "</div>";
+                    var textinfo = "<div class='alert alert-warning' role='alert'>" + data.content + "</div>";
                     $(".msgbox").append(textinfo);
                 }
             }
@@ -38,13 +38,13 @@ $(document).ready(function() {
         var pwd = $('#pwd').val();
         $(".msgbox").empty();
         if (name.length === 0) {
-            var textinfo = "<div class='am-alert am-alert-warning' role='alert'>账户为空</div>";
+            var textinfo = "<div class='alert alert-warning' role='alert'>账户为空</div>";
             $(".msgbox").append(textinfo);
             $('#name').focus();
             return false;
         }
         if (pwd.length === 0) {
-            var textinfo = "<div class='am-alert am-alert-warning' role='alert'>密码为空</div>";
+            var textinfo = "<div class='alert alert-warning' role='alert'>密码为空</div>";
             $(".msgbox").append(textinfo);
             $('#pwd').focus();
             return false;
@@ -102,12 +102,27 @@ $(document).ready(function() {
             success: function(data) {
                 if (0 === data.status) {
                     $("#spanMessage").html("Site增加成功");
+                    msgbox({
+                        flag: 'success',
+                        text: 'Site增加成功',
+                        pop: true
+                    });
                 } else {
                     $("#spanMessage").html("Site增加失败");
+                    msgbox({
+                        flag: 'warning',
+                        text: 'Site增加失败',
+                        pop: true
+                    });
                 }
             },
             error: function() {
                 $("#spanMessage").html("ERROR");
+                msgbox({
+                    flag: 'danger',
+                    text: 'ERROR',
+                    pop: true
+                });
             }
         });
     });
@@ -133,12 +148,27 @@ $(document).ready(function() {
             success: function(data) {
                 if (0 === data.status) {
                     $("#spanMessage2").html("Site编辑成功");
+                    msgbox({
+                        flag: 'success',
+                        text: 'Site编辑成功',
+                        pop: true
+                    });
                 } else {
                     $("#spanMessage2").html("Site编辑失败");
+                    msgbox({
+                        flag: 'warning',
+                        text: 'Site增加失败',
+                        pop: true
+                    });
                 }
             },
             error: function() {
                 $("#spanMessage2").html("ERROR");
+                msgbox({
+                    flag: 'danger',
+                    text: 'ERROR',
+                    pop: true
+                });
             }
         });
     });
@@ -166,6 +196,11 @@ $(document).ready(function() {
                     spicobj.val(data.site.spic);
                 } else {
                     $("#spanMessage2").html("Site查找失败");
+                    msgbox({
+                        flag: 'warning',
+                        text: 'Site查找失败',
+                        pop: true
+                    });
                     snameobj.val("");
                     sbriefobj.val("");
                     spicobj.val("");
@@ -173,6 +208,11 @@ $(document).ready(function() {
             },
             error: function() {
                 $("#spanMessage2").html("ERROR");
+                msgbox({
+                    flag: 'danger',
+                    text: 'ERROR',
+                    pop: true
+                });
             }
         });
     });
@@ -183,7 +223,7 @@ $(document).ready(function() {
         $('#articleDelModal').modal({
             keyboard: false
         });
-        $('#deltid').val($(this).attr('data-id')); 
+        $('#deltid').val($(this).attr('data-id'));
     });
 
     $('#delarticle-sure-btn').on('click', function() {
@@ -230,11 +270,11 @@ $(document).ready(function() {
         $('#articleDelModal').modal('hide')
     });
 
-    $('.userbanbtn').on('click', function(){         
+    $('.userbanbtn').on('click', function() {
         $('#userBanModal').modal({
             keyboard: false
         });
-        $('#uid').val($(this).attr('data-id')); 
+        $('#uid').val($(this).attr('data-id'));
     });
 
 
@@ -244,11 +284,19 @@ $(document).ready(function() {
     $("#subarticle").click(function() {
         var contentStr = editor.codemirror.getValue();
         if (contentStr.length == 0) {
-            msgbox.showMsgBox(false, "输入不能为空");
+            msgbox({
+                flag: 'warning',
+                text: '输入不能为空',
+                pop: true
+            });
             return false;
         }
         if (contentStr.length < 10) {
-            msgbox.showMsgBox(false, "输入不能为空");
+            msgbox({
+                flag: 'warning',
+                text: '输入不能为空',
+                pop: true
+            });
             return false;
         }
         return true;

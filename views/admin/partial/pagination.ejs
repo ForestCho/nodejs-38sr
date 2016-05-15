@@ -8,16 +8,17 @@
 		curpath = '';
 	}
 	%> 	
-	<ul class="am-pagination am-fr admin-content-pagination"> 
+<nav>
+	<ul class="pagination"> 
 		<% if(curpage == 1 ){ %>
-			<li class="am-disabled"><a>上一页</a></li>
+			<li class="disabled"><a>上一页</a></li>
 		<% }else{ %>
 			<li><a href="<%= curpath %>?p=<%=curpage-1 %>">上一页</a></li>
 		<% } %> 
 		<%  if( page < displaypage){
 			for(var j=1;j<=page;j++){
 				if( j == curpage ){%>
-				<li class="am-active"><a><%= j %></a></li>
+				<li class="active"><a><%= j %></a></li>
 				<% }else{ %>	
 				<li><a href="<%= curpath %>?p=<%= j %>"><%= j %></a></li>
 				<%}
@@ -26,20 +27,20 @@
 			if( (parseInt(curpage)-1) <= 4){
 				for(var j=1;j<=displaypage;j++){
 					if( j == curpage ){%>
-						<li class="am-active"><a><%= j %></a></li>
+						<li class="active"><a><%= j %></a></li>
 					<% }else{ %>
 						<li><a href="<%= curpath %>?p=<%= j %>"><%= j %></a></li>
 					<%}%>
 				<%}%>
-						<li class="am-disabled"><a>...</a></li>
+						<li class="disabled"><a>...</a></li>
 			<%}%>
 
 
 				<% if( (page-parseInt(curpage)) <= 4 && (parseInt(curpage)-1) > 4){%>
-				<li class="am-disabled"><a>...</a></li>
+				<li class="disabled"><a>...</a></li>
 				<% for(var j=page-displaypage;j<=page;j++){
 					if( j == curpage ){%>
-					<li class="am-active"><a><%= j %></a></li>
+					<li class="active"><a><%= j %></a></li>
 					<% }else{ %>
 					<li><a href="<%= curpath %>?p=<%= j %>"><%= j %></a></li>
 					<%}
@@ -48,20 +49,21 @@
 				<% } %>
 
 				<% if( (page-parseInt(curpage)) > 4 && (parseInt(curpage)-1) > 4){%>
-					<li class="am-disabled"><a>...</a></li>
+					<li class="disabled"><a>...</a></li>
 					<% for(var j=curpage-3;j<=parseInt(curpage)+3;j++){
 						if( j == curpage ){%>
-						<li class="am-active"><a><%= j %></a></li>
+						<li class="active"><a><%= j %></a></li>
 						<% }else{ %>
 						<li><a href="<%= curpath %>?p=<%= j %>"><%= j %></a></li>
 						<%}
 					}%>
-					<li class="am-disabled"><a>...</a></li>
+					<li class="disabled"><a>...</a></li>
 				<% } %>
 		<% } %>
 		<% if( curpage < page ){%>
 			<li><a href="<%= curpath %>?p=<%= (parseInt(curpage)+1) %>">下一页</a></li>
 		<% }else{%>
-			<li class="am-disabled"><a>下一页</a></li>
+			<li class="disabled"><a>下一页</a></li>
 		<% } %> 
-	</ul> 
+	</ul> 		
+</nav>

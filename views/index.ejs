@@ -39,7 +39,7 @@
 								<%}%>
 							</span>
 							<% if(result[i].title &&result[i].title.length > 0 ){%>
-							<p class="item_title"><a href="/t/<%= result[i].tid %>"><%= result[i].title %></a></p>
+							<p class="item_title"><a href="/t/<%= result[i].tid %>"  class="articletype"><%= result[i].title %></a></p>
 							<%}%>
 							<div class="msg_content"><%- result[i].newcontent %> </div>
 							<%}else if(result[i].classify === 2){%>

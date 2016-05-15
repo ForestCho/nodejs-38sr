@@ -56,8 +56,10 @@
 	font-size: 12px;
 } 
 .article_head_info{
-	padding: 5px 0px 10px 0px;
-    border-bottom: 1px solid #E0E0E0;
+    padding: 10px 0px;
+    width: 685px;
+    margin: 0 auto;
+    border-bottom: 1px dashed #E0E0E0;
 }
 .article_head_info a{	
 	font:14px/1.5 "微软雅黑",Verdana,Geneva,sans-serif;
@@ -209,9 +211,17 @@
 }
 .detail_msg_head{
 	font-size: 19px;
-	color: #383838; 
-	padding: 10px 20px;
+	color: #383838;  
 	line-height: 19px; 
+}
+.detail_msg_title{
+	padding: 10px 20px;
+    color: #333;
+    font-size: 15px; 
+    height: 40px;
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #DCDDD9;
+}
 }
 .no_reply_notice{
 	padding: 20px 0px;

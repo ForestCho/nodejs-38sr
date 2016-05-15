@@ -1,16 +1,28 @@
 <% include ./partial/header%>
 </head>
-<body>
-<% include ./partial/nav%>
-<div class="am-cf admin-main">
-	<!-- sidebar start -->	
+<body> 
+<div class="wrapper">
+	<!-- sidebar start -->
 	<% include ./partial/catasidebar%>
 	<!-- sidebar end -->
 	<!-- content start -->
-	<div class="admin-content">
+	<div id="page-wrapper" class="gray-bg dashbard-1"> 
+        <% include ./partial/righttop%>
 
-	</div> 
-	<!-- content end -->
-</div>
-</body>
-</html>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-9">
+                    <h2>主页</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="index">主页</a>
+                        </li> 
+                    </ol>
+                </div>
+            </div>
+            <div class="row wrapper wrapper-content animated fadeInRight">
+                <div class="row">  
+                	
+                </div>
+            </div>
+
+        <% include ./partial/footer%>

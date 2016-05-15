@@ -19,8 +19,7 @@ module.exports = function(grunt) {
                     'source/stylesheets/user.css',
                     'source/stylesheets/shijian.css',
                     'source/stylesheets/followlist.css',
-                    'source/stylesheets/base.css',
-                    'source/stylesheets/admin/admin.css',
+                    'source/stylesheets/base.css', 
                     'source/stylesheets/jcrop.css',
                     'source/stylesheets/jquery.atwho.css',  
                     'source/stylesheets/jquery.webui.popover.css',
@@ -145,6 +144,10 @@ module.exports = function(grunt) {
             csscompact2: {
                 src: 'source/stylesheets/admin/admin.css',
                 dest: 'public/stylesheets/admin/admin.min.css'
+            },
+            csscompact3: {
+                src: 'source/stylesheets/admin/style.css',
+                dest: 'public/stylesheets/admin/style.min.css'
             },
         },
         watch: {

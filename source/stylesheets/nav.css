@@ -33,7 +33,7 @@
 	padding:10px 2px 10px 2px;
 }
 .headon .logo{
-	padding:0px 2px !important;
+	padding:2px 2px !important;
 }
 .headon .catawrap li a{
 	font-size: 14px;
@@ -112,8 +112,8 @@
 	background-color: transparent !important;
 	height: 50px;
 }
-.catawrap li a:hover{ 
-	background-color: #9EAAA9 !important; 
+.catawrap li a:hover{  
+	color: #000 !important;
 }
 .active a { 
 	border-bottom: 3px solid #9EAAA9; 
@@ -127,7 +127,7 @@
 	height: 50px; 
 	font-size: 14px;
 	position: relative;
-	color: #fff; 
+	color: #6D6D6D; 
 } 
 .headon .headsearch{
 	height: 34px;
@@ -163,16 +163,16 @@
 	height: 50px; 
 }
 .headon .headsearch .search-btn-wrap{
-	height: 34px;
+	height: 35px;
 }
 .headon .headsearch i{
-	line-height:34px;
+	line-height:35px;
 }
 .headsearch.active .search-btn-wrap{ 
 	background-color: #9EAAA9; 
 }
-.headsearch .search-btn-wrap:hover{ 
-	background-color: #9EAAA9; 
+.headsearch .search-btn-wrap:hover{  
+	color: #000 !important;
 }
 .headsearch .btn-close{
 	position: absolute;
@@ -241,19 +241,19 @@
 	color: #D1D1D1
 }
 #optionaccesslist{ 
-	background-color: #9EAAA9;
+	background-color: #fff;
 	padding: 0px;
 }
 #optionaccesslist li a {
 	position: relative;
-	background: #9EAAA9;
+	background: #fff;
 	display: block;
 	padding: 0px 20px;
 	height: 34px;
 	clear: both;
 	font-weight: 400;
 	line-height: 34px;
-	color: #fff;
+	color: #6D6D6D;
 	white-space: nowrap;
 }
 
@@ -266,7 +266,8 @@
     height: 16px;
 }
 #optionaccesslist li a:hover{
-	background-color: #0B685F;
+	background-color: #9EAAA9;
+	color: #fff;
 } 
 .reg_login {
 	float: right;  
@@ -284,13 +285,12 @@
 	padding: 15px 8px;
 	text-align: center;
 	color: #fff;   
-	transition: all 0.3s;
-	-moz-transition: all 0.3s; /* Firefox 4 */
-	-webkit-transition: all 0.3s; /* Safari 和 Chrome */
-	-o-transition: all 0.3s; /* Opera */
+	-webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
 }
 .reg_login .open a.optionaccess{
-	background-color: #9EAAA9 !important;
+	background-color: #fff !important;
 }
 .un_reg_login .optionaccess{
 	display: block;
@@ -307,9 +307,8 @@
 	-o-transition: all 0.3s; /* Opera */
 }
 a.optionaccess:hover {
-	text-decoration: none;
-	background-color: #9EAAA9 !important;
-	color: #6D6D6D !important;
+	text-decoration: none; 
+	color: #000 !important;
 }
 .reg_login li {
 	list-style: none;
@@ -331,7 +330,7 @@ a.optionaccess:hover {
 .reg_login .divider{
 	height: 1px;
 	overflow: hidden;
-	background-color: #0B685F;
+	background-color: #9EAAA9;
 }
 .headon .optionaccess{
 	height: 34px;
@@ -343,7 +342,7 @@ a.optionaccess:hover {
 	height: 35px;
 	float: right;
 	color: #6D6D6D !important;
-	background-color: #FFF !important; 
+	background-color: #fff !important; 
 	line-height: 20px;
 	padding-top: 8px;
 	padding-bottom: 0px;

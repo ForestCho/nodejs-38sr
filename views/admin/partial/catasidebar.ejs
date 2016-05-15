@@ -1,46 +1,67 @@
-<div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
-	<div class="am-offcanvas-bar admin-offcanvas-bar">
-		<ul class="am-list admin-sidebar-list"> 
-				<li>
-					<a data-am-collapse="{target: '#siteman'}">
-						<span class="am-icon-th "></span> Site管理<span class="am-icon-angle-right am-fr am-margin-right"></span>
-					</a>
-					<ul class="am-list admin-sidebar-sub am-collapse am-in" id="siteman">
-					<li>
-						<a href="/admin/addsiteindex"  class="am-cf"><span class="am-icon-puzzle-piece"></span>  Site 新增<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a>
-					</li>
-					<li>
-						<a href="/admin/updatesiteindex"><span class="am-icon-pencil-square-o">  Site 更新</span></a></li>
-					</ul>
-				</li> 
-				<li>
-					<a data-am-collapse="{target: '#articleman'}">
-						<span class="am-icon-file "></span> 文章管理<span class="am-icon-angle-right am-fr am-margin-right"></span>
-					</a>
-					<ul class="am-list admin-sidebar-sub am-collapse am-in" id="articleman">
-						<li><a href="/admin/addarticle"><span class="am-icon-pencil-square-o"></span> 增加文章<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
-						<li>
-						<a href="/admin/list"  class="am-cf"><span class="am-icon-list"></span> 文章列表</a></li>
-					</ul>
-				</li>
-				<li>
-					<a data-am-collapse="{target: '#userman'}">
-						<span class="am-icon-user "></span> 用户管理<span class="am-icon-angle-right am-fr am-margin-right"></span>
-					</a>
-					<ul class="am-list admin-sidebar-sub am-collapse am-in" id="userman"> 
-						<li>
-						<a href="/admin/userlist"  class="am-cf"><span class="am-icon-list"></span> 用户列表</a></li>
-					</ul>
-				</li>
-				<li><a href="/admin/logout"><span class="am-icon-sign-out"></span> 注销</a></li>
-		</ul>
-		<div class="am-panel am-panel-default" style="margin-top:10px">
-			<div class="am-panel-bd">
-				<p><span class="am-icon-bookmark"></span> 公告</p>
-				<p>时光静好，与君语；细水流年，与君同。</p>
-			</div>
-		</div>
-	</div>
-</div>
-	<!-- 按钮触发器， 需要指定 target --> 
- <a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+       <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+
+                        <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="<%=locals.userinfo.photo %>" />
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><%=locals.userinfo.name %></strong>
+                             </span>  <span class="text-muted text-xs block">超级管理员 <b class="caret"></b></span> </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="form_avatar.html">修改头像</a>
+                                </li>
+                                <li><a href="profile.html">个人资料</a>
+                                </li>
+                                <li><a href="contacts.html">联系我们</a>
+                                </li>
+                                <li><a href="mailbox.html">信箱</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="/admin/logout">安全退出</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            H+
+                        </div>
+
+                    </li>
+                    <li>
+                        <a href="/admin/index"><i class="fa fa-home"></i> <span class="nav-label">主页</span> </a> 
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-file-o"></i> <span class="nav-label">文章管理</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/addarticle">增加文章</a>
+                            </li>
+                            <li><a href="/admin/list">文章列表</a>
+                            </li>  
+                        </ul>
+                    </li>       
+                    <li>
+                        <a href="index.html#"><i class="fa fa-puzzle-piece"></i> <span class="nav-label">Site管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/addsiteindex">Site 新增</a>
+                            </li>
+                            <li><a href="/admin/updatesiteindex">Site 更新</a>
+                            </li> 
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="index.html#"><i class="fa fa fa-users"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/userlist">用户列表</a>
+                            </li> 
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/admin/logout"><i class="fa fa-sign-out"></i> <span class="nav-label">注销</span> </a> 
+                    </li>
+ 
+                </ul>
+
+            </div>
+        </nav>

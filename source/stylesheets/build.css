@@ -6617,8 +6617,10 @@ button.close {
 	font-size: 12px;
 } 
 .article_head_info{
-	padding: 5px 0px 10px 0px;
-    border-bottom: 1px solid #E0E0E0;
+    padding: 10px 0px;
+    width: 685px;
+    margin: 0 auto;
+    border-bottom: 1px dashed #E0E0E0;
 }
 .article_head_info a{	
 	font:14px/1.5 "微软雅黑",Verdana,Geneva,sans-serif;
@@ -6770,9 +6772,17 @@ button.close {
 }
 .detail_msg_head{
 	font-size: 19px;
-	color: #383838; 
-	padding: 10px 20px;
+	color: #383838;  
 	line-height: 19px; 
+}
+.detail_msg_title{
+	padding: 10px 20px;
+    color: #333;
+    font-size: 15px; 
+    height: 40px;
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #DCDDD9;
+}
 }
 .no_reply_notice{
 	padding: 20px 0px;
@@ -7146,7 +7156,8 @@ button.close {
 }
 
 .userfresh {
-	margin-top: 20px
+	margin-top: 20px;	
+	padding: 0px 10px 10px;
 }
 
 .userfresh img {
@@ -7175,6 +7186,7 @@ button.close {
 }
 .downloadapp{
 	margin-top: 20px;
+	padding: 0px 10px 10px;
 }
 .fansuserlink{
 	width: 100%;
@@ -7260,10 +7272,12 @@ button.close {
 	line-height: 28px
 }
 .site_link {
-	margin-top: 20px
+	margin-top: 20px;
+	padding: 0px 10px 10px;
 }
 .google-ad{
 	margin-top: 20px;
+	padding: 0px 10px 10px;
 }
 .site_list {
 	padding-left: 10px;
@@ -7641,7 +7655,7 @@ button.close {
 	padding:10px 2px 10px 2px;
 }
 .headon .logo{
-	padding:0px 2px !important;
+	padding:2px 2px !important;
 }
 .headon .catawrap li a{
 	font-size: 14px;
@@ -7720,8 +7734,8 @@ button.close {
 	background-color: transparent !important;
 	height: 50px;
 }
-.catawrap li a:hover{ 
-	background-color: #9EAAA9 !important; 
+.catawrap li a:hover{  
+	color: #000 !important;
 }
 .active a { 
 	border-bottom: 3px solid #9EAAA9; 
@@ -7735,7 +7749,7 @@ button.close {
 	height: 50px; 
 	font-size: 14px;
 	position: relative;
-	color: #fff; 
+	color: #6D6D6D; 
 } 
 .headon .headsearch{
 	height: 34px;
@@ -7771,16 +7785,16 @@ button.close {
 	height: 50px; 
 }
 .headon .headsearch .search-btn-wrap{
-	height: 34px;
+	height: 35px;
 }
 .headon .headsearch i{
-	line-height:34px;
+	line-height:35px;
 }
 .headsearch.active .search-btn-wrap{ 
 	background-color: #9EAAA9; 
 }
-.headsearch .search-btn-wrap:hover{ 
-	background-color: #9EAAA9; 
+.headsearch .search-btn-wrap:hover{  
+	color: #000 !important;
 }
 .headsearch .btn-close{
 	position: absolute;
@@ -7849,19 +7863,19 @@ button.close {
 	color: #D1D1D1
 }
 #optionaccesslist{ 
-	background-color: #9EAAA9;
+	background-color: #fff;
 	padding: 0px;
 }
 #optionaccesslist li a {
 	position: relative;
-	background: #9EAAA9;
+	background: #fff;
 	display: block;
 	padding: 0px 20px;
 	height: 34px;
 	clear: both;
 	font-weight: 400;
 	line-height: 34px;
-	color: #fff;
+	color: #6D6D6D;
 	white-space: nowrap;
 }
 
@@ -7874,7 +7888,8 @@ button.close {
     height: 16px;
 }
 #optionaccesslist li a:hover{
-	background-color: #0B685F;
+	background-color: #9EAAA9;
+	color: #fff;
 } 
 .reg_login {
 	float: right;  
@@ -7892,13 +7907,12 @@ button.close {
 	padding: 15px 8px;
 	text-align: center;
 	color: #fff;   
-	transition: all 0.3s;
-	-moz-transition: all 0.3s; /* Firefox 4 */
-	-webkit-transition: all 0.3s; /* Safari 和 Chrome */
-	-o-transition: all 0.3s; /* Opera */
+	-webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
 }
 .reg_login .open a.optionaccess{
-	background-color: #9EAAA9 !important;
+	background-color: #fff !important;
 }
 .un_reg_login .optionaccess{
 	display: block;
@@ -7915,9 +7929,8 @@ button.close {
 	-o-transition: all 0.3s; /* Opera */
 }
 a.optionaccess:hover {
-	text-decoration: none;
-	background-color: #9EAAA9 !important;
-	color: #6D6D6D !important;
+	text-decoration: none; 
+	color: #000 !important;
 }
 .reg_login li {
 	list-style: none;
@@ -7939,7 +7952,7 @@ a.optionaccess:hover {
 .reg_login .divider{
 	height: 1px;
 	overflow: hidden;
-	background-color: #0B685F;
+	background-color: #9EAAA9;
 }
 .headon .optionaccess{
 	height: 34px;
@@ -7951,7 +7964,7 @@ a.optionaccess:hover {
 	height: 35px;
 	float: right;
 	color: #6D6D6D !important;
-	background-color: #FFF !important; 
+	background-color: #fff !important; 
 	line-height: 20px;
 	padding-top: 8px;
 	padding-bottom: 0px;
@@ -8152,17 +8165,22 @@ a.optionaccess:hover {
 }
 
 .userinfo {
-	padding: 15px 0px;
+	padding: 0px;
 }
 
 .baseinfo {
-	background-color: #f5f5f5;
-	padding: 10px;
+    background-color: #f5f5f5;
+    padding: 10px;
 }
 
 .baseinfo-name {
-	font-size: 22px;
-	line-height: 42px;
+    font-size: 15px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 10px;
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #DCDDD9;
+}
 }
 
 .intropre {
@@ -8189,6 +8207,9 @@ a.optionaccess:hover {
 	padding: 30px 10px 10px 30px;
 }
 
+.follower{	
+	padding: 0px 10px;
+}
 .follower a:hover {
 	color: #07695E;
 }
@@ -8290,6 +8311,7 @@ a.optionaccess:hover {
 
 .site_intro {
 	margin-top: 20px;
+	padding: 0px 10px 10px;
 }
 
 .site_list a {
@@ -8304,6 +8326,7 @@ a.optionaccess:hover {
 }
 
 .pubone {
+	padding: 0px 10px 10px;
 	padding-bottom: 30px;
 }
 
@@ -8374,6 +8397,7 @@ a.optionaccess:hover {
 }
 
 .everyday {
+	padding: 0px 10px 10px;
 	position: relative;
 	overflow: hidden;
 	width: 100%;
@@ -8901,8 +8925,7 @@ ul{
 } 
 .rightwrap {
 	float: right; 
-	width: 245px;
-	padding: 0 15px 10px;
+	width: 245px; 
 	background-color: #fff;
 	border-left: 1px solid #E9DDC6;
 } 
@@ -9038,37 +9061,16 @@ ul{
     background-color: transparent;
 }
 
-#gmsgbox{
-	transition: all 0.3s;
-	-moz-transition: all 0.3s;	/* Firefox 4 */
-	-webkit-transition: all 0.3s;	/* Safari 和 Chrome */
-	-o-transition: all 0.3s;	/* Opera */ 
-	height: 50px;
-	text-align:center;
-	width: 100%;
-	color: #fff;
-	position: fixed; 
-	z-index: 1033;
-	font-size: 19px;
-	padding: 10px 0px;
-}
-.msgbox_success{	
-	background: #FFF;
-}
-.msgbox_error{
-	background: #A6AB56; 
-}
-.msgboxin{
-	top:0px;
-}
-.msgboxout{
-	top:-50px;
-}
 .add_bottom_dashed{
 	border-bottom:1px dashed #E0E0E0;
 }
 .add_bottom_solid{
 	border-bottom:1px solid #E0E0E0;
+}
+
+.modal-body input{	
+    border-radius: 0px;
+    box-shadow: none;
 }
 @media screen and (max-width: 979px) {
 	.adsbygoogle{
@@ -9616,6 +9618,76 @@ li.L5,
 li.L7,
 li.L9 {
   background: #eee; }
+
+
+.gmsgbox{
+	top: 0px;
+	height: 50px;
+	text-align:center;
+	width: 100%; 
+	position: fixed; 
+	z-index: 1033;
+	font-size: 16px;    
+	border-bottom: 1px solid #ccc;
+	line-height: 50px;
+	animation-duration: .3s; 
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+    transition: transform .3s ease;
+}
+.gmsgbox.msgpop{
+	width: 400px;
+	left: 50%;
+    -ms-transform: translateX(-50%) translateY(-110%);
+    transform: translateX(-50%) translateY(-110%);	
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+    border-bottom: none;
+}
+.msgboxin.msgpop{ 
+    -ms-transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%) translateY(10px);	
+}
+.msgboxout.msgpop{
+    -ms-transform:translateX(-50%) translateY(-110%);
+    transform:translateX(-50%) translateY(-110%);
+}
+
+.msgbox_info{	
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+.msgbox_success{	
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.msgbox_warning{
+	color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+} 
+.msgbox_danger{
+	color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+.msgbox_default{
+	color: #4A4A4A;
+    background-color: #fff;
+    border-color: #000;
+}
+.msgboxin{
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+.msgboxout{
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+
+
 
 @font-face {
   font-family: 'icomoon';

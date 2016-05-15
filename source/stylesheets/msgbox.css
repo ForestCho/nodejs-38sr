@@ -1,0 +1,69 @@
+
+.gmsgbox{
+	top: 0px;
+	height: 50px;
+	text-align:center;
+	width: 100%; 
+	position: fixed; 
+	z-index: 1033;
+	font-size: 16px;    
+	border-bottom: 1px solid #ccc;
+	line-height: 50px;
+	animation-duration: .3s; 
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+    transition: transform .3s ease;
+}
+.gmsgbox.msgpop{
+	width: 400px;
+	left: 50%;
+    -ms-transform: translateX(-50%) translateY(-110%);
+    transform: translateX(-50%) translateY(-110%);	
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+    border-bottom: none;
+}
+.msgboxin.msgpop{ 
+    -ms-transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%) translateY(10px);	
+}
+.msgboxout.msgpop{
+    -ms-transform:translateX(-50%) translateY(-110%);
+    transform:translateX(-50%) translateY(-110%);
+}
+
+.msgbox_info{	
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+.msgbox_success{	
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.msgbox_warning{
+	color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+} 
+.msgbox_danger{
+	color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+.msgbox_default{
+	color: #4A4A4A;
+    background-color: #fff;
+    border-color: #000;
+}
+.msgboxin{
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+.msgboxout{
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+
+

@@ -1,0 +1,63 @@
+<% include ./partial/header%>
+</head>
+<body>
+<% include ./partial/nav%>
+<div class="am-cf admin-main">
+	<!-- sidebar start -->
+	<% include ./partial/catasidebar%>
+	<!-- sidebar end -->
+	<!-- content start -->
+	<div class="admin-content">
+		<div class="admin-content-body"> 
+			<div class="am-cf am-content-head"> 
+				<strong class="am-text-primary am-text-lg">增加文章</strong> / <small>add article</small>
+			</div> 
+			<div class="am-g am-margin-top"> 
+				<div class="am-u-sm-12 am-u-md-6">
+					<div class="am-btn-toolbar">
+						<div class="am-btn-group am-btn-group-xs">
+							<a type="button" class="am-btn am-btn-default" href="/admin/list"><span class="am-icon-list"></span> 列表</a>
+							<button type="button" class="am-btn am-btn-default" data-am-modal="{target: '#linkmodal', closeViaDimmer: 0, width: 400, height: 225}"><span class="am-icon-trash-o"></span> 删除</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<form class="am-form am-form-horizontal" id="pubstr" name="pubstr" method="POST" action="/admin/savearticle">
+				<div class="am-g am-margin-top">
+					<div class="am-u-sm-12">
+						<div class="am-alert " id="notice" style="display:none" role='alert'>
+						</div>
+						
+						<div class="am-form-group">
+							<label for="doc-ipt-3" class="am-u-sm-2 am-form-label">标题</label>
+							<div class="am-u-sm-10">
+								<input type="text" id="title" name="title" placeholder="输入标题">
+							</div>
+						</div>
+						<div class="am-form-group">
+							<label for="doc-ipt-3" class="am-u-sm-2 am-form-label">标签</label>
+							<div class="am-u-sm-10">
+								<input type="text" id="label" name="label" placeholder="标签以,分开">
+							</div>
+						</div>
+						<div class="am-form-group am-form-file">
+							<label for="doc-ipt-3" class="am-u-sm-2 am-form-label">内容</label>
+							<div class="am-u-sm-10">
+								<textarea type="text" class="writebox textarea" name="mcontent" id="postcontent" placeholder="写点什么呢?"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="am-g">
+					<div class="am-margin">
+						<button type="submit" class="am-btn am-btn-primary am-btn-xs" id="subarticle">发布</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- content end -->
+</div>
+</div>
+</body>
+</html>

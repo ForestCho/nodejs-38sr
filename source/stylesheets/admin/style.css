@@ -562,3 +562,16 @@ button.dim:active:before {
   background: none repeat scroll 0 0 #ed5565;
   box-shadow: none;
 }
+
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: right;
+}
+.m-t {
+    margin-top: 15px;
+}
