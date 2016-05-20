@@ -25,7 +25,8 @@ exports.login = function(req, res) {
  * @return {[type]}
  */
 exports.index = function(req, res) { 
+	 
     res.render('admin/index', {
-        title: 'adminindex'
+        title: '首页'
     }); 
 } 

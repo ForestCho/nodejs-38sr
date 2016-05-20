@@ -13,7 +13,7 @@ var config = require('../../config').config;
  */
 exports.list = function(req, res) {
     var p = 1; //pageid 
-    var curpath = "/admin/list"; 
+    var curpath = "/admin/userlist"; 
     var pagesize = 14;
     var count = 0;
     if (req.query.p) {

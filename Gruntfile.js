@@ -25,7 +25,9 @@ module.exports = function(grunt) {
                     'source/stylesheets/jquery.webui.popover.css',
                     'source/stylesheets/zoom.css',
                     'source/stylesheets/pretty.css',
-                    'source/stylesheets/editor.css'
+                    'source/stylesheets/msgbox.css',
+                    'source/stylesheets/editor.css',
+                    'source/stylesheets/iloading.css'
                 ],
                 dest: 'source/stylesheets/build.css'
             }
@@ -123,7 +125,15 @@ module.exports = function(grunt) {
             bulid24: {
                 src: 'source/javascripts/marked.js',
                 dest: 'public/javascripts/admin/marked.min.js'
-            },            
+            },     
+            bulid25: {
+                src: 'source/javascripts/msgbox.js',
+                dest: 'public/javascripts/lib/msgbox.min.js'
+            },        
+            bulid26: {
+                src: 'source/javascripts/msgbox.js',
+                dest: 'public/javascripts/admin/msgbox.min.js'
+            },                  
 
 
             
@@ -148,6 +158,10 @@ module.exports = function(grunt) {
             csscompact3: {
                 src: 'source/stylesheets/admin/style.css',
                 dest: 'public/stylesheets/admin/style.min.css'
+            },
+            csscompact4: {
+                src: 'source/stylesheets/msgbox.css',
+                dest: 'public/stylesheets/admin/msgbox.min.css'
             },
         },
         watch: {

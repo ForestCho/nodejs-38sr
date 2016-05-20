@@ -163,6 +163,7 @@ exports.dologin = function(req, res) {
  */
 exports.user_auth = function(req, res, next) {
 	if (req.session.user) {
+		console.log("cccccccc");
 		var uid = req.session.user.uid;
 		res.locals.userinfo = req.session.user;
 		MessageDao.getCountOfMessageByUid(uid, false, function(err, count) {

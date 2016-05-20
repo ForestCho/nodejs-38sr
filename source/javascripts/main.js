@@ -49,910 +49,902 @@ require.config({
     }),
 
     define("index", ["msgbox", "jquery", "popover", "zoom"], function(msgbox, $, popover, zoom) {
-        function setCookie(name, value, days) {
-            var exp = new Date();
-            exp.setTime(exp.getTime() + days * 24 * 60 * 60 * 1000);
-            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
-        }
-        $('#tags-close').click(function() {
-            $('#tags-bar').fadeOut(200);
-            setCookie('DIS_TAGS', 1, 3);
-        });
-        $('.articleitem').hover(
-            function() {
-                $(this).find('.otherinfowrap').css("opacity", "1");
-            },
-            function() {
-                $(this).find('.otherinfowrap').css("opacity", "0.8");
-            }
-        );
-        $(".likebtn,.unlikebtn").click(function() {
-            var currObj = $(this);
-            var tid = currObj.attr('data-tid');
-            var islike = true;
-            var text = '表过态';
-            if (currObj.attr('title') === "赞") {
-                islike = true;
-            } else {
-                islike = false;
-            }
-            var params = {
-                tid: tid,
-                islike: islike
-            };
-            $.ajax({
-                data: params,
-                url: '/like',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data) {
-                    if (data.status === 0) {
-                        var numlike = (currObj.children('span').text() === '') ? 0 : currObj.children('span').text();
-                        currObj.children('span').text(numlike - (-1));
-                        msgbox({
-                            flag: "success",
-                            text: "操作成功!"
-                        });
-                        return;
+
+            $('.iloading').html(' <div class="sk-circle1 sk-circle"></div> < div class = "sk-circle2 sk-circle" > < /div> < div class = "sk-circle3 sk-circle" > < /div> < div class = "sk-circle4 sk-circle" > < /div> < div class = "sk-circle5 sk-circle" > < /div> < div class = "sk-circle6 sk-circle" > < /div> < div class = "sk-circle7 sk-circle" > < /div> < div class = "sk-circle8 sk-circle" > < /div> < div class = "sk-circle9 sk-circle" > < /div> < div class = "sk-circle10 sk-circle" > < /div> < div class = "sk-circle11 sk-circle" > < /div> < div class = "sk-circle12 sk-circle" > < /div>');function setCookie(name, value, days) {
+                    var exp = new Date();
+                    exp.setTime(exp.getTime() + days * 24 * 60 * 60 * 1000);
+                    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+                }
+                $('#tags-close').click(function() {
+                    $('#tags-bar').fadeOut(200);
+                    setCookie('DIS_TAGS', 1, 3);
+                }); $('.articleitem').hover(
+                    function() {
+                        $(this).find('.otherinfowrap').css("opacity", "1");
+                    },
+                    function() {
+                        $(this).find('.otherinfowrap').css("opacity", "0.8");
                     }
-                    if (data.status === 1) {
-                        msgbox({
-                            flag: "warning",
-                            text: "请先登录!", 
-                        });
-                        return;
+                ); $(".likebtn,.unlikebtn").click(function() {
+                    var currObj = $(this);
+                    var tid = currObj.attr('data-tid');
+                    var islike = true;
+                    var text = '表过态';
+                    if (currObj.attr('title') === "赞") {
+                        islike = true;
+                    } else {
+                        islike = false;
                     }
-                    if (data.status === 2) {
-                        msgbox({
-                            flag: "warning",
-                            text: "已经" + text + "了!"
+                    var params = {
+                        tid: tid,
+                        islike: islike
+                    };
+                    $.ajax({
+                        data: params,
+                        url: '/like',
+                        dataType: 'json',
+                        cache: false,
+                        timeout: 5000,
+                        type: 'get',
+                        success: function(data) {
+                            if (data.status === 0) {
+                                var numlike = (currObj.children('span').text() === '') ? 0 : currObj.children('span').text();
+                                currObj.children('span').text(numlike - (-1));
+                                msgbox({
+                                    flag: "success",
+                                    text: "操作成功!"
+                                });
+                                return;
+                            }
+                            if (data.status === 1) {
+                                msgbox({
+                                    flag: "warning",
+                                    text: "请先登录!",
+                                });
+                                return;
+                            }
+                            if (data.status === 2) {
+                                msgbox({
+                                    flag: "warning",
+                                    text: "已经" + text + "了!"
+                                });
+                                return;
+                            }
+                            if (data.status === 3) {
+                                msgbox({
+                                    flag: "danger",
+                                    text: "服务器开小差了"
+                                });
+                                return;
+                            }
+                        }
+                    });
+                });
+
+                (function() {
+                    var settings = {
+                        trigger: 'hover',
+                        content: '', //<p>This is webui popover demo.</p><p>just enjoy it and have fun !</p>',
+                        width: 250,
+                        multi: true,
+                        closeable: true,
+                        style: '',
+                        padding: false
+                    };
+
+                    function initPopover() {
+                        var
+                            asyncSettings = {
+                                width: 'auto',
+                                height: 'auto',
+                                closeable: true,
+                                padding: false,
+                                cache: false,
+                                url: '/userinfo/',
+                                type: 'async',
+                                content: function(data) {
+                                    title = "ccc";
+                                    var html = '<ul class="list-group">';
+                                    if (data.self == true) {
+                                        html += '<li class="list-group-item"><i class="fa fa-user"></i>' + data.name + '</li>';
+                                    } else {
+                                        if (data.isfollow == false) {
+                                            html += '<li class="list-group-item"><i class="fa fa-user"></i>' + data.name + '<a class="guanzhu" data_id=' + data.uid + '>关注</a></li>';
+                                        } else {
+                                            html += '<li class="list-group-item"><i class="fa fa-user"></i>' + data.name + '<a class="quxiaoguanzhu" data_id=' + data.uid + '>取消</a></li>';
+                                        }
+                                    }
+                                    html += '<li class="list-group-item"><i class="fa fa-calendar"></i>' + data.cometime + '</li>';
+                                    html += '<li class="list-group-item"><i class="fa fa-leaf"></i>' + data.articlenum + '</li>';
+                                    html += '</ul>';
+                                    return html;
+                                }
+                            };
+                        $('a.show-pop-async').webuiPopover('destroy').webuiPopover($.extend({}, settings, asyncSettings));
+
+                        $('a.show-pop-event').each(function(i, item) {
+                            var ename = $(item).text() + '.webui.popover';
+                            $(item).webuiPopover('destroy').webuiPopover(settings)
+                                .on(ename, function(e) {
+                                    var log = ename + ' is trigged!';
+                                    if (console) {
+                                        console.log(log);
+                                    }
+                                    $('#eventLogs').text($('#eventLogs').text() + '\n' + log);
+                                });
                         });
-                        return;
                     }
-                    if (data.status === 3) {
-                        msgbox({
-                            flag: "danger",
-                            text: "服务器开小差了"
-                        });
-                        return;
+                    initPopover();
+
+                })();
+
+                function relationAjax(params, _obj) {
+                    $.ajax({
+                        data: params,
+                        url: '/newrelation',
+                        dataType: 'json',
+                        cache: false,
+                        timeout: 5000,
+                        type: 'get',
+                        success: function(data) {
+                            if (data.status === 'success') {
+                                if (params.follow) {
+                                    _obj.removeClass("guanzhu");
+                                    _obj.addClass("quxiaoguanzhu");
+                                    _obj.text("取消");
+                                } else {
+                                    _obj.removeClass("quxiaoguanzhu");
+                                    _obj.addClass("guanzhu");
+                                    _obj.text("关注");
+                                }
+                                msgbox({
+                                    flag: "success",
+                                    text: "操作成功"
+                                });
+                                return;
+                            }
+                            if (data.status === "failed") {
+                                msgbox({
+                                    flag: "warning",
+                                    text: "请先登录"
+                                });
+                            }
+                            if (data.status === "error") {
+                                msgbox({
+                                    flag: "danger",
+                                    text: "发生错误"
+                                });
+                            }
+                            if (params.follow) {
+                                _obj.removeClass("quxiaoguanzhu");
+                                _obj.addClass("guanzhu");
+                                _obj.text("关注");
+                            } else {
+                                _obj.removeClass("guanzhu");
+                                _obj.addClass("quxiaoguanzhu");
+                                _obj.text("取消");
+                            }
+                        }
+                    });
+                }
+                $(document).on('click', '.guanzhu', function() {
+                    var followuid = $(this).attr('data_id');
+                    var params = {
+                        followuid: followuid,
+                        follow: true
+                    };
+                    var _obj = $(this);
+                    _obj.text("...");
+                    relationAjax(params, _obj);
+                }); $(document).on('click', '.quxiaoguanzhu', function() {
+                    var followuid = $(this).attr('data_id');
+                    var params = {
+                        followuid: followuid,
+                        follow: false
+                    };
+                    var _obj = $(this);
+                    _obj.text("...");
+                    relationAjax(params, _obj);
+                });
+
+            }),
+        define("reglog", ["msgbox", "jquery"], function(msgbox, $) {
+            function fucCheckLength(strTemp) {
+                var i, sum;
+                sum = 0;
+                for (i = 0; i < strTemp.length; i++) {
+                    if ((strTemp.charCodeAt(i) >= 0) && (strTemp.charCodeAt(i) <= 255)) {
+                        sum = sum + 1;
+                    } else {
+                        sum = sum + 2;
                     }
                 }
+                return sum;
+            }
+
+            $("#regBtnSub").click(function() {
+                var email = $('#email').val(),
+                    name = $('#uname').val(),
+                    pwd = $('#pwd').val(),
+                    pwdagain = $('#pwdagain').val(),
+                    reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                var regAccount = /^[\u4E00-\u9FA5\uf900-\ufa2d\w]{4,16}$/;
+                $(".msgbox").empty();
+                if (!reg.test(email)) {
+                    var textinfo = "<div class='alertsty' role='alert'>邮箱格式不正确,请重新输入</div>";
+                    $(".msgbox").append(textinfo);
+                    $('#email').focus();
+                    return false;
+                }
+                if (fucCheckLength(name) < 4) {
+                    var textinfo = "<div class='alertsty' role='alert'>账户最少超过4个字符哦</div>";
+                    $(".msgbox").append(textinfo);
+                    $('#name').focus();
+                    return false;
+                }
+                if (!regAccount.test(name)) {
+                    var textinfo = "<div class='alertsty' role='alert'>账号只能是4-16位的汉字，字符或者下划线</div>";
+                    $(".msgbox").append(textinfo);
+                    $('#name').focus();
+                    return false;
+                }
+                if (fucCheckLength(pwd) < 6) {
+                    var textinfo = "<div class='alertsty' role='alert'>密码过于简单..</div>";
+                    $(".msgbox").append(textinfo);
+                    $('#pwd').focus();
+                    return false;
+                }
+                if (pwd != pwdagain) {
+                    var textinfo = "<div class='alertsty' role='alert'>两次输入不一样</div>";
+                    $(".msgbox").append(textinfo);
+                    $('#pwdagain').focus();
+                    return false;
+                }
+                return true;
             });
-        });
 
-        (function() {
-            var settings = {
-                trigger: 'hover',
-                content: '', //<p>This is webui popover demo.</p><p>just enjoy it and have fun !</p>',
-                width: 250,
-                multi: true,
-                closeable: true,
-                style: '',
-                padding: false
-            };
+            $("#loginBtnSub").click(function() {
+                var name = $('#uname').val();
+                var pwd = $('#pwd').val();
+                $(".msgbox").empty();
+                if (name.length === 0) {
+                    var textinfo = "<div class='alertsty' role='alert'>账户为空</div>";
+                    $(".msgbox").append(textinfo);
+                    $('#name').focus();
+                    return false;
+                }
+                if (pwd.length === 0) {
+                    var textinfo = "<div class='alertsty' role='alert'>密码为空</div>";
+                    $(".msgbox").append(textinfo);
+                    $('#pwd').focus();
+                    return false;
+                }
+                return true;
+            });
 
-            function initPopover() {
-                var
-                    asyncSettings = {
-                        width: 'auto',
-                        height: 'auto',
-                        closeable: true,
-                        padding: false,
-                        cache: false,
-                        url: '/userinfo/',
-                        type: 'async',
-                        content: function(data) {
-                            title = "ccc";
-                            var html = '<ul class="list-group">';
-                            if (data.self == true) {
-                                html += '<li class="list-group-item"><i class="fa fa-user"></i>' + data.name + '</li>';
-                            } else {
-                                if (data.isfollow == false) {
-                                    html += '<li class="list-group-item"><i class="fa fa-user"></i>' + data.name + '<a class="guanzhu" data_id=' + data.uid + '>关注</a></li>';
-                                } else {
-                                    html += '<li class="list-group-item"><i class="fa fa-user"></i>' + data.name + '<a class="quxiaoguanzhu" data_id=' + data.uid + '>取消</a></li>';
+            $("#getpwdbtn").click(function() {
+                var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                var regEmailValue = $("#email").val();
+                var noticeMsg = $("#noticemsg");
+                if (!reg.test(regEmailValue)) {
+                    var textinfo = "<div class='alertsty' role='alert'>邮箱格式不正确</div>";
+                    $(".msgbox").append(textinfo);
+                    $('#email').focus();
+                    return false;
+                }
+                return true;
+            });
+        }),
+        define("pub", ["msgbox", "jquery", "bootstrap", "editor"], function(msgbox, $, bootstrap, editor) {
+                $('.iloading').html(' <div class="sk-circle1 sk-circle"></div> < div class = "sk-circle2 sk-circle" > < /div> < div class = "sk-circle3 sk-circle" > < /div> < div class = "sk-circle4 sk-circle" > < /div> < div class = "sk-circle5 sk-circle" > < /div> < div class = "sk-circle6 sk-circle" > < /div> < div class = "sk-circle7 sk-circle" > < /div> < div class = "sk-circle8 sk-circle" > < /div> < div class = "sk-circle9 sk-circle" > < /div> < div class = "sk-circle10 sk-circle" > < /div> < div class = "sk-circle11 sk-circle" > < /div> < div class = "sk-circle12 sk-circle" > < /div>');
+
+
+                    var editor = new Editor(); route = route || "";
+                    if (route == "pub") {
+                        editor.render(document.getElementById('postcontent'));
+                    }
+
+                    $("#add_title").click(function() {
+                        $("#add_title").css("display", "none")
+                        $("#title_input").css("display", "block")
+                    }); $("#tab_share_on").click(function() {
+                        $("#tab_link").removeClass("tab_on");
+                        $("#tab_link").addClass("tab_off");
+                        $("#tab_share").removeClass("tab_off");
+                        $("#tab_share").addClass("tab_on");
+                        $(this).addClass("share_tab_active");
+                        $("#tab_link_on").removeClass("share_tab_active");
+                    });
+
+                    $("#tab_link_on").click(function() {
+                        $("#tab_share").removeClass("tab_on");
+                        $("#tab_share").addClass("tab_off");
+                        $("#tab_link").removeClass("tab_off");
+                        $("#tab_link").addClass("tab_on");
+                        $(this).addClass("share_tab_active");
+                        $("#tab_share_on").removeClass("share_tab_active");
+                    }); $("#searchtitle").click(function() {
+                        var url = $("#url").val();
+                        var title = $("#pub_link_brief");
+                        if (url.length == 0) {
+                            msgbox({
+                                flag: "warning",
+                                text: "输入不能为空!"
+                            });
+                            return false;
+                        }
+                        if (url.indexOf("http") < 0) {
+                            msgbox({
+                                flag: "warning",
+                                text: "链接地址不合法!"
+                            });
+                            return false;
+                        }
+                        var params = {
+                            url: url
+                        };
+                        $.ajax({
+                            data: params,
+                            url: '/getlinktitle',
+                            dataType: 'json',
+                            cache: false,
+                            timeout: 5000,
+                            type: 'get',
+                            beforeSend: function() {
+                                $(".iloading").css('display', 'inline-block'); //显示 
+                            },
+                            success: function(data) {
+                                $(".iloading").css('display', 'none'); //显示  
+                                if (data.status === 0) {
+                                    title.val(data.title);
+                                    return false;
+                                }
+                                if (data.status === 1) {
+                                    title.val("");
+                                    msgbox(1, data.title);
+                                    title.attr('placeholder', data.title)
+                                    return false;
                                 }
                             }
-                            html += '<li class="list-group-item"><i class="fa fa-calendar"></i>' + data.cometime + '</li>';
-                            html += '<li class="list-group-item"><i class="fa fa-leaf"></i>' + data.articlenum + '</li>';
-                            html += '</ul>';
-                            return html;
+                        });
+                        return false;
+                    }); $("#sublink").click(function() {
+                        var url = $("#url").val();
+                        var title = $("#pub_link_brief").val();
+                        if (url.length == 0) {
+                            msgbox({
+                                flag: "warning",
+                                text: "输入不能为空!"
+                            });
+                            return false;
                         }
-                    };
-                $('a.show-pop-async').webuiPopover('destroy').webuiPopover($.extend({}, settings, asyncSettings));
+                        if (title.length == 0) {
+                            msgbox({
+                                flag: "warning",
+                                text: "链接简介是不是空的呀？"
+                            });
+                            return false;
+                        }
+                        return true;
+                    });
 
-                $('a.show-pop-event').each(function(i, item) {
-                    var ename = $(item).text() + '.webui.popover';
-                    $(item).webuiPopover('destroy').webuiPopover(settings)
-                        .on(ename, function(e) {
-                            var log = ename + ' is trigged!';
-                            if (console) {
-                                console.log(log);
+                    $("#subarticle").click(function() {
+                        var contentStr = editor.codemirror.getValue();
+                        if (contentStr.length == 0) {
+                            msgbox({
+                                flag: "warning",
+                                text: "输入不能为空"
+                            });
+                            return false;
+                        }
+                        if (contentStr.length < 10) {
+                            msgbox({
+                                flag: "warning",
+                                text: "输入不能为空"
+                            });
+                            return false;
+                        }
+                        return true;
+                    }); $("#link").change(function() {
+                        if ($("#link").val().length > 0) {
+                            $("#insertlinkbtn").show();
+                        } else {
+                            $("#insertlinkbtn").hide();
+                        }
+                    }); $("#insertlinkbtn").click(function() {
+                        var linkmodal = $("#linkmodal");
+                        var linkname = $("#linkname").val();
+                        var link = $("#link").val();
+                        editor.codemirror.replaceSelection("[" + linkname + "](" + link + ")");
+                        linkmodal.modal('hide');
+                    }); $("#savepic").click(function() {
+                        var imagemodal = $("#imagemodal");
+                        var imgurl = $("#submitinfo").text();
+                        var i = imgurl.lastIndexOf('/');
+                        var l = imgurl.length;
+                        var imgname = imgurl.substring(i > 0 ? (i + 1) : 0, l > 0 ? l : 0);
+                        editor.codemirror.replaceSelection("![" + imgname + "](" + imgurl + ")");
+                        imagemodal.modal('hide');
+                    });
+                    var submitinfo = $(".submitinfo");
+                    var insertbtn = $("#savepic"); $("#choose").wrap("<form id='uploadpic' action='/picupload' method='post' enctype='multipart/form-data'></form>"); $("#choose").change(function() {
+                        $("#uploadpic").ajaxSubmit({
+                            dataType: 'json',
+                            beforeSend: function() {
+                                submitinfo.text("正在上传...");
+                                insertbtn.hide();
+                            },
+                            success: function(msg) {
+                                if (msg.type == 0) {
+                                    submitinfo.text(msg.content);
+                                } else {
+                                    submitinfo.text(msg.content);
+                                    insertbtn.show();
+                                }
+                            },
+                            error: function() {
+                                insertbtn.hide();
                             }
-                            $('#eventLogs').text($('#eventLogs').text() + '\n' + log);
                         });
-                });
-            }
-            initPopover();
+                    });
 
-        })();
-
-        function relationAjax(params, _obj) {
-            $.ajax({
-                data: params,
-                url: '/newrelation',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data) {
-                    if (data.status === 'success') {
-                        if (params.follow) {
-                            _obj.removeClass("guanzhu");
-                            _obj.addClass("quxiaoguanzhu");
-                            _obj.text("取消");
-                        } else {
-                            _obj.removeClass("quxiaoguanzhu");
-                            _obj.addClass("guanzhu");
-                            _obj.text("关注");
-                        }
-                        msgbox({
-                            flag: "success",
-                            text: "操作成功"
-                        });
-                        return;
-                    }
-                    if (data.status === "failed") {
-                        msgbox({
-                            flag: "warning",
-                            text: "请先登录"
-                        });
-                    }
-                    if (data.status === "error") {
-                        msgbox({
-                            flag: "danger",
-                            text: "发生错误"
+                }),
+            define("user", ["msgbox", "jquery"], function(msgbox, $) {
+                $(".deleteitem").click(function() {
+                    if (confirm("你确定提交吗？")) {
+                        var currObj = $(this);
+                        var tid = currObj.attr('data-tid');
+                        var params = {
+                            tid: tid
+                        };
+                        $.ajax({
+                            data: params,
+                            url: '/deletearticle',
+                            dataType: 'json',
+                            cache: false,
+                            timeout: 5000,
+                            type: 'get',
+                            success: function(data) {
+                                if (data.status === 0) {
+                                    currObj.parentsUntil('.user_near_article').remove();
+                                    msgbox({
+                                        flag: 'success',
+                                        text: "删除成功!"
+                                    });
+                                    return;
+                                }
+                                if (data.status === 3) {
+                                    $("#likeerr").remove();
+                                    msgbox({
+                                        flag: 'danger',
+                                        text: "发生错误!"
+                                    });
+                                    return;
+                                }
+                            }
                         });
                     }
-                    if (params.follow) {
-                        _obj.removeClass("quxiaoguanzhu");
-                        _obj.addClass("guanzhu");
-                        _obj.text("关注");
-                    } else {
-                        _obj.removeClass("guanzhu");
-                        _obj.addClass("quxiaoguanzhu");
-                        _obj.text("取消");
+                });
+            }),
+            define("set", ["jquery", "jqueryjcrop"], function($, jqueryjcrop) {
+                //初始化一个剪裁大小，左上角坐标(100,100)，右下角为(200,200)
+                $("#xuwanting").Jcrop({
+                    setSelect: [0, 0, 64, 64], //setSelect是Jcrop插件内部已定义的运动方法       
+                    aspectRatio: 1,
+                    onChange: showPreview,
+                    allowSelect: false
+                });
+                //简单的事件处理程序，响应自onChange,onSelect事件，按照上面的Jcrop调用
+                function showPreview(coords) {
+                    if (parseInt(coords.w) > 0) {
+                        //计算预览区域图片缩放的比例，通过计算显示区域的宽度(与高度)与剪裁的宽度(与高度)之比得到
+                        var rx = $("#preview_box").width() / coords.w;
+                        var ry = $("#preview_box").height() / coords.h;
+                        //通过比例值控制图片的样式与显示
+                        $("#crop_preview").css({
+                            width: Math.round(rx * $("#xuwanting").width()) + "px", //预览图片宽度为计算比例值与原图片宽度的乘积
+                            height: Math.round(ry * $("#xuwanting").height()) + "px", //预览图片高度为计算比例值与原图片高度的乘积
+                            marginLeft: "-" + Math.round(rx * coords.x) + "px",
+                            marginTop: "-" + Math.round(ry * coords.y) + "px"
+                        });
+                        $("#coords").val(coords.x + '_' + coords.y + '_' + coords.w + '_' + coords.h);
                     }
-                }
-            });
-        }
-        $(document).on('click', '.guanzhu', function() {
-            var followuid = $(this).attr('data_id');
-            var params = {
-                followuid: followuid,
-                follow: true
-            };
-            var _obj = $(this);
-            _obj.text("...");
-            relationAjax(params, _obj);
-        });
-        $(document).on('click', '.quxiaoguanzhu', function() {
-            var followuid = $(this).attr('data_id');
-            var params = {
-                followuid: followuid,
-                follow: false
-            };
-            var _obj = $(this);
-            _obj.text("...");
-            relationAjax(params, _obj);
-        });
-
-    }),
-    define("reglog", ["msgbox", "jquery"], function(msgbox, $) {
-        function fucCheckLength(strTemp) {
-            var i, sum;
-            sum = 0;
-            for (i = 0; i < strTemp.length; i++) {
-                if ((strTemp.charCodeAt(i) >= 0) && (strTemp.charCodeAt(i) <= 255)) {
-                    sum = sum + 1;
-                } else {
-                    sum = sum + 2;
-                }
-            }
-            return sum;
-        }
-
-        $("#regBtnSub").click(function() {
-            var email = $('#email').val(),
-                name = $('#uname').val(),
-                pwd = $('#pwd').val(),
-                pwdagain = $('#pwdagain').val(),
-                reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
-            var regAccount = /^[\u4E00-\u9FA5\uf900-\ufa2d\w]{4,16}$/;
-            $(".msgbox").empty();
-            if (!reg.test(email)) {
-                var textinfo = "<div class='alertsty' role='alert'>邮箱格式不正确,请重新输入</div>";
-                $(".msgbox").append(textinfo);
-                $('#email').focus();
-                return false;
-            }
-            if (fucCheckLength(name) < 4) {
-                var textinfo = "<div class='alertsty' role='alert'>账户最少超过4个字符哦</div>";
-                $(".msgbox").append(textinfo);
-                $('#name').focus();
-                return false;
-            }
-            if (!regAccount.test(name)) {
-                var textinfo = "<div class='alertsty' role='alert'>账号只能是4-16位的汉字，字符或者下划线</div>";
-                $(".msgbox").append(textinfo);
-                $('#name').focus();
-                return false;
-            }
-            if (fucCheckLength(pwd) < 6) {
-                var textinfo = "<div class='alertsty' role='alert'>密码过于简单..</div>";
-                $(".msgbox").append(textinfo);
-                $('#pwd').focus();
-                return false;
-            }
-            if (pwd != pwdagain) {
-                var textinfo = "<div class='alertsty' role='alert'>两次输入不一样</div>";
-                $(".msgbox").append(textinfo);
-                $('#pwdagain').focus();
-                return false;
-            }
-            return true;
-        });
-
-        $("#loginBtnSub").click(function() {
-            var name = $('#uname').val();
-            var pwd = $('#pwd').val();
-            $(".msgbox").empty();
-            if (name.length === 0) {
-                var textinfo = "<div class='alertsty' role='alert'>账户为空</div>";
-                $(".msgbox").append(textinfo);
-                $('#name').focus();
-                return false;
-            }
-            if (pwd.length === 0) {
-                var textinfo = "<div class='alertsty' role='alert'>密码为空</div>";
-                $(".msgbox").append(textinfo);
-                $('#pwd').focus();
-                return false;
-            }
-            return true;
-        });
-
-        $("#getpwdbtn").click(function() {
-            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
-            var regEmailValue = $("#email").val();
-            var noticeMsg = $("#noticemsg");
-            if (!reg.test(regEmailValue)) {
-                var textinfo = "<div class='alertsty' role='alert'>邮箱格式不正确</div>";
-                $(".msgbox").append(textinfo);
-                $('#email').focus();
-                return false;
-            }
-            return true;
-        });
-    }),
-    define("pub", ["msgbox", "jquery", "bootstrap", "editor"], function(msgbox, $, bootstrap, editor) {
-        var editor = new Editor();
-        route = route || "";
-        if (route == "pub") {
-            editor.render(document.getElementById('postcontent'));
-        }
-
-        $("#add_title").click(function() {
-            $("#add_title").css("display", "none")
-            $("#title_input").css("display", "block")
-        });
-        $("#tab_share_on").click(function() {
-            $("#tab_link").removeClass("tab_on");
-            $("#tab_link").addClass("tab_off");
-            $("#tab_share").removeClass("tab_off");
-            $("#tab_share").addClass("tab_on");
-            $(this).addClass("share_tab_active");
-            $("#tab_link_on").removeClass("share_tab_active");
-        });
-
-        $("#tab_link_on").click(function() {
-            $("#tab_share").removeClass("tab_on");
-            $("#tab_share").addClass("tab_off");
-            $("#tab_link").removeClass("tab_off");
-            $("#tab_link").addClass("tab_on");
-            $(this).addClass("share_tab_active");
-            $("#tab_share_on").removeClass("share_tab_active");
-        });
-        $("#searchtitle").click(function() {
-            var url = $("#url").val();
-            var title = $("#pub_link_brief");
-            if (url.length == 0) {
-                msgbox({
-                    flag: "warning",
-                    text: "输入不能为空!"
-                });
-                return false;
-            }
-            if (url.indexOf("http") < 0) {
-                msgbox({
-                    flag: "warning",
-                    text: "链接地址不合法!"
-                });
-                return false;
-            }
-            var params = {
-                url: url
-            };
-            $.ajax({
-                data: params,
-                url: '/getlinktitle',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                beforeSend: function() {
-                    $(".loading").css('display', 'inline-block'); //显示 
-                },
-                success: function(data) {
-                    $(".loading").css('display', 'none'); //显示  
-                    if (data.status === 0) {
-                        title.val(data.title);
-                        return false;
-                    }
-                    if (data.status === 1) {
-                        title.val("");
-                        msgbox(1, data.title);
-                        title.attr('placeholder', data.title)
-                        return false;
-                    }
-                }
-            });
-            return false;
-        });
-        $("#sublink").click(function() {
-            var url = $("#url").val();
-            var title = $("#pub_link_brief").val();
-            if (url.length == 0) {
-                msgbox({
-                    flag: "warning",
-                    text: "输入不能为空!"
-                });
-                return false;
-            }
-            if (title.length == 0) {
-                msgbox({
-                    flag: "warning",
-                    text: "链接简介是不是空的呀？"
-                });
-                return false;
-            }
-            return true;
-        });
-
-        $("#subarticle").click(function() {
-            var contentStr = editor.codemirror.getValue();
-            if (contentStr.length == 0) {
-                msgbox({
-                    flag: "warning",
-                    text: "输入不能为空"
-                });
-                return false;
-            }
-            if (contentStr.length < 10) {
-                msgbox({
-                    flag: "warning",
-                    text: "输入不能为空"
-                });
-                return false;
-            }
-            return true;
-        });
-        $("#link").change(function() {
-            if ($("#link").val().length > 0) {
-                $("#insertlinkbtn").show();
-            } else {
-                $("#insertlinkbtn").hide();
-            }
-        });
-        $("#insertlinkbtn").click(function() {
-            var linkmodal = $("#linkmodal");
-            var linkname = $("#linkname").val();
-            var link = $("#link").val();
-            editor.codemirror.replaceSelection("[" + linkname + "](" + link + ")");
-            linkmodal.modal('hide');
-        });
-        $("#savepic").click(function() {
-            var imagemodal = $("#imagemodal");
-            var imgurl = $("#submitinfo").text();
-            var i = imgurl.lastIndexOf('/');
-            var l = imgurl.length;
-            var imgname = imgurl.substring(i > 0 ? (i + 1) : 0, l > 0 ? l : 0);
-            editor.codemirror.replaceSelection("![" + imgname + "](" + imgurl + ")");
-            imagemodal.modal('hide');
-        });
-        var submitinfo = $(".submitinfo");
-        var insertbtn = $("#savepic");
-        $("#choose").wrap("<form id='uploadpic' action='/picupload' method='post' enctype='multipart/form-data'></form>");
-        $("#choose").change(function() {
-            $("#uploadpic").ajaxSubmit({
-                dataType: 'json',
-                beforeSend: function() {
-                    submitinfo.text("正在上传...");
-                    insertbtn.hide();
-                },
-                success: function(msg) {
-                    if (msg.type == 0) {
-                        submitinfo.text(msg.content);
-                    } else {
-                        submitinfo.text(msg.content);
-                        insertbtn.show();
-                    }
-                },
-                error: function() {
-                    insertbtn.hide();
-                }
-            });
-        });
-
-    }),
-    define("user", ["msgbox", "jquery"], function(msgbox, $) {
-        $(".deleteitem").click(function() {
-            if (confirm("你确定提交吗？")) {
-                var currObj = $(this);
-                var tid = currObj.attr('data-tid');
-                var params = {
-                    tid: tid
                 };
-                $.ajax({
-                    data: params,
-                    url: '/deletearticle',
-                    dataType: 'json',
-                    cache: false,
-                    timeout: 5000,
-                    type: 'get',
-                    success: function(data) {
-                        if (data.status === 0) {
-                            currObj.parentsUntil('.user_near_article').remove();
-                            msgbox({
-                                flag: 'success',
-                                text: "删除成功!"
-                            });
-                            return;
+
+            }),
+            define("article", ["msgbox", "jquery", "jquerymigrate", "jquerycaret", "underscore", "jqueryatwho", "pretty"], function(msgbox, $, jquerymigrate, jquerycaret, _, jqueryatwho, pretty) {
+                $(".detail_content pre").addClass("prettyprint ");
+                $(".detail_content pre").addClass("linenums ");
+                prettyPrint();
+
+                var names = $('.username_text').map(function(idx, obj) {
+                    return $(obj).text().trim();
+                }).toArray();
+                names = _.uniq(names);
+                var at_config = {
+                    at: "@",
+                    data: names,
+                    show_the_at: true
+                };
+                $inputor = $('.atreply').atwho(at_config);
+                $("#relatebtn").click(function() {
+                    var followuid = $(this).attr('data_id');
+                    var follow = false;
+                    if ($(this).hasClass("followfri")) {
+                        follow = true;
+                    } else {
+                        follow = false;
+                    }
+                    var params = {
+                        followuid: followuid,
+                        follow: follow
+                    };
+                    $.ajax({
+                        data: params,
+                        url: '/newrelation',
+                        dataType: 'json',
+                        cache: false,
+                        timeout: 5000,
+                        type: 'get',
+                        success: function(data) {
+                            if (data.status === 'success') {
+                                if ($("#relatebtn").hasClass("followfri")) {
+                                    $("#relatebtn").html("<i class='fa fa-minus'></i>  取消关注");
+                                } else {
+                                    $("#relatebtn").html("<i class='fa fa-plus'></i>   关注此人");
+                                }
+                                $("#relatebtn").toggleClass("unfollowfri");
+                                $("#relatebtn").toggleClass("followfri");
+                                msgbox({
+                                    flag: "success",
+                                    text: "操作成功"
+                                });
+                                return;
+                            }
+                            if (data.status === "failed") {
+                                msgbox({
+                                    flag: "warning",
+                                    text: "请先登录"
+                                });
+                            }
+                            if (data.status === "error") {
+                                msgbox({
+                                    flag: "danger",
+                                    text: "发生错误"
+                                });
+                            }
                         }
-                        if (data.status === 3) {
-                            $("#likeerr").remove();
-                            msgbox({
-                                flag: 'danger',
-                                text: "发生错误!"
-                            });
-                            return;
-                        }
+                    });
+                });
+                var replyform = function(tid, rid, ruid, runame) {
+                    var tinput = '<input type="hidden" name="tid" value="' + tid + '">';
+                    var rinput = '<input type="hidden" name="rid" value="' + rid + '">';
+                    var ruidinput = '<input type="hidden" name="ruid" value="' + ruid + '">';
+                    var rnameinput = '<input type="hidden" name="runame" value="' + runame + '">';
+                    var textarea = '<textarea row="3" name="repstr" class="atreply" id="replytoreply" style="width:630px;resize: vertical;"></textarea>';
+                    var btnrep = '<div class="inputopt"><button type="submit" class="btn  btn-sm">回复</button></div>';
+                    var formhead = '<form id="replywrap" class="navbar-form" action="/reply" method="post">';
+                    var formtail = '</form>';
+                    return formhead + textarea + tinput + rinput + ruidinput + rnameinput + btnrep + formtail;
+                }
+
+                $(".replyat").click(function() {
+                    $("#replywrap").remove();
+                    var tid = $(this).attr("data-tid");
+                    var rid = $(this).attr("data-rid");
+                    var ruid = $(this).attr("data-ruid");
+                    var runame = $(this).attr("data-runame");
+                    var replyformstr = replyform(tid, rid, ruid, runame);
+                    $(this).parent().parent().parent().children('.reply_content').after(replyformstr);
+                    $('#replytoreply').focus();
+                    $('#replytoreply').val('@' + runame + ' ');
+                    return false;
+                });
+                $('textarea.atreply').keydown(function(event) {
+                    if (event.keyCode == 13 && (event.ctrlKey || event.metaKey)) {
+                        event.preventDefault()
+                        $(this).closest('form').submit()
                     }
                 });
-            }
-        });
-    }),
-    define("set", ["jquery", "jqueryjcrop"], function($, jqueryjcrop) {
-        //初始化一个剪裁大小，左上角坐标(100,100)，右下角为(200,200)
-        $("#xuwanting").Jcrop({
-            setSelect: [0, 0, 64, 64], //setSelect是Jcrop插件内部已定义的运动方法       
-            aspectRatio: 1,
-            onChange: showPreview,
-            allowSelect: false
-        });
-        //简单的事件处理程序，响应自onChange,onSelect事件，按照上面的Jcrop调用
-        function showPreview(coords) {
-            if (parseInt(coords.w) > 0) {
-                //计算预览区域图片缩放的比例，通过计算显示区域的宽度(与高度)与剪裁的宽度(与高度)之比得到
-                var rx = $("#preview_box").width() / coords.w;
-                var ry = $("#preview_box").height() / coords.h;
-                //通过比例值控制图片的样式与显示
-                $("#crop_preview").css({
-                    width: Math.round(rx * $("#xuwanting").width()) + "px", //预览图片宽度为计算比例值与原图片宽度的乘积
-                    height: Math.round(ry * $("#xuwanting").height()) + "px", //预览图片高度为计算比例值与原图片高度的乘积
-                    marginLeft: "-" + Math.round(rx * coords.x) + "px",
-                    marginTop: "-" + Math.round(ry * coords.y) + "px"
+
+                $('textarea#replytoreply').live("focus", function() {
+                    $(this).css("height", "80px");
+                    $(this).parent().find(".inputopt").css("display", "inline-block");
                 });
-                $("#coords").val(coords.x + '_' + coords.y + '_' + coords.w + '_' + coords.h);
-            }
-        };
+                $('textarea#replytoreply').live("blur", function() {
+                    var reg = /^@\w+[\s]*$/;
+                    var contentIpt = $(this).val();
+                    if (reg.test(contentIpt) || contentIpt.length == 0) {
+                        $(this).css("height", "0px");
+                        $(this).parent().find(".inputopt").css("display", "none");
+                        setTimeout("$('#replywrap').remove()", 210)
+                    } else {
+                        $(this).css("height", "30px");
+                        $(this).parent().find(".inputopt").css("display", "none");
+                    }
+                });
+                $('textarea#reply_input').live("focus", function() {
+                    $(this).css("height", "80px");
+                    $(this).parent().find(".inputopt").css("display", "inline-block");
+                    $('.selfimg img').css("width", "48px");
+                });
+                $('textarea#reply_input').live("blur", function() {
+                    var replyContent = $(this).val();
+                    if (replyContent.length == 0) {
+                        $(this).css("height", "30px");
+                        $(this).parent().find(".inputopt").css("display", "none");
+                        $('.selfimg img').css("width", "30px");
+                    }
+                });
+                $('.reply_msg_item').hover(
+                    function() {
+                        $(this).find('.opt').css("opacity", "1");
+                    },
+                    function() {
+                        $(this).find('.opt').css("opacity", "0.6");
+                    }
+                );
 
-    }),
-    define("article", ["msgbox", "jquery", "jquerymigrate", "jquerycaret", "underscore", "jqueryatwho", "pretty"], function(msgbox, $, jquerymigrate, jquerycaret, _, jqueryatwho, pretty) {
-        $(".detail_content pre").addClass("prettyprint ");
-        $(".detail_content pre").addClass("linenums ");
-        prettyPrint();
+            }),
+            define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap) {
+                $("#regbtn").click(function() {
+                    $('#regmodal').modal('show');
+                    $("body").css('padding-right', '0px');
+                });
+                $("#loginbtn").click(function() {
+                    $('#loginmodal').modal('show');
+                    $("body").css('padding-right', '0px');
+                });
+                $("#gotologin").click(function() {
+                    $('#regmodal').modal('hide');
+                    $('#loginmodal').modal('show');
+                    $("body").css('padding-right', '0px');
+                });
+                $("#gotoreg").click(function() {
+                    $('#loginmodal').modal('hide');
+                    $('#regmodal').modal('show');
+                    $("body").css('padding-right', '0px');
+                });
+                $("#imagemodalbtn").click(function() {
+                    $('#imagemodal').modal('show');
+                    $("body").css('padding-right', '0px');
+                });
+                $("#linkmodalbtn").click(function() {
+                    $('#linkmodal').modal('show');
+                    $("body").css('padding-right', '0px');
+                });
+                $("#nosiginin-login").click(function() {
+                    $('#loginmodal').modal('show');
+                    $("body").css('padding-right', '0px');
+                });
+                $(".replylink").click(function() {
+                    $('#loginmodal').modal('show');
+                    $("body").css('padding-right', '0px');
+                });
+                $("#nosiginin-reg").click(function() {
+                    $('#regmodal').modal('show');
+                    $("body").css('padding-right', '0px');
+                });
 
-        var names = $('.username_text').map(function(idx, obj) {
-            return $(obj).text().trim();
-        }).toArray();
-        names = _.uniq(names);
-        var at_config = {
-            at: "@",
-            data: names,
-            show_the_at: true
-        };
-        $inputor = $('.atreply').atwho(at_config);
-        $("#relatebtn").click(function() {
-            var followuid = $(this).attr('data_id');
-            var follow = false;
-            if ($(this).hasClass("followfri")) {
-                follow = true;
-            } else {
-                follow = false;
-            }
-            var params = {
-                followuid: followuid,
-                follow: follow
-            };
-            $.ajax({
-                data: params,
-                url: '/newrelation',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                success: function(data) {
-                    if (data.status === 'success') {
-                        if ($("#relatebtn").hasClass("followfri")) {
-                            $("#relatebtn").html("<i class='fa fa-minus'></i>  取消关注");
-                        } else {
-                            $("#relatebtn").html("<i class='fa fa-plus'></i>   关注此人");
+                $('#uname').blur(function() {
+                    var input = $(this);
+                    var name = input.val();
+                    var params = {
+                        name: name
+                    };
+                    $.ajax({
+                        data: params,
+                        url: '/getphoto',
+                        dataType: 'json',
+                        cache: false,
+                        timeout: 5000,
+                        type: 'get',
+                        beforeSend: function() {},
+                        success: function(data) {
+                            if (data.status == 1) {
+                                input.css("background-image", "url(" + data.photo + ")");
+                            } else {
+                                input.css("background-image", "url(../images/y_accountbg.png)");
+
+                            }
                         }
-                        $("#relatebtn").toggleClass("unfollowfri");
-                        $("#relatebtn").toggleClass("followfri");
-                        msgbox({
-                            flag: "success",
-                            text: "操作成功"
-                        });
-                        return;
+                    });
+                });
+
+                function noticeMan(node, text) {
+                    node.html("<p>" + text + "</p>");
+                    setTimeout(function() {
+                        node.children().eq(0).fadeOut(500);
+                    }, 4000);
+                }
+                $("#sublogin").click(function() {
+                    var uname = $("#uname").val();
+                    var pwd = $("#pwd").val();
+                    var remember = $("#remember").val();
+                    var noticeMsg = $("#noticemsg1");
+                    if (uname.length == 0) {
+                        noticeMan(noticeMsg, "账号格式有误");
+                        return false;
                     }
-                    if (data.status === "failed") {
-                        msgbox({
-                            flag: "warning",
-                            text: "请先登录"
-                        });
+                    if (pwd.length == 0) {
+                        noticeMan(noticeMsg, "密码输入不对");
+                        return false;
                     }
-                    if (data.status === "error") {
-                        msgbox({
-                            flag: "danger",
-                            text: "发生错误"
-                        });
+                    var params = {
+                        uname: uname,
+                        pwd: pwd,
+                        remember: remember
+                    };
+                    $.ajax({
+                        data: params,
+                        url: '/login',
+                        dataType: 'json',
+                        cache: false,
+                        timeout: 5000,
+                        type: 'post',
+                        beforeSend: function() {},
+                        success: function(data) {
+                            if (data.status == 1) {
+                                location.reload();
+                            } else {
+                                noticeMan(noticeMsg, data.content);
+                            }
+                        }
+                    });
+                    return true;
+                });
+
+                $("#subemail").click(function() {
+                    var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                    var regEmailValue = $("#regemail").val();
+                    var noticeMsg = $("#noticemsg");
+                    if (!reg.test(regEmailValue)) {
+                        noticeMan(noticeMsg, "邮箱格式不对哦");
+                        return false;
+                    }
+                    var params = {
+                        email: regEmailValue
+                    };
+                    $.ajax({
+                        data: params,
+                        url: '/regemail',
+                        dataType: 'json',
+                        cache: false,
+                        timeout: 5000,
+                        type: 'get',
+                        beforeSend: function() {},
+                        success: function(data) {
+                            if (data.status == 1) {
+                                noticeMsg.html(data.content);
+                            } else {
+                                noticeMan(noticeMsg, data.content);
+                            }
+                        }
+                    });
+                });
+
+                $("[data-toggle='tooltip']").tooltip();
+
+                var closeFlag = false;
+                $("#optionaccess").on("mouseenter", function() {
+                    $("#optionaccesslist").css("display", "block");
+                    $(this).parent().addClass("open");
+                    closeFlag = false;
+                });
+                $("#optionaccess").on("mouseleave", function() {
+                    closeFlag = true;
+                    setTimeout(function() {
+                        if (closeFlag) {
+                            $("#optionaccess").parent().removeClass("open");
+                            $("#optionaccesslist").css("display", "none");
+                        }
+                    }, 500);
+                });
+                $("#optionaccesslist").on("mouseenter", function() {
+                    closeFlag = false;
+                });
+
+                $("#optionaccesslist").on("mouseleave", function() {
+                    closeFlag = true;
+                    setTimeout(function() {
+                        if (closeFlag) {
+                            $("#optionaccess").parent().removeClass("open");
+                            $("#optionaccesslist").css("display", "none");
+                        }
+                    }, 500);
+                });
+                //到顶部效果
+                var TopObj = document.getElementById("gotopbtn");
+                var tagsBar = document.getElementById("tags-bar");
+
+                function setScrollTop(value) {
+                    document.documentElement.scrollTop = value;
+                    document.body.scrollTop = value;
+                }
+
+
+                TopObj.onclick = function() {
+                    var goTop = setInterval(scrollMove, 10);
+
+                    function scrollMove() {
+                        setScrollTop(getScrollTop() / 1.1);
+                        if (getScrollTop() < 1) {
+                            clearInterval(goTop);
+                        }
                     }
                 }
-            });
-        });
-        var replyform = function(tid, rid, ruid, runame) {
-            var tinput = '<input type="hidden" name="tid" value="' + tid + '">';
-            var rinput = '<input type="hidden" name="rid" value="' + rid + '">';
-            var ruidinput = '<input type="hidden" name="ruid" value="' + ruid + '">';
-            var rnameinput = '<input type="hidden" name="runame" value="' + runame + '">';
-            var textarea = '<textarea row="3" name="repstr" class="atreply" id="replytoreply" style="width:630px;resize: vertical;"></textarea>';
-            var btnrep = '<div class="inputopt"><button type="submit" class="btn  btn-sm">回复</button></div>';
-            var formhead = '<form id="replywrap" class="navbar-form" action="/reply" method="post">';
-            var formtail = '</form>';
-            return formhead + textarea + tinput + rinput + ruidinput + rnameinput + btnrep + formtail;
-        }
 
-        $(".replyat").click(function() {
-            $("#replywrap").remove();
-            var tid = $(this).attr("data-tid");
-            var rid = $(this).attr("data-rid");
-            var ruid = $(this).attr("data-ruid");
-            var runame = $(this).attr("data-runame");
-            var replyformstr = replyform(tid, rid, ruid, runame);
-            $(this).parent().parent().parent().children('.reply_content').after(replyformstr);
-            $('#replytoreply').focus();
-            $('#replytoreply').val('@' + runame + ' ');
-            return false;
-        });
-        $('textarea.atreply').keydown(function(event) {
-            if (event.keyCode == 13 && (event.ctrlKey || event.metaKey)) {
-                event.preventDefault()
-                $(this).closest('form').submit()
-            }
-        });
+                //顶部导航栏效果
+                window.onscroll = function() {
+                    tagsBarTopBtnInit();
+                }
 
-        $('textarea#replytoreply').live("focus", function() {
-            $(this).css("height", "80px");
-            $(this).parent().find(".inputopt").css("display", "inline-block");
-        });
-        $('textarea#replytoreply').live("blur", function() {
-            var reg = /^@\w+[\s]*$/;
-            var contentIpt = $(this).val();
-            if (reg.test(contentIpt) || contentIpt.length == 0) {
-                $(this).css("height", "0px");
-                $(this).parent().find(".inputopt").css("display", "none");
-                setTimeout("$('#replywrap').remove()", 210)
-            } else {
-                $(this).css("height", "30px");
-                $(this).parent().find(".inputopt").css("display", "none");
-            }
-        });
-        $('textarea#reply_input').live("focus", function() {
-            $(this).css("height", "80px");
-            $(this).parent().find(".inputopt").css("display", "inline-block");
-            $('.selfimg img').css("width", "48px");
-        });
-        $('textarea#reply_input').live("blur", function() {
-            var replyContent = $(this).val();
-            if (replyContent.length == 0) {
-                $(this).css("height", "30px");
-                $(this).parent().find(".inputopt").css("display", "none");
-                $('.selfimg img').css("width", "30px");
-            }
-        });
-        $('.reply_msg_item').hover(
-            function() {
-                $(this).find('.opt').css("opacity", "1");
-            },
-            function() {
-                $(this).find('.opt').css("opacity", "0.6");
-            }
-        );
+                tagsBarTopBtnInit();
 
-    }),
-    define("common", ["domop", "jquery", "bootstrap"], function(domop, $, bootstrap) {
-        $("#regbtn").click(function() {
-            $('#regmodal').modal('show');
-            $("body").css('padding-right', '0px');
-        });
-        $("#loginbtn").click(function() {
-            $('#loginmodal').modal('show');
-            $("body").css('padding-right', '0px');
-        });
-        $("#gotologin").click(function() {
-            $('#regmodal').modal('hide');
-            $('#loginmodal').modal('show');
-            $("body").css('padding-right', '0px');
-        });
-        $("#gotoreg").click(function() {
-            $('#loginmodal').modal('hide');
-            $('#regmodal').modal('show');
-            $("body").css('padding-right', '0px');
-        });
-        $("#imagemodalbtn").click(function() {
-            $('#imagemodal').modal('show');
-            $("body").css('padding-right', '0px');
-        });
-        $("#linkmodalbtn").click(function() {
-            $('#linkmodal').modal('show');
-            $("body").css('padding-right', '0px');
-        });
-        $("#nosiginin-login").click(function() {
-            $('#loginmodal').modal('show');
-            $("body").css('padding-right', '0px');
-        });
-        $(".replylink").click(function() {
-            $('#loginmodal').modal('show');
-            $("body").css('padding-right', '0px');
-        });
-        $("#nosiginin-reg").click(function() {
-            $('#regmodal').modal('show');
-            $("body").css('padding-right', '0px');
-        });
+                function tagsBarTopBtnInit() {
+                    // if(TopObj){
+                    //     getScrollTop() > 130 ? TopObj.style.bottom = "85px" : TopObj.style.bottom = "-45px";
+                    // }
+                    var height = getClientHeight();
+                    var theight = getScrollTop();
+                    var rheight = getScrollHeight();
+                    var bheight = rheight - theight - height;
+                    if (tagsBar) {
+                        bheight < 100 ? tagsBar.style.bottom = "-100px" : tagsBar.style.bottom = "0px";
+                    }
+                    /*   var t = document.documentElement.scrollTop || document.body.scrollTop;
+                       var body = document.getElementsByTagName("body")[0];
+                       var navigate = document.getElementById("navigate");
+                       if (t >= 130) {
+                           domop.addClass(body, "headon");
+                       } else {
+                           domop.removeClass(body, "headon");
+                       }*/
+                }
 
-        $('#uname').blur(function() {
-            var input = $(this);
-            var name = input.val();
-            var params = {
-                name: name
-            };
-            $.ajax({
-                data: params,
-                url: '/getphoto',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                beforeSend: function() {},
-                success: function(data) {
-                    if (data.status == 1) {
-                        input.css("background-image", "url(" + data.photo + ")");
+                function getClientHeight() {
+                    var clientHeight = 0;
+                    if (document.body.clientHeight && document.documentElement.clientHeight) {
+                        var clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
                     } else {
-                        input.css("background-image", "url(../images/y_accountbg.png)");
-
+                        var clientHeight = (document.body.clientHeight > document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
                     }
+                    return clientHeight;
                 }
-            });
-        });
 
-        function noticeMan(node, text) {
-            node.html("<p>" + text + "</p>");
-            setTimeout(function() {
-                node.children().eq(0).fadeOut(500);
-            }, 4000);
-        }
-        $("#sublogin").click(function() {
-            var uname = $("#uname").val();
-            var pwd = $("#pwd").val();
-            var remember = $("#remember").val();
-            var noticeMsg = $("#noticemsg1");
-            if (uname.length == 0) {
-                noticeMan(noticeMsg, "账号格式有误");
-                return false;
-            }
-            if (pwd.length == 0) {
-                noticeMan(noticeMsg, "密码输入不对");
-                return false;
-            }
-            var params = {
-                uname: uname,
-                pwd: pwd,
-                remember: remember
-            };
-            $.ajax({
-                data: params,
-                url: '/login',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'post',
-                beforeSend: function() {},
-                success: function(data) {
-                    if (data.status == 1) {
-                        location.reload();
-                    } else {
-                        noticeMan(noticeMsg, data.content);
-                    }
+                function getScrollHeight() {
+                    return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
                 }
-            });
-            return true;
-        });
 
-        $("#subemail").click(function() {
-            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
-            var regEmailValue = $("#regemail").val();
-            var noticeMsg = $("#noticemsg");
-            if (!reg.test(regEmailValue)) {
-                noticeMan(noticeMsg, "邮箱格式不对哦");
-                return false;
-            }
-            var params = {
-                email: regEmailValue
-            };
-            $.ajax({
-                data: params,
-                url: '/regemail',
-                dataType: 'json',
-                cache: false,
-                timeout: 5000,
-                type: 'get',
-                beforeSend: function() {},
-                success: function(data) {
-                    if (data.status == 1) {
-                        noticeMsg.html(data.content);
-                    } else {
-                        noticeMan(noticeMsg, data.content);
-                    }
+                function getScrollTop() {
+                    return document.documentElement.scrollTop | document.body.scrollTop;
                 }
-            });
-        });
 
-        $("[data-toggle='tooltip']").tooltip();
+                //搜索框效果
+                var btnsearch = document.getElementsByClassName("btn-search")[0];
+                var btnclose = document.getElementsByClassName("btn-close")[0];
+                var headsearch = document.getElementsByClassName("headsearch")[0];
+                var formsearch = document.getElementsByClassName("form-search")[0];
+                var inputsearch = document.getElementsByClassName("search-ipt")[0];
+                btnsearch.onclick = function() {
+                    var y = $('.search-btn-wrap').offset().left;
+                    var x = $('.search-btn-wrap').offset().top;
+                    var height = $('.search-btn-wrap').height();
+                    $(formsearch).css("left", (y + 32 - 270) + "px");
+                    $(formsearch).css("top", (height) + "px");
+                    domop.addClass(headsearch, "active");
+                    inputsearch.focus();
+                };
+                btnclose.onclick = function() {
+                    domop.removeClass(headsearch, "active");
+                };
+                inputsearch.onblur = function() {
+                    domop.removeClass(headsearch, "active");
+                };
+            }),
 
-        var closeFlag = false;
-        $("#optionaccess").on("mouseenter", function() {
-            $("#optionaccesslist").css("display", "block");
-            $(this).parent().addClass("open");
-            closeFlag = false;
-        });
-        $("#optionaccess").on("mouseleave", function() {
-            closeFlag = true;
-            setTimeout(function() {
-                if (closeFlag) {
-                    $("#optionaccess").parent().removeClass("open");
-                    $("#optionaccesslist").css("display", "none");
-                }
-            }, 500);
-        });
-        $("#optionaccesslist").on("mouseenter", function() {
-            closeFlag = false;
-        });
-
-        $("#optionaccesslist").on("mouseleave", function() {
-            closeFlag = true;
-            setTimeout(function() {
-                if (closeFlag) {
-                    $("#optionaccess").parent().removeClass("open");
-                    $("#optionaccesslist").css("display", "none");
-                }
-            }, 500);
-        });
-        //到顶部效果
-        var TopObj = document.getElementById("gotopbtn");
-        var tagsBar = document.getElementById("tags-bar");
-
-        function setScrollTop(value) {
-            document.documentElement.scrollTop = value;
-            document.body.scrollTop = value;
-        }
-
-
-        TopObj.onclick = function() {
-            var goTop = setInterval(scrollMove, 10);
-
-            function scrollMove() {
-                setScrollTop(getScrollTop() / 1.1);
-                if (getScrollTop() < 1) {
-                    clearInterval(goTop);
-                }
-            }
-        }
-
-        //顶部导航栏效果
-        window.onscroll = function() {
-            tagsBarTopBtnInit();
-        }
-
-        tagsBarTopBtnInit();
-
-        function tagsBarTopBtnInit() {
-            // if(TopObj){
-            //     getScrollTop() > 130 ? TopObj.style.bottom = "85px" : TopObj.style.bottom = "-45px";
-            // }
-            var height = getClientHeight();
-            var theight = getScrollTop();
-            var rheight = getScrollHeight();
-            var bheight = rheight - theight - height;
-            if (tagsBar) {
-                bheight < 100 ? tagsBar.style.bottom = "-100px" : tagsBar.style.bottom = "0px";
-            }
-            var t = document.documentElement.scrollTop || document.body.scrollTop;
-            var body = document.getElementsByTagName("body")[0];
-            var navigate = document.getElementById("navigate");
-            if (t >= 130) {
-                domop.addClass(body, "headon");
-            } else {
-                domop.removeClass(body, "headon");
-            }
-        }
-
-        function getClientHeight() {
-            var clientHeight = 0;
-            if (document.body.clientHeight && document.documentElement.clientHeight) {
-                var clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
-            } else {
-                var clientHeight = (document.body.clientHeight > document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
-            }
-            return clientHeight;
-        }
-
-        function getScrollHeight() {
-            return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-        }
-
-        function getScrollTop() {
-            return document.documentElement.scrollTop | document.body.scrollTop;
-        }
-
-        //搜索框效果
-        var btnsearch = document.getElementsByClassName("btn-search")[0];
-        var btnclose = document.getElementsByClassName("btn-close")[0];
-        var headsearch = document.getElementsByClassName("headsearch")[0];
-        var formsearch = document.getElementsByClassName("form-search")[0];
-        var inputsearch = document.getElementsByClassName("search-ipt")[0];
-        btnsearch.onclick = function() {
-            var y = $('.search-btn-wrap').offset().left;
-            var x = $('.search-btn-wrap').offset().top;
-            var height = $('.search-btn-wrap').height();
-            $(formsearch).css("left", (y + 32 - 270) + "px");
-            $(formsearch).css("top", (height) + "px");
-            domop.addClass(headsearch, "active");
-            inputsearch.focus();
-        };
-        btnclose.onclick = function() {
-            domop.removeClass(headsearch, "active");
-        };
-        inputsearch.onblur = function() {
-            domop.removeClass(headsearch, "active");
-        };
-    }),
-
-    require(["jquery", "bootstrap", "jqueryform", "jquerycaret", "underscore", "jquerymigrate", "jqueryatwho", 'msgbox', "index", "article", "pub", "reglog", "user", "set", "common"],
-        function($, bootstrap, jqueryform, jquerycaret, _, jquerymigrate, jqueryatwho, msgbox, index, article, pub, reglog, user, set, common) {
-            console.log("你好，我好，大家好!!");
-            console.log(msgbox);
-        });
+            require(["jquery", "bootstrap", "jqueryform", "jquerycaret", "underscore", "jquerymigrate", "jqueryatwho", 'msgbox', "index", "article", "pub", "reglog", "user", "set", "common"],
+                function($, bootstrap, jqueryform, jquerycaret, _, jquerymigrate, jqueryatwho, msgbox, index, article, pub, reglog, user, set, common) {
+                    console.log("你好，我好，大家好!!");
+                    console.log(msgbox);
+                });

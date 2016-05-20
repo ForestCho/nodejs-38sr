@@ -115,6 +115,10 @@
 	margin: 6px 0px 6px 0px;
 	border-radius: 0;
 } 
+.textcontent{
+    width: 450px;
+	display: inline-block;
+}
 .shuo_sty {
 	font-size: 14px;
 	color: #777;
@@ -358,6 +362,10 @@
 }
 .otherorder{
 	background-color: #eee;	
+}
+.opimg{
+	width: 160px;
+	height: 120px;
 }
 .thumb{
 	margin-right: 15px;

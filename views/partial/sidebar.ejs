@@ -1,9 +1,9 @@
 <% 
 var userinfo = d.userinfo; 
 %>
-			<div class="userinfo">
+		<div class="baseinfo-name"><%= userinfo.name %></div> 
+		<div class="userinfo">
 			<div class="baseinfo">
-				<div class="baseinfo-name"><%= userinfo.name %></div> 
 				<img src=<%= typeof(userinfo.originphoto)!== 'undefined'?userinfo.originphoto:userinfo.photo %>>
 				<p>第<%= userinfo.uid %>位成员</p>
 				<p><%= userinfo.joinDate %></p>	 
@@ -33,7 +33,7 @@ var userinfo = d.userinfo;
 						<%
 						if(d.followernum > 6){
 						%>
-							<a href="/<%=userinfo.name%>/follower" class="more_follower">更多</a>	
+							<a href="/<%=userinfo.name%>/follower" class="more_follower">...</a>	
 						<%
 						}
 						%>
@@ -57,7 +57,7 @@ var userinfo = d.userinfo;
 						<%
 						if(d.hefollowernum > 6){
 						%>
-							<a href="/<%=userinfo.name%>/hefollower" class="more_follower">更多</a>	
+							<a href="/<%=userinfo.name%>/hefollower" class="more_follower">...</a>	
 						<%
 						}
 						%>
@@ -76,4 +76,4 @@ var userinfo = d.userinfo;
 						<%}%>
 					</div>
 				</div>
-			</div>
+		</div>

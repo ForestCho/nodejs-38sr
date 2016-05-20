@@ -6810,6 +6810,7 @@ button.close {
 .detail_content img{  
 	display: block;
 	margin: 0 auto;
+	max-width: 685px;
 } 
 #replywrap{
 	position:relative;
@@ -7009,6 +7010,10 @@ button.close {
 	margin: 6px 0px 6px 0px;
 	border-radius: 0;
 } 
+.textcontent{
+    width: 450px;
+	display: inline-block;
+}
 .shuo_sty {
 	font-size: 14px;
 	color: #777;
@@ -7252,6 +7257,10 @@ button.close {
 }
 .otherorder{
 	background-color: #eee;	
+}
+.opimg{
+	width: 160px;
+	height: 120px;
 }
 .thumb{
 	margin-right: 15px;
@@ -8108,7 +8117,7 @@ a.optionaccess:hover {
 	float: left
 }
 .tagswrap {
-	margin-top: 20px;
+	padding: 10px;
 }
 
 .tagname {
@@ -8127,7 +8136,7 @@ a.optionaccess:hover {
 }
 
 .locatewrap {
-	margin-top: 20px;
+	padding: 10px;
 }
 
 .locatename {
@@ -8146,7 +8155,7 @@ a.optionaccess:hover {
 }
 
 .sitewrap {
-	margin-top: 20px;
+	padding: 10px;
 }
 
 .sitename {
@@ -8189,6 +8198,7 @@ a.optionaccess:hover {
 	border-radius: 0;
 	background-color: #f5f5f5;
 	padding: 10px;
+	white-space: pre-wrap;
 }
 
 .baseinfo p {
@@ -8758,6 +8768,7 @@ a.optionaccess:hover {
 	margin-bottom: -2px;
 	display: inline-block;
 	color: #555;
+	line-height: 30px;
 	-webkit-transition: all linear .2s;
 	-moz-transition: all linear .2s;
 	-ms-transition: all linear .2s;
@@ -8772,6 +8783,7 @@ a.optionaccess:hover {
 	margin-bottom: -2px;
 	display: inline-block;
 	color: #555;
+	line-height: 30px;
 }
 .tab-cell:hover{
 	border-bottom: 2px solid #00a090;
@@ -9201,7 +9213,7 @@ ul{
   z-index: 1060;
   display: none;
   width: 200px;
-  min-height: 30px;
+  min-height: 40px;
   padding: 1px;
   text-align: left;
   white-space: normal;
@@ -10109,4 +10121,139 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 }
 .editor-preview > p {
   margin-top: 0;
+}
+.iloading{ 
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: inline-block;
+} 
+
+.iloading .sk-circle {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.iloading .sk-circle:before {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 15%;
+  height: 15%;
+  background-color: #333;
+  border-radius: 100%;
+  -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+          animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+}
+.iloading .sk-circle2 {
+  -webkit-transform: rotate(30deg);
+      -ms-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
+.iloading .sk-circle3 {
+  -webkit-transform: rotate(60deg);
+      -ms-transform: rotate(60deg);
+          transform: rotate(60deg);
+}
+.iloading .sk-circle4 {
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.iloading .sk-circle5 {
+  -webkit-transform: rotate(120deg);
+      -ms-transform: rotate(120deg);
+          transform: rotate(120deg);
+}
+.iloading .sk-circle6 {
+  -webkit-transform: rotate(150deg);
+      -ms-transform: rotate(150deg);
+          transform: rotate(150deg);
+}
+.iloading .sk-circle7 {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.iloading .sk-circle8 {
+  -webkit-transform: rotate(210deg);
+      -ms-transform: rotate(210deg);
+          transform: rotate(210deg);
+}
+.iloading .sk-circle9 {
+  -webkit-transform: rotate(240deg);
+      -ms-transform: rotate(240deg);
+          transform: rotate(240deg);
+}
+.iloading .sk-circle10 {
+  -webkit-transform: rotate(270deg);
+      -ms-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+.iloading .sk-circle11 {
+  -webkit-transform: rotate(300deg);
+      -ms-transform: rotate(300deg);
+          transform: rotate(300deg); 
+}
+.iloading .sk-circle12 {
+  -webkit-transform: rotate(330deg);
+      -ms-transform: rotate(330deg);
+          transform: rotate(330deg); 
+}
+.iloading .sk-circle2:before {
+  -webkit-animation-delay: -1.1s;
+          animation-delay: -1.1s; 
+}
+.iloading .sk-circle3:before {
+  -webkit-animation-delay: -1s;
+          animation-delay: -1s; 
+}
+.iloading .sk-circle4:before {
+  -webkit-animation-delay: -0.9s;
+          animation-delay: -0.9s; 
+}
+.iloading .sk-circle5:before {
+  -webkit-animation-delay: -0.8s;
+          animation-delay: -0.8s; 
+}
+.iloading .sk-circle6:before {
+  -webkit-animation-delay: -0.7s;
+          animation-delay: -0.7s; 
+}
+.iloading .sk-circle7:before {
+  -webkit-animation-delay: -0.6s;
+          animation-delay: -0.6s; 
+}
+.iloading .sk-circle8:before {
+  -webkit-animation-delay: -0.5s;
+          animation-delay: -0.5s; 
+}
+.iloading .sk-circle9:before {
+  -webkit-animation-delay: -0.4s;
+          animation-delay: -0.4s;
+}
+.iloading .sk-circle10:before {
+  -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+}
+.iloading .sk-circle11:before {
+  -webkit-animation-delay: -0.2s;
+          animation-delay: -0.2s;
+}
+.iloading .sk-circle12:before {
+  -webkit-animation-delay: -0.1s;
+          animation-delay: -0.1s;
+}
+
+@-webkit-keyframes sk-circleFadeDelay {
+  0%, 39%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+@keyframes sk-circleFadeDelay {
+  0%, 39%, 100% { opacity: 0; }
+  40% { opacity: 1; } 
 }

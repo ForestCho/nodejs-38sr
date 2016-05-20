@@ -114,6 +114,7 @@
 	margin-bottom: -2px;
 	display: inline-block;
 	color: #555;
+	line-height: 30px;
 	-webkit-transition: all linear .2s;
 	-moz-transition: all linear .2s;
 	-ms-transition: all linear .2s;
@@ -128,6 +129,7 @@
 	margin-bottom: -2px;
 	display: inline-block;
 	color: #555;
+	line-height: 30px;
 }
 .tab-cell:hover{
 	border-bottom: 2px solid #00a090;

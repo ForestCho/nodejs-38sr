@@ -64,20 +64,24 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
             var newcontent = articlelist[i].purecontent;
             var briefnum = 120;
             var contentlength = util.getSize(newcontent);
+            var imgwrap = '';
             if (imglist !== null) {
                 if (imglist.length > 0) {
                     var srcReg = /http:\/\/([^"]+)/i;
                     var srcStr = imglist[0].match(srcReg);
                     if (articlelist[i].type == 1) {
-                        var imgWrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0].replace('large', 'wap180') + "' class='thumb'></a>"
+                        imgwrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0].replace('large', 'wap180') + "' class='thumb'></a>"
                     } else {
-                        var imgWrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0] + "!limitmax" + "' class='thumb'></a>"
+                        if(srcStr[0].indexOf("srpic.b0.upaiyun.com")>0){
+                            imgwrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0] + "!limitmax" + "' class='thumb'></a>"
+                        }else{
+                            imgwrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0]  + "' class='thumb opimg'></a>"
+                        }
                     }
-                    newcontent = imgWrap + newcontent.substring(0, (contentlength > briefnum) ? util.getIndex(newcontent, briefnum) : contentlength).trim();
+                    newcontent = imgwrap + "<div class='textcontent'>"+newcontent.substring(0, (contentlength > briefnum) ? util.getIndex(newcontent, briefnum) : contentlength).trim()+"</div>";
                 }
             } else {
                 newcontent = newcontent.substring(0, (contentlength > briefnum * 2) ? util.getIndex(newcontent, briefnum * 2) : contentlength).trim();
-
             }
             if (contentlength > briefnum) {
                 newcontent = newcontent + '...';
@@ -90,6 +94,7 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
             }
             articlelist[i].imagelength = imglist !== null ? imglist.length : 0;
             articlelist[i].newcontent = newcontent;
+            articlelist[i].imgwrap = imgwrap;
         }
         ep.emit("articlelist", articlelist);
     })
@@ -127,12 +132,7 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
  * @param  {[type]} res
  * @return {[type]}
  */
-exports.index = function(req, res) { 
-    var ip = req.headers['x-forwarded-for'] ||
-        req.connection.remoteAddress ||
-        req.socket.remoteAddress ||
-        req.connection.socket.remoteAddress;
-        console.log(ip);
+exports.index = function(req, res) {  
     var cookie = req.cookies["SR_TAB"];  
     switch (cookie) {
         case '-1':

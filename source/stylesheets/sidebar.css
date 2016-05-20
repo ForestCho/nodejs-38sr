@@ -1,5 +1,5 @@
 .tagswrap {
-	margin-top: 20px;
+	padding: 10px;
 }
 
 .tagname {
@@ -18,7 +18,7 @@
 }
 
 .locatewrap {
-	margin-top: 20px;
+	padding: 10px;
 }
 
 .locatename {
@@ -37,7 +37,7 @@
 }
 
 .sitewrap {
-	margin-top: 20px;
+	padding: 10px;
 }
 
 .sitename {
@@ -80,6 +80,7 @@
 	border-radius: 0;
 	background-color: #f5f5f5;
 	padding: 10px;
+	white-space: pre-wrap;
 }
 
 .baseinfo p {

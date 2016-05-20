@@ -203,14 +203,19 @@ exports.cata = function(req, res) {
                 if (articlelist[i].classify == 1) {
                     articlelist[i].title = encodeURIComponent(articlelist[i].title);
                 }
+                var imgWrap = '';
                 if (imglist !== null) {
                     if (imglist.length > 0) {
                         var srcReg = /http:\/\/([^"]+)/i;
                         var srcStr = imglist[0].match(srcReg);
                         if (articlelist[i].type == 1) {
-                            var imgWrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0].replace('large', 'wap180') + "' class='thumb'></a>"
+                            imgWrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0].replace('large', 'wap180') + "' class='thumb'></a>"
                         } else {
-                            var imgWrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0] + "!limitmax" + "' class='thumb'></a>"
+                            if(srcStr[0].indexOf("srpic.b0.upaiyun.com")>0){
+                                imgWrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0] + "!limitmax" + "' class='thumb'></a>"
+                            }else{
+                                imgWrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0]  + "' class='thumb opimg'></a>"
+                            }
                         }
 
                         newcontent = imgWrap + newcontent.substring(0, (newcontent.length > 150) ? 150 : newcontent.length).trim();

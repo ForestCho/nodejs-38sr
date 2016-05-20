@@ -249,6 +249,7 @@
 .detail_content img{  
 	display: block;
 	margin: 0 auto;
+	max-width: 685px;
 } 
 #replywrap{
 	position:relative;

@@ -64,9 +64,13 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, tagname) {
                     if (articlelist[i].type == 1) {
                         var imgWrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0].replace('large', 'wap180') + "' class='thumb'></a>"
                     } else {
-                        var imgWrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0] + "!limitmax" + "' class='thumb'></a>"
+                          if(srcStr[0].indexOf("srpic.b0.upaiyun.com")>0){
+                                imgWrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0] + "!limitmax" + "' class='thumb'></a>"
+                            }else{
+                                imgWrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0]  + "' class='thumb opimg'></a>"
+                            }
                     }
-                    newcontent = imgWrap + newcontent.substring(0, (newcontent.length > 150) ? 150 : newcontent.length).trim();
+                    newcontent = imgWrap + "<div class='textcontent'>"+newcontent.substring(0, (newcontent.length > 150) ? 150 : newcontent.length).trim()+"</div>";
                 }
             } else {
                 newcontent = newcontent.substring(0, (newcontent.length > 180) ? 180 : newcontent.length).trim();
@@ -91,8 +95,7 @@ exports.index = function(req, res) {
     var classify = 2;
     var cataZh = "篇文章";
     var curpath = "/tag/"+tagname;
-    res.locals.pageflag = 5;
-    console.log(tagname);
+    res.locals.pageflag = 5; 
     var articleLimit = {
         classify: classify, 
         isdelete: false,

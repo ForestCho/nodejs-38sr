@@ -1,18 +1,19 @@
 <% include ./partial/header%>
 </head>
 <body class="loginbg">
-<div class="loginwrap">
-	<form class="am-form am-form-horizontal" role="form" action="/admin/login" method="POST">
+<div class="loginwrap text-center" id="loginwrap">
+	<h3>欢迎使用38SR后台系统</h3>
+	<form class="am-form am-form-horizontal m-t" role="form" action="/admin/login" method="POST">
 		<div class="form-group row">
 			<div  class="col-md-2 ipt-label">帐号</div>
 			<div class="col-md-10">
-				<input type="text" class="form-control" id="uname" name="uname" placeholder="帐号" >
+				<input type="text" class="form-control" id="uname" name="uname" placeholder="帐号" required>
 			</div>
 		</div>
 		<div class="form-group row">
 			<div  class="col-md-2 ipt-label">密码</div>
 			<div class="col-md-10">
-				<input type="password"  class="form-control" id="pwd" name="pwd" placeholder="密码"  >
+				<input type="password"  class="form-control" id="pwd" name="pwd" placeholder="密码"  required>
 			</div>
 		</div>  
 		<div class="form-group row">
