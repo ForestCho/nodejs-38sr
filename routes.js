@@ -108,6 +108,7 @@ var run = function(app){
 	app.get('/mood', index.mood); 
 	app.get('/article', index.article); 
 	app.get('/fastlink', index.fastlink); 
+	app.get('/fljson', index.fljson); 
 	app.get('/xiaohua', index.xiaohua); 
 	app.get('/tag/:tagname', tag.index);
 	app.get('/tags/:tagname', tag.index);

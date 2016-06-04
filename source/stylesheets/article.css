@@ -56,10 +56,10 @@
 	font-size: 12px;
 } 
 .article_head_info{
-    padding: 10px 0px;
-    width: 685px;
-    margin: 0 auto;
+    padding: 10px 0px; 
     border-bottom: 1px dashed #E0E0E0;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .article_head_info a{	
 	font:14px/1.5 "微软雅黑",Verdana,Geneva,sans-serif;

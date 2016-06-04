@@ -1,0 +1,71 @@
+<% include partial/header%>
+</head>
+<body>
+<% include partial/nav %>
+<div class="mainwrap">
+	<% if(!locals.userinfo){%>
+	<div class="rightwrap">
+		<%}else{%>
+		<div class="rightwrap index_rightwrap">
+			<%}%>
+			<% include partial/indexsidebar %>
+		</div>
+		<div class="leftwrap">
+			<div class="allmsg">
+				<%
+				var result = d.data;
+				%>
+				<% for(var i= 0;i<result.length;i++){
+				if(result[i]){
+				%>
+				<div class="linkitem">
+					<div class="left-box">
+					<div class="photowrap"><a class="userlink show-pop-async" data-uid=<%= result[i]._creator.uid %> href="/user/<%= result[i]._creator.name %>"><img src=<%= result[i]._creator.photo %>></a></div>
+						
+					<div class="linktitle"><a href="/redirect?url=<%= result[i].title %>" target="_blank" class="urltype"><%= result[i].content %></a></div>
+					</div>
+					<div class="right-box">
+						
+					<div class="linkdate">
+						<i class="fa fa-clock-o"></i><%= result[i].convertdate  %>
+					</div>				
+					<%if(result[i]._sid){%>
+					<a  class="linkicon" href="/site/<%- result[i]._sid._id %>/"  data-toggle="tooltip" data-placement="right" title="<%=result[i]._sid.sbrief %>"><%=result[i]._sid.sname %></a>
+					<%}else{%>
+					net
+					<%}%>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<%}}%>
+			</div>
+			<% include partial/paginationmore%>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- 首页 -->
+			<ins class="adsbygoogle"
+			style="display:inline-block;width:728px;height:90px"
+			data-ad-client="ca-pub-6736333362394709"
+			data-ad-slot="7426054674"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+		<div style="clear:both">
+		</div>
+	</div>
+	<%if(d.tags.length > 0){%>
+	<div id="tags-bar">
+		<ul class="tag-list">
+			<li class="tag-single">热门标签：</li>
+			<%
+			var tags = d.tags;
+			for(var i= 0;i<tags.length;i++){%>
+			<li class="tag-single"> <a href="/tag/<%- tags[i]%>/"><%- tags[i]%></a> </li>
+			<%}%>
+		</ul>
+		<div id="tags-close">
+			<i class="fa fa-remove"></i>
+		</div>
+	</div>
+	<%}%>
+	<% include partial/footer %>

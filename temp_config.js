@@ -10,8 +10,7 @@ var config = {
 		list_article_size : 14,
 		list_new_user_size :9,
 		list_hot_user_size :9,
-
-
+		list_link_size : 18,
 		list_admin_article_size : 10
 	},
 	

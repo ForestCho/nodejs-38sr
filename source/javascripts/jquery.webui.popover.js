@@ -22,7 +22,7 @@
 					template:'<div class="webui-popover">'+
 								'<div class="arrow"></div>'+
 								'<div class="webui-popover-inner">'+ 
-									'<div class="webui-popover-content"><div class="iloading" style="width:25px;height:25px;top:5px;margin:0 auto"> <div class="sk-circle1 sk-circle"></div>
+									'<div class="webui-popover-content"><div class="iloading" style="width:25px;height:25px;top:5px;margin:0 auto;margin-left:90px;"> <div class="sk-circle1 sk-circle"></div>
   <div class="sk-circle2 sk-circle"></div>
   <div class="sk-circle3 sk-circle"></div>
   <div class="sk-circle4 sk-circle"></div>

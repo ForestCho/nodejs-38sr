@@ -5,7 +5,7 @@ var ArticleDao = require('../dao/articledao');
 var moment = require('moment');
 var config = require('../config').config;
 var cache = require('../common/cache');
-var EventProxy = require('eventproxy'); 
+var EventProxy = require('eventproxy');
 
 /**
  * [commonQuery description]
@@ -20,6 +20,18 @@ var EventProxy = require('eventproxy');
 var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
     var p = 1; //pageid
     var pagesize = config.index.list_article_size;
+    var flag = -1;
+    var tpl = "index"; 
+    if (typeof(articleLimit.classify)) {
+        if (articleLimit.classify == 2) {
+            tpl = "indexarticle";
+        } else if (articleLimit.classify == 1) {
+            tpl = "indexlink";
+            pagesize = config.index.list_link_size;
+        } else {
+            tpl = "index";
+        }
+    }
     var puretext = true;
     var list_hot_user_size = config.index.list_hot_user_size;
     var count = 0;
@@ -31,18 +43,19 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
     }
     var ep = new EventProxy();
 
-    var DIS_TAGS = req.cookies["DIS_TAGS"];  
+    var DIS_TAGS = req.cookies["DIS_TAGS"];
     var tags = [];
-    if(DIS_TAGS !== '1' ){
+    if (DIS_TAGS !== '1') {
         tags = ['PHP', '正则', '前端', 'JavaScript', '测试', 'java', 'linux', '面试', 'mysql', '试题', '数据库', '编程', '源码', '爬虫', 'html', '工具', 'less', 'sublime', '插件'];
     }
     ep.assign("articlelist", "hotuser", 'zymryj', 'count', function(articlelist, hotuser, zymryj, count) {
         var d = [];
         d.data = articlelist;
         d.hotuser = hotuser;
-        d.count = count; 
+        d.count = count;
         d.tags = tags;
-        res.render(classify == 2 ? 'indexarticle' : 'index', {
+
+        res.render(tpl, {
             title: '做一体化的IT社区!',
             curpath: curpath,
             d: d,
@@ -72,24 +85,24 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
                     if (articlelist[i].type == 1) {
                         imgwrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0].replace('large', 'wap180') + "' class='thumb'></a>"
                     } else {
-                        if(srcStr[0].indexOf("srpic.b0.upaiyun.com")>0){
+                        if (srcStr[0].indexOf("srpic.b0.upaiyun.com") > 0) {
                             imgwrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0] + "!limitmax" + "' class='thumb'></a>"
-                        }else{
-                            imgwrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0]  + "' class='thumb opimg'></a>"
+                        } else {
+                            imgwrap = "<a rel='fancypic' href='" + srcStr[0] + "'><img src='" + srcStr[0] + "' class='thumb opimg'></a>"
                         }
                     }
-                    newcontent = imgwrap + "<div class='textcontent'>"+newcontent.substring(0, (contentlength > briefnum) ? util.getIndex(newcontent, briefnum) : contentlength).trim()+"</div>";
+                    newcontent = imgwrap + "<div class='textcontent'>" + newcontent.substring(0, (contentlength > briefnum) ? util.getIndex(newcontent, briefnum) : contentlength).trim() + "</div>";
                 }
             } else {
                 newcontent = newcontent.substring(0, (contentlength > briefnum * 2) ? util.getIndex(newcontent, briefnum * 2) : contentlength).trim();
             }
             if (contentlength > briefnum) {
                 newcontent = newcontent + '...';
-            }             
-            if (articlelist[i].classify == 1) {
-                articlelist[i].title = encodeURIComponent(articlelist[i].title); 
             }
-            if (articlelist[i].classify == 0) { 
+            if (articlelist[i].classify == 1) {
+                articlelist[i].title = encodeURIComponent(articlelist[i].title);
+            }
+            if (articlelist[i].classify == 0) {
                 articlelist[i].title = util.getFirstSentence(articlelist[i].purecontent);
             }
             articlelist[i].imagelength = imglist !== null ? imglist.length : 0;
@@ -132,13 +145,13 @@ var commonQuery = function(req, res, curpath, articleLimit, cataZh, classify) {
  * @param  {[type]} res
  * @return {[type]}
  */
-exports.index = function(req, res) {  
-    var cookie = req.cookies["SR_TAB"];  
+exports.index = function(req, res) {
+    var cookie = req.cookies["SR_TAB"];
     switch (cookie) {
         case '-1':
             gc(req, res);
             break;
-        case "0": 
+        case "0":
             mood(req, res);
             break;
         case "1":
@@ -182,7 +195,7 @@ exports.gc = gc = function(req, res) {
  * @return {[type]}
  */
 exports.mood = mood = function(req, res) {
-    var classify = 0; 
+    var classify = 0;
     var cataZh = "条心情";
     var curpath = "/mood";
     res.locals.pageflag = 0;
@@ -190,11 +203,10 @@ exports.mood = mood = function(req, res) {
         classify: classify,
         isdelete: false
     };
-    console.log(cataZh);
     res.cookie("SR_TAB", '0', {
         path: config.cookie_path,
         maxAge: 1000 * 60 * 60 * 24 * 7
-    }); 
+    });
     commonQuery(req, res, curpath, articleLimit, cataZh, classify);
 }
 
@@ -243,6 +255,57 @@ exports.fastlink = fastlink = function(req, res) {
     commonQuery(req, res, curpath, articleLimit, cataZh, classify);
 }
 
+exports.fljson = fljson = function(req,res){
+    var classify = 1; 
+    var articleLimit = {
+        classify: classify,
+        isdelete: false
+    };
+    var pageid = 1;
+    var pagesize = config.index.list_link_size;  
+    var count = 0;
+    if (req.query.pageid) {
+        pageid = req.query.pageid;
+    } 
+    var ep = new EventProxy();
+ 
+    ep.assign("articlelist", 'count', function(articlelist, count) {
+        var d = {}; 
+        var resHtml = '';
+        for(var i = 0;i<articlelist.length;i++){
+            resHtml += '<div class="linkitem">'+
+                     '<div class="left-box">'+
+                         '<div class="photowrap"><a class="userlink show-pop-async" data-uid='+articlelist[i]._creator.uid+' href="/user/'+ articlelist[i]._creator.name +'"><img src='+ articlelist[i]._creator.photo +'></a></div>'+
+                         '<div class="linktitle"><a href="/redirect?url='+articlelist[i].title +'" target="_blank" class="urltype">'+ articlelist[i].content +'</a></div>'+
+                     '</div>'+
+                     '<div class="right-box">  '+                      
+                         '<div class="linkdate">'+
+                             '<i class="fa fa-clock-o"></i>'+ articlelist[i].convertdate  +
+                         '</div>';
+            if(articlelist[i]._sid){
+                resHtml+='<a  class="linkicon" href="/site/'+ articlelist[i]._sid._id +'/"  data-toggle="tooltip" data-placement="right" title="'+articlelist[i]._sid.sbrief +'">'+articlelist[i]._sid.sname +'</a>';
+            }else{
+                resHtml+='net';
+            }               
+             resHtml+='</div><div class="clearfix"></div></div>';
+        }
+        d.list = resHtml;
+        d.listcount = articlelist.length; 
+        d.pagesize = pagesize;
+        res.json(d); 
+    });
+
+    ArticleDao.getNumberOfArticlesAsObect(articleLimit, function(err, count) {
+        ep.emit("count", count);
+    });
+
+
+    ArticleDao.getArticleListLimitAsObject(true, pageid, pagesize, articleLimit, function(err, articlelist) { 
+        ep.emit("articlelist", articlelist);
+    })
+  
+ 
+}
 /**
  * [xiaohua 笑话路由 ]
  * @param  {[type]} req
