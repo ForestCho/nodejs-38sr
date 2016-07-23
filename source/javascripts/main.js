@@ -72,11 +72,16 @@ require.config({
                 type: 'get',
                 success: function(data) {  
                     if(data.listcount == data.pagesize){
+                        var tempObjList = $('.linkitem');
+                        tempObjList.eq(tempObjList.length-1).css('border-bottom','1px solid #B8AF9C')
                         $('.allmsg').append(data.list);  
                         $('.iloading').css('display', 'none'); //显示   
                         $('.moretext').html('更多');      
                         $('.moretext').css('display', 'inline-block'); //显示          
                         $('#pagemore').attr('page-id',pageid-(-1));
+                        setTimeout(function(){
+                            tempObjList.eq(tempObjList.length-1).css('border-bottom','1px solid #E9DDC6')  
+                        },2000);
                     }else{
                         $('.iloading').css('display', 'none'); //显示      
                         $('.moretext').html('没有了');      

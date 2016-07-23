@@ -213,6 +213,10 @@ ul{
   		width: 100%;
   		min-width: 0px;
  	}
+	.modal_regwrap {
+		width: 80%;
+		overflow: hidden;
+	}
 	.rightwrap {
 	    float: none;
 	    position: absolute;

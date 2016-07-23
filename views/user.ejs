@@ -69,7 +69,7 @@
 						<div class="msg_content"><%- nearArticle[i].newcontent %> </div>
 						<%}else if(nearArticle[i].classify === 2){%>
 						<% if(nearArticle[i].title &&nearArticle[i].title.length > 0 ){%>
-						<p class="item_title"><a href="/t/<%= nearArticle[i].tid %>"><%= nearArticle[i].title %></a></p>
+						<p class="item_title"><a href="/t/<%= nearArticle[i].tid %>"  class="articletype"><%= nearArticle[i].title %></a></p>
 						<%}%>
 						<div class="msg_content"><%- nearArticle[i].newcontent %> </div>
 						<%}else{%>
